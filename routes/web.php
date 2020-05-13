@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Ressources Welcome
+Route::get('/','WelcomeController@index')->name('Welcome');
+Route::resource('welcome', 'WelcomeController');
 
 Auth::routes();
 
@@ -24,3 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/calendrier', function() {
     return view('calendrier');
 })->name('calendrier');
+
+
+// Ressource MYPROFIL
+
+Route::resource('myProfil', 'MyProfilController');

@@ -40,6 +40,14 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        <input type="text" class="form-control @error('firstname') is-invalid @enderror"
+                                            name="firtsname" value="{{ old('firtsname') }}" required autocomplete="firtsname" autofocus
+                                            placeholder="Firstame">
+                                        @error('firtsname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
 
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             name="email" value="{{ old('email') }}" required autocomplete="email"

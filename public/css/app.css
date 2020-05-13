@@ -13604,7 +13604,7 @@ ol {
 -----------------------*/
 
 .feature-section {
-	background: #f5f5f5;
+	
 	padding-bottom: 70px;
 }
 
@@ -13644,28 +13644,32 @@ ol {
 -----------------------*/
 
 .team-section {
+
 	padding-bottom: 70px;
 }
 
-.team__btn {
-	text-align: right;
-}
+
 
 .team__item {
 	border: 1px solid #d7d7d7;
 	padding: 30px 20px 20px 30px;
 	margin-bottom: 30px;
+	box-shadow: 0px 0px 10px rgba(18, 8, 81, 0.15);
+	transition: all 0.3s;
 }
-
+.team__item:hover {
+	box-shadow: 0px 15px 18px rgba(18, 8, 81, 0.2);
+}
 .team__item .team__pic {
 	float: left;
 	margin-right: 30px;
 }
 
 .team__item .team__pic img {
-	height: 120px;
-	width: 120px;
+	height: 100px;
+	width: 100px;
 	border-radius: 50%;
+	margin-bottom: 20px;
 }
 
 .team__item .team__text {
@@ -13727,7 +13731,13 @@ ol {
 	padding: 85px 30px 20px 30px;
 	border-radius: 10px;
 	background: #ffffff;
+	transition: all 0.3s;
 }
+
+.testimonial__item:hover {
+	box-shadow: 0px 8px 30px rgba(18, 8, 81, 0.2);
+}
+
 
 .testimonial__item img {
 	height: 120px;
@@ -16039,5 +16049,34 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+.calendar__table {
+  width: 100%;
+  height: calc(100vh - 128px);
+}
 
+.calendar__table td {
+  padding: 10px;
+  border: 1px solid #CCC;
+  vertical-align: top;
+  width: 14.29%;
+  height: 20%;
+}
+
+.calendar__table--6weeks td {
+  height: 16.66%;
+}
+
+.calendar__weekday {
+  font-weight: bold;
+  color: #000;
+  font-size: 1.2em;
+}
+
+.calendar__day {
+  font-size: 1.3em;
+}
+
+.calendar__othermonth .calendar__day {
+  opacity: 0.4;
+}
 
