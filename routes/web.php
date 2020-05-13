@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/calendrier', function() {
     return view('calendrier');
 })->name('calendrier');
+ 
+
+Route::resource('event', 'EventController');

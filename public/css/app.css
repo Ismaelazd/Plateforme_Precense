@@ -16039,6 +16039,10 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
+.calendar {
+  position: relative;
+}
+
 .calendar__table {
   width: 100%;
   height: calc(100vh - 128px);
@@ -16068,5 +16072,29 @@ img.mfp-img {
 
 .calendar__othermonth .calendar__day {
   opacity: 0.4;
+}
+
+.calendar__button {
+  display: block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 30px;
+  background-color: #007bff;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.calendar__button:hover {
+  text-decoration: none;
+  color: #ffffff;
+  transform: rotate(360deg) scale(1.5);
 }
 
