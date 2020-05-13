@@ -130,8 +130,49 @@
                 echo '</table>';
                
                 @endphp
-
-
+                @php
+                    
+                $today = Illuminate\Support\Carbon::today();
+                // dd($today->year);
+                // echo '<h1 class="w3-text-teal"><center>' . $today->format('F Y') . '</center></h1>';
+                $tempDate = Illuminate\Support\Carbon::createFromDate($today->year, $today->month+1, 1);
+                echo '<table border="1" class = "w3-table w3-boarder w3-striped">
+                       <thead><tr class="w3-theme">
+                       <th>Mon</th>
+                       <th>Tue</th>
+                       <th>Wed</th>
+                       <th>Thu</th>
+                       <th>Fri</th>
+                       <th>Sat</th>
+                       <th>Sun</th>
+                       </tr></thead>';
+                $skip = $tempDate->dayOfWeek;
+                for($i = 0; $i < $skip-1; $i++)
+                {
+                    $tempDate->subDay();
+                }
+                //loops through month
+                do
+                {
+                    echo '<tr>';
+                    //loops through each week
+                    for($i=0; $i < 7; $i++)
+                    {
+                        echo '<td><span class="date"><a href="">';
+            
+                        echo $tempDate->day;
+            
+                        echo '</a></span></td>';
+            
+                        $tempDate->addDay();
+                    }
+                    echo '</tr>';
+            
+                }while($tempDate->month == $today->month+1);
+            
+                echo '</table>';
+               
+                @endphp
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
