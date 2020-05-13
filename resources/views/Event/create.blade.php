@@ -1,6 +1,9 @@
 @extends('layouts/master')
 @section('content')
 
+@include('components.navbar-haut')
+
+
 <div class="d-flex justify-content-center mt-3">
     <div class="card  w-75 ">
         <div class="card-header bg-primary text-white">

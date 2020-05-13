@@ -41,9 +41,9 @@
                                         </span>
                                         @enderror
                                         <input type="text" class="form-control @error('firstname') is-invalid @enderror"
-                                            name="firtsname" value="{{ old('firtsname') }}" required autocomplete="firtsname" autofocus
-                                            placeholder="Firstame">
-                                        @error('firtsname')
+                                            name="firstname" value="{{ old('firstname') }}" required autocomplete="firstname" autofocus
+                                            placeholder="firstname">
+                                        @error('firstname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

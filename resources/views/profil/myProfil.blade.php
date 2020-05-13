@@ -38,7 +38,7 @@
                             @endcan
                             <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
                                     href="{{route('myProfil.index')}}">Profil</a></li>
-                            <li><a href="{{route('myProfil.index')}}">Calendrier</a></li>
+                            <li><a href="{{route('calendrier')}}">Calendrier</a></li>
                             {{-- <li><a href="#">Elève</a>
                                 <ul class="dropdown">
                                     <li><a href="./pricing.html">Login/Register</a></li>

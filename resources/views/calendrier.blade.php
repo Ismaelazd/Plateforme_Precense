@@ -1,9 +1,14 @@
 @extends('layouts/master')
 @section('content')
-    <nav class="navbar-dark bg-primary mb-3">
+
+   @include('components.navbar-haut')
+
+
+
+    {{-- <nav class="navbar-dark bg-primary mb-3">
         <a href="{{route('calendrier')}}" class="navbar-brand">Mon calendrier</a>
         <a href="{{route('event.index')}}" class="navbar-brand float-right">Liste des évènements</a>
-    </nav>
+    </nav> --}}
 
     @php
         use App\Helpers\Calendar\Month;
@@ -17,10 +22,16 @@
         $events = $events->getEventsBetweenByDay($start,$end );
 
     @endphp
-<div class="calendar container">
+<div class="calendar container ">
     
     <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3 ">
-        <h1>{{$month->toString()}}</h1>
+        <div class="d-flex align-items-center">
+            <h1 class="">{{$month->toString()}} </h1> 
+             <a class="calendar__list-icon" href="{{route('event.index')}}"><i class="fa fa-list"></i></a>
+        </div>
+        
+        
+        
         <div>
             <a class="btn btn-primary" href="/calendrier?month={{$month->previousMonth()->month}}&year={{$month->previousMonth()->year}}">&lt;</a>
             <a class="btn btn-primary" href="/calendrier?month={{$month->nextMonth()->month}}&year={{$month->nextMonth()->year}}">&gt;</a>

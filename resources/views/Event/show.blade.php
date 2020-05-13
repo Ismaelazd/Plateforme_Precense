@@ -1,11 +1,9 @@
 @extends('layouts/master')
 @section('content')
 
+@include('components.navbar-haut')
 
-     <nav class="navbar-dark bg-primary mb-3 ">
-        <a href="#" class="navbar-brand">Mon evenement</a>
-        <a  class="navbar-brand float-right" href="{{route('calendrier')}}" class="navbar-brand">retour au calendrier</a>
-    </nav>
+   
 
     <h2>Evenement : {{$event->nom}}</h2>
     <ul>

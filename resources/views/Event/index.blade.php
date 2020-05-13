@@ -1,19 +1,11 @@
 @extends('layouts/master')
 @section('content')
 
-
-     <nav class="navbar-dark bg-primary mb-3 ">
-        <a href="#" class="navbar-brand">Liste des évènements</a>
-        <a  class="navbar-brand float-right" href="{{route('calendrier')}}" class="navbar-brand">retour au calendrier</a>
-    </nav>
+@include('components.navbar-haut')
 
 
 
-
-
-
-
-    <div class="container ">
+    <div class="container mt-5">
 
     <table class="table table-striped table-dark rounded">
         <thead>
