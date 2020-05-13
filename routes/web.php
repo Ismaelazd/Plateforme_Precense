@@ -28,3 +28,4 @@ Route::get('/calendrier', function() {
  
 
 Route::resource('event', 'EventController');
+Route::resource('classe', 'ClasseController');

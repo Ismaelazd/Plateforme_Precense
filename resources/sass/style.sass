@@ -2,9 +2,10 @@
     
 .calendar
     position: relative
+    
 .calendar__table
-    width: 100%
-    height: calc(100vh - 128px)
+    width:100%
+    height: calc(90vh - 128px)
     
 .calendar__table td
     padding: 10px 
@@ -19,16 +20,20 @@
 .calendar__weekday    
     font-weight: bold 
     color: #000 
-    font-size: 1.2em
+    font-size: 1em
 
 .calendar__day  
-    font-size: 1.3em
+    font-size: 1em
 
 .calendar__othermonth .calendar__day  
     opacity: 0.4      
+.calendar__event  
+    font-size: 0.7em
+    a:hover
+        color: #007bff
 
 .calendar__button
-    display: block
+    display: block  
     width: 35px
     height: 35px
     line-height: 35px
@@ -40,7 +45,7 @@
 
     box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003 
     position: absolute
-    bottom: 10px
+    bottom: -50px
     left: 50% 
     text-decoration: none
     transition: transform 0.3s

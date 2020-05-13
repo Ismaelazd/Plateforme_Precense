@@ -14,8 +14,8 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $classes = Classe::all();
+        return view('classe.index',compact('classes'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +24,7 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        //
+        return view('classe.create');    
     }
 
     /**
@@ -35,18 +35,14 @@ class ClasseController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'name'=>'required|max:70|unique:classes',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Classe  $classe
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Classe $classe)
-    {
-        //
+        $classe = new Classe();
+        $classe->name = $request->input('name');
+        $classe->save();
+        return redirect()->route('classe.index');
     }
 
     /**
@@ -56,8 +52,8 @@ class ClasseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Classe $classe)
-    {
-        //
+    {  
+        return view('classe.edit',compact('classe'));    
     }
 
     /**
@@ -69,7 +65,12 @@ class ClasseController extends Controller
      */
     public function update(Request $request, Classe $classe)
     {
-        //
+        $validatedData = $request->validate([
+            'name'=>'required|max:70|unique:classes,name,'.$classe->id,
+        ]);
+        $classe->name = $request->input('name');
+        $classe->save();
+        return redirect()->route('classe.index'); 
     }
 
     /**
@@ -80,6 +81,7 @@ class ClasseController extends Controller
      */
     public function destroy(Classe $classe)
     {
-        //
+        $classe->delete();
+        return redirect()->route('classe.index'); 
     }
 }
