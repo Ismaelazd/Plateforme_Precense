@@ -20,7 +20,7 @@
             @enderror
         </div>
  
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="class">Nom de la classe</label>
             <input name="class" type="text" class="form-control @error('class') is-invalid @enderror" id="class" value="@if($errors->first('class'))@else{{ old('class') }}@endif" placeholder="Nom de la classe">
             @error('class')
@@ -28,30 +28,30 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-        </div>
+        </div> --}}
 
 
 
          {{-- quand la table classe sera créée  --}}
 
 
-        {{-- <div class="form-group">
-            <label for="class_id">Classe</label>
-            <select class="form-control @error('class_id') is-invalid @enderror" name="class_id" id="class_id">
+        <div class="form-group">
+            <label for="classe_id">Classe</label>
+            <select class="form-control @error('classe_id') is-invalid @enderror" name="classe_id" id="classe_id">
                 @foreach ($classes as $classe)
-            @if ($classe->id == old('class_id'))
-                        <option checked value="{{$classe->id }}">{{$categorie->classe}} </option>
+                    @if ($classe->id == old('classe_id'))
+                        <option checked value="{{$classe->id }}">{{$classe->name}} </option>
                     @else
-                        <option value="{{$classe->id }}">{{$classe->classe}} </option>
+                        <option value="{{$classe->id }}">{{$classe->name}} </option>
                     @endif
                 @endforeach
             </select>
-            @error('class_id')
+            @error('classe_id')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-        </div> --}}
+        </div>
         
         <div class="form-group">
             <label for="description">Description (facultatif)</label>

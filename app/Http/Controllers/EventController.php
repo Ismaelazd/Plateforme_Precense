@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Classe;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -25,7 +26,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('Event.create');
+        $classes = Classe::all();
+        return view('Event.create',compact('classes'));
     }
 
     /**
@@ -38,7 +40,7 @@ class EventController extends Controller
     {
         $validatedData = $request->validate([
             'nom'=>'required|max:70',
-            'class'=>'required',
+            'classe_id'=>'required',
             'description'=>'sometimes|max:300',
             'start'=>'required',
             'end'=>'required',
@@ -46,7 +48,7 @@ class EventController extends Controller
 
         $event = new Event();
         $event->nom = $request->input('nom');
-        $event->class = $request->input('class');
+        $event->classe_id = $request->input('classe_id');
         $event->description = $request->input('description');
         $event->start = $request->input('start');
         $event->end = $request->input('end');
@@ -78,7 +80,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('event.edit',compact('event'));
+        $classes = Classe::all();
+        return view('event.edit',compact('event','classes'));
     }
 
     /**
@@ -92,14 +95,14 @@ class EventController extends Controller
     {
         $validatedData = $request->validate([
             'nom'=>'required|max:70',
-            'class'=>'required',
+            'classe_id'=>'required',
             'description'=>'sometimes|max:300',
             'start'=>'required',
             'end'=>'required',
         ]);
 
         $event->nom = $request->input('nom');
-        $event->class = $request->input('class');
+        $event->classe_id = $request->input('classe_id');
         $event->description = $request->input('description');
         $event->start = $request->input('start');
         $event->end = $request->input('end');

@@ -29,7 +29,7 @@
     </div>
 
     
-    <table class="calendar__table calendar__table--{{$month->getWeeks()}}weeks">
+    <table class="calendar__table calendar__table--{{$month->getWeeks()}}weeks container">
         @for ($i = 0; $i < $weeks ; $i++)
             <tr>
                 @foreach ($month->days as $k => $day)
@@ -46,7 +46,7 @@
                        @foreach ($eventsForDay as $event)
                         <div class="calendar__event">
                             <a href="{{route('event.show',$event)}}">
-                                {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}} | {{$event->class}} | {{$event->nom}}
+                                {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}} | {{$event->classe->name}} | {{$event->nom}}
                             </a>
                         </div>
                            

@@ -38,7 +38,7 @@
                 
             <tr>
                 <th>{{$event->nom}} </th>
-                <th>{{$event->class}} </th>
+                <th>{{$event->classe->name}} </th>
                 <td>{{$event->description}}</td>
                 <td>{{ (new \DateTime($event->start))->format('d/m/Y')}}</td>
                 <td>{{ (new \DateTime($event->start))->format('H:i')}}</td>
@@ -63,7 +63,7 @@
                             </button>
                             </div>
                             <div class="modal-body text-center">
-                            <p>Vous êtes sur le point de supprimer l'évènement "{{ucfirst($event->titre)}}"! <br> Cette action n'est pas reversible!</p>
+                            <p>Vous êtes sur le point de supprimer l'évènement "{{ucfirst($event->nom)}}"! <br> Cette action n'est pas reversible!</p>
                             </div>
                             <div class="modal-footer float-right">
                             <button type="button" class="btn btn-outline-light" data-dismiss="modal">Annuler</button>
