@@ -4,7 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('jquery');
+require('popper.js')
+require('bootstrap');
+require('jquery.stellar/jquery.stellar');
 
 window.Vue = require('vue');
 
