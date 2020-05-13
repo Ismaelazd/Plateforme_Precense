@@ -23,10 +23,10 @@
         </div>
     </div> --}}
     <div class="container">
-        <div  class="row  ">
+        <div  class="row pt-3 ">
             <div class="col-lg-3 col-md-3">
-                <div class="header__logo">
-                    <a href="./index.html"><img src="{{asset('img/logo.png')}}" alt=""></a>
+                <div class="header__logo d-flex">
+                    <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
@@ -36,7 +36,10 @@
                         @can('admin', App\User::class)
                         <li><a href="{{url('/home')}}">Admin</a></li>
                         @endcan
+                        @can('myProfil', App\User::class)
                         <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
+
+                        @endcan
                         <li><a href="{{route('myProfil.index')}}">Calendrier</a></li>
                         {{-- <li><a href="#">Elève</a>
                             <ul class="dropdown">

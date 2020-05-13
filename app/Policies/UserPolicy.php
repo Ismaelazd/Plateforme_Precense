@@ -23,4 +23,7 @@ class UserPolicy
     public function admin(User $user){
         return (1 == Auth::user()->role_id); 
     }
+    public function myProfil(User $user){
+        return (Auth::check()); 
+    }
 }

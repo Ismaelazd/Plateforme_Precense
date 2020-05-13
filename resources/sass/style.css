@@ -279,7 +279,10 @@ ol {
 .header-section.header-normal .header__logo {
 	padding-bottom: 30px;
 }
-
+.header__logo img{
+	width: 70px;
+	height: 70px;
+}
 .header-section.header-normal .header__menu {
 	padding-bottom: 30px;
 }
@@ -344,7 +347,7 @@ ol {
 }
 
 .header__logo {
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .header__logo a {
@@ -3257,9 +3260,7 @@ ol {
 	margin-right: 5px;
 }
 
-.header__logo {
-	padding-top: 30px;
-}
+
 
 .header__logo a {
 	display: inline-block;
@@ -3353,3 +3354,4 @@ ol {
 	transition: all 0.3s;
 	opacity: 0;
 }
+
