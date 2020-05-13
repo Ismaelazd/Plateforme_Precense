@@ -10,8 +10,6 @@
 
     @include('partials/about')
 
-    @include('partials/feature')
-
     @include('partials/team')
 
     @include('partials/testimonial')

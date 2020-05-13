@@ -32,9 +32,12 @@
             <div class="col-lg-9 col-md-9">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
-                        <li><a href="./about.html">Admin</a></li>
-                        <li><a href="./about.html">Profil</a></li>
+                        <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a href="{{url('/')}}">Home</a></li>
+                        @can('admin', App\User::class)
+                        <li><a href="{{url('/home')}}">Admin</a></li>
+                        @endcan
+                        <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
+                        <li><a href="{{route('myProfil.index')}}">Calendrier</a></li>
                         {{-- <li><a href="#">Elève</a>
                             <ul class="dropdown">
                                 <li><a href="./pricing.html">Login/Register</a></li>

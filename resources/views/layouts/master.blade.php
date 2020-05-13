@@ -56,11 +56,11 @@ var nav = document.getElementById("header");
       
     if ($(window).scrollTop() > header.offsetHeight) {
       $('#header').addClass('navbar-fixed');
-      console.log('hiii');
+      
     }
     if ($(window).scrollTop() < header.offsetHeight) {
       $('#header').removeClass('navbar-fixed');
-      console.log('1515151515');
+      
     }
   });
 });
