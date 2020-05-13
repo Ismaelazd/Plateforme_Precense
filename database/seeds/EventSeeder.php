@@ -20,6 +20,13 @@ class EventSeeder extends Seeder
             'end'=> new Carbon('2020-05-14 23:59:00.00')
         ]);
         DB::table('events')->insert([
+            'nom'=> 'labs',
+            'class'=> 'coding11',
+            'description'=> 'Creation de plateform de présence',
+            'start'=> new Carbon('2020-05-14 09:00:00.00'),
+            'end'=> new Carbon('2020-05-14 17:00:00.00')
+        ]);
+        DB::table('events')->insert([
             'nom'=> 'projets',
             'class'=> 'coding10',
             'description'=> 'Creation de plateform de présence',
