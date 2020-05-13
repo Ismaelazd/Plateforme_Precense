@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calendrier</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
+@extends('layouts/master')
+@section('content')
     <nav class="navbar-dark bg-primary mb-3">
         <a href="{{route('calendrier')}}" class="navbar-brand">Mon calendrier</a>
+        <a href="{{route('event.index')}}" class="navbar-brand float-right">Liste des évènements</a>
     </nav>
 
     @php
@@ -24,7 +17,8 @@
         $events = $events->getEventsBetweenByDay($start,$end );
 
     @endphp
-
+<div class="calendar">
+    
     <div class="d-flex flex-row align-items-center justify-content-between mx-sm-3">
         <h1>{{$month->toString()}}</h1>
         <div>
@@ -51,7 +45,7 @@
                        <div class="calendar__day">{{$date->format('d')}}</div>
                        @foreach ($eventsForDay as $event)
                         <div class="calendar__event">
-                            <a href="{{route('event',$event->id)}}">
+                            <a href="{{route('event.show',$event)}}">
                                 {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}} | {{$event->class}} | {{$event->nom}}
                             </a>
                         </div>
@@ -67,10 +61,11 @@
 
     </table>
 
+    <a href="{{route('event.create')}}" class="calendar__button">+</a>
+
+</div>
 
 
 
-
-</body>
-</html>
+@endsection
 
