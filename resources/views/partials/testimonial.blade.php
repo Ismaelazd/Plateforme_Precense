@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h3>Our old students say</h3>
+                    <h3>Our students say</h3>
                 </div>
             </div>
         </div>

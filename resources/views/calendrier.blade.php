@@ -5,10 +5,7 @@
 
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
     <link rel="stylesgeet"
@@ -44,11 +41,7 @@
 
                             @endcan
                             <li><a href="{{route('calendrier')}}">Calendrier</a></li>
-                            {{-- <li><a href="#">Elève</a>
-                                <ul class="dropdown">
-                                    <li><a href="./pricing.html">Login/Register</a></li>
-                                </ul>
-                            </li> --}}
+                        
 
                             @if (Auth::check())
                             <li class="section-btn">
@@ -87,7 +80,7 @@
     <div class="main main-raised py-5">
         <div class="profile-content">
             <div class="container">
-                <div class="row">
+                <div class="row py-5">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
 
