@@ -20,57 +20,7 @@
 </head>
 
 <body class="profile-page">
-    <nav id="header" class="header-section pb-4" color-on-scroll="100" id="sectionsNav">
-        <div class="container">
-            <div  class="row pt-3 ">
-                <div class="col-lg-3 col-md-3">
-                    <div class="header__logo d-flex">
-                        <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
-                    </div>
-                </div>
-                <div class="col-lg-9 col-md-9">
-                    <nav class="header__menu">
-                        <ul>
-                            <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
-                                    href="{{url('/')}}">Home</a></li>
-                            @can('admin', App\User::class)
-                            <li><a href="{{url('/home')}}">Admin</a></li>
-                            @endcan
-                            @can('myProfil', App\User::class)
-                            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
-    
-                            @endcan
-                            <li><a href="{{route('myProfil.index')}}">Calendrier</a></li>
-                            {{-- <li><a href="#">Elève</a>
-                                <ul class="dropdown">
-                                    <li><a href="./pricing.html">Login/Register</a></li>
-                                </ul>
-                            </li> --}}
-
-                            @if (Auth::check())
-                            <li class="section-btn">
-                                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-                            </li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                            @else
-
-                            <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
-                                    Join</a></li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="canvas__open">
-                <span class="fa fa-bars"></span>
-            </div>
-        </div>
-    </nav>
+    @include('components/navbar-page')
 
     <div id="profilHeader" class="page-header header-filter" data-parallax="true"
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
