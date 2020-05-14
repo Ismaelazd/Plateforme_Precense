@@ -30,6 +30,12 @@ class CreateUsersTable extends Migration
             ->references('id')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->bigInteger('classe_id')->unsigned()->nullable();
+            $table->foreign('classe_id')
+            ->on('classes')
+            ->references('id')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

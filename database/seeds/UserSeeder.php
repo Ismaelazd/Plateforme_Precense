@@ -20,7 +20,8 @@ class UserSeeder extends Seeder
             'email' => 'leamssi39@gmail.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 1,
-            'image' => 'team/team-2.jpg'
+            'image' => 'team/team-2.jpg',
+            'classe_id' => null 
    
         ]);
         DB::table('users')->insert([
@@ -30,7 +31,8 @@ class UserSeeder extends Seeder
             'email' => 'ben@bonjour.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-2.jpg'
+            'image' => 'team/team-2.jpg',
+            'classe_id' => 1 
    
         ]);
         DB::table('users')->insert([
@@ -40,7 +42,8 @@ class UserSeeder extends Seeder
             'email' => 'Harry@Potter.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-2.jpg'
+            'image' => 'team/team-2.jpg',
+            'classe_id' => 1 
    
         ]);
     }

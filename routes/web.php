@@ -32,6 +32,7 @@ Route::resource('event', 'EventController');
 Route::resource('classe', 'ClasseController');
 Route::resource('presence', 'PresenceController');
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
+Route::resource('user', 'UserController');
 
 
 // Ressource MYPROFIL

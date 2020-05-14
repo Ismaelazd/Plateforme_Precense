@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Presence;
 
 class UserController extends Controller
 {
@@ -43,9 +45,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+
+        $total = Presence::where('user_id',$user->id)->count();
+        $totals = Presence::where('user_id',$user->id);
+        $presences = $totals->where('etatfinal_id',1)->count();
+        $retards = $totals->where('etatfinal_id',2)->count();
+        $absences = $totals->where('etatfinal_id',3)->count();
+        $justifiées = $totals->where('etatfinal_id',4)->count();
+        $injustifiées = $totals->where('etatfinal_id',5)->count();
+        $annoncées = $totals->where('etatfinal_id',6)->count();
+        return view('user.show',compact('user','totals','total','presences','retards','absences','justifiées','injustifiées','annoncées')); 
     }
 
     /**

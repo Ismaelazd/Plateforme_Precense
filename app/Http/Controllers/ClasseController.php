@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classe;
+use App\User;
 use Illuminate\Http\Request;
 
 class ClasseController extends Controller
@@ -83,5 +84,12 @@ class ClasseController extends Controller
     {
         $classe->delete();
         return redirect()->route('classe.index'); 
+    }
+
+    //afficher les User appartenants à une classe
+    public function show(Classe $classe)
+    {
+        $users = User::where('classe_id',$classe->id)->get();
+        return view('classe.show',compact('classe','users')); 
     }
 }
