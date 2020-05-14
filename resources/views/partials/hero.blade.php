@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero__img">
-                            <img src="{{asset('img/hero/hero-right.png')}}" alt="">
+                            <img src="{{asset('img/moleng.png')}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="hero__item set-bg" data-setbg="{{asset('img/hero/hero-1.jpg')}}">
             <div class="container">
-                <div class="row">
+                <div class="row d-flex align-items-center">
                     <div class="col-lg-6">
                         <div class="hero__text">
                             <h5>Plateform connexion</h5>

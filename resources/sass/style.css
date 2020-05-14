@@ -279,7 +279,10 @@ ol {
 .header-section.header-normal .header__logo {
 	padding-bottom: 30px;
 }
-
+.header__logo img{
+	width: 70px;
+	height: 70px;
+}
 .header-section.header-normal .header__menu {
 	padding-bottom: 30px;
 }
@@ -344,7 +347,7 @@ ol {
 }
 
 .header__logo {
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .header__logo a {
@@ -502,7 +505,7 @@ ol {
 }
 
 .hero__item .hero__text {
-	padding-top: 184px;
+	padding-top: 25px;
 }
 
 .hero__item .hero__text h5 {
@@ -3257,9 +3260,7 @@ ol {
 	margin-right: 5px;
 }
 
-.header__logo {
-	padding-top: 30px;
-}
+
 
 .header__logo a {
 	display: inline-block;
@@ -3352,4 +3353,13 @@ ol {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 	opacity: 0;
+}
+
+.bgTitle {
+
+	height: 13px;
+	width: 83px;
+	background-image: url(/img/line.png);
+	z-index: 1;
+	margin: 0 auto;
 }

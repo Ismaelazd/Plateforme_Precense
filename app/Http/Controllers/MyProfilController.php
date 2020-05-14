@@ -78,6 +78,7 @@ class MyProfilController extends Controller
     {
         $request->validate([
             'name'=> 'required',
+            'firstname'=> 'required',
             'email'=>'required',
             'password'=>'required',
         ]);
@@ -91,8 +92,12 @@ class MyProfilController extends Controller
         }
 
         $user->name = $request->input('name');
+        $user->firstname = $request->input('firstname');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
+        $user->tel = $request->input('tel');
+        $user->rue = $request->input('rue');
+        $user->ville = $request->input('ville');
         $user->save();
         return redirect()->route('myProfil.index');
     }

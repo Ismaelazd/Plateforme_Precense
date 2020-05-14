@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'leamssi39@gmail.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 1,
-            'image' => 'team-2.jpg'
+            'image' => 'team/team-2.jpg'
    
         ]);
     }

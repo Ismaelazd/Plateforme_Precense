@@ -22,10 +22,10 @@
 <body class="profile-page">
     <nav id="header" class="header-section pb-4" color-on-scroll="100" id="sectionsNav">
         <div class="container">
-            <div class="row  ">
+            <div  class="row pt-3 ">
                 <div class="col-lg-3 col-md-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="{{asset('img/logo.png')}}" alt=""></a>
+                    <div class="header__logo  d-flex">
+                        <a class="" href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
@@ -36,8 +36,10 @@
                             @can('admin', App\User::class)
                             <li><a href="{{url('/home')}}">Admin</a></li>
                             @endcan
-                            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
-                                    href="{{route('myProfil.index')}}">Profil</a></li>
+                            @can('myProfil', App\User::class)
+                            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
+    
+                            @endcan
                             <li><a href="{{route('myProfil.index')}}">Calendrier</a></li>
                             {{-- <li><a href="#">Elève</a>
                                 <ul class="dropdown">
@@ -70,8 +72,14 @@
         </div>
     </nav>
 
-    <div id="profilHeader" class="page-header header-filter" data-parallax="true"
+    <div id="profilHeader" class="page-header header-filter " data-parallax="true"
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
+        
+        <div class="title mx-auto ">
+            <h2 class="text-white mx-auto titre mb-4">Your Profil</h2>
+            <div class="bgTitle"></div>
+
+        </div>
     </div>
     <div class="main main-raised py-5">
         <div class="profile-content">
@@ -80,12 +88,12 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="avatar">
-                                <img src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTU0NjQzOTk4OTQ4OTkyMzQy/ansel-elgort-poses-for-a-portrait-during-the-baby-driver-premiere-2017-sxsw-conference-and-festivals-on-march-11-2017-in-austin-texas-photo-by-matt-winkelmeyer_getty-imagesfor-sxsw-square.jpg"
+                                <img src="{{asset('storage/'.$user->image)}}"
                                     alt="Circle Image" class="img-raised rounded-circle img-fluid">
                             </div>
                             <div class="name">
-                                <h3 class="title">Christian Louboutin</h3>
-                                <h6>Etudiant</h6>
+                                <h3 class="title">{{$user->name}} {{$user->firstname}}</h3>
+                                <h6>{{$user->role->role}}</h6>
                                 {{-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> --}}
@@ -100,27 +108,38 @@
                             <i class="fa fa-2x fa-at"></i>
                         </div>
                         <div class="col-9">
-                            <p>Leamssi39@gmail.com</p>
+                            <p>{{$user->email}}</p>
                         </div>
                     </div>
+                    @if (!(is_null($user->tel)))
+                    
                     <div class="row my-3">
                         <div class="col-3 d-flex justify-content-center align-item-center">
                             <i class="fa fa-2x fa-phone"></i>
                         </div>
                         <div class="col-9">
-                            <p>0488/33.32.32</p>
+                            <p>{{$user->tel}}</p>
                         </div>
                     </div>
+                    @endif
+                    @if (!(is_null($user->rue) || is_null($user->ville)))
                     <div class="row my-3">
                         <div class="col-3 d-flex justify-content-center align-item-center">
                             <i class="fa fa-2x fa-map-pin"></i>
                         </div>
                         <div class="col-9">
-                            <p>Leamssi39@gmail.com</p>
+                            <p>{{$user->rue}}, {{$user->ville}}</p>
                         </div>
                     </div>
+                    @endif
+                    
 
                 </div>
+
+                <form action="{{route('myProfil.edit',$user)}}" method="get" class="text-center mt-5 ">
+                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn"><i class="fa fa-pencil fa-2x"></i></button>
+                </form>
+
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile-tabs">
