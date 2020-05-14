@@ -30,6 +30,8 @@ Route::get('/calendrier', function() {
 
 Route::resource('event', 'EventController');
 Route::resource('classe', 'ClasseController');
+Route::resource('presence', 'PresenceController');
+Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
 
 
 // Ressource MYPROFIL
