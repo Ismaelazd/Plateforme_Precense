@@ -9,30 +9,30 @@
             </div>
             <div class="col-lg-6">
                 <div class="about__text">
-                    <h2>Welcom to Deerhost</h2>
+                    <h2>Welcom to MGConnect</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
                         viverra maecenas accumsan lacus vel facilisis.</p>
                     <div class="about__achievement">
                         <div class="about__achieve__item">
-                            <span class="fa fa-user-o"></span>
+                            <span class="fas fa-user "></span>
                             <h4 class="achieve-counter">2468</h4>
-                            <p>Clients</p>
+                            <p>Coachs</p>
                         </div>
                         <div class="about__achieve__item">
-                            <span class="fa fa-edit"></span>
+                            <span class="fa fa-users"></span>
                             <h4 class="achieve-counter">2468</h4>
-                            <p>Domains</p>
+                            <p>Students</p>
                         </div>
                         <div class="about__achieve__item">
-                            <span class="fa fa-clone"></span>
+                            <span class="fas fa-graduation-cap"></span>
                             <h4 class="achieve-counter">2468</h4>
-                            <p>Server</p>
+                            <p>Classes</p>
                         </div>
                         <div class="about__achieve__item">
-                            <span class="fa fa-cog"></span>
+                            <span class="fas fa-layer-group"></span>
                             <h4 class="achieve-counter">2468</h4>
-                            <p>Installs</p>
+                            <p>Lessons</p>
                         </div>
                     </div>
                     <a href="#" class="primary-btn">Get started now</a>
