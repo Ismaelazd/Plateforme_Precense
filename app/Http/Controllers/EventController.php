@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Classe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -65,8 +66,10 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $presences = $event->getPresences()->get();
+        $precense = $presences->where('user_id',Auth::id());
         if ($event) {
-            return view('Event/show',compact('event'));
+            return view('Event/show',compact('event','precense'));
         }else {
             return redirect()->back();
         }

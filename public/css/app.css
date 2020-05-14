@@ -18586,6 +18586,29 @@ ol {
 	padding-bottom: 30px;
 }
 
+
+.navbar-haut {
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	background-color: #120851;
+	transition: 1s;
+}
+
+.navbar-haut.header-normal {
+	position: relative;
+	background: #120851;
+}
+
+.navbar-haut.header-normal .header__logo {
+	padding-bottom: 30px;
+}
+
+.navbar-haut.header-normal .header__menu {
+	padding-bottom: 30px;
+}
+
 .header__info {
 	padding: 10px 0;
 	border-bottom: 1px solid #252163;
@@ -19094,6 +19117,25 @@ img.mfp-img {
 .calendar__table {
   width: 100%;
   height: calc(90vh - 128px);
+}
+
+.calendar__list-icon {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 50%;
+  box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003;
+  text-decoration: none;
+  transition: transform 0.4s;
+}
+
+.calendar__list-icon:hover {
+  text-decoration: none;
+  color: #ffffff;
+  transform: rotate(360deg) scale(1.2);
 }
 
 .calendar__table td {

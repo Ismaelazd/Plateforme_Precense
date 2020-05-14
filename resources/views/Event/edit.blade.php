@@ -1,9 +1,11 @@
 @extends('layouts/master')
 @section('content')
+
+@include('components.navbar-haut')
       
 <div class="d-flex justify-content-center mt-3">
     <div class="card card-primary w-75 ">
-        <div class="card-header">
+        <div class="card-header bg-primary text-white">
           <h3 class="card-title">Modifier l'évènement "{{$event->nom}}"</h3>
         </div>
         <!-- /.card-header -->

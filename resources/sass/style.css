@@ -3201,6 +3201,29 @@ ol {
 	padding-bottom: 30px;
 }
 
+
+.navbar-haut {
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+	background-color: #120851;
+	transition: 1s;
+}
+
+.navbar-haut.header-normal {
+	position: relative;
+	background: #120851;
+}
+
+.navbar-haut.header-normal .header__logo {
+	padding-bottom: 30px;
+}
+
+.navbar-haut.header-normal .header__menu {
+	padding-bottom: 30px;
+}
+
 .header__info {
 	padding: 10px 0;
 	border-bottom: 1px solid #252163;
