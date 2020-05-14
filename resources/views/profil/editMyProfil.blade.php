@@ -74,7 +74,11 @@
 
     <div id="profilHeader" class="page-header header-filter" data-parallax="true"
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
-        <h2 class="text-white mx-auto">Edit my Profil</h2>
+        <div class="title mx-auto ">
+            <h2 class="text-white mx-auto titre mb-4">Edit my Profil</h2>
+            <div class="bgTitle"></div>
+
+        </div>
     </div>
     <div class="main main-raised py-5">
         <div class="profile-content">

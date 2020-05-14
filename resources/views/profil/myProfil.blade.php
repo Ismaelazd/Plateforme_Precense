@@ -24,8 +24,8 @@
         <div class="container">
             <div  class="row pt-3 ">
                 <div class="col-lg-3 col-md-3">
-                    <div class="header__logo d-flex">
-                        <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
+                    <div class="header__logo  d-flex">
+                        <a class="" href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-9">
@@ -72,9 +72,14 @@
         </div>
     </nav>
 
-    <div id="profilHeader" class="page-header header-filter" data-parallax="true"
+    <div id="profilHeader" class="page-header header-filter " data-parallax="true"
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
-        <h2 class="text-white mx-auto">Your Profil</h2>
+        
+        <div class="title mx-auto ">
+            <h2 class="text-white mx-auto titre mb-4">Your Profil</h2>
+            <div class="bgTitle"></div>
+
+        </div>
     </div>
     <div class="main main-raised py-5">
         <div class="profile-content">

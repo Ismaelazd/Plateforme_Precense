@@ -101,7 +101,8 @@ a .material-icons {
     display: flex;
     align-items: center;
 }
-.page-header h2{
+.page-header .title{
+    
     z-index: 1;
 }
 

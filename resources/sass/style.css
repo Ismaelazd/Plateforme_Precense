@@ -505,7 +505,7 @@ ol {
 }
 
 .hero__item .hero__text {
-	padding-top: 184px;
+	padding-top: 25px;
 }
 
 .hero__item .hero__text h5 {
@@ -3355,3 +3355,11 @@ ol {
 	opacity: 0;
 }
 
+.bgTitle {
+
+	height: 13px;
+	width: 83px;
+	background-image: url(/img/line.png);
+	z-index: 1;
+	margin: 0 auto;
+}
