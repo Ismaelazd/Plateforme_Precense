@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'email' => 'ben@bonjour.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team-2.jpg'
+            'image' => 'team/team-2.jpg'
    
         ]);
         DB::table('users')->insert([
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'email' => 'Harry@Potter.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team-2.jpg'
+            'image' => 'team/team-2.jpg'
    
         ]);
     }

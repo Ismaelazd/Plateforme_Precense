@@ -17,7 +17,7 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        //
+        //   
     }
 
     /**
