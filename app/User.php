@@ -41,6 +41,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
- 
+    public function getEvents(){
+        return $this->belongsToMany('App\Event','presences','user_id','event_id');
+    }
     
+    public function classe(){
+        return $this->belongsTo('App\Classe','classe_id');
+    }
 }

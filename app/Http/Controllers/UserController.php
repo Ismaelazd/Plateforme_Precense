@@ -49,14 +49,9 @@ class UserController extends Controller
     {
 
         $total = Presence::where('user_id',$user->id)->count();
-        $totals = Presence::where('user_id',$user->id);
-        $presences = $totals->where('etatfinal_id',1)->count();
-        $retards = $totals->where('etatfinal_id',2)->count();
-        $absences = $totals->where('etatfinal_id',3)->count();
-        $justifiées = $totals->where('etatfinal_id',4)->count();
-        $injustifiées = $totals->where('etatfinal_id',5)->count();
-        $annoncées = $totals->where('etatfinal_id',6)->count();
-        return view('user.show',compact('user','totals','total','presences','retards','absences','justifiées','injustifiées','annoncées')); 
+        $presences = Presence::where('user_id',$user->id);
+
+        return view('user.show',compact('user','total','presences')); 
     }
 
     /**

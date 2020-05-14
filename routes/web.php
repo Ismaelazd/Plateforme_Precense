@@ -32,6 +32,7 @@ Route::resource('event', 'EventController');
 Route::resource('classe', 'ClasseController');
 Route::resource('presence', 'PresenceController');
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
+Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download');
 Route::resource('user', 'UserController');
 
 

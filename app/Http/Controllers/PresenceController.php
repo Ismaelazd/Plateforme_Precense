@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Presence;
 use App\Event;
+use App\Etat;
+use App\Etatfinal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -102,7 +104,9 @@ class PresenceController extends Controller
      */
     public function edit(Presence $presence)
     {
-        //
+        $etats = Etat::all();
+        $etatfinals = Etatfinal::all();
+        return view('presence.edit',compact('presence','etats','etatfinals'));
     }
 
     /**
@@ -114,7 +118,23 @@ class PresenceController extends Controller
      */
     public function update(Request $request, Presence $presence)
     {
-        //
+        $validatedData = $request->validate([
+             'note' => 'sometimes|max:300',
+            
+        ]);
+
+
+        $presence->etat_id = $request->input('etat_id');
+        if($request->hasFile('file')){
+            $fichier = $request->file('file');
+            $newName = Storage::disk('public')->put('',$fichier);	  
+            $presence->file = $newName;
+        }
+        $presence->note = $request->input('note');
+        $presence->etatfinal_id = $request->input('etatfinal_id');
+
+        $presence->save();
+        return redirect()->route('user.show',$presence->user_id);
     }
 
     /**
@@ -125,6 +145,15 @@ class PresenceController extends Controller
      */
     public function destroy(Presence $presence)
     {
-        //
+        $id =$presence->user_id;
+        $presence->delete();
+        return redirect()->route('user.show',$id);
+    }
+
+    public  function  download($id)
+    {
+	$presence = Presence::find($id);
+	$extension = pathinfo(storage_path($presence->file), PATHINFO_EXTENSION);
+	return  Storage::disk('public')->download($presence->file,$presence->file.'.'.$extension);
     }
 }

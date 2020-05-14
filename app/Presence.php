@@ -9,4 +9,15 @@ class Presence extends Model
     public function getEvent(){
         return $this->belongsTo('App\Event','event_id');
     }
+
+    public function getEtat(){
+        return $this->belongsTo('App\Etat','etat_id');
+    }
+    public function getEtatFinal(){
+        return $this->belongsTo('App\Etatfinal','etatfinal_id');
+    }
+    
+  
+
+
 }

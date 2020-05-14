@@ -14,6 +14,11 @@ class Event extends Model
         return $this->hasMany('App\Presence','event_id');
     }
 
+  
+ 
+
+    
+
     
 
 

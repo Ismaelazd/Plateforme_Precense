@@ -98,15 +98,17 @@
                         </div>
                     </div>
                 </div>
-
+                {{-- profil --}}
                 <div>
                     <img src="{{asset('storage/'.$user->firstname)}}" alt="">
+                    <p>Classe: {{$user->classe->name}}</p> 
                     <p>Nom: {{$user->name}}</p> 
                     <p>Prénom: {{$user->firstname}}</p> 
                     <p>Email: {{$user->email}}</p> 
                     <p>Tel: {{$user->tel}}</p> 
                     <p>Adresse: {{$user->rue}} {{$user->ville}}</p> 
                 </div>
+                {{-- presences --}}
                 <div>
 
                     <p>Total: {{$total}} jours</p> 
@@ -135,7 +137,71 @@
                     </p> 
 
                 </div>
+                {{-- liste des évènements --}}
+                <div class=" container  ">
 
+
+                    <table class="table table-striped table-light rounded ">
+                        <thead>
+                            
+                            <tr >
+                                <th scope="col" class="">Nom</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Note</th>
+                                <th scope="col">Justificatif</th>
+                                <th scope="col">Statut final</th>
+                              
+                                <th class="text-center" scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($user->getEvents as $event)
+                            @php
+                                $presence = App\Presence::where('event_id',$event->id)->where('user_id',$user->id)->first();
+                            @endphp
+                                <tr>
+                                    <th>{{$event->nom}} </th>
+                                    <td>{{$event->description}}</td>
+                                    <td>{{ (new \DateTime($event->start))->format('d/m/Y')}}</td>
+                                    <td>{{$presence->getEtat->etat}}</td>
+                                    <td>
+                                        @if ($presence->note)
+
+                                            {{$presence->note}}
+                                        @else
+                                        <div class="text-center">
+                                           <i  class="fas fa-times-circle text-danger"></i>
+                                        </div>
+                                       @endif
+                                    </td>
+                                    <td>
+                                        @if ($presence->file)
+                                        <a class="btn btn-primary" href="{{route('presence.download', $presence->id)}}">Download</a>
+                                        @else
+                                         <div class="text-center">
+                                            <i  class="fas fa-times-circle text-danger"></i>
+                                         </div>
+                                        @endif
+                                    </td>
+                                    <td>{{$presence->getEtatFinal->etatfinal}}</td>
+                                    <td class="d-flex justify-content-center ">
+                                        <div class="text-center mb-2">
+                                            <a class="btn rounded btn-warning text-white mx-3 "
+                                                href="{{route('presence.edit',$presence)}}"><i class="fa fa-pencil"></i></a>
+                                        </div>
+                               
+
+                                    </td>
+                                </tr>
+                          
+                            @endforeach
+
+                        </tbody>
+                    </table>
+
+                </div>
 
                 
 
