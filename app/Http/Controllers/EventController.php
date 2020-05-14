@@ -28,7 +28,7 @@ class EventController extends Controller
     public function create()
     {
         $classes = Classe::all();
-        return view('Event.create',compact('classes'));
+        return view('event.create',compact('classes'));
     }
 
     /**
@@ -69,7 +69,7 @@ class EventController extends Controller
         $presences = $event->getPresences()->get();
         $precense = $presences->where('user_id',Auth::id());
         if ($event) {
-            return view('Event/show',compact('event','precense'));
+            return view('event/show',compact('event','precense'));
         }else {
             return redirect()->back();
         }

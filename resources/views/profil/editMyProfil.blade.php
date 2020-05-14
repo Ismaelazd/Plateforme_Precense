@@ -89,10 +89,6 @@
                             
                             <div class="name">
                                 <h3 class="title pt-4 ">My informations</h3>
-                                
-                                {{-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> --}}
                                 <hr>
                             </div>
                         </div>

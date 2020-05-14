@@ -162,6 +162,12 @@
                                         Calendrier
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                        <i class="material-icons">message</i>
+                                        Messages
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
