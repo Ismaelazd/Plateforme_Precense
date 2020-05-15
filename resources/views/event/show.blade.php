@@ -174,13 +174,13 @@
                 </div>
             @else
                 @php
-                $utilisateur = $presences->where('event_id',$event->id)->first()
+                $utilisateur = $presences->where('user_id',Auth::id())->first()
                     
                 @endphp
             <div>
                 <p>{{$utilisateur->getUser->name}}</p>
                 <p class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">Statut : {{$utilisateur->getEtat->etat}}</p>
-                <p>Statut Final{{$utilisateur->getEtatfinal->etatfinal}}</p>
+                <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
                 <p>Note :
                     @if ($utilisateur->note)
 
@@ -191,7 +191,7 @@
                         </div>
                     @endif  
                 </p>
-                <p>
+                <p> Justificatif : 
                     @if ($utilisateur->file)
                         <a class="btn btn-primary" href="{{route('presence.download', $utilisateur->id)}}">Download</a>
                     @else

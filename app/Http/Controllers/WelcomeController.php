@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+// use App\Event;
 use App\User;
+// use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -14,6 +16,13 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        // $events = Event::whereDate('end', '=', Carbon::now())->where('end', '<',Carbon::now()->format('Y-m-d H:i'))->get();
+        // $events->getPresences();
+        // $classes = [];
+        // foreach ($events as $event) {
+        //     $classes += $event->classe_id;
+        // }
+        // dd($events);
         $coachs = User::where('role_id',2)->get();
         return view('welcome',compact('coachs'));
     }
