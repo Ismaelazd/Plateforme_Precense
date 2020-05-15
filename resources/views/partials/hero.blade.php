@@ -13,7 +13,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero__img">
-                            <img src="{{asset('img/mgwhite.png')}}" alt="">
+                            <img src="{{asset('img/mgwhite_copy.png')}}" alt="">
                         </div>
                     </div>
                 </div>
