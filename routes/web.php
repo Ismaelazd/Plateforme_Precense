@@ -39,3 +39,7 @@ Route::resource('user', 'UserController');
 // Ressource MYPROFIL
 
 Route::resource('myProfil', 'MyProfilController');
+
+// Ressources Formulaire
+
+Route::resource('form', 'FormController');

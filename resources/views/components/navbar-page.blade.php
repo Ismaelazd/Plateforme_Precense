@@ -21,8 +21,11 @@
                                 href="{{route('myProfil.index')}}">Profil</a></li>
 
                         @endcan
+                        @auth
+                            
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
+                        @endauth
                     
 
                         @if (Auth::check())

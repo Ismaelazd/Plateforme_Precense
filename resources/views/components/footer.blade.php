@@ -1,11 +1,15 @@
 <!-- Footer Section Begin -->
-<footer class="footer-section ">
+<footer class="footer-section " id="footer">
     <div class="footer__top">
         <div class="">
             <div class="row no-gutters">
                 <div class="container col-lg-6 col-md-6 ">
                     <div class="  footer__top-call mt-3 mx-5">
-
+                        @if(Session::has('success'))
+                        <div class="text-center alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
                         <div class="text-center mb-5">
                             <h2>Do you have any questions ?</h2>
 
@@ -13,36 +17,37 @@
                         </div>
 
 
-                        <form action="#" method="post">
+                        <form action="{{route('form.store')}}" method="POST">
+                            @csrf
                             <div class="form-group row">
                                 <div class="col-md-6 mb-4 mb-lg-0">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" placeholder="Name" name="name" required>
                                 </div>
+                                
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Firstname">
+                                    <input type="text" class="form-control" placeholder="Firstname" name="firstname" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Email address">
+                                    <input type="text" class="form-control" placeholder="Email address" name="email" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" placeholder="Subject">
+                                    <input type="text" class="form-control" placeholder="Subject" name="sujet" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <textarea name="" id="" class="form-control" placeholder="Write your message."
-                                        cols="30" rows="10"></textarea>
+                                    <textarea name="message" id="" class="form-control" placeholder="Write your message."
+                                        cols="30" rows="10"  required></textarea>
                                 </div>
                             </div>
                             <div class="form-group row mt-5">
                                 <div class="col-md-6 mx-auto">
-                                    <input type="submit"
-                                        class="btn btn-block btn-primary text-white py-3 px-5 site-btn"
-                                        value="Send Message">
+                                    <button class="btn btn-block btn-primary text-white py-3 px-5 site-btn" type="submit">Send Message</button>
+                                    
                                 </div>
                             </div>
                         </form>
