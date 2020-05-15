@@ -5005,7 +5005,8 @@ input[type=submit].btn-block {
 }
 
 .card-text:last-child {
-    margin-bottom: 0
+    margin-bottom: 0;
+    
 }
 
 .card-link:hover {
@@ -25262,6 +25263,10 @@ readers do not read off random characters that represent icons */
   box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003;
   text-decoration: none;
   transition: transform 0.3s;
+}
+
+.eventBtn:hover {
+  transform: rotate(360deg) scale(1.25);
 }
 
 .btnWarning {

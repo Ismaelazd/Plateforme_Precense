@@ -89,7 +89,8 @@ class ClasseController extends Controller
     //afficher les User appartenants à une classe
     public function show(Classe $classe)
     {
-        $users = User::where('classe_id',$classe->id)->get();
-        return view('classe.show',compact('classe','users')); 
+        $coachs = User::where('classe_id',$classe->id)->where('role_id',2)->get();
+        $users = User::where('classe_id',$classe->id)->where('role_id',3)->get();
+        return view('classe.show',compact('classe','users','coachs')); 
     }
 }
