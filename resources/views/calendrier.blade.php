@@ -47,16 +47,15 @@
                 </div>
 
                 @php
-                use App\Helpers\Calendar\Month;
-                use App\Helpers\Calendar\Events;
-                $events = new Events();
-                $month = new Month($_GET['month'] ?? null , $_GET['year'] ?? null);
-                $start = $month->getStartingDay();
-                $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
-                $weeks = $month->getWeeks();
-                $end = (clone $start)->modify('+' . (6 + 7 * ($weeks-1)) . 'days');
-                $events = $events->getEventsBetweenByDay($start,$end );
-
+                    use App\Helpers\Calendar\Month;
+                    use App\Helpers\Calendar\Events;
+                    $events = new Events();
+                    $month = new Month($_GET['month'] ?? null , $_GET['year'] ?? null);
+                    $start = $month->getStartingDay();
+                    $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday');
+                    $weeks = $month->getWeeks();
+                    $end = (clone $start)->modify('+' . (6 + 7 * ($weeks-1)) . 'days');
+                    $events = $events->getEventsBetweenByDay($start,$end );
                 @endphp
                 <div class="calendar container ">
 
