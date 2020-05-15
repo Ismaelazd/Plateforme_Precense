@@ -132,8 +132,8 @@
                               <strong>{{ $message }}</strong>
                           </span>
                           @enderror
-                      </div>
-                
+                      </div> 
+                  
                       <div class="form-group">
                         <label  for="etat_id">Statut</label>
                           <select class="form-control @error('etat_id') is-invalid @enderror" name="etat_id" id="">

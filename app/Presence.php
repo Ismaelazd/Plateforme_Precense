@@ -16,6 +16,10 @@ class Presence extends Model
     public function getEtatFinal(){
         return $this->belongsTo('App\Etatfinal','etatfinal_id');
     }
+
+    public function getUser(){
+        return $this->belongsTo('App\User','user_id');
+    }
     
   
 
