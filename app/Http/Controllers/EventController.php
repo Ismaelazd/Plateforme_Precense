@@ -67,7 +67,7 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $presences = $event->getPresences()->get();
-        // $precense = $presences->where('user_id',Auth::id());
+        $precense = $presences->where('user_id',Auth::id());
         if ($event) {
             return view('event/show',compact('event','precense','presences'));
         }else {

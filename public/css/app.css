@@ -16676,7 +16676,7 @@ ol {
 -----------------------*/
 
 .team-section {
-
+	background-color: #f5f5f5;
 	padding-bottom: 70px;
 }
 
@@ -16753,7 +16753,7 @@ ol {
 -----------------------*/
 
 .testimonial-section {
-	background: #f5f5f5;
+	background: #ffffff;
 }
 
 .testimonial__item {
