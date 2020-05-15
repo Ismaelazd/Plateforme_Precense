@@ -1,0 +1,119 @@
+
+.proPic {
+  height: 100px;
+  width: 100px;
+  padding: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proDark {
+  border: 1px solid white;
+}
+
+.proLight {
+  border: 1px solid black;
+}
+
+.cardBorderCorners {
+  border-radius: 50px 25px;
+  width: 18rem;
+}
+
+.darkCard {
+  background-color: #120851;
+  -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.darkCard:hover {
+  -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	-webkit-box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+	box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+}
+.lightCard {
+  height: 455px;
+  background-color: #f0f0f0;
+  -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.lightCard:hover {
+  -webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	-webkit-box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+	box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+}
+
+.darkTitle {
+  margin-top: 10px;
+  color: #ebecf5;
+  text-align: center;
+}
+
+.lightTitle {
+  margin-top: 10px;
+  color: #120851;
+  text-align: center;
+}
+
+.darkSubTitle {
+  color: #7e76b6;
+  text-align: center;
+}
+
+.lightSubTitle {
+  color: #120851;
+  text-align: center;
+}
+
+.darkDesc {
+  margin-top: 20px;
+  color: #b8b7d3;
+  text-align: center;
+}
+
+.lightDesc {
+  margin-top: 20px;
+  color: #333333;
+  text-align: center;
+}
+
+.darkMail {
+  margin-top: 20px;
+  color: #dedcf4;
+  text-align: center;
+}
+
+.lightMail {
+  margin-top: 20px;
+  color: #c2c2e0;
+  text-align: center;
+  bottom: 2em !important;
+}
+
+.darkMailText {
+  padding: 5px;
+  background-color: #6b62b9;
+}
+
+.lightMailText {
+  padding: 5px;
+  background-color: #120851;
+}
+
+.social {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.attributeText {
+  margin-top: 20px;
+  text-align: center;
+  color: #25235c;
+}

@@ -41,11 +41,7 @@
 
                         @endcan
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
-                        {{-- <li><a href="#">Elève</a>
-                            <ul class="dropdown">
-                                <li><a href="./pricing.html">Login/Register</a></li>
-                            </ul>
-                        </li> --}}
+                        <li><a href="{{route('classe.index')}}">Classes</a></li>
                         
                         @if (Auth::check())
                         <li class="section-btn">

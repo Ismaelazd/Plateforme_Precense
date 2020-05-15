@@ -73,7 +73,7 @@
                                 <td class="d-flex justify-content-center ">
                                     <div class="text-center mb-2">
                                         <a class="btn rounded btn-warning text-white mx-3 "
-                                            href="{{route('event.edit',$event)}}"><i class="fa fa-pencil"></i></a>
+                                            href="{{route('event.edit',$event)}}"><i class="fas fa-pencil-alt"></i></a>
                                     </div>
                                     <div class="text-center">
                                         <a class="   rounded btn btn-danger mx-3 " data-toggle="modal"

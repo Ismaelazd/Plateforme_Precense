@@ -22,6 +22,7 @@
 
                         @endcan
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
+                        <li><a href="{{route('classe.index')}}">Classes</a></li>
                     
 
                         @if (Auth::check())
