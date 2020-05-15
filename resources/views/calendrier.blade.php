@@ -79,7 +79,8 @@
 
 
                     <table class="calendar__table calendar__table--{{$month->getWeeks()}}weeks ">
-                        @for ($i = 0; $i < $weeks ; $i++) <tr>
+                        @for ($i = 0; $i < $weeks ; $i++) 
+                        <tr>
                             @foreach ($month->days as $k => $day)
                             @php
                             $date = (clone $start)->modify("+" . ($k + $i * 7) . "days");
@@ -88,26 +89,24 @@
                             @endphp
                             <td class="@if(!$month->withinmonth($date))calendar__othermonth @endif">
                                 @if ($i===0)
-                                <div class="calendar__weekday">{{$day}}</div>
+                                    <div class="calendar__weekday">{{$day}}</div>
                                 @endif
-                                <div class="calendar__day">{{$date->format('d')}}</div>
-                                @foreach ($eventsForDay as $event)
-                                <div class="calendar__event">
+                                    <div class="calendar__day">{{$date->format('d')}}</div>
+                                        @foreach ($eventsForDay as $event)
+                                        <div class="calendar__event">
 
-                                    {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}}
-                                    | <a href="{{route('event.show',$event)}}">{{$event->classe->name}} |
-                                        {{$event->nom}} </a>
+                                            {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}}
+                                            | <a href="{{route('event.show',$event)}}">{{$event->classe->name}} |
+                                                {{$event->nom}} </a>
 
-                                </div>
+                                    </div>
 
                                 @endforeach
 
                             </td>
                             @endforeach
-
-
-                            </tr>
-                            @endfor
+                        </tr>
+                        @endfor
 
                     </table>
                     <div class="my-5">

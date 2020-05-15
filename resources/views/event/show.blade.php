@@ -119,60 +119,94 @@
             
 
             {{-- Definir le statut de presence --}}
+            @if (Auth::id() != $presences->where('event_id',$event->id)->first()->user_id)
 
+                <div class="mt-5 card  w-50">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="card-title">Definir mon statut</h3>
+                    </div>
+                    <form action="{{route('presence.add',$event->id)}}" method="post" enctype="multipart/form-data">
+                        @csrf
 
+                        <div class="card-body">
 
-            <div class="mt-5 card  w-50">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="card-title">Definir mon statut</h3>
+                            <div class="form-group">
+                                <label for="file">Piece jointe</label>
+                                <input class="form-control" type="file" name="file" id="">
+                                @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="note">Note</label>
+                                <textarea class="form-control" name="note" id="" cols="30" rows="5"
+                                    placeholder="Note"></textarea>
+                                @error('note')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="etat_id">Statut</label>
+                                <select class="form-control" name="etat_id" id="">
+                                    <option value="1">Présent</option>
+                                    <option value="2">Absent</option>
+                                    <option value="3">Retard</option>
+                                </select>
+                                @error('etat_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+
+                        </div>
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </div>
+                    </form>
                 </div>
-                <form action="{{route('presence.add',$event->id)}}" method="post" enctype="multipart/form-data">
-                    @csrf
+            @else
+                @php
+                $utilisateur = $presences->where('event_id',$event->id)->first()
+                    
+                @endphp
+            <div>
+                <p>{{$utilisateur->getUser->name}}</p>
+                <p class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">Statut : {{$utilisateur->getEtat->etat}}</p>
+                <p>Statut Final{{$utilisateur->getEtatfinal->etatfinal}}</p>
+                <p>Note :
+                    @if ($utilisateur->note)
 
-                    <div class="card-body">
-
-                        <div class="form-group">
-                            <label for="file">Piece jointe</label>
-                            <input class="form-control" type="file" name="file" id="">
-                            @error('file')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        {{$utilisateur->note}}
+                     @else
+                        <div class="text-center">
+                            <i  class="fas fa-times-circle text-danger"></i>
                         </div>
-
-                        <div class="form-group">
-                            <label for="note">Note</label>
-                            <textarea class="form-control" name="note" id="" cols="30" rows="5"
-                                placeholder="Note"></textarea>
-                            @error('note')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                    @endif  
+                </p>
+                <p>
+                    @if ($utilisateur->file)
+                        <a class="btn btn-primary" href="{{route('presence.download', $utilisateur->id)}}">Download</a>
+                    @else
+                        <div class="text-center">
+                            <i  class="fas fa-times-circle text-danger"></i>
                         </div>
-
-                        <div class="form-group">
-                            <label for="etat_id">Statut</label>
-                            <select class="form-control" name="etat_id" id="">
-                                <option value="1">Présent</option>
-                                <option value="2">Absent</option>
-                                <option value="3">Retard</option>
-                            </select>
-                            @error('etat_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-
-                    </div>
-
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
-                    </div>
-                </form>
+                    @endif  
+                </p>
+                <p>
+                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                    href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
+                </p>
             </div>
+                
+            @endif
 
 
 
