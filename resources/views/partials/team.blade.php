@@ -9,79 +9,28 @@
             </div>
            
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
+            @foreach ($coachs as $coach)
             <div class="col-lg-6 col-md-6">
                 <div class="team__item">
                     <div class="team__pic">
-                        <img src="img/team/team-1.jpg" alt="">
+                        <img src="{{asset('storage/'.$coach->image)}}" alt="">
                     </div>
                     <div class="team__text pb-4">
-                        <h5>Sabrina Carpenter</h5>
-                        <span>Chief executive officer</span>
+                        <h5>{{$coach->firstname}} {{$coach->name}}</h5>
+                        <span>{{$coach->role->role}}</span>
 
                         <div class="team__social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="team__item">
-                    <div class="team__pic">
-                        <img src="img/team/team-2.jpg" alt="">
-                    </div>
-                    <div class="team__text pb-4">
-                        <h5>Sabrina Carpenter</h5>
-                        <span>Chief executive officer</span>
-
-                        <div class="team__social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="team__item">
-                    <div class="team__pic">
-                        <img src="img/team/team-3.jpg" alt="">
-                    </div>
-                    <div class="team__text pb-4">
-                        <h5>Sabrina Carpenter</h5>
-                        <span>Chief executive officer</span>
-
-                        <div class="team__social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="team__item">
-                    <div class="team__pic">
-                        <img src="img/team/team-4.jpg" alt="">
-                    </div>
-                    <div class="team__text pb-4">
-                        <h5>Sabrina Carpenter</h5>
-                        <span>Chief executive officer</span>
-
-                        <div class="team__social">
-                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="youtube"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
     </div>
 </section>
