@@ -56,7 +56,51 @@ class UserSeeder extends Seeder
             'email' => 'Albi@gmai.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
-            'image' => 'team/team-1.jpg',
+            'image' => 'team/albi.jpeg',
+            'classe_id' => 1 
+   
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'Zak',
+            'firstname' => 'Zak',
+            'email' => 'Zak@gmai.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 2,
+            'image' => 'team/zak.jpeg',
+            'classe_id' => 1 
+   
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'Elias',
+            'firstname' => 'Elias',
+            'email' => 'Elias@gmai.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 2,
+            'image' => 'team/elias.jpeg',
+            'classe_id' => 1 
+   
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'Maxime',
+            'firstname' => 'Maxime',
+            'email' => 'Maxime@gmai.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 2,
+            'image' => 'team/max.jpeg',
+            'classe_id' => 1 
+   
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'Nico',
+            'firstname' => 'Nico',
+            'email' => 'Nico@gmai.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 2,
+            'image' => 'team/nico.jpeg',
             'classe_id' => 1 
    
         ]);
