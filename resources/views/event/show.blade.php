@@ -119,7 +119,7 @@
             
 
             {{-- Definir le statut de presence --}}
-            @if (Auth::id() != $presences->where('event_id',$event->id)->first()->user_id)
+            @if (!($presences->where('user_id',Auth::id())->first()))
 
                 <div class="mt-5 card  w-50">
                     <div class="card-header bg-primary text-white">

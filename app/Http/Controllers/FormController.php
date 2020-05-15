@@ -17,7 +17,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Form::all();
+        return view('message.index',compact('messages'));
     }
 
     /**
@@ -73,7 +74,8 @@ class FormController extends Controller
      */
     public function show(Form $form)
     {
-        //
+        $messages = Form::all();
+        return view('message.show',compact('form','messages'));
     }
 
     /**

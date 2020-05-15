@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Form;
 use App\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -30,8 +31,10 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('WEBSITE SETTINGS');
             $coachs = User::where('role_id',2)->get();
             $students = User::where('role_id',3)->get();
+            $messages = Form::all();
             $nbCoach = count($coachs);
             $nbStudent = count($students);
+            $nbMessages = count($messages);
             $event->menu->add(
             
             [ 
@@ -45,6 +48,13 @@ class AppServiceProvider extends ServiceProvider
                 'url'  => 'users',
                 'icon' => 'fas fa-fw fa-users',
                 'label' => $nbStudent
+            ],
+            [
+                'text'    => 'Messages',
+                'icon'    => 'fas fa-envelope-open-text',
+                'label' => $nbMessages,
+                'url'  => 'form',
+            
             ],
             [
                 'text'    => 'Services',
@@ -101,19 +111,7 @@ class AppServiceProvider extends ServiceProvider
                     
                 ],
             ],
-            [
-                'text'    => 'Formulaire',
-                'icon'    => 'fas fa-envelope-open-text',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'formulaire',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                    
-                ],
-            ],
+           
             [
                 'text'    => 'Newsletter',
                 'icon'    => 'fas fa-mail-bulk',
