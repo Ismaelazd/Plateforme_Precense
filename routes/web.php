@@ -44,11 +44,21 @@ Route::resource('myProfil', 'MyProfilController');
 
 Route::resource('form', 'FormController');
 
+// Ressources NEWSLETTER
+
+Route::resource('newsletter', 'NewsletterController');
+
+
+
+
 //afficher le tableau de ce qui est dans la corbeille
-Route::get('ServiceTrashed', 'ServiceController@trash')->name('service.trash');
+Route::get('formTrashed', 'FormController@trash')->name('form.trash');
+
 // delete et donc mettre dans la corbeille
-// Route::delete('service/{service}/destroy', 'ServiceController@destroy')->name('service.destroy');
+// Route::delete('form/{form}/destroy', 'ServiceController@destroy')->name('form.destroy');
+
 //pour delete definitivement
-Route::delete('service/{id }/force', 'ServiceController@forceDestroy')->name('service.forceDestroy');
+Route::delete('form/{id }/force', 'FormController@forceDestroy')->name('form.forceDestroy');
+
 // pour restaurer 
-Route::put('service/{id}/restore', 'ServiceController@restore')->name('service.restore');
+Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore');

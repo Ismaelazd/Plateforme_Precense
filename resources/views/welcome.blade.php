@@ -8,6 +8,8 @@
 
     @include('partials/hero')
 
+    @include('partials/newsletter')
+
     @include('partials/about')
 
     @include('partials/team')

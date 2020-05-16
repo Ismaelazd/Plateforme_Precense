@@ -146,11 +146,11 @@
                             @endforeach
                        
                           </select>  
-                          @error('etat_id')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                          @enderror
+                            @error('etat_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                       </div>
 
                       <div class="form-group">

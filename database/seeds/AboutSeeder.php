@@ -19,3 +19,4 @@ class AboutSeeder extends Seeder
 
     }
 }
+ 

@@ -16,7 +16,7 @@ class InfoSeeder extends Seeder
             'adresse_un' => '10, place de la Minoterie',
             'adresse_deux' => '1080 Molenbeek-Saint-Jean',
             'tel' => '02 880 99 50',
-            'email' => 'info@molengeek.com',
+            'email' => 'info@mgconnect.com',
         ]);
     }
 }

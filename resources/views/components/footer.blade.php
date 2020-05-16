@@ -5,11 +5,11 @@
             <div class="row no-gutters">
                 <div class="container col-lg-6 col-md-6 ">
                     <div class="  footer__top-call mt-3 mx-5">
-                        @if(Session::has('success'))
-                        <div class="text-center alert alert-success">
-                            {{ Session::get('success') }}
-                        </div>
-                    @endif
+                        @if(Session::has('formSent'))
+                            <div class="text-center alert alert-success">
+                                {{ Session::get('formSent') }}
+                            </div>
+                        @endif
                         <div class="text-center mb-5">
                             <h2>Do you have any questions ?</h2>
 

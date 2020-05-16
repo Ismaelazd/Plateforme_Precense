@@ -63,7 +63,7 @@ class FormController extends Controller
         $formulaire->save();
 
         Mail::to($formulaire->email)->send(new FormMail($formulaire));
-        return redirect()->to(url()->previous().'#footer')->with('success','Votre message a bien été envoyé !');
+        return redirect()->to(url()->previous().'#footer')->with('formSent','Votre message a bien été envoyé !');
     }
 
     /**
