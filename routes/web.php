@@ -43,3 +43,12 @@ Route::resource('myProfil', 'MyProfilController');
 // Ressources Formulaire
 
 Route::resource('form', 'FormController');
+
+//afficher le tableau de ce qui est dans la corbeille
+Route::get('ServiceTrashed', 'ServiceController@trash')->name('service.trash');
+// delete et donc mettre dans la corbeille
+// Route::delete('service/{service}/destroy', 'ServiceController@destroy')->name('service.destroy');
+//pour delete definitivement
+Route::delete('service/{id }/force', 'ServiceController@forceDestroy')->name('service.forceDestroy');
+// pour restaurer 
+Route::put('service/{id}/restore', 'ServiceController@restore')->name('service.restore');

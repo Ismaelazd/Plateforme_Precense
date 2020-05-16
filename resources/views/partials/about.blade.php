@@ -4,15 +4,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about__img">
-                    <img src="img/about-us.png" alt="">
+                    <img src="{{asset('storage/'.$about->img)}}" alt="">
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="about__text">
-                    <h2>Welcom to MGConnect</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                        viverra maecenas accumsan lacus vel facilisis.</p>
+                    <h2>{{$about->titre}}</h2>
+                    <p>{{$about->texte}}</p>
                     <div class="about__achievement">
                         <div class="about__achieve__item">
                             <span class="fas fa-user "></span>

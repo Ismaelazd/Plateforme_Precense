@@ -133,7 +133,7 @@
                                             <td class="mailbox-subject"><b>{{$form->sujet}}</b> - {{$form->form}}
                                             </td>
                                             <td class="mailbox-attachment"></td>
-                                            <td class="mailbox-date">28 mins ago</td>
+                                            <td class="mailbox-date">{{$form->created_at->diffForHumans()}}</td>
                                           </tr>
                                           @endforeach
                                           @endif

@@ -63,14 +63,14 @@
                                   <div class="card-tools">
                                     <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Previous"><i class="fas fa-chevron-left"></i></a>
                                     <a href="#" class="btn btn-tool" data-toggle="tooltip" title="Next"><i class="fas fa-chevron-right"></i></a>
-                                  </div>
+                                  </div> 
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body p-0">
                                   <div class="mailbox-read-info">
                                     <h5>Message Subject : {{$form->sujet}}</h5>
                                     <h6>{{$form->email}}
-                                      <span class="mailbox-read-time float-right">15 Feb. 2015 11:03 PM</span></h6>
+                                      <span class="mailbox-read-time float-right">{{$form->created_at->format('d-m-Y H:i')}}</span></h6>
                                   </div>
                                   <!-- /.mailbox-read-info -->
                                   <div class="mailbox-controls with-border text-center">

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 // use App\Event;
+
+use App\About;
+use App\Info;
 use App\User;
 // use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,20 +18,23 @@ class WelcomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         // $events = Event::whereDate('end', '=', Carbon::now())->where('end', '<',Carbon::now()->format('Y-m-d H:i'))->get();
+        // dd($events->getPresences());
         // $events->getPresences();
+        // $events->getClasses();
         // $classes = [];
         // foreach ($events as $event) {
         //     $classes += $event->classe_id;
         // }
-        // dd($events);
+        $info = Info::first();
+        $about = About::first();
         $coachs = User::where('role_id',2)->get();
-        return view('welcome',compact('coachs'));
+        return view('welcome',compact('coachs','info','about'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource. 
      *
      * @return \Illuminate\Http\Response
      */

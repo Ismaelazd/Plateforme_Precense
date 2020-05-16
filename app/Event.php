@@ -14,6 +14,9 @@ class Event extends Model
     public function getPresences(){
         return $this->hasMany('App\Presence','event_id');
     }
+    public function getClasses(){
+        return $this->hasMany('App\Classe','classe_id');
+    }
 
   
  

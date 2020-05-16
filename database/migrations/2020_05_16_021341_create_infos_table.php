@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormsTable extends Migration
+class CreateInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('infos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('firstname');
+            $table->string('adresse_un');
+            $table->string('adresse_deux');
+            $table->string('tel');
             $table->string('email');
-            $table->string('sujet');
-            $table->string('message');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('infos');
     }
 }

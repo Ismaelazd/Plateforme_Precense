@@ -61,9 +61,11 @@
                                 <h5>Here</h5>
                         </div>
                         <div class="map">
-                            <iframe
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.6933271876997!2d4.339036315727241!3d50.85536297953321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c38c275028d3%3A0xc7799151146ebf77!2sMolenGeek!5e0!3m2!1sfr!2sbe!4v1589589948179!5m2!1sfr!2sbe" height="415" style="border:0; border-radius: 15px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            
+                            {{-- <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20151.047591375514!2d-0.5735782106784704!3d50.85188881113048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4875a4d10c96d8bf%3A0xe9a76e70e6b7cc5a!2sArundel%2C%20UK!5e0!3m2!1sen!2sbd!4v1584862449435!5m2!1sen!2sbd"
-                                height="415" style="border:0; border-radius: 15px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                height="415" style="border:0; border-radius: 15px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> --}}
                         </div>
                     </div>
                 </div>
@@ -118,10 +120,10 @@
                     <div class="footer__text-widget">
                         <h5>cONTACT US</h5>
                         <ul class="footer__widget-info">
-                            <li><span class="fa fa-map-marker"></span> 500 South Main Street Los Angeles,<br />
-                                ZZ-96110 USA</li>
-                            <li><span class="fa fa-mobile"></span> 125-711-811 | 125-668-886</li>
-                            <li><span class="fa fa-headphones"></span> Support.hosting@gmail.com</li>
+                            <li><span class="fa fa-map-marker"></span>{{$info->adresse_un}}<br />
+                                {{$info->adresse_deux}}</li>
+                            <li><span class="fa fa-mobile"></span> {{$info->tel}}</li>
+                            <li><span class="fa fa-headphones"></span> {{$info->email}}</li>
                         </ul>
                     </div>
                 </div>

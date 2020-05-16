@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormsTable extends Migration
+class CreateAboutsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('firstname');
-            $table->string('email');
-            $table->string('sujet');
-            $table->string('message');
-            $table->softDeletes();
+            $table->string('titre');
+            $table->text('texte');
+            $table->string('img');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('abouts');
     }
 }
