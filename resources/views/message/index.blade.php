@@ -49,7 +49,7 @@
                                     <li class="nav-item active">
                                       <a href="{{route('form.index')}}" class="nav-link">
                                         <i class="fas fa-inbox"></i> Inbox
-                                        <span class="badge bg-primary float-right">{{count($messages)}}</span>
+                                        <span class="badge bg-primary float-right">{{count($unread)}}</span>
                                       </a>
                                     </li>
                                    
@@ -109,7 +109,7 @@
                                   <div class="table-responsive mailbox-messages">
                                     <table class="table table-hover table-striped">
                                       <tbody>
-                                          @if (count($messages)<0)
+                                          @if (count($messages)==0)
                                               <tr>
                                                 
                                                  
@@ -121,7 +121,7 @@
                                               </tr>
                                           @else
                                           @foreach ($messages as $form)
-                                          <tr>
+                                            <tr style="{{$form->read ? "" : "background-color:rgb(253, 132, 132);"}}">
                                             <td>
                                               <div class="icheck-primary">
                                                 <input type="checkbox" value="" id="check2">
@@ -130,7 +130,8 @@
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
                                             <td class="mailbox-name"><a href="{{route('form.show',$form)}}">{{$form->firstname}} {{$form->name}}</a></td>
-                                            <td class="mailbox-subject"><b>{{$form->sujet}}</b> - {{$form->form}}
+                                            <td class="mailbox-subject"><b>{{$form->sujet}}</b></td>
+                                            <td> {{Illuminate\Support\Str::limit($form->message, 15, ' (...)')}}
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{$form->created_at->diffForHumans()}}</td>

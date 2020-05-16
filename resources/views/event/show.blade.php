@@ -1,9 +1,6 @@
 @extends('layouts/master')
 @section('content')
 
-@extends('layouts/master')
-@section('content')
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,7 +28,7 @@
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
 
         <div class="title mx-auto ">
-            <h2 class="text-white mx-auto titre mb-4">Nos classes</h2>
+            <h2 class="text-white mx-auto titre mb-4">Evènements</h2>
             <div class="bgTitle"></div>
 
         </div>
@@ -43,11 +40,7 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile">
                             <div class="name d-flex align-items-center justify-content-center">
-                                <h3 class="title pt-4 ">Classes</h3>
-
-
-                                <a class="ml-4 eventBtn d-flex align-items-center justify-content-center"
-                                    href="{{route('classe.create')}}">+</a>
+                                <h3 class="title pt-4 ">Evenement : "{{$event->nom}}"</h3>
                             </div>
                             <hr>
 
@@ -60,70 +53,85 @@
         </div>
 
 
+        <div class="container mt-3">
 
-
-
-
-
-
-        <div class="d-flex justify-content-around mt-3">
-            {{--presentation de l'evenement --}}
-            <div>
-                <h2>Evenement : {{$event->nom}}</h2>
-                <ul>
-                    <li>Classe: {{$event->classe->name}}</li>
-                    <li>Date: {{ (new \DateTime($event->start))->format('d/m/Y')}}</li>
-                    <li>Heure de débutte: {{ (new \DateTime($event->start))->format('H:i')}}</li>
-                    <li>Heure de fin: {{ (new \DateTime($event->end))->format('H:i')}}</li>
-                    @if ($event->description)
-                    <li>Description: {{$event->description}}</li>
-                    @endif
-
-                </ul>
-
-
-                <a href="{{route('event.edit',$event)}}" class="btn btn-warning">editer</a>
-                <a href="{{route('event.edit',$event)}}" class="btn btn-danger" data-toggle="modal"
-                    data-target="#modalDeleteEvent{{$event->id}}">Supprimer</a>
-
-                <div class="modal fade" id="modalDeleteEvent{{$event->id}}" tabindex="-1" role="dialog"
-                    aria-labelledby="myModalLabel">
-                    <div class="modal-dialog">
-                        <div class="modal-content bg-danger">
-                            <div class="modal-header ">
-                                <h4 class="modal-title">Attention!!!</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body text-center">
-                                <p>Vous êtes sur le point de supprimer l'évènement "{{ucfirst($event->nom)}}"! <br>
-                                    Cette action n'est pas reversible!</p>
-                            </div>
-                            <div class="modal-footer float-right">
-                                <button type="button" class="btn btn-outline-light"
-                                    data-dismiss="modal">Annuler</button>
-                                <form action="{{route('event.destroy',$event)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-light">Supprimer</button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
+            <div class="row pb-5 " >
+                {{--presentation de l'evenement --}}
+                <div class="col-6 px-5 " style="
+                border-right: 3px;
+                border-left: 0px;
+                border-style: solid;
+                border-image: 
+                  linear-gradient(
+                    to bottom, 
+                    #120851, 
+                    rgba(0, 0, 0, 0)
+                  ) 1 100%;">
+                  <div class="card-header text-center text-white" style="background-color: #120851;">
+                    <h3 class="card-title">Info sur l'évènement</h3>
                 </div>
-            </div>
+                <div class="p-4">
 
-            
+                    <ul >
+                        <li>Classe: {{$event->classe->name}}</li>
+                        <li>Date: {{ (new \DateTime($event->start))->format('d/m/Y')}}</li>
+                        <li>Heure de débutte: {{ (new \DateTime($event->start))->format('H:i')}}</li>
+                        <li>Heure de fin: {{ (new \DateTime($event->end))->format('H:i')}}</li>
+                        @if ($event->description)
+                        <li>Description: {{$event->description}}</li>
+                        @endif
 
-            {{-- Definir le statut de presence --}}
-            @if (!($presences->where('user_id',Auth::id())->first()))
+                    </ul>
 
-                <div class="mt-5 card  w-50">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="card-title">Definir mon statut</h3>
+                    <div class="mt-4 text-center">
+
+                        <a href="{{route('event.edit',$event)}}" class="btn btn-warning">editer</a>
+                        <a href="{{route('event.edit',$event)}}" class="btn btn-danger" data-toggle="modal"
+                            data-target="#modalDeleteEvent{{$event->id}}">Supprimer</a>
+                    </div>
+                </div>
+
+                    <div class="modal fade" id="modalDeleteEvent{{$event->id}}" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-danger">
+                                <div class="modal-header ">
+                                    <h4 class="modal-title">Attention!!!</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <p>Vous êtes sur le point de supprimer l'évènement "{{ucfirst($event->nom)}}"! <br>
+                                        Cette action n'est pas reversible!</p>
+                                </div>
+                                <div class="modal-footer float-right">
+                                    <button type="button" class="btn btn-outline-light"
+                                        data-dismiss="modal">Annuler</button>
+                                    <form action="{{route('event.destroy',$event)}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-outline-light">Supprimer</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+
+
+
+                {{-- Definir le statut de presence --}}
+                @if (!($presences->where('user_id',Auth::id())->first()))
+
+                <div class="col-6 px-5 ">
+                    <div class="card ">
+
+                    
+                    <div class="card-header text-center text-white" style="background-color: #120851;">
+                        <h3 class="card-title" >Definir mon statut</h3>
                     </div>
                     <form action="{{route('presence.add',$event->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -167,119 +175,127 @@
 
                         </div>
 
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn text-white" style="background-color: #120851;">Envoyer</button>
                         </div>
                     </form>
                 </div>
-            @else
+                </div>
+                @else
                 @php
                 $utilisateur = $presences->where('user_id',Auth::id())->first()
-                    
+
                 @endphp
-            <div>
-                <p>{{$utilisateur->getUser->name}}</p>
-                <p class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">Statut : {{$utilisateur->getEtat->etat}}</p>
-                <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
-                <p>Note :
-                    @if ($utilisateur->note)
+                <div>
+                    <p>{{$utilisateur->getUser->name}}</p>
+                    <p
+                        class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
+                        Statut : {{$utilisateur->getEtat->etat}}</p>
+                    <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
+                    <p>Note :
+                        @if ($utilisateur->note)
 
                         {{$utilisateur->note}}
-                     @else
+                        @else
                         <div class="text-center">
-                            <i  class="fas fa-times-circle text-danger"></i>
+                            <i class="fas fa-times-circle text-danger"></i>
                         </div>
-                    @endif  
-                </p>
-                <p> Justificatif : 
-                    @if ($utilisateur->file)
+                        @endif
+                    </p>
+                    <p> Justificatif :
+                        @if ($utilisateur->file)
                         <a class="btn btn-primary" href="{{route('presence.download', $utilisateur->id)}}">Download</a>
-                    @else
+                        @else
                         <div class="text-center">
-                            <i  class="fas fa-times-circle text-danger"></i>
+                            <i class="fas fa-times-circle text-danger"></i>
                         </div>
-                    @endif  
-                </p>
-                <p>
-                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                    href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
-                </p>
+                        @endif
+                    </p>
+                    <p>
+                        <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                            href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
+                    </p>
+                </div>
+
+                @endif
+
+
+
             </div>
-                
-            @endif
+
+            {{-- presences enregistrées --}}
+
+            <div class="container mt-5 " style="padding-top:100px;border-top: 3px; border-bottom:0px;
+           
+            border-style: solid;
+            border-image: 
+              linear-gradient(
+                90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
+              ) 1 1 100%;">
+
+                <table class="table table-striped table-light rounded">
+                    <thead class="text-white" style="background-color: #120851;">
+
+                        <tr>
+                            <th scope="col" class="text-center">Nom Prenom</th>
+                            <th scope="col" class="text-center">Statut</th>
+                            <th scope="col" class="text-center">Statut final</th>
+                            <th scope="col" class="text-center">Note</th>
+                            <th scope="col" class="text-center">fichier</th>
+                            <th class="text-center" scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($presences as $pre)
+
+                        <tr>
+                            <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}</th>
+                            <th class="text-center">{{$pre->getEtat->etat}} </th>
+                            <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
+                            <th class="text-center">
+                                @if ($pre->note)
+
+                                {{$pre->note}}
+                                @else
+                                <div class="text-center">
+                                    <i class="fas fa-times-circle text-danger"></i>
+                                </div>
+                                @endif
+                            </th>
+                            <th class="text-center">
+                                @if ($pre->file)
+                                <a class="btn btn-primary" href="{{route('presence.download', $pre->id)}}">Download</a>
+                                @else
+                                <div class="text-center">
+                                    <i class="fas fa-times-circle text-danger"></i>
+                                </div>
+                                @endif
+                            </th>
+                            <td class="d-flex justify-content-center ">
+                                <div class="text-center mb-2">
+                                    <a class="  btn btn-primary rounded-circle mx-3 "
+                                        href="{{route('user.show',$pre->user_id)}}"><i class="fa fa-eye"></i></a>
+                                </div>
+                                <div class="text-center mb-2">
+                                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                        href="{{route('presence.edit',$pre)}}"><i class="fas fa-pencil-alt"></i></a>
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        @endforeach
+
+                    </tbody>
+                </table>
+            </div>
 
 
 
-          </div>
-
-          {{-- presences enregistrées --}}
-
-          <div class="container ">
-
-            <table class="table table-striped table-light rounded mx-5">
-                <thead>
-                    
-                    <tr>
-                        <th scope="col" class="text-center">Nom Prenom</th>
-                        <th scope="col" class="text-center">Statut</th>
-                        <th scope="col" class="text-center">Statut final</th>
-                        <th scope="col" class="text-center">Note</th>
-                        <th scope="col" class="text-center">fichier</th>
-                        <th class="text-center" scope="col">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($presences as $pre)
-
-                    <tr>
-                        <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}</th>
-                        <th class="text-center">{{$pre->getEtat->etat}} </th>
-                        <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
-                        <th class="text-center">
-                          @if ($pre->note)
-
-                              {{$pre->note}}
-                          @else
-                            <div class="text-center">
-                              <i  class="fas fa-times-circle text-danger"></i>
-                            </div>
-                          @endif  
-                        </th>
-                        <th class="text-center">
-                          @if ($pre->file)
-                          <a class="btn btn-primary" href="{{route('presence.download', $pre->id)}}">Download</a>
-                          @else
-                           <div class="text-center">
-                              <i  class="fas fa-times-circle text-danger"></i>
-                           </div>
-                          @endif  
-                        </th>
-                        <td class="d-flex justify-content-center ">
-                            <div class="text-center mb-2">
-                                <a class="  btn btn-primary rounded-circle mx-3 "
-                                
-                                    href="{{route('user.show',$pre->user_id)}}"><i class="fa fa-eye"></i></a>
-                            </div>
-                            <div class="text-center mb-2">
-                                <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                                    href="{{route('presence.edit',$pre)}}"><i class="fas fa-pencil-alt"></i></a>
-                            </div>
-
-                        </td>
-                    </tr>
-                    
-                    @endforeach
-
-                  </tbody>
-              </table>
-          </div>
+        </div>
 
 
 
-
-
-
-       
 
 
 

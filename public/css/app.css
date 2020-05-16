@@ -18766,7 +18766,8 @@ ol {
 	background-image: url(/img/line.png);
 	z-index: 1;
 	margin: 0 auto;
-}/* Magnific Popup CSS */
+}
+/* Magnific Popup CSS */
 .mfp-bg {
   top: 0;
   left: 0;
@@ -25275,5 +25276,9 @@ readers do not read off random characters that represent icons */
   color: #fff;
   background-color: #ffc107;
   border-color: #ffc107;
+}
+
+#newsletter {
+  background-color: #f5f5f5;
 }
 

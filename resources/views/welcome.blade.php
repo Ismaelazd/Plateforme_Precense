@@ -8,13 +8,13 @@
 
     @include('partials/hero')
 
-    @include('partials/newsletter')
-
     @include('partials/about')
 
     @include('partials/team')
 
     @include('partials/testimonial')
+
+    @include('partials/newsletter')
 
     @include('components/footer')
 

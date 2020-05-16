@@ -39,7 +39,7 @@
                                       <li class="nav-item active">
                                         <a href="{{route('form.index')}}" class="nav-link">
                                           <i class="fas fa-inbox"></i> Inbox
-                                          <span class="badge bg-primary float-right">{{count($messages)}}</span>
+                                          <span class="badge bg-primary float-right">{{count($unread)}}</span>
                                         </a>
                                       </li>
                                       

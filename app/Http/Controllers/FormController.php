@@ -18,7 +18,8 @@ class FormController extends Controller
     public function index()
     {
         $messages = Form::all();
-        return view('message.index',compact('messages'));
+        $unread = Form::where('read',false)->get();
+        return view('message.index',compact('messages','unread'));
     }
 
     /**
@@ -60,6 +61,7 @@ class FormController extends Controller
         $formulaire->email = $request->input('email');
         $formulaire->sujet = $request->input('sujet');
         $formulaire->message = $request->input('message');
+        $formulaire->read = false;
         $formulaire->save();
 
         Mail::to($formulaire->email)->send(new FormMail($formulaire));
@@ -74,8 +76,13 @@ class FormController extends Controller
      */
     public function show(Form $form)
     {
-        $messages = Form::all();
-        return view('message.show',compact('form','messages'));
+        
+        
+        $form->read = true;
+        $form->save();
+        $unread = Form::where('read',false)->get();
+      
+        return view('message.show',compact('form','unread'));
     }
 
     /**

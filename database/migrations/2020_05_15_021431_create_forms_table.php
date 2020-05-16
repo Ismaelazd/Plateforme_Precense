@@ -20,6 +20,7 @@ class CreateFormsTable extends Migration
             $table->string('email');
             $table->string('sujet');
             $table->string('message');
+            $table->boolean('read');
             $table->softDeletes();
             $table->timestamps();
         });

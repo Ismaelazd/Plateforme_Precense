@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('WEBSITE SETTINGS');
             $coachs = User::where('role_id',2)->get();
             $students = User::where('role_id',3)->get();
-            $messages = Form::all();
+            $messages = Form::where('read',false)->get();
             $nbCoach = count($coachs);
             $nbStudent = count($students);
             $nbMessages = count($messages);
