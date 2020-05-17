@@ -47,6 +47,9 @@ Route::resource('form', 'FormController');
 // Ressources NEWSLETTER
 
 Route::resource('newsletter', 'NewsletterController');
+// Ressources User
+
+Route::resource('user', 'UserController');
 
 
 

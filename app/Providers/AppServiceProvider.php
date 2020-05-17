@@ -39,13 +39,13 @@ class AppServiceProvider extends ServiceProvider
             
             [ 
                 'text' => 'Coachs',
-                'url'  => 'users',
+                'url'  => 'user/create',
                 'icon' => 'fas fa-fw fa-user',
                 'label' => $nbCoach
             ],
             [ 
                 'text' => 'Students',
-                'url'  => 'users',
+                'url'  => 'user',
                 'icon' => 'fas fa-fw fa-users',
                 'label' => $nbStudent
             ],

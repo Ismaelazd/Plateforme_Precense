@@ -15,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $students = User::where('role_id',3)->get();
+        return view('user.students',compact('students'));
     }
 
     /**
@@ -25,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $coachs = User::where('role_id',2)->get();
+        return view('user.coachs',compact('coachs'));
     }
 
     /**

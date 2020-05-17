@@ -85,10 +85,10 @@
                             ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida viverra maecen
                             lacus vel facilisis. </p>
                         <div class="footer__social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
                             <li><span class="fa fa-map-marker"></span>{{$info->adresse_un}}<br />
                                 {{$info->adresse_deux}}</li>
                             <li><span class="fa fa-mobile"></span> {{$info->tel}}</li>
-                            <li><span class="fa fa-headphones"></span> {{$info->email}}</li>
+                            <li><span class="fa fa-at"></span> {{$info->email}}</li>
                         </ul>
                     </div>
                 </div>
