@@ -124,6 +124,7 @@ class UserController extends Controller
         if ($user->image!= 'team/team-3.jpg') {
             Storage::disk('public')->delete($user->image);
         }
+        $user->save();
         return redirect()->back();
     }
 }
