@@ -118,6 +118,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         Storage::disk('public')->delete($user->image);
+        $user->delete();
         return redirect()->back();
     }
 }

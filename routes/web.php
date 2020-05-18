@@ -61,7 +61,7 @@ Route::get('formTrashed', 'FormController@trash')->name('form.trash')->middlewar
 // Route::delete('form/{form}/destroy', 'ServiceController@destroy')->name('form.destroy');
 
 //pour delete definitivement
-Route::delete('form/{id }/force', 'FormController@forceDestroy')->name('form.forceDestroy')->middleware('admin');
+Route::delete('form/{id}/force', 'FormController@forceDestroy')->name('form.forceDestroy')->middleware('admin');
 
 // pour restaurer 
 Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')->middleware('admin');
