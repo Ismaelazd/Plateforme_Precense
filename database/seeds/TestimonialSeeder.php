@@ -15,22 +15,27 @@ class TestimonialSeeder extends Seeder
         DB::table('testimonials')->insert([
             'user_id' => '2',
             'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, atque? Dicta magni excepturi explicabo error fugiat sequi temporibus obcaecati vero cum esse! Numquam ullam possimus laborum aut odio quidem nulla!',
+            'note' => '5'
         ]);
         DB::table('testimonials')->insert([
             'user_id' => '3',
             'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, atque? Dicta magni excepturi explicabo error fugiat sequi temporibus obcaecati vero cum esse! Numquam ullam possimus laborum aut odio quidem nulla!',
-        ]);
+            'note' => '4'
+            ]);
         DB::table('testimonials')->insert([
             'user_id' => '9',
             'message' => 'Etudiant message testimonial',
-        ]);
+            'note' => '3'
+            ]);
         DB::table('testimonials')->insert([
             'user_id' => '10',
             'message' => 'Etudiant message testimonial',
-        ]);
+            'note' => '4'
+            ]);
         DB::table('testimonials')->insert([
             'user_id' => '11',
             'message' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, atque? Dicta magni excepturi explicabo error fugiat sequi temporibus obcaecati vero cum esse! Numquam ullam possimus laborum aut odio quidem nulla!',
-        ]);
+            'note' => '0'
+            ]);
     }
 }

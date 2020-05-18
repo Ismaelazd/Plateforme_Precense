@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\About;
 use App\Info;
+use App\Slide;
+use App\Testimonial;
 use App\User;
 // use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -27,10 +29,12 @@ class WelcomeController extends Controller
         // foreach ($events as $event) {
         //     $classes += $event->classe_id;
         // }
+        $testimonials = Testimonial::all();
+        $slides = Slide::all();
         $info = Info::first();
         $about = About::first();
         $coachs = User::where('role_id',2)->get();
-        return view('welcome',compact('coachs','info','about'));
+        return view('welcome',compact('coachs','info','about','testimonials','slides'));
     }
 
     /**

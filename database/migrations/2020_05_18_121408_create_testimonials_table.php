@@ -22,6 +22,7 @@ class CreateTestimonialsTable extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');            
             $table->text('message');
+            $table->integer('note');
             $table->timestamps();
         });
     }

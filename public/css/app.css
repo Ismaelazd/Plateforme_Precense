@@ -16764,6 +16764,7 @@ ol {
 	border-radius: 10px;
 	background: #ffffff;
 	transition: all 0.3s;
+	height: 350px;
 }
 
 .testimonial__item:hover {
@@ -16801,9 +16802,14 @@ ol {
 	margin-bottom: 0;
 }
 
-.testimonial__item .testimonial__rating i {
+.testimonial__item .testimonial__rating .rating_good {
 	font-size: 12px;
 	color: #e9bb3f;
+	margin-right: -4px;
+}
+.testimonial__item .testimonial__rating .rating_bad {
+	font-size: 12px;
+	color: none;
 	margin-right: -4px;
 }
 
