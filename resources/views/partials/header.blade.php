@@ -40,11 +40,11 @@
                         <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
 
                         @endcan
-                        @auth
+                        @if(Auth::check() && Auth::user()->role_id != 4)
                             
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
-                        @endauth
+                        @endif
                         
                         @if (Auth::check())
                         <li class="section-btn">

@@ -56,7 +56,7 @@
             <div class="row justify-content-center pb-5">
                 @foreach ($coachs as $coach)
 
-                <div class="col-sm-12 col-md-6">
+                <div class="col-sm-12 col-md-4 mb-4">
                     <div class="d-flex justify-content-center">
                         <div class="card cardBorderCorners darkCard">
                             <div class="card-body">
@@ -135,7 +135,7 @@
             <div class="row d-flex justify-content-center">
                 @foreach ($users as $user)
                 <!-- Light Mode -->
-                <div class="col-sm-12 col-md-3 col-lg-4">
+                <div class="col-sm-12 col-md-3 col-lg-4 mb-4">
                     <div class="d-flex justify-content-center">
                         <div class="card cardBorderCorners lightCard">
                             <div class="card-body">

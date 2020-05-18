@@ -84,7 +84,7 @@
                 </div>
 
                 <form action="{{route('myProfil.edit',$user)}}" method="get" class="text-center mt-5 ">
-                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn"><i class="fa fa-pencil fa-2x"></i></button>
+                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn"><i class="fa fa-pencil-alt fa-2x"></i></button>
                 </form>
 
                 <div class="row">

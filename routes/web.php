@@ -20,48 +20,48 @@ Route::resource('welcome', 'WelcomeController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
 
 Route::get('/calendrier', function() {
     return view('calendrier');
-})->name('calendrier');
+})->name('calendrier')->middleware('connected','notMember');
  
 
-Route::resource('event', 'EventController');
-Route::resource('classe', 'ClasseController');
-Route::resource('presence', 'PresenceController');
-Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
-Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download');
-Route::resource('user', 'UserController');
+Route::resource('event', 'EventController')->middleware(['connected','notMember']);
+Route::resource('classe', 'ClasseController')->middleware(['connected','notMember']);
+Route::resource('presence', 'PresenceController')->middleware(['connected','notMember']);
+Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);
+Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['connected','notMember']);
+Route::resource('user', 'UserController')->middleware('admin');
 
 
 // Ressource MYPROFIL
 
-Route::resource('myProfil', 'MyProfilController');
+Route::resource('myProfil', 'MyProfilController')->middleware('connected');
 
 // Ressources Formulaire
 
-Route::resource('form', 'FormController');
+Route::resource('form', 'FormController')->middleware('admin');
 
 // Ressources NEWSLETTER
 
-Route::resource('newsletter', 'NewsletterController');
+Route::resource('newsletter', 'NewsletterController')->middleware('admin');
 // Ressources User
 
-Route::resource('user', 'UserController');
+Route::resource('user', 'UserController')->middleware('admin');
 
 
 
 
 //afficher le tableau de ce qui est dans la corbeille
-Route::get('formTrashed', 'FormController@trash')->name('form.trash');
+Route::get('formTrashed', 'FormController@trash')->name('form.trash')->middleware('admin');
 
 // delete et donc mettre dans la corbeille
 // Route::delete('form/{form}/destroy', 'ServiceController@destroy')->name('form.destroy');
 
 //pour delete definitivement
-Route::delete('form/{id }/force', 'FormController@forceDestroy')->name('form.forceDestroy');
+Route::delete('form/{id }/force', 'FormController@forceDestroy')->name('form.forceDestroy')->middleware('admin');
 
 // pour restaurer 
-Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore');
+Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')->middleware('admin');
