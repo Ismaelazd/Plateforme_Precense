@@ -45,6 +45,12 @@
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
                         @endif
+
+                        @if(Auth::check() && Auth::user()->role_id == 2)
+                            
+                        <li><a href="{{route('validationchange.index')}}">Changement</a></li>
+                    
+                        @endif
                         
                         @if (Auth::check())
                         <li class="section-btn">

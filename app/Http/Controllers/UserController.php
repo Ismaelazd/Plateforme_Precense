@@ -83,6 +83,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        dd('heloo');
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',
@@ -95,7 +96,6 @@ class UserController extends Controller
         $user->name = $request->input('name');
         $user->firstname = $request->input('firstname');
         $user->email = $request->input('email');
-        $user->role_id = $request->input('role_id');
         if($request->hasFile('image')) {
             if ($user->image== 'avatar.png') {
                 $imageNew=Storage::disk('public')->put('', $request->image);

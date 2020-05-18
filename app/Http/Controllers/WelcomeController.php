@@ -29,6 +29,7 @@ class WelcomeController extends Controller
         // foreach ($events as $event) {
         //     $classes += $event->classe_id;
         // }
+        
         $testimonials = Testimonial::all();
         $slides = Slide::all();
         $info = Info::first();
