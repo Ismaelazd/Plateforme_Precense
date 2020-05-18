@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Classe;
 use Illuminate\Http\Request;
 use App\User;
 use App\Presence;
+use App\Role;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -62,9 +65,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $roles = Role::all();
+        $classes = Classe::all();
+        return view('user.edit',compact('user','roles','classes')); 
     }
 
     /**
@@ -74,9 +79,34 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'firstname'=> 'required',
+            'email'=>'required|unique:users,email,'.$user->id,
+        ]);
+        $user->name = $request->input('name');
+        $user->firstname = $request->input('firstname');
+        $user->email = $request->input('email');
+        $user->role_id = $request->input('role_id');
+        if($request->hasFile('image')) {
+            Storage::disk('public')->delete($user->image);
+            $imageNew=Storage::disk('public')->put('', $request->image);
+            $user->image=$imageNew;
+        }
+        $user->classe_id = $request->input('classe_id');
+        $user->save();
+        if ($request->input('role_id')==2) {
+            return redirect()->route('user.coachs');
+        } else {
+            if ($request->input('role_id')==3) {
+                return redirect()->route('user.students');
+            } else {
+                return redirect()->to('user.visiteurs');
+            }         
+        }
+        
     }
 
     /**
@@ -85,8 +115,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        Storage::disk('public')->delete($user->image);
+        return redirect()->back();
     }
 }
+ 

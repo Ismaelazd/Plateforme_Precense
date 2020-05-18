@@ -79,7 +79,7 @@ class MyProfilController extends Controller
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',
-            'email'=>'required',
+            'email'=>'required|unique:users,email,'.$user->id,
             'password'=>'required',
         ]);
 

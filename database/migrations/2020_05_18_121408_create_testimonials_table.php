@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFormsTable extends Migration
+class CreateTestimonialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateFormsTable extends Migration
      */
     public function up()
     {
-        Schema::create('forms', function (Blueprint $table) {
+        Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('firstname');
-            $table->string('email');
-            $table->string('sujet');
-            $table->longText('message');
-            $table->boolean('read');
-            $table->softDeletes();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+            ->on('users')
+            ->references('id')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');            
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateFormsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forms');
+        Schema::dropIfExists('testimonials');
     }
 }
