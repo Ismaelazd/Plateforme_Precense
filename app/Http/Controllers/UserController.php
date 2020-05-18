@@ -91,6 +91,10 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->role_id = $request->input('role_id');
         if($request->hasFile('image')) {
+            if ($request->input('image')== 'team/team-3.jpg') {
+                $imageNew=Storage::disk('public')->put('', $request->image);
+                $user->image=$imageNew;
+            }
             Storage::disk('public')->delete($user->image);
             $imageNew=Storage::disk('public')->put('', $request->image);
             $user->image=$imageNew;
@@ -108,7 +112,7 @@ class UserController extends Controller
         }
         
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -117,7 +121,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        Storage::disk('public')->delete($user->image);
+        if ($user->image!= 'team/team-3.jpg') {
+            Storage::disk('public')->delete($user->image);
+        }
         return redirect()->back();
     }
 }

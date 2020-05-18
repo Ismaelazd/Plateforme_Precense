@@ -129,8 +129,11 @@
                                               </div>
                                             </td>
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
-                                            <td class="mailbox-name"><a href="{{route('form.show',$form)}}">{{$form->firstname}} {{$form->name}}</a></td>
-                                            <td class="mailbox-subject"><b>{{$form->sujet}}</b></td>
+                                            @php
+                                                $nom =$form->firstname . ' ' . $form->name;
+                                            @endphp
+                                            <td class="mailbox-name"><a href="{{route('form.show',$form)}}">{{Illuminate\Support\Str::limit($nom, 18, ' (...)')}} </a></td>
+                                            <td class="mailbox-subject"><b>{{Illuminate\Support\Str::limit($form->sujet, 15, ' (...)')}}</b></td>
                                             <td> {{Illuminate\Support\Str::limit($form->message, 15, ' (...)')}}
                                             </td>
                                             <td class="mailbox-attachment"></td>

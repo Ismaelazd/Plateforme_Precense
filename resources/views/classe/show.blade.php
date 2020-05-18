@@ -196,11 +196,11 @@
                                             href="{{route('user.show',$user)}}"><i class="fa fa-eye"></i>
                                         </a>
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
+                                    {{-- <div class="col-xs-4 col-sm-4 col-md-4">
                                         <a class="  btn btn-warning rounded mx-3 text-white"
-                                            href="{{route('user.edit',$user)}}"><i class="fas fa-pencil-alt"></i>
+                                            href="{{route('myProfil.edit',$user)}}"><i class="fas fa-pencil-alt"></i>
                                         </a>
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>
