@@ -45,9 +45,8 @@
                     </div>
                 </div>
                 <div class=" description  ">
-                    <form action="{{route('myProfil.update',$user)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('validationchange.store',$user->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT');
                         <div class="form-group  ">
                             <label style="color: #120851;" class="h3 text-left" for="name ">Nom :</label>
                             <input value="{{$user->name}}" type="text" name="name"

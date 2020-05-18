@@ -83,7 +83,48 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-       //
+        $request->validate([
+            'name'=> 'required',
+            'firstname'=> 'required',
+            'image'=> 'sometimes|image',
+            'tel'=> 'sometimes|max:150',
+            'rue'=> 'sometimes|max:150',
+            'ville'=> 'sometimes|max:150',
+            'email'=>'required|unique:users,email,'.$user->id,
+        ]);
+        $user->name = $request->input('name');
+        $user->firstname = $request->input('firstname');
+        $user->email = $request->input('email');
+        $user->role_id = $request->input('role_id');
+        if($request->hasFile('image')) {
+            if ($user->image== 'avatar.png') {
+                $imageNew=Storage::disk('public')->put('', $request->image);
+                $user->image=$imageNew;
+            }else {
+                Storage::disk('public')->delete($user->image);
+                $imageNew=Storage::disk('public')->put('', $request->image);
+                $user->image=$imageNew;
+            }
+            
+        }
+        $user->classe_id = $request->input('classe_id');
+        $user->tel = $request->input('tel');
+        $user->rue = $request->input('rue');
+        $user->ville = $request->input('ville');
+        $user->save();
+        if ($request->input('role_id')==2) {
+            return redirect()->route('user.create');
+            //coach
+        } else {
+            if ($request->input('role_id')==3) {
+                return redirect()->route('user.index');
+                //student
+            } else {
+                    return redirect()->to('visiteurs');
+                    //visiteurs
+             }         
+        }
+        
     }
     
     /**

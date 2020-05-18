@@ -20,11 +20,11 @@ class CreateValidationchangesTable extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('tel')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('rue')->nullable();
             $table->string('ville')->nullable();
-            $table->bigInteger('role_id')->unsigned();
-            $table->bigInteger('classe_id')->unsigned()->nullable();
+            // $table->bigInteger('role_id')->unsigned();
+            // $table->bigInteger('classe_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

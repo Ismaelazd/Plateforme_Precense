@@ -37,36 +37,52 @@ class ValidationchangeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        $Validationchange = new Validationchange();
+        $user = User::find($id);
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',
-            'email'=>'required|unique:users,email,'.$Validationchange->id,
+            'email'=>'required|unique:users,email,'.$id,
             'password'=> 'required',
             'image' => 'sometimes|image',
+            'tel'=> 'sometimes|max:150',
+            'rue'=> 'sometimes|max:150',
+            'ville'=> 'sometimes|max:150',
         ]);
-        $Validationchange->name = $request->input('name');
-        $Validationchange->firstname = $request->input('firstname');
-        $Validationchange->email = $request->input('email');
-        $Validationchange->password = Hash::make( $request->input('password'));
-        $Validationchange->role_id = $request->input('role_id');
-   
-            $imageNew=Storage::disk('public')->put('', $request->image);
-            $Validationchange->image=$imageNew;
-      
-        $Validationchange->classe_id = $request->input('classe_id');
-        $Validationchange->save();
-        if ($request->input('role_id')==2) {
-            return redirect()->route('user.coachs');
-        } else {
-            if ($request->input('role_id')==3) {
-                return redirect()->route('user.students');
+        if ($user->role_id == 1 || $user->role_id ==2) {
+            $user->name = $request->input('name');
+            $user->firstname = $request->input('firstname');
+            $user->email = $request->input('email');
+            $user->password = $request->input('password');
+            if ($request->hasFile('image')) {
+                $imageNew=Storage::disk('public')->put('', $request->image);
+                $user->image=$imageNew;           
             } else {
-                return redirect()->to('user.visiteurs');
-            }         
+                $user->image=$user->image;
+            }
+            $user->tel = $request->input('tel');
+            $user->rue = $request->input('rue');
+            $user->ville = $request->input('ville');
+            $user->save();
+        } else {
+            $validationchange = new Validationchange();
+            $validationchange->name = $request->input('name');
+            $validationchange->firstname = $request->input('firstname');
+            $validationchange->email = $request->input('email');
+            $validationchange->password = Hash::make( $request->input('password'));
+            if ($request->hasFile('image')) {
+                $imageNew=Storage::disk('public')->put('', $request->image);
+                $validationchange->image=$imageNew;           
+            } else {
+                $validationchange->image=$user->image;
+            }
+            $validationchange->tel = $request->input('tel');
+            $validationchange->rue = $request->input('rue');
+            $validationchange->ville = $request->input('ville');
+            $validationchange->save();
         }
+        return redirect()->route('myProfil.index');
     }
 
     /**
@@ -103,24 +119,19 @@ class ValidationchangeController extends Controller
     public function update(Request $request, Validationchange $validationchange)
     {
         $user = User::find($validationchange->user_id);
-
         $user->name = $validationchange->name;
         $user->firstname = $validationchange->firstname;
         $user->email = $validationchange->email;
-        $user->password = $validationchange->password;
-        $user->role_id = $validationchange->role_id; 
-        if ($validationchange->image== 'team/team-3.jpg') {
+        $user->password = $validationchange->password;        
+        if ($user->image== 'avatar.png') {
             $user->image=$validationchange->image;
         }else {
             Storage::disk('public')->delete($user->image);
             $user->image=$validationchange->image;
         }
-        
-        $user->classe_id = $validationchange->classe_id;
         $user->save();
         $validationchange->delete();
-        return redirect()->route('classe_id.index');
-
+        return redirect()->route('validateChange.index');
     }
 
     /**
@@ -132,7 +143,7 @@ class ValidationchangeController extends Controller
     public function destroy(Validationchange $validationchange)
     {
         $validationchange->delete();
-        return redirect()->route('classe_id.index');
+        return redirect()->route('validateChange.index');
 
     }
 }

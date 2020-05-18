@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'tel' => '0123456789',
             'rue' => 'rue de la minoterie',
             'ville' => 'Bruxelles',
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
    
         ]);
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             'email' => 'Harry@Potter.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
    
         ]);
@@ -110,7 +110,7 @@ class UserSeeder extends Seeder
             'email' => '12@student.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -121,7 +121,7 @@ class UserSeeder extends Seeder
             'email' => 'Wala@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -132,7 +132,7 @@ class UserSeeder extends Seeder
             'email' => 'Adam@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -143,7 +143,7 @@ class UserSeeder extends Seeder
             'email' => 'Ayhan@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -154,7 +154,7 @@ class UserSeeder extends Seeder
             'email' => 'GODIVA@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -165,7 +165,7 @@ class UserSeeder extends Seeder
             'email' => 'Ilya@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -176,7 +176,7 @@ class UserSeeder extends Seeder
             'email' => 'julie@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
 
@@ -187,7 +187,7 @@ class UserSeeder extends Seeder
             'email' => 'Fati@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -198,7 +198,7 @@ class UserSeeder extends Seeder
             'email' => 'Mkdir@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -209,7 +209,7 @@ class UserSeeder extends Seeder
             'email' => 'Ramzi@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -220,7 +220,7 @@ class UserSeeder extends Seeder
             'email' => 'Salome@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -231,7 +231,7 @@ class UserSeeder extends Seeder
             'email' => 'Shannon@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -242,7 +242,7 @@ class UserSeeder extends Seeder
             'email' => '𝐙𝐚ï𝐧𝐚𝐛@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -253,7 +253,7 @@ class UserSeeder extends Seeder
             'email' => '𝓝𝓪𝔃𝓪𝓶@CS10.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 1 
         ]);
 
@@ -264,7 +264,7 @@ class UserSeeder extends Seeder
             'email' => 'DrNihilism@CS12.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
-            'image' => 'team/team-3.jpg',
+            'image' => 'avatar.png',
             'classe_id' => 3 
         ]);
     }

@@ -62,7 +62,7 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::all();
+        // $roles = Role::all();
         $user = Auth::user();
         return view('profil.editMyProfil',compact('user','roles'));
     }
@@ -76,30 +76,30 @@ class MyProfilController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'name'=> 'required',
-            'firstname'=> 'required',
-            'email'=>'required|unique:users,email,'.$user->id,
-            'password'=>'required',
-        ]);
+        // $request->validate([
+        //     'name'=> 'required',
+        //     'firstname'=> 'required',
+        //     'email'=>'required|unique:users,email,'.$user->id,
+        //     'password'=>'required',
+        // ]);
 
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        if($request->hasFile('image')) {
-            Storage::disk('public')->delete($user->image);
-            $imageNew=Storage::disk('public')->put('', $request->image);
-            $user->image=$imageNew;
-        }
+        // if($request->hasFile('image')) {
+        //     Storage::disk('public')->delete($user->image);
+        //     $imageNew=Storage::disk('public')->put('', $request->image);
+        //     $user->image=$imageNew;
+        // }
 
-        $user->name = $request->input('name');
-        $user->firstname = $request->input('firstname');
-        $user->email = $request->input('email');
-        $user->password = $request->input('password');
-        $user->tel = $request->input('tel');
-        $user->rue = $request->input('rue');
-        $user->ville = $request->input('ville');
-        $user->save();
-        return redirect()->route('myProfil.index');
+        // $user->name = $request->input('name');
+        // $user->firstname = $request->input('firstname');
+        // $user->email = $request->input('email');
+        // $user->password = $request->input('password');
+        // $user->tel = $request->input('tel');
+        // $user->rue = $request->input('rue');
+        // $user->ville = $request->input('ville');
+        // $user->save();
+        // return redirect()->route('myProfil.index');
     }
 
     /**

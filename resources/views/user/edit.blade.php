@@ -71,18 +71,29 @@
             <label class="h3" for="role_id">Role :</label>
             <select class="form-control" name="role_id" id="role_id">
                 @foreach ($roles as $role)
-                @if ($user->role_id == $role->id)
-                
-                <option selected value="{{$role->id}}">{{$role->role}}</option>
-                @else
-                <option  value="{{$role->id}}">{{$role->role}}</option>
-
-                @endif
-                  
-                       
+                    @if ($user->role_id == $role->id)
+                        <option selected value="{{$role->id}}">{{$role->role}}</option>
+                    @else
+                        <option  value="{{$role->id}}">{{$role->role}}</option>
+                    @endif
                 @endforeach
             </select>
             @error('role_id')
+            <div class="alert alert-danger">{{  $message  }}</div>
+            @enderror
+        </div>
+        <div class="form-group text-darka">
+            <label class="h3" for="classe_id">Classe :</label>
+            <select class="form-control" name="classe_id" id="classe_id">
+                @foreach ($classes as $classe)
+                    @if ($user->classe_id == $classe->id)
+                        <option selected value="{{$classe->id}}">{{$classe->name}}</option>
+                    @else
+                        <option  value="{{$classe->id}}">{{$classe->name}}</option>
+                    @endif
+                @endforeach
+            </select>
+            @error('classe_id')
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
@@ -92,14 +103,15 @@
                 <label class="h3" for="image">Image :</label>
                 <input value="{{$user->image}}" type="file" name="image"
                     class="form-control @error('image') is-invalid @enderror" id="image">
+                    @error('image')
+            <div class="alert alert-danger">{{  $message  }}</div>
+            @enderror
             </div>
             <div class="col-3">
 
                 <img src="{{asset('storage/'.$user->image)}}" alt="" class="img-fluid mx-auto" style="border-radius: 50%;">
             </div>
-            @error('image')
-            <div class="alert alert-danger">{{  $message  }}</div>
-            @enderror
+       
         </div>
         <div class="text-center">
 
