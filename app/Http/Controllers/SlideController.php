@@ -96,7 +96,7 @@ class SlideController extends Controller
         $slide->titre_un = $request->input('titre_un');
         $slide->titre_deux = $request->input('titre_deux');
         if($request->hasFile('image')) {
-c            $imageNew=Storage::disk('public')->put('', $request->image);
+            $imageNew=Storage::disk('public')->put('', $request->image);
             $slide->image=$imageNew;
         }
         $slide->save();

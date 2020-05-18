@@ -34,7 +34,7 @@ Route::resource('presence', 'PresenceController')->middleware(['connected','notM
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);
 Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['connected','notMember']);
 Route::resource('user', 'UserController')->middleware('admin');
-
+Route::get('/visiteurs','UserController@visiteur')->name('visiteurs')->middleware('admin');
 
 // Ressource MYPROFIL
 

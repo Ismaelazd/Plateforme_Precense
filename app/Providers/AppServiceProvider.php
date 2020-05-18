@@ -31,9 +31,11 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add('WEBSITE SETTINGS');
             $coachs = User::where('role_id',2)->get();
             $students = User::where('role_id',3)->get();
+            $visiteurs = User::where('role_id',4)->get();
             $messages = Form::where('read',false)->get();
             $nbCoach = count($coachs);
             $nbStudent = count($students);
+            $nbVisiteur = count($visiteurs);
             $nbMessages = count($messages);
             $event->menu->add(
             
@@ -49,6 +51,12 @@ class AppServiceProvider extends ServiceProvider
                 'icon' => 'fas fa-fw fa-users',
                 'label' => $nbStudent
             ],
+            [ 
+                'text' => 'Visiteurs',
+                'url'  => 'visiteurs',
+                'icon' => 'fas fa-fw fa-user-plus',
+                'label' => $nbVisiteur
+            ],
             [
                 'text'    => 'Messages',
                 'icon'    => 'fas fa-envelope-open-text',
@@ -56,38 +64,10 @@ class AppServiceProvider extends ServiceProvider
                 'url'  => 'form',
             
             ],
-            [
-                'text'    => 'Services',
-                'icon'    => 'fas fa-tools',
-                'submenu' => [
-                    [
-                        'text' => 'Les services',
-                        'url'  => 'service',
-                        'icon_color' => 'yellow',
-                    ],
-                    [
-                        'text' => 'Ajouter',
-                        'url'  => 'service/create',
-                        'icon_color' => 'green',
-                    ],
-                    
-                ],
-            ],
-            [
-                'text'    => 'Elements HomePage',
-                'icon'    => 'fas fa-stream',
-                'submenu' => [
-                    [
-                        'text' => 'Les élémments',
-                        'url'  => 'homeElement',
-                        'icon_color' => 'yellow',
-                    ],            
-                    
-                ],
-            ],
+            
             [
                 'text'    => 'About',
-                'icon'    => 'fas fa-info-circle',
+                'icon'    => 'fas fa-fw fa-info-circle',
                 'submenu' => [
                     [
                         'text' => 'Content',
@@ -99,8 +79,8 @@ class AppServiceProvider extends ServiceProvider
             ],
             
             [
-                'text'    => 'Contact',
-                'icon'    => 'fas fa-address-book',
+                'text'    => 'Info-Contact',
+                'icon'    => 'fas fa-fw fa-address-book',
                 'submenu' => [
                     [
                         'text' => 'Content',
@@ -114,32 +94,12 @@ class AppServiceProvider extends ServiceProvider
            
             [
                 'text'    => 'Newsletter',
-                'icon'    => 'fas fa-mail-bulk',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'newsletter',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                    
-                ],
-            ],
-            [
-                'text'    => 'Footer',
-                'icon'    => 'fas fa-caret-square-down',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'footer',
-                        'icon_color' => 'yellow',
-                    ],     
-                    
-                ],
+                'icon'    => 'fas fa-fw fa-mail-bulk',
+                'url'  => 'newsletter',
             ],
             [
                 'text'    => 'Testimonials',
-                'icon'    => 'fas fa-folder-open',
+                'icon'    => 'fas fa-fw fa-folder-open',
                 'submenu' => [
                     [
                         'text' => 'Content',
@@ -153,85 +113,8 @@ class AppServiceProvider extends ServiceProvider
                     ],
                     
                 ],
-            ],
-            [
-                'text'    => 'Articles',
-                'icon'    => 'fas fa-newspaper',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'article',
-                        'icon_color' => 'yellow',
-                    ],
-                    [
-                        'text' => 'Ajouter',
-                        'url'  => 'article/create',
-                        'icon_color' => 'green',
-                    ],
-                    
-                ],
-            ],
-            [
-                'text'    => 'Tags',
-                'icon'    => 'fas fa-tags',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'tag',
-                        'icon_color' => 'yellow',
-                    ],
-                    [
-                        'text' => 'Ajouter',
-                        'url'  => 'tag/create',
-                        'icon_color' => 'green',
-                    ],
-                    
-                ],
-            ],
-            [
-                'text'    => 'Catégories',
-                'icon'    => 'fas fa-list',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'categorie',
-                        'icon_color' => 'yellow',
-                    ],
-                    [
-                        'text' => 'Ajouter',
-                        'url'  => 'categorie/create',
-                        'icon_color' => 'green',
-                    ],
-                    
-                ],
-            
-            ],
-            [
-                'text'    => 'Commentaires',
-                'icon'    => 'fas fa-comments',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'commentaire',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                    
-                ],
-            ],
-            [
-                'text'    => 'Quote',
-                'icon'    => 'fas fa-quote-left',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'quote',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                    
-                ],
             ]
+            
         );
         });
     }

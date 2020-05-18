@@ -102,12 +102,12 @@ class UserController extends Controller
         $user->classe_id = $request->input('classe_id');
         $user->save();
         if ($request->input('role_id')==2) {
-            return redirect()->route('user.coachs');
+            return redirect()->route('user.create');
         } else {
             if ($request->input('role_id')==3) {
-                return redirect()->route('user.students');
+                return redirect()->route('user.index');
             } else {
-                return redirect()->to('user.visiteurs');
+                return redirect()->to('visiteurs');
             }         
         }
         
@@ -126,6 +126,11 @@ class UserController extends Controller
         }
         $user->save();
         return redirect()->back();
+    }
+
+    public function visiteur(){
+        $visiteurs = User::where('role_id',4)->get();
+        return view('user.visiteurs',compact('visiteurs'));
     }
 }
  
