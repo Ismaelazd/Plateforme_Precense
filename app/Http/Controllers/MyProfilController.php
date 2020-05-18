@@ -76,6 +76,8 @@ class MyProfilController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $user = Auth::user();
+        
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',
@@ -83,7 +85,7 @@ class MyProfilController extends Controller
             'password'=>'required',
         ]);
 
-        $user = Auth::user();
+        
 
         if($request->hasFile('image')) {
             Storage::disk('public')->delete($user->image);

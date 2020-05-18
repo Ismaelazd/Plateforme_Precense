@@ -77,3 +77,6 @@ Route::delete('form/{id}/force', 'FormController@forceDestroy')->name('form.forc
 
 // pour restaurer 
 Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')->middleware('admin');
+
+Route::resource('validationchange', 'ValidationchangeController');
+Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store');

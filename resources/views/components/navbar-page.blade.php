@@ -21,11 +21,16 @@
                                 href="{{route('myProfil.index')}}">Profil</a></li>
 
                         @endcan
-                        @auth
+                        @if(Auth::check() && Auth::user()->role_id != 4)
                             
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
-                        @endauth
+                        @endif
+                        @if(Auth::check() && Auth::user()->role_id == 2)
+                            
+                        <li><a href="{{route('validationchange.index')}}">Changement</a></li>
+                    
+                        @endif
                     
 
                         @if (Auth::check())
