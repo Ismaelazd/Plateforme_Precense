@@ -68,30 +68,16 @@ class AppServiceProvider extends ServiceProvider
             [
                 'text'    => 'About',
                 'icon'    => 'fas fa-fw fa-info-circle',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'about',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                ],
+                'url'  => 'about',
+                
             ],
             
             [
                 'text'    => 'Info-Contact',
                 'icon'    => 'fas fa-fw fa-address-book',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'contact',
-                        'icon_color' => 'yellow',
-                    ],
-                    
-                    
-                ],
+                'url'  => 'info',
+                
             ],
-           
             [
                 'text'    => 'Newsletter',
                 'icon'    => 'fas fa-fw fa-mail-bulk',
@@ -100,19 +86,8 @@ class AppServiceProvider extends ServiceProvider
             [
                 'text'    => 'Testimonials',
                 'icon'    => 'fas fa-fw fa-folder-open',
-                'submenu' => [
-                    [
-                        'text' => 'Content',
-                        'url'  => 'testimonial',
-                        'icon_color' => 'yellow',
-                    ],
-                    [
-                        'text' => 'Ajouter',
-                        'url'  => 'testimonial/create',
-                        'icon_color' => 'green',
-                    ],
-                    
-                ],
+                'url'  => 'testimonial',
+                
             ]
             
         );

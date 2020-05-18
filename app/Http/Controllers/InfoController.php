@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Info;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class InfoController extends Controller
 {
@@ -45,7 +46,7 @@ class InfoController extends Controller
             'tel' => 'required',
             'email' => 'required',
         ]);
-        $info->adress_un = $request->input('adress_un');
+        $info->adresse_un = $request->input('adresse_un');
         $info->adresse_deux = $request->input('adresse_deux');
         $info->tel = $request->input('tel');
         $info->email = $request->input('email');

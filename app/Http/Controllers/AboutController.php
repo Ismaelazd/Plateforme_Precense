@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -15,7 +17,7 @@ class AboutController extends Controller
     public function index()
     {
         $about = About::first();
-        return view('index.about',compact('about'));
+        return view('about.index',compact('about'));
     }
 
     /**
@@ -27,7 +29,7 @@ class AboutController extends Controller
     public function edit(About $about)
     {
         $about = About::first();
-        return view('edit.about',compact('about'));
+        return view('about.edit',compact('about'));
     }
 
     /**

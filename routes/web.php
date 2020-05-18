@@ -51,6 +51,18 @@ Route::resource('newsletter', 'NewsletterController')->middleware('admin');
 
 Route::resource('user', 'UserController')->middleware('admin');
 
+// Ressources Info
+
+Route::resource('info', 'InfoController')->middleware('admin');
+
+// Ressources About
+
+Route::resource('about', 'AboutController')->middleware('admin');
+
+// Ressources Testimonial
+
+Route::resource('testimonial', 'TestimonialController')->middleware('admin');
+
 
 
 

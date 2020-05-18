@@ -23,7 +23,7 @@
             </div>
             @else
             <div class="mb-5">
-                <table class="table table-dark  table-striped">
+                <table class="table table-dark table-hover table-striped">
                     <thead class="bg-dark">
                         <tr>
                             <th scope="col" class="text-center">Id</th>
