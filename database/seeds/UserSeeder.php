@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 1,
             'image' => 'team/team-2.jpg',
-            'classe_id' => null 
+            'classe_id' => null ,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -35,7 +36,8 @@ class UserSeeder extends Seeder
             'rue' => 'rue de la minoterie',
             'ville' => 'Bruxelles',
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -46,7 +48,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -57,7 +60,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
             'image' => 'team/albi.jpeg',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -68,7 +72,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
             'image' => 'team/zak.jpeg',
-            'classe_id' => 2 
+            'classe_id' => 2 ,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -79,7 +84,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
             'image' => 'team/elias.jpeg',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
    
         ]);
         DB::table('users')->insert([
@@ -89,29 +95,30 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
             'image' => 'team/max.jpeg',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
         
         DB::table('users')->insert([
-            
             'name' => 'Nico',
             'firstname' => 'Nico',
             'email' => 'Nico@gmai.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 2,
             'image' => 'team/nico.jpeg',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => true
         ]);
 
         DB::table('users')->insert([
-            
             'name' => 'student',
             'firstname' => '12',
             'email' => '12@student.com',
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -122,7 +129,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -133,7 +141,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -144,7 +153,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -155,7 +165,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -166,7 +177,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -177,7 +189,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -188,7 +201,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -199,7 +213,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -210,7 +225,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -221,7 +237,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -232,7 +249,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -243,7 +261,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -254,7 +273,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 1 
+            'classe_id' => 1 ,
+            'bigcoach' => false
         ]);
 
         DB::table('users')->insert([
@@ -265,7 +285,19 @@ class UserSeeder extends Seeder
             'password' => Hash::make('azertyuiop'),
             'role_id' => 3,
             'image' => 'avatar.png',
-            'classe_id' => 3 
+            'classe_id' => 3 ,
+            'bigcoach' => false
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Nazam',
+            'firstname' => 'Nazam',
+            'email' => 'Nazam@gmai.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 2,
+            'image' => 'nazam.jpg',
+            'classe_id' => 2 ,
+            'bigcoach' => false
         ]);
     }
 }

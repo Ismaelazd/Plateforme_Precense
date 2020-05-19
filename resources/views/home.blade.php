@@ -6,10 +6,10 @@
     <h1 class="m-0 text-dark">Dashboard</h1>
 @stop
 
-@section('content')
+@section('content')            
     <div class="row">
         <div class="col-12">
-            <div class="card">
+            <div class="card">             
                 <div class="card-body">
                     <p class="mb-0">You are logged in!</p>
                     <div class="card card-sucress cardutline direct-chat direct-chat-success">
@@ -103,5 +103,6 @@
                 </div>
             </div>
         </div>
-    </div>
-@stop
+    </div> 
+@stop     
+      

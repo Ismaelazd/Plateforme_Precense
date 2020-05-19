@@ -36,8 +36,9 @@ class WelcomeController extends Controller
         $slides = Slide::all();
         $info = Info::first();
         $about = About::first();
-        $coachs = User::where('role_id',2)->get();
-        return view('welcome',compact('coachs','info','about','testimonials','slides','changements'));
+        $coachs = User::where('role_id',2)->where('bigcoach',false)->inRandomOrder()->take(4)->get();
+        $bigcoach = User::where('bigcoach',true)->first();
+        return view('welcome',compact('coachs','info','about','testimonials','slides','changements','bigcoach'));
     }
 
     /**
