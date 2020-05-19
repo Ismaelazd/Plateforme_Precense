@@ -62,32 +62,62 @@
 
                     <p>Total: {{$total}} jours</p> 
                     <p>Presences: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count())/$total*100}}
+                    %: 
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count())/$total*100}}
+                    @endif
                     </p> 
 
                     <p>Retards: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$total*100}} 
+                    %: 
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$total*100}} 
+                    @endif
                     </p> 
 
                     <p>Absences: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',3)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',3)->count())/$total*100}} 
+                    %: 
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',3)->count())/$total*100}} 
+                    @endif
                     </p> 
 
                     <p>Justifiées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$total*100}} 
+                    %: 
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$total*100}} 
+                    @endif
                     </p> 
 
                     <p>Injustifiées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$total*100}} 
+                    %:
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$total*100}} 
+                    @endif
                     </p> 
 
                     <p>Annoncées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count()}} jours <br>
-                    %: {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$total*100}} 
+                    %: 
+                    @if ($total==0)
+                        0
+                    @else
+                        {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$total*100}} 
+                    @endif
                     </p> 
 
                 </div>
                 {{-- Messagerie --}}
-                <div style="width: 400px" class="messagerie container">
+                <div id="messagerie" style="width: 400px" class="messagerie container">
                     <h3 class="text-center">Messagerie</h3>
                     <div class="card  cardutline direct-chat " >
                         <div class="card-header  d-flex align-items-center justify-content-between" style="background-color: #120851;">
@@ -134,15 +164,17 @@
                          
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer" style="display: block;">
+                        <div  class="card-footer" style="display: block;">
                           <form class="text-center" action="{{route('messagerie.store', $user->id)}}" method="post">
                             @csrf
                             <div class="input-group">
-                              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                                <input type="text" name="message" placeholder="Type Message ..." class="form-control " required>
+                               
                               <span class="input-group-append">
                                 <button type="submit" class="btn text-white my-0" style="background-color: #120851;" >Send</button>
                               </span>
                             </div>
+                           
                           </form>
                         </div>
                         <!-- /.card-footer-->

@@ -42,13 +42,14 @@ class MessagerieController extends Controller
         $validator = Validator::make($request->all(), [
             'message' => 'required|max:300',
         ]);
+     
         $student = User::find($id);
         $messagerie = new Messagerie();
         $messagerie->student_id  = $student->id;
         $messagerie->ecrivain_id  = Auth::id();
         $messagerie->message  = $request->input('message');
         $messagerie->save();
-        return redirect()->back();
+        return redirect()->to(url()->previous().'#messagerie');
     }
 
     /**
