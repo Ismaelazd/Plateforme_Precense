@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classe;
 use App\User;
+use App\Validationchange;
 use Illuminate\Http\Request;
 
 class ClasseController extends Controller
@@ -15,8 +16,10 @@ class ClasseController extends Controller
      */
     public function index()
     {
+        $changements = Validationchange::all();
+
         $classes = Classe::all();
-        return view('classe.index',compact('classes'));    }
+        return view('classe.index',compact('classes','changements'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +28,9 @@ class ClasseController extends Controller
      */
     public function create()
     {
-        return view('classe.create');    
+        $changements = Validationchange::all();
+
+        return view('classe.create',compact('changements'));    
     }
 
     /**
@@ -89,8 +94,10 @@ class ClasseController extends Controller
     //afficher les User appartenants à une classe
     public function show(Classe $classe)
     {
+        $changements = Validationchange::all();
+
         $coachs = User::where('classe_id',$classe->id)->where('role_id',2)->get();
         $users = User::where('classe_id',$classe->id)->where('role_id',3)->get();
-        return view('classe.show',compact('classe','users','coachs')); 
+        return view('classe.show',compact('classe','users','coachs','changements')); 
     }
 }

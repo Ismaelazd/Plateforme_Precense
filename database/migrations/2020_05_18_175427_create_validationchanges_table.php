@@ -17,7 +17,6 @@ class CreateValidationchangesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('firstname');
-            $table->string('password');
             $table->string('image')->nullable();
             $table->string('tel')->nullable();
             $table->string('email');

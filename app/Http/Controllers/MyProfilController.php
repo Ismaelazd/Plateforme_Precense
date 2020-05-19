@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Messagerie;
 use App\Role;
 use App\User;
+use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -20,10 +21,12 @@ class MyProfilController extends Controller
      */
     public function index()
     {
+        $changements = Validationchange::all();
+
         $messageries = Messagerie::where('student_id' , Auth::id())->get();
         $user = Auth::user();
         $roles = Role::all();
-        return view('profil.myProfil',compact('user','roles','messageries'));
+        return view('profil.myProfil',compact('user','roles','messageries','changements'));
     }
 
     /**
@@ -66,9 +69,9 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
-        // $roles = Role::all();
+        $changements = Validationchange::all();
         $user = Auth::user();
-        return view('profil.editMyProfil',compact('user','roles'));
+        return view('profil.editMyProfil',compact('user','roles','changements'));
     }
 
     /**

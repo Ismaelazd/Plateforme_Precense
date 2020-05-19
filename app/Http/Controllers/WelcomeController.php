@@ -9,6 +9,7 @@ use App\Info;
 use App\Slide;
 use App\Testimonial;
 use App\User;
+use App\Validationchange;
 // use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -30,12 +31,13 @@ class WelcomeController extends Controller
         //     $classes += $event->classe_id;
         // }
         
+        $changements = Validationchange::all();
         $testimonials = Testimonial::all();
         $slides = Slide::all();
         $info = Info::first();
         $about = About::first();
         $coachs = User::where('role_id',2)->get();
-        return view('welcome',compact('coachs','info','about','testimonials','slides'));
+        return view('welcome',compact('coachs','info','about','testimonials','slides','changements'));
     }
 
     /**

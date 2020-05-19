@@ -55,11 +55,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $changements = Validationchange::all();
+
         $messageries = Messagerie::where('student_id', $user->id)->get();
         $total = Presence::where('user_id',$user->id)->count();
         $presences = Presence::where('user_id',$user->id);
 
-        return view('user.show',compact('user','total','presences','messageries')); 
+        return view('user.show',compact('user','total','presences','messageries','changements')); 
     }
 
     /**

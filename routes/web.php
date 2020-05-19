@@ -1,5 +1,6 @@
 <?php
 
+use App\Validationchange;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
 
 Route::get('/calendrier', function() {
-    return view('calendrier');
+    $changements = Validationchange::all();
+
+    return view('calendrier',compact('changements'));
 })->name('calendrier')->middleware('connected','notMember');
  
 
@@ -49,7 +52,7 @@ Route::resource('form', 'FormController')->middleware('admin');
 Route::resource('newsletter', 'NewsletterController')->middleware('admin');
 // Ressources User
 
-Route::resource('user', 'UserController')->middleware('admin');
+Route::resource('user', 'UserController');
 
 // Ressources Info
 

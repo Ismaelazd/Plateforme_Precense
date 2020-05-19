@@ -44,88 +44,113 @@
                         </div>
                     </div>
                 </div>
-                <div class=" description  ">
-                    <form action="{{route('validationchange.store',$user->id)}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3 text-left" for="name ">Nom :</label>
-                            <input value="{{$user->name}}" type="text" name="name"
-                                class="form-control @error('name') is-invalid @enderror" id="name">
-                            @error('name')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3" for="firstname ">Prenom :</label>
-                            <input value="{{$user->firstname}}" type="text" name="firstname"
-                                class="form-control @error('firstname') is-invalid @enderror" id="firstname">
-                            @error('firstname')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3" for="email">Email :</label> <br>
-                            <input value="{{$user->email}}" type="email" name="email"
-                                class="form-control @error('email') is-invalid @enderror " id="email">
-                            @error('email')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group ">
-                            <label style="color: #120851;" class="h3" for="password">Mot de passe :</label>
-                            <input value="{{$user->password}}" type="password" name="password"
-                                class="form-control @error('password') is-invalid @enderror" id="password">
-                            @error('password')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3 text-left" for="tel ">Tel :</label>
-                            <input value="{{$user->tel}}" type="text" name="tel"
-                                class="form-control @error('tel') is-invalid @enderror" id="tel">
-                            @error('tel')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3 text-left" for="rue ">Rue :</label>
-                            <input value="{{$user->rue}}" type="text" name="rue"
-                                class="form-control @error('rue') is-invalid @enderror" id="rue">
-                            @error('rue')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group  ">
-                            <label style="color: #120851;" class="h3 text-left" for="ville ">Ville :</label>
-                            <input value="{{$user->ville}}" type="text" name="ville"
-                                class="form-control @error('ville') is-invalid @enderror" id="ville">
-                            @error('ville')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-9">
+                <div class="   ">
+                    <div class="row">
+                        <div class="col-6 px-5 px-5" style="
+                        border-right: 3px;
+                        border-left: 0px;
+                        border-style: solid;
+                        border-image: 
+                          linear-gradient(
+                            to bottom, 
+                            #120851, 
+                            rgba(0, 0, 0, 0)
+                          ) 1 100%;">
+                            <form action="{{route('validationchange.store',$user->id)}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3 text-left" for="name ">Nom :</label>
+                                    <input value="{{$user->name}}" type="text" name="name"
+                                        class="form-control @error('name') is-invalid @enderror" id="name">
+                                    @error('name')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3" for="firstname ">Prenom :</label>
+                                    <input value="{{$user->firstname}}" type="text" name="firstname"
+                                        class="form-control @error('firstname') is-invalid @enderror" id="firstname">
+                                    @error('firstname')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3" for="email">Email :</label> <br>
+                                    <input value="{{$user->email}}" type="email" name="email"
+                                        class="form-control @error('email') is-invalid @enderror " id="email">
+                                    @error('email')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                    
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3 text-left" for="tel ">Tel :</label>
+                                    <input value="{{$user->tel}}" type="text" name="tel"
+                                        class="form-control @error('tel') is-invalid @enderror" id="tel">
+                                    @error('tel')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3 text-left" for="rue ">Rue :</label>
+                                    <input value="{{$user->rue}}" type="text" name="rue"
+                                        class="form-control @error('rue') is-invalid @enderror" id="rue">
+                                    @error('rue')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group  ">
+                                    <label style="color: #120851;" class="h3 text-left" for="ville ">Ville :</label>
+                                    <input value="{{$user->ville}}" type="text" name="ville"
+                                        class="form-control @error('ville') is-invalid @enderror" id="ville">
+                                    @error('ville')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-9">
+                                        
+                                        <label style="color: #120851;" class="h3" for="image">Image :</label>
+                                        <input value="{{$user->image}}" type="file" name="image"
+                                            class="form-control @error('image') is-invalid @enderror" id="image">
+                                    </div>
+                                    <div class="col-3">
+        
+                                        <img src="{{asset('storage/'.$user->image)}}" alt="" class="img-fluid mx-auto" style="border-radius: 50%;">
+                                    </div>
+                                    @error('image')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                </div>
                                 
-                                <label style="color: #120851;" class="h3" for="image">Image :</label>
-                                <input value="{{$user->image}}" type="file" name="image"
-                                    class="form-control @error('image') is-invalid @enderror" id="image">
-                            </div>
-                            <div class="col-3">
-
-                                <img src="{{asset('storage/'.$user->image)}}" alt="" class="img-fluid mx-auto" style="border-radius: 50%;">
-                            </div>
-                            @error('image')
-                            <div class="alert alert-danger">{{  $message  }}</div>
-                            @enderror
-                        </div>
+                                <div class="text-center mt-5">
+                                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn  font-weight-bold">Enregistrer</button>
                         
-                        <div class="text-center mt-5">
-                            <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn  font-weight-bold">Enregistrer</button>
-                
+                                </div>
+                        
+                            </form>
                         </div>
-                
-                    </form>
+                        <div class="col-6 px-5">
+                            <h3 class="text-center" style="color: #120851;">Changer le mot de passe</h3>
+                            <div class="form-group ">
+                                <form action="{{route('myProfil.update',$user)}}" method="post" class="mt-5">
+                                    @csrf
+                                    @method('PUT')
+                                    <label style="color: #120851;" class="h3" for="password">Mot de passe :</label>
+                                    <input value="{{$user->password}}" type="password" name="password"
+                                        class="form-control @error('password') is-invalid @enderror" id="password">
+                                    @error('password')
+                                    <div class="alert alert-danger">{{  $message  }}</div>
+                                    @enderror
+                                    <div class="text-center mt-5">
+                                        <button style="color: #ffff; background-color: #120851 ;" title="Enregistrer" type="submit" class="btn  font-weight-bold">Enregistrer</button>
+                            
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
 
 
