@@ -72,7 +72,7 @@
                                     <h6>{{$form->email}}
                                       <span class="mailbox-read-time float-right">{{$form->created_at->format('d-m-Y H:i')}}</span></h6>
                                   </div>
-                                  <!-- /.mailbox-read-info -->
+                                  <!-- /.mailbox-read-info --> 
                                   <div class="mailbox-controls with-border text-center">
                                     <div class="btn-group">
                                       <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">

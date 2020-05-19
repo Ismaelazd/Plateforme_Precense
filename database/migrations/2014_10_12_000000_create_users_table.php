@@ -36,6 +36,7 @@ class CreateUsersTable extends Migration
             ->references('id')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            $table->boolean('bigcoach');
             $table->rememberToken();
             $table->timestamps();
         });
