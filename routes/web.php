@@ -65,6 +65,7 @@ Route::resource('about', 'AboutController')->middleware('admin');
 // Ressources Testimonial
 
 Route::resource('testimonial', 'TestimonialController')->middleware('admin');
+Route::post('testimonial/{id}/store','TestimonialController@store')->name('testimonial.store');
 
 
 

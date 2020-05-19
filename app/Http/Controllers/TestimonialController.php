@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestimonialController extends Controller
 {
@@ -37,13 +38,13 @@ class TestimonialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id'=> 'required',
-            'message'=> 'required|max:300',
+            'avis'=> 'required|max:300',
         ]);
 
         $testimonial = new Testimonial();
-        $testimonial->user_id = $request->input('user_id');
-        $testimonial->message = $request->input('message');
+        $testimonial->user_id = Auth::id();
+        $testimonial->message = $request->input('avis');
+        $testimonial->note = $request->input('note');
         $testimonial->save();
         return redirect()->route('testimonial.index');
     }
@@ -80,12 +81,12 @@ class TestimonialController extends Controller
     public function update(Request $request, Testimonial $testimonial)
     {
         $request->validate([
-            'user_id'=> 'required',
-            'message'=> 'required|max:300',
+            'avis'=> 'required|max:300',
         ]);   
 
-        $testimonial->user_id = $request->input('user_id');
-        $testimonial->message = $request->input('message');
+        $testimonial->user_id = Auth::id();
+        $testimonial->message = $request->input('avis');
+        $testimonial->note = $request->input('note');
         $testimonial->save();
         return redirect()->route('testimonial.index');
     }

@@ -181,6 +181,55 @@
                       </div>
                    
                 </div>
+
+
+                {{-- Testimonials --}}
+      @php
+      $testi = App\Testimonial::where('user_id',$user->id)->first();
+    @endphp
+    @if ($testi)
+        <h3>Testimonials</h3>
+        <label for="">Mon Avis:</label>
+            <p>{{$testi->message}}</p>
+            <label for="">Ma note:</label>
+
+            @for ($i = 0; $i < $testi->note; $i++)
+            <i class="fa fa-star rating_good"></i>
+            @endfor
+            @for ($i = 5; $i > $testi->note; $i--)
+                <i class="fa fa-star rating_bad"></i>
+            @endfor
+        
+    @else
+
+  
+        <div class="container">
+            <h3>Mon Avis sur MG Connect</h3>
+            <div class="card-footer" style="display: block;">
+                <form class="text-center" action="{{route('testimonial.store', $user->id)}}" method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="avis">Mon avis</label>
+                    <textarea name="avis"  cols="10" rows="3" placeholder="Votre avis ..." class="form-control " required></textarea>
+                    <label for="note">Ma note sur 5</label>
+                    <select class="form-control" name="note" id="">
+                        <option value="5">5</option>
+                        <option value="4">4</option>
+                        <option value="3">3</option>
+                        <option value="2">2</option>
+                        <option value="1">1</option>
+                        <option value="0">0</option>
+                    </select>
+                    <span class="input-group-append">
+                    <button type="submit" class="btn text-white my-0" style="background-color: #120851;" >Envoyer</button>
+                    </span>
+                </div>
+                </form>
+            </div>
+        </div>
+    @endif
+
+
                 {{-- liste des évènements --}}
                 <div class=" container  ">
 

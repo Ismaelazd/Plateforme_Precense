@@ -32,7 +32,7 @@ class WelcomeController extends Controller
         // }
         
         $changements = Validationchange::all();
-        $testimonials = Testimonial::all();
+        $testimonials = Testimonial::inRandomOrder()->take(8)->get();
         $slides = Slide::all();
         $info = Info::first();
         $about = About::first();
