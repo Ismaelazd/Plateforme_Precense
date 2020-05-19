@@ -26,7 +26,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('slide.create',compact('slides'));
+        return view('slide.add');
     }
 
     /**

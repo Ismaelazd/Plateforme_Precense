@@ -68,7 +68,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        return view('testimonial.index',compact('testimonial'));
+        return view('testimonial.edit',compact('testimonial'));
     }
 
     /**
@@ -84,11 +84,15 @@ class TestimonialController extends Controller
             'avis'=> 'required|max:300',
         ]);   
 
-        $testimonial->user_id = Auth::id();
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');
         $testimonial->save();
-        return redirect()->back();
+        if ($testimonial->user_id == Auth::id()) {
+           
+            return redirect()->route('myProfil.index');
+        }else{
+            return redirect()->route('user.show',$testimonial->user_id);
+        }
     }
 
     /**

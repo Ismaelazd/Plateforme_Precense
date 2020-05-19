@@ -54,7 +54,7 @@
 
 
         <div class="container mt-3">
-
+ 
             <div class="row pb-5 " >
                 {{--presentation de l'evenement --}}
                 <div class="col-6 px-5 " style="

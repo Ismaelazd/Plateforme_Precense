@@ -66,6 +66,12 @@ class AppServiceProvider extends ServiceProvider
             ],
             
             [
+                'text'    => 'Slides',
+                'icon'    => 'fas fa-fw fa-images',
+                'url'  => 'slide',
+                
+            ],
+            [
                 'text'    => 'About',
                 'icon'    => 'fas fa-fw fa-info-circle',
                 'url'  => 'about',
@@ -82,13 +88,8 @@ class AppServiceProvider extends ServiceProvider
                 'text'    => 'Newsletter',
                 'icon'    => 'fas fa-fw fa-mail-bulk',
                 'url'  => 'newsletter',
-            ],
-            [
-                'text'    => 'Testimonials',
-                'icon'    => 'fas fa-fw fa-folder-open',
-                'url'  => 'testimonial',
-                
             ]
+     
             
         );
         });

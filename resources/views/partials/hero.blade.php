@@ -16,7 +16,10 @@
                         </div>
                         <div class="col-lg-6">
                             <div class="hero__img">
-                                <img src="{{asset('storage/'.$slide->image)}}" alt="">
+                                <img src="{{asset('storage/'.$slide->image)}}" class="@if ($slide->image == 'calender.png')
+                                    w-75 ml-auto
+                               
+                                @endif" alt="">
                             </div>
                         </div>
                     </div>

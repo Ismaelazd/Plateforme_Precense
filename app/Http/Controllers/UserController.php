@@ -142,10 +142,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->image!= 'team/team-3.jpg') {
+        if ($user->image!= 'avatar.png') {
             Storage::disk('public')->delete($user->image);
         }
-        $user->save();
+        $user->delete();
         return redirect()->back();
     }
 

@@ -20,7 +20,7 @@
     <form action="{{route('user.update',$user)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="form-group text-darka ">
+        <div class="form-group ">
             <label class="h3" for="name ">Nom :</label>
             <input value="{{$user->name}}" type="text" name="name"
                 class="form-control @error('name') is-invalid @enderror" id="name">
@@ -28,7 +28,7 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka ">
+        <div class="form-group ">
             <label class="h3" for="firstname ">Prénom :</label>
             <input value="{{$user->firstname}}" type="text" name="firstname"
                 class="form-control @error('firstname') is-invalid @enderror" id="firstname">
@@ -36,7 +36,7 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka ">
+        <div class="form-group ">
             <label class="h3" for="email">Email :</label> <br>
             <input value="{{$user->email}}" type="email" name="email"
                 class="form-control @error('email') is-invalid @enderror" id="email">
@@ -44,7 +44,7 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka ">
+        <div class="form-group ">
             <label class="h3" for="tel">Tel :</label> <br>
             <input value="{{$user->tel}}" type="tel" name="tel"
                 class="form-control @error('tel') is-invalid @enderror" id="tel">
@@ -52,14 +52,14 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka ">
+        <div class="form-group ">
             <label class="h3" for="rue ">Rue :</label>
             <input value="{{$user->rue}}" type="text" name="rue"
                 class="form-control @error('rue') is-invalid @enderror" id="rue">
             @error('rue')
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
-        </div><div class="form-group text-darka ">
+        </div><div class="form-group ">
             <label class="h3" for="ville ">Ville :</label>
             <input value="{{$user->ville}}" type="text" name="ville"
                 class="form-control @error('ville') is-invalid @enderror" id="ville">
@@ -67,7 +67,7 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka">
+        <div class="form-group">
             <label class="h3" for="role_id">Role :</label>
             <select class="form-control" name="role_id" id="role_id">
                 @foreach ($roles as $role)
@@ -82,7 +82,7 @@
             <div class="alert alert-danger">{{  $message  }}</div>
             @enderror
         </div>
-        <div class="form-group text-darka">
+        <div class="form-group">
             <label class="h3" for="classe_id">Classe :</label>
             <select class="form-control" name="classe_id" id="classe_id">
                 @foreach ($classes as $classe)

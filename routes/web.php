@@ -64,7 +64,7 @@ Route::resource('about', 'AboutController')->middleware('admin');
 
 // Ressources Testimonial
 
-Route::resource('testimonial', 'TestimonialController')->middleware('admin');
+Route::resource('testimonial', 'TestimonialController');
 Route::post('testimonial/{id}/store','TestimonialController@store')->name('testimonial.store');
 
 
@@ -87,3 +87,8 @@ Route::post('validationchange/{id}/store','ValidationchangeController@store')->n
 
 //messagerie
 Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store');
+
+
+// Ressources Slide
+
+Route::resource('slide', 'SlideController')->middleware('admin');

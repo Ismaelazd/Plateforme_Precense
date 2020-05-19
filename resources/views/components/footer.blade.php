@@ -129,14 +129,14 @@
                 </div>
             </div>
             <div class="footer__text-copyright">
-                <p>
+                <p class="text-white">
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;<script>
                         document.write(new Date().getFullYear());
 
                     </script> 
-                    All rights reserved | This template is made with <i class="fa fa-heart"
-                        aria-hidden="true"></i> by <a href="https://molengeek.com" target="_blank">MolengeekTeam</a>
+                    All rights reserved | This template is made with <i class="fa fa-heart text-danger"
+                        aria-hidden="true"></i> by <a href="https://molengeek.com" target="_blank" class="text-secondary">MolengeekTeam</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>

@@ -48,17 +48,22 @@
 
                         </h2>
                         <div class="icon-block d-flex justify-content-center">
+                            <button class="btn">
 
-                            <a title="Edit" href="{{route('user.edit',$user)}}"><i
-                                class="fas fa-pencil-alt"></i></a>
+                                <a title="Edit" href="{{route('user.edit',$user)}}"><i
+                                        class=" fas fa-pencil-alt"></i></a>
 
-                                <form action="{{route('user.destroy',$user)}}" method="post">
+                            </button>
+
+                            <form action="{{route('user.destroy',$user)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <a title="Delete" href=""> <i class="fa fa-trash"></i></a>
-                                </form>
-                           
-                            {{-- <a title="Newsletter" class="disabled" href="{{route('newsletter.index')}}"><i class="fa fa-envelope-square"></i></a> --}}
+                                <button class="btn " type="submit" title="Delete"> <i class="fa fa-trash"></i></button>
+
+                            </form>
+
+                            {{-- <a title="Newsletter" class="disabled" href="{{route('newsletter.index')}}"><i
+                                class="fa fa-envelope-square"></i></a> --}}
 
                         </div>
                     </div>

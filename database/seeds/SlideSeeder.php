@@ -22,7 +22,7 @@ class SlideSeeder extends Seeder
             'sous_titre' => 'Plateform connexion',
             'titre_un' => 'Welcome, dear coach,',
             'titre_deux' => 'to MGConnect',
-            'image' => 'hero/hero-right.png',
+            'image' => 'calender.png',
         ]);   
     }
 }
