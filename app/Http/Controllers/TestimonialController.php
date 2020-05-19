@@ -35,14 +35,14 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
         $request->validate([
             'avis'=> 'required|max:300',
         ]);
 
         $testimonial = new Testimonial();
-        $testimonial->user_id = Auth::id();
+        $testimonial->user_id = $id;
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');
         $testimonial->save();
@@ -68,7 +68,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        return view('testimonial.index',compact('testimonial'));
+        return view('testimonial.edit',compact('testimonial'));
     }
 
     /**
@@ -77,14 +77,13 @@ class TestimonialController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Testimonial  $testimonial
      * @return \Illuminate\Http\Response
-     */
+     */  
     public function update(Request $request, Testimonial $testimonial)
     {
         $request->validate([
             'avis'=> 'required|max:300',
         ]);   
 
-        $testimonial->user_id = Auth::id();
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');
         $testimonial->save();
@@ -99,7 +98,8 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        $testimonial->delete();
-        return redirect()->route('testimonial.index');
+        $testimonial->delete(); 
+        return redirect()->back();
     }
 }
+  

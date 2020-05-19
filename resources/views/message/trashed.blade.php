@@ -55,7 +55,7 @@
                                    
                                  
                                     <li class="nav-item">
-                                      <a href="{{route('form.trash')}}" class="nav-link">
+                                      <a href="#" class="nav-link">
                                         <i class="far fa-trash-alt"></i> Trash
                                       </a>
                                     </li>
@@ -138,6 +138,18 @@
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{$form->created_at->diffForHumans()}}</td>
+                                            <td >
+                                              <form action="{{route('form.forceDestroy',$form->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit">delete</button>
+                                              </form>
+                                              <form action="{{route('form.restore',$form->id)}}" method="post">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit">restaurer</button>
+                                              </form>
+                                            </td>
                                           </tr>
                                           @endforeach
                                           @endif

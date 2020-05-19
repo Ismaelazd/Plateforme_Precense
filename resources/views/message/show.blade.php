@@ -75,8 +75,12 @@
                                   <!-- /.mailbox-read-info --> 
                                   <div class="mailbox-controls with-border text-center">
                                     <div class="btn-group">
-                                      <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
-                                        <i class="far fa-trash-alt"></i></button>
+                                    <form action="{{route('form.destroy',$form)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Delete">
+                                      <i class="far fa-trash-alt"></i></button>
+                                    </form>
                                       <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Reply">
                                         <i class="fas fa-reply"></i></button>
                                       <button type="button" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="Forward">
