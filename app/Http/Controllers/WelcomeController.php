@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Event;
 
 use App\About;
+use App\Classe;
 use App\Info;
 use App\Slide;
 use App\Testimonial;
@@ -38,7 +39,10 @@ class WelcomeController extends Controller
         $about = About::first();
         $coachs = User::where('role_id',2)->where('bigcoach',false)->inRandomOrder()->take(4)->get();
         $bigcoach = User::where('bigcoach',true)->first();
-        return view('welcome',compact('coachs','info','about','testimonials','slides','changements','bigcoach'));
+        $allCoachs = User::where('role_id',2)->get();
+        $allStudents = User::where('role_id',3)->get();
+        $allClasses = Classe::all();
+        return view('welcome',compact('coachs','info','about','testimonials','slides','changements','bigcoach','allCoachs','allStudents','allClasses'));
     }
 
     /**
