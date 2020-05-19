@@ -92,7 +92,7 @@
 
 
  {{-- Messagerie --}}
- <div style="width: 400px" class="messagerie container mt-5">
+ <div id="messagerie" style="width: 400px" class="messagerie container mt-5">
     <h3 class="text-center">Messagerie</h3>
     <div class="card  cardutline direct-chat " >
         <div class="card-header  d-flex align-items-center justify-content-between" style="background-color: #120851;">
@@ -143,7 +143,7 @@
           <form class="text-center" action="{{route('messagerie.store', $user->id)}}" method="post">
             @csrf
             <div class="input-group">
-              <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+              <input type="text" name="message" placeholder="Type Message ..." class="form-control" required>
               <span class="input-group-append">
                 <button type="submit" class="btn text-white my-0" style="background-color: #120851;" >Send</button>
               </span>
