@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classe;
+use App\Messagerie;
 use Illuminate\Http\Request;
 use App\User;
 use App\Presence;
@@ -54,11 +55,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-
+        $messageries = Messagerie::where('student_id', $user->id)->get();
         $total = Presence::where('user_id',$user->id)->count();
         $presences = Presence::where('user_id',$user->id);
 
-        return view('user.show',compact('user','total','presences')); 
+        return view('user.show',compact('user','total','presences','messageries')); 
     }
 
     /**

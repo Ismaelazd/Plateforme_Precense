@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Messagerie;
-use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 
-class MyProfilController extends Controller
+class MessagerieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,10 +18,7 @@ class MyProfilController extends Controller
      */
     public function index()
     {
-        $messageries = Messagerie::where('student_id' , Auth::id())->get();
-        $user = Auth::user();
-        $roles = Role::all();
-        return view('profil.myProfil',compact('user','roles','messageries'));
+        //
     }
 
     /**
@@ -42,18 +37,27 @@ class MyProfilController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'message' => 'required|max:300',
+        ]);
+        $student = User::find($id);
+        $messagerie = new Messagerie();
+        $messagerie->student_id  = $student->id;
+        $messagerie->ecrivain_id  = Auth::id();
+        $messagerie->message  = $request->input('message');
+        $messagerie->save();
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Messagerie  $messagerie
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Messagerie $messagerie)
     {
         //
     }
@@ -61,42 +65,35 @@ class MyProfilController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Messagerie  $messagerie
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Messagerie $messagerie)
     {
-        // $roles = Role::all();
-        $user = Auth::user();
-        return view('profil.editMyProfil',compact('user','roles'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Messagerie  $messagerie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Messagerie $messagerie)
     {
-        $request->validate([
-            'password'=>'required',
-        ]);
-
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
-        return redirect()->route('myProfil.index');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Messagerie  $messagerie
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Messagerie $messagerie)
     {
-        //
+        $messagerie->delete();
+        return redirect()->back();
     }
 }

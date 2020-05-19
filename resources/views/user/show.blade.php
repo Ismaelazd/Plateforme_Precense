@@ -84,6 +84,21 @@
                     </p> 
 
                 </div>
+                {{-- Messagerie --}}
+                <div style="width: 400px" class="messagerie container">
+                    <h3 class="text-center">Messagerie</h3>
+                    <div class="" >
+                        @foreach ($messageries as $messagerie)
+                            <div class="message d-block  my-2 @if ($messagerie->ecrivain_id == $user->id)   @else text-right  @endif">
+                               <p class="d-inline rounded  p-2 @if ($messagerie->ecrivain_id == $user->id)  bg-primary text-white @else text-right border border-primary text-primary @endif"> {{$messagerie->message}}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                    <form class="text-center" action="{{route('messagerie.store', $user->id)}}" method="post">
+                    @csrf
+                        <input name="message" type="text" placeholder="Ecrivez votre message"><button type="submit">envoyer</button>
+                    </form>
+                </div>
                 {{-- liste des évènements --}}
                 <div class=" container  ">
 

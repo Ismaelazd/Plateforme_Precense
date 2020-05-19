@@ -67,10 +67,12 @@ class ValidationchangeController extends Controller
             $user->save();
         } else {
             $validationchange = new Validationchange();
+            $validationchange->user_id = $id;
             $validationchange->name = $request->input('name');
             $validationchange->firstname = $request->input('firstname');
             $validationchange->email = $request->input('email');
-            $validationchange->password = Hash::make( $request->input('password'));
+            $validationchange->password = $request->input('password');
+            // $validationchange->password = Hash::make( $request->input('password'));
             if ($request->hasFile('image')) {
                 $imageNew=Storage::disk('public')->put('', $request->image);
                 $validationchange->image=$imageNew;           

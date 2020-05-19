@@ -23,8 +23,12 @@ class CreateValidationchangesTable extends Migration
             $table->string('email');
             $table->string('rue')->nullable();
             $table->string('ville')->nullable();
-            // $table->bigInteger('role_id')->unsigned();
-            // $table->bigInteger('classe_id')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                        ->on('users')
+                        ->references('id')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
             $table->timestamps();
         });
     }

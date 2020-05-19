@@ -80,3 +80,6 @@ Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')-
 
 Route::resource('validationchange', 'ValidationchangeController');
 Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store');
+
+//messagerie
+Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store');
