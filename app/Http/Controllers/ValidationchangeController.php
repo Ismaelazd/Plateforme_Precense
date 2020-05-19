@@ -17,8 +17,9 @@ class ValidationchangeController extends Controller
      */
     public function index()
     {
-        $validationchanges = Validationchange::all();
-        return view('validationchange.index',compact('validationchanges'));
+        
+        $changements = Validationchange::all();
+        return view('validationchange.index',compact('changements'));
     }
 
     /**
@@ -44,7 +45,6 @@ class ValidationchangeController extends Controller
             'name'=> 'required',
             'firstname'=> 'required',
             'email'=>'required|unique:users,email,'.$id,
-            'password'=> 'required',
             'image' => 'sometimes|image',
             'tel'=> 'sometimes|max:150',
             'rue'=> 'sometimes|max:150',
@@ -54,7 +54,6 @@ class ValidationchangeController extends Controller
             $user->name = $request->input('name');
             $user->firstname = $request->input('firstname');
             $user->email = $request->input('email');
-            $user->password = $request->input('password');
             if ($request->hasFile('image')) {
                 $imageNew=Storage::disk('public')->put('', $request->image);
                 $user->image=$imageNew;           
@@ -67,10 +66,10 @@ class ValidationchangeController extends Controller
             $user->save();
         } else {
             $validationchange = new Validationchange();
+            $validationchange->user_id = $id;
             $validationchange->name = $request->input('name');
             $validationchange->firstname = $request->input('firstname');
             $validationchange->email = $request->input('email');
-            $validationchange->password = Hash::make( $request->input('password'));
             if ($request->hasFile('image')) {
                 $imageNew=Storage::disk('public')->put('', $request->image);
                 $validationchange->image=$imageNew;           
@@ -122,7 +121,6 @@ class ValidationchangeController extends Controller
         $user->name = $validationchange->name;
         $user->firstname = $validationchange->firstname;
         $user->email = $validationchange->email;
-        $user->password = $validationchange->password;        
         if ($user->image== 'avatar.png') {
             $user->image=$validationchange->image;
         }else {
@@ -131,7 +129,7 @@ class ValidationchangeController extends Controller
         }
         $user->save();
         $validationchange->delete();
-        return redirect()->route('validateChange.index');
+        return redirect()->route('validationchange.index');
     }
 
     /**
@@ -143,7 +141,7 @@ class ValidationchangeController extends Controller
     public function destroy(Validationchange $validationchange)
     {
         $validationchange->delete();
-        return redirect()->route('validateChange.index');
+        return redirect()->route('validationchange.index');
 
     }
 }

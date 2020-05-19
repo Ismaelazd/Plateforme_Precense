@@ -17,12 +17,17 @@ class CreateValidationchangesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('firstname');
-            $table->string('password');
             $table->string('image')->nullable();
             $table->string('tel')->nullable();
             $table->string('email');
             $table->string('rue')->nullable();
             $table->string('ville')->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')
+                        ->on('users')
+                        ->references('id')
+                        ->onDelete('cascade')
+                        ->onUpdate('cascade');
             // $table->bigInteger('role_id')->unsigned();
             // $table->bigInteger('classe_id')->unsigned()->nullable();
             $table->timestamps();

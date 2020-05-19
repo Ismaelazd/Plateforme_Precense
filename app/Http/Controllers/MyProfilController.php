@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Role;
 use App\User;
+use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class MyProfilController extends Controller
@@ -17,9 +19,11 @@ class MyProfilController extends Controller
      */
     public function index()
     {
+        $changements = Validationchange::all();
+
         $user = Auth::user();
         $roles = Role::all();
-        return view('profil.myProfil',compact('user','roles'));
+        return view('profil.myProfil',compact('user','roles','changements'));
     }
 
     /**
@@ -62,9 +66,9 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
-        // $roles = Role::all();
+        $changements = Validationchange::all();
         $user = Auth::user();
-        return view('profil.editMyProfil',compact('user','roles'));
+        return view('profil.editMyProfil',compact('user','roles','changements'));
     }
 
     /**
@@ -76,30 +80,13 @@ class MyProfilController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // $request->validate([
-        //     'name'=> 'required',
-        //     'firstname'=> 'required',
-        //     'email'=>'required|unique:users,email,'.$user->id,
-        //     'password'=>'required',
-        // ]);
+        $request->validate([
+            'password'=>'required',
+        ]);
 
-        // $user = Auth::user();
-
-        // if($request->hasFile('image')) {
-        //     Storage::disk('public')->delete($user->image);
-        //     $imageNew=Storage::disk('public')->put('', $request->image);
-        //     $user->image=$imageNew;
-        // }
-
-        // $user->name = $request->input('name');
-        // $user->firstname = $request->input('firstname');
-        // $user->email = $request->input('email');
-        // $user->password = $request->input('password');
-        // $user->tel = $request->input('tel');
-        // $user->rue = $request->input('rue');
-        // $user->ville = $request->input('ville');
-        // $user->save();
-        // return redirect()->route('myProfil.index');
+        $user->password = Hash::make($request->input('password'));
+        $user->save();
+        return redirect()->route('myProfil.index');
     }
 
     /**

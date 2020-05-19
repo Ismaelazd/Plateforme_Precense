@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Classe;
+use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +17,10 @@ class EventController extends Controller
      */
     public function index()
     {
+        $changements = Validationchange::all();
+
         $events = Event::all();
-        return view('event.index',compact('events'));
+        return view('event.index',compact('events','changements'));
     }
 
     /**
@@ -27,8 +30,10 @@ class EventController extends Controller
      */
     public function create()
     {
+        $changements = Validationchange::all();
+
         $classes = Classe::all();
-        return view('event.create',compact('classes'));
+        return view('event.create',compact('classes','changements'));
     }
 
     /**
@@ -66,10 +71,12 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $changements = Validationchange::all();
+
         $presences = $event->getPresences()->get();
         $precense = $presences->where('user_id',Auth::id());
         if ($event) {
-            return view('event/show',compact('event','precense','presences'));
+            return view('event/show',compact('event','precense','presences','changements'));
         }else {
             return redirect()->back();
         }

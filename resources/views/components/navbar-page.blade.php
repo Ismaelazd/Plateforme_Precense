@@ -27,8 +27,13 @@
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
                         @endif
                         @if(Auth::check() && Auth::user()->role_id == 2)
-                            
-                        <li><a href="{{route('validationchange.index')}}">Changement</a></li>
+                            @if (count($changements) == 0)
+                            <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
+
+                            @else
+                                
+                            <li class=""><a href="{{route('validationchange.index')}}">Changements <span class="ml-3 badge badge-light">{{count($changements)}}</span></a></li>
+                            @endif
                     
                         @endif
                     
