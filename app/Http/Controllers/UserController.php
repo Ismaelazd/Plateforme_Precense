@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['show']]);
+    }
     /**
      * Display a listing of the resource.
      *

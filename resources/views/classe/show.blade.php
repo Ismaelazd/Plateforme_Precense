@@ -117,11 +117,14 @@
                                             href="{{route('user.show',$coach)}}"><i class="fa fa-eye"></i>
                                         </a>
                                     </div> --}}
+                                    @if (Auth::user()->id == $coach->id )
+                                        
                                     <div class="col-sm-4 col-md-4">
                                         <a class="  btn btn-warning rounded mx-3 text-white"
-                                            href="{{route('user.edit',$coach)}}"><i class="fas fa-pencil-alt"></i>
+                                            href="{{route('myProfil.edit',$coach)}}"><i class="fas fa-pencil-alt"></i>
                                         </a>
                                     </div>
+                                    @endif
 
                                 </div>
                             </div>
