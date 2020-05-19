@@ -14,7 +14,8 @@ class AboutSeeder extends Seeder
     {
         DB::table('abouts')->insert([
             'titre' => 'WELCOM TO MGCONNECT',
-            'texte' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.',
+            'texte' => "La plateforme MGConnect est un endroit où les coach et les students de MolenGeek sont réunis dans des classes virtuelles. Elle a pour but de digitaliser le système de prise de présence, de communication et d'échanges, que ce
+            soit pour nos étudiants ou pour notre équipe.",
             'img' => 'about-us.png',
         ]);
 
