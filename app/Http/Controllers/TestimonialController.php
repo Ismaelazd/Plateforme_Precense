@@ -46,7 +46,7 @@ class TestimonialController extends Controller
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');
         $testimonial->save();
-        return redirect()->route('testimonial.index');
+        return redirect()->back();
     }
 
     /**
@@ -88,7 +88,7 @@ class TestimonialController extends Controller
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');
         $testimonial->save();
-        return redirect()->route('testimonial.index');
+        return redirect()->back();
     }
 
     /**
