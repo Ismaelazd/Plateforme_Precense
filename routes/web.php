@@ -74,13 +74,15 @@ Route::post('testimonial/{id}/store','TestimonialController@store')->name('testi
 Route::get('formTrashed', 'FormController@trash')->name('form.trash')->middleware('admin');
 
 // delete et donc mettre dans la corbeille
-// Route::delete('form/{form}/destroy', 'ServiceController@destroy')->name('form.destroy');
+// Route::delete('form/{form}/destroy', 'FormController@destroy')->name('form.destroy');
 
 //pour delete definitivement
 Route::delete('form/{id}/force', 'FormController@forceDestroy')->name('form.forceDestroy')->middleware('admin');
 
 // pour restaurer 
 Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')->middleware('admin');
+
+
 
 Route::resource('validationchange', 'ValidationchangeController');
 Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store');

@@ -108,14 +108,34 @@ class FormController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Form  $form
-     * @return \Illuminate\Http\Response
-     */
+ 
+    // pour delete et donc mettre dans la corbeil
+
     public function destroy(Form $form)
     {
-        //
+        $form->delete();
+        return  redirect()->route('form.index');
+    }
+
+    // pour delete definitivement 
+    public  function  forceDestroy( $id)
+    {
+        $form = Form::withTrashed()->whereId($id)->firstOrFail();
+        Form::withTrashed()->whereId($id)->firstOrFail()->forceDelete();
+        return  back()->with('info','Le message a été supprimé définitivement');
+    }
+
+    // pour restaurer 
+    public  function  restore( $id)
+    {
+        Form::withTrashed()->whereId($id)->firstOrFail()->restore();
+        return  back()->with('info','Le message a été restauré');
+    }
+    // pour afficher le tableau des services deleté 
+    public  function  trash(){
+        
+        $messages = Form::onlyTrashed()->get();
+        $unread = Form::where('read',false)->get();
+        return  view('message/trashed',compact('unread','messages'));
     }
 }
