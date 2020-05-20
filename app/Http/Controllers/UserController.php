@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Classe;
+use App\Event;
 use App\Messagerie;
 use Illuminate\Http\Request;
 use App\User;
 use App\Presence;
 use App\Role;
 use App\Validationchange;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -59,13 +61,37 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        
         $changements = Validationchange::all();
 
         $messageries = Messagerie::where('student_id', $user->id)->get();
-        $total = Presence::where('user_id',$user->id)->count();
-        $presences = Presence::where('user_id',$user->id);
+        // $total = Presence::where('user_id',$user->id)->count();
 
-        return view('user.show',compact('user','total','presences','messageries','changements')); 
+
+
+
+
+
+        $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
+        // dd($total->where('user_id',$user->id));
+        // dd($total);
+
+        $related = $total->first();
+        if($total->first()){
+            foreach ($total as $item) {
+                    $related = $related->merge($item);
+            }
+        }
+        $toutespresences = $related;
+        $presences = $toutespresences->where('user_id',$user->id);
+
+
+
+
+
+
+
+        return view('user.show',compact('user','total','messageries','changements','presences')); 
     }
 
     /**
