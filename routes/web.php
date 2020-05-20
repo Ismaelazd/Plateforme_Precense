@@ -45,11 +45,11 @@ Route::resource('myProfil', 'MyProfilController')->middleware('connected');
 
 // Ressources Formulaire
 
-Route::resource('form', 'FormController')->middleware('admin');
+Route::resource('form', 'FormController');
 
 // Ressources NEWSLETTER
 
-Route::resource('newsletter', 'NewsletterController')->middleware('admin');
+Route::resource('newsletter', 'NewsletterController');
 // Ressources User
 
 Route::resource('user', 'UserController');

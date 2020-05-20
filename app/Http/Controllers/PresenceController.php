@@ -131,7 +131,34 @@ class PresenceController extends Controller
             $presence->file = $newName;
         }
         $presence->note = $request->input('note');
-        $presence->etatfinal_id = $request->input('etatfinal_id');
+        if (Auth::id()!=3) {
+            $presence->etatfinal_id = $request->input('etatfinal_id');
+        } else {
+            if ($request->input('etat_id')==1) {
+                $presence->etatfinal_id = 1;
+            }else{
+                if ($request->input('etat_id')==3) {
+                    //si etat = retard => etat final = present avec retard 
+                    $presence->etatfinal_id = 2; 
+                } else {
+                    if ($request->input('etat_id')==2 && ($request->hasFile('file') || !empty($request->input('note')))) {
+                        //si etat = absent et que note ou justificatif est present => etat final = Absences avec justificatif 
+                        $presence->etatfinal_id = 4; 
+                    } else {
+                        if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($event)->start) ) {
+                            //si etat = absent et que ni note ni justificatif mais a prevenu => etat final = Absences annoncées 
+                            $presence->etatfinal_id = 6; 
+                        } else {
+                            if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note')))) {
+                                //si etat = absent et que ni note ni justificatif est present => etat final = Absences injustifiée 
+                                $presence->etatfinal_id = 5; 
+                            } 
+                        } 
+                    } 
+                } 
+        }
+    }
+        
 
         $presence->save();
         return redirect()->route('user.show',$presence->user_id);

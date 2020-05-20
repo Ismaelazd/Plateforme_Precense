@@ -55,18 +55,9 @@
 
         <div class="container mt-3">
  
-            <div class="row pb-5 " >
+            <div class="row pb-5 justify-content-center " >
                 {{--presentation de l'evenement --}}
-                <div class="col-6 px-5 " style="
-                border-right: 3px;
-                border-left: 0px;
-                border-style: solid;
-                border-image: 
-                  linear-gradient(
-                    to bottom, 
-                    #120851, 
-                    rgba(0, 0, 0, 0)
-                  ) 1 100%;">
+                <div class="col-6 px-5 " >
                   <div class="card-header text-center text-white" style="background-color: #120851;">
                     <h3 class="card-title">Info sur l'évènement</h3>
                 </div>
@@ -124,69 +115,25 @@
 
 
                 {{-- Definir le statut de presence --}}
-                @if (!($presences->where('user_id',Auth::id())->first()))
-
-                <div class="col-6 px-5 ">
-                    <div class="card ">
-
+                @if (Auth::user()->role_id==3)
                     
-                    <div class="card-header text-center text-white" style="background-color: #120851;">
-                        <h3 class="card-title" >Definir mon statut</h3>
-                    </div>
-                    <form action="{{route('presence.add',$event->id)}}" method="post" enctype="multipart/form-data">
-                        @csrf
+                <div class="col-6 px-5 " style="
 
-                        <div class="card-body">
-
-                            <div class="form-group">
-                                <label for="file">Piece jointe</label>
-                                <input class="form-control" type="file" name="file" id="">
-                                @error('file')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="note">Note</label>
-                                <textarea class="form-control" name="note" id="" cols="30" rows="5"
-                                    placeholder="Note"></textarea>
-                                @error('note')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label for="etat_id">Statut</label>
-                                <select class="form-control" name="etat_id" id="">
-                                    <option value="1">Présent</option>
-                                    <option value="2">Absent</option>
-                                    <option value="3">Retard</option>
-                                </select>
-                                @error('etat_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-
-                        </div>
-
-                        <div class="card-footer text-center">
-                            <button type="submit" class="btn text-white" style="background-color: #120851;">Envoyer</button>
-                        </div>
-                    </form>
-                </div>
-                </div>
-                @else
+                border-right: 0px;
+                border-left: 3px;
+                border-style: solid;
+                border-image: 
+                  linear-gradient(
+                    to bottom, 
+                    #120851, 
+                    rgba(0, 0, 0, 0)
+                  ) 1 100%;">
+                    
                 @php
                 $utilisateur = $presences->where('user_id',Auth::id())->first()
 
                 @endphp
-                <div>
+                <div >
                     <p>{{$utilisateur->getUser->name}}</p>
                     <p
                         class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
@@ -220,7 +167,6 @@
                 @endif
 
 
-
             </div>
 
             {{-- presences enregistrées --}}
@@ -232,6 +178,10 @@
               linear-gradient(
                 90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
               ) 1 1 100%;">
+
+            <div class="text-right"><p>{{count($presences->where('etat_id',1))}} sur {{count($presences)}} élève(s) présent(s)</p></div>
+            <div class="text-right"><p>{{count($presences->where('etat_id',2))}} sur {{count($presences)}} élève(s) absent(s)</p></div>
+            <div class="text-right"><p>{{count($presences->where('etat_id',3))}} sur {{count($presences)}} élève(s) en retard(s)</p></div>
 
                 <table class="table table-striped table-light rounded">
                     <thead class="text-white" style="background-color: #120851;">

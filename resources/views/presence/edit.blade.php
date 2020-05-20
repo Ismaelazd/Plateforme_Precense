@@ -153,32 +153,33 @@
                             @enderror
                       </div>
 
-                      <div class="form-group">
-                        <label  for="etatfinal_id">Statut Final</label>
-                          <select class="form-control @error('etatfinal_id') is-invalid @enderror" name="etatfinal_id" id="">
-                            @foreach ($etatfinals as $etatfinal)
-                                @if ($etatfinal->id == old('etatfinal_id',$presence->etatfinal_id))
-                                    <option selected value="{{$etatfinal->id }}">{{$etatfinal->etatfinal}} </option>
-                                @else
-                                    <option value="{{$etatfinal->id }}">{{$etatfinal->etatfinal}} </option>
-                                @endif
-                            @endforeach
-                       
-                          </select>  
-                          @error('etatfinal_id')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                          @enderror
-                      </div>
+                      @if (Auth::id()!=3)
+                        <div class="form-group">
+                            <label  for="etatfinal_id">Statut Final</label>
+                            <select class="form-control @error('etatfinal_id') is-invalid @enderror" name="etatfinal_id" id="">
+                                @foreach ($etatfinals as $etatfinal)
+                                    @if ($etatfinal->id == old('etatfinal_id',$presence->etatfinal_id))
+                                        <option selected value="{{$etatfinal->id }}">{{$etatfinal->etatfinal}} </option>
+                                    @else
+                                        <option value="{{$etatfinal->id }}">{{$etatfinal->etatfinal}} </option>
+                                    @endif
+                                @endforeach
+                        
+                            </select>  
+                            @error('etatfinal_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                      @endif
                 
                     </div>
                 
                     <div class="card-footer text-center">
                         <button type="submit" class="btn text-white" style="background-color: #120851;">Envoyer</button>
                   
-                        <a  class="btn btn-danger text-white" data-toggle="modal"
-                        data-target="#deleteStatut{{$presence->id}}">Supprimer ce Statut</a>
+                        
                     </div>
                     </form>
                   </div>
