@@ -116,18 +116,18 @@
                                                   <td class="mailbox-subject d-flex justify-content-center"><b class="">Boite mail vide</b>
                                                   </td>
                                                   
-                                                  
+                                                    
 
-                                              </tr>
+                                              </tr>        
                                           @else
                                           @foreach ($messages as $form)
                                             <tr style="{{$form->read ? "" : "background-color:rgb(253, 132, 132);"}}">
                                             <td>
                                               <div class="icheck-primary">
                                                 <input type="checkbox" value="" id="check2">
-                                                <label for="check2"></label>
+                                                <label for="check2"></label> 
                                               </div>
-                                            </td>
+                                            </td>   
                                             <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
                                             @php
                                                 $nom =$form->firstname . ' ' . $form->name;
