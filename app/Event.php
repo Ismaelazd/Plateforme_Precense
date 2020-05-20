@@ -10,17 +10,16 @@ class Event extends Model
         return $this->belongsTo('App\Classe','classe_id');
     }
 
-
     public function getPresences(){
         return $this->hasMany('App\Presence','event_id');
     }
     public function getClasses(){
         return $this->hasMany('App\Classe','classe_id');
     }
-
-  
- 
-
+    
+    
+   
+    
     
 
     

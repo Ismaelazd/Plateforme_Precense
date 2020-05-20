@@ -63,7 +63,7 @@
                     <p>Total: {{count($total)}} jours</p> 
            
                     {{-- <p>Presences: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count()}} jours <br> --}}
-                    <p>Presences: {{$presences->where('etatfinal_id',5)->count()}} jours <br>
+                    <p>Presences: {{$presences->where('etatfinal_id',2)->count()}} jours <br>
                     %: 
                     @if (count($total)==0)
                         0
@@ -73,60 +73,7 @@
                     @endif
                     </p> 
 
-                    {{-- <p>Retards: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count()}} jours <br> --}}
-                    <p>Retards: {{$presences->where('etatfinal_id',2)->count()}} jours <br>
-                    %: 
-                    @if (count($total)==0)
-                        0
-                    @else
-                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$total*100}}  --}}
-                        {{($presences->where('etatfinal_id',2)->count())/count($total)*100}} 
-                    @endif
-                    </p> 
-
-                    {{-- <p>Absences: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',3)->count()}} jours <br> --}}
-                    <p>Absences: {{$presences->where('etatfinal_id',3)->count()}} jours <br>
-                    %: 
-                    @if (count($total)==0)
-                        0
-                    @else
-                        {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',3)->count())/$total*100}}  --}}
-                        {{($presences->where('etatfinal_id',3)->count())/count($total)*100}} 
-                    @endif
-                    </p> 
-
-                    {{-- <p>Justifiées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count()}} jours <br> --}}
-                    <p>Justifiées: {{$presences->where('etatfinal_id',4)->count()}} jours <br>
-                    %: 
-                    @if (count($total)==0)
-                        0
-                    @else
-                        {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$total*100}}  --}}
-                        {{($presences->where('etatfinal_id',4)->count())/count($total)*100}} 
-                    @endif
-                    </p> 
-
-                    {{-- <p>Injustifiées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count()}} jours <br> --}}
-                    <p>Injustifiées: {{$presences->where('etatfinal_id',5)->count()}} jours <br>
-                    %:
-                    @if (count($total)==0)
-                        0
-                    @else
-                        {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$total*100}}  --}}
-                        {{($presences->where('etatfinal_id',5)->count())/count($total)*100}} 
-                    @endif
-                    </p> 
-
-                    {{-- <p>Annoncées: {{App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count()}} jours <br> --}}
-                    <p>Annoncées: {{$presences->where('etatfinal_id',6)->count()}} jours <br>
-                    %: 
-                    @if (count($total)==0)
-                        0
-                    @else
-                        {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$total*100}}  --}}
-                        {{($presences->where('etatfinal_id',6)->count())/count($total)*100}} 
-                    @endif
-                    </p> 
+           
 
                 </div>
                 <div class="row my-5 py-5">

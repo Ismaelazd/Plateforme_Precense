@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Event;
 use App\Classe;
+use App\Event;
+use App\Presence;
+use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +61,16 @@ class EventController extends Controller
         $event->start = $request->input('start');
         $event->end = $request->input('end');
         $event->save();
+
+        $students = User::where('classe_id', $request->input('classe_id'))->get();
+        foreach ($students as $student) {
+            $presence = new Presence();
+            $presence->user_id = $student->id;
+            $presence->event_id = $event->id;
+            $presence->etat_id = 2;
+            $presence->etatfinal_id = 5;
+            $presence->save();
+        }
 
         return redirect()->route('calendrier');
     }
