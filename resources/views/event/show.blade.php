@@ -85,8 +85,8 @@
 
                     <div class="mt-4 text-center">
 
-                        <a href="{{route('event.edit',$event)}}" class="btn btn-warning">editer</a>
-                        <a href="{{route('event.edit',$event)}}" class="btn btn-danger" data-toggle="modal"
+                        <a href="{{route('event.edit',$event)}}" class="btn btn-outline-warning">editer</a>
+                        <a href="{{route('event.edit',$event)}}" class="btn btn-outline-danger" data-toggle="modal"
                             data-target="#modalDeleteEvent{{$event->id}}">Supprimer</a>
                     </div>
                 </div>
