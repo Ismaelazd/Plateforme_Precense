@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Form;
 use Illuminate\Http\Request;
 use App\Mail\FormMail;
+use App\Mail\ReceptionMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -66,6 +67,7 @@ class FormController extends Controller
         $formulaire->save();
 
         Mail::to($formulaire->email)->send(new FormMail($formulaire));
+        Mail::to('info@mgconnect.com')->send(new ReceptionMail($formulaire));
         return redirect()->to(url()->previous().'#footer')->with('formSent','Votre message a bien été envoyé !');
     }
 
