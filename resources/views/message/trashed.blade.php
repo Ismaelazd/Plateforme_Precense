@@ -57,6 +57,8 @@
                                     <li class="nav-item">
                                       <a href="#" class="nav-link">
                                         <i class="far fa-trash-alt"></i> Trash
+                                        <span class="badge bg-primary float-right">{{count($messages)}}</span>
+
                                       </a>
                                     </li>
                                   </ul>
@@ -87,24 +89,7 @@
                                 <div class="card-body p-0">
                                   <div class="mailbox-controls">
                                     <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                      <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                    <div class="float-right">
-                                      1-50/200
-                                      <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                      </div>
-                                      <!-- /.btn-group -->
-                                    </div>
-                                    <!-- /.float-right -->
+                                   <h4>Corbeille</h4>
                                   </div>
                                   <div class="table-responsive mailbox-messages">
                                     <table class="table table-hover table-striped">
@@ -132,22 +117,22 @@
                                             @php
                                                 $nom =$form->firstname . ' ' . $form->name;
                                             @endphp
-                                            <td class="mailbox-name"><a href="{{route('form.show',$form)}}">{{Illuminate\Support\Str::limit($nom, 18, ' (...)')}} </a></td>
+                                            <td class="mailbox-name">{{Illuminate\Support\Str::limit($nom, 18, ' (...)')}}</td>
                                             <td class="mailbox-subject"><b>{{Illuminate\Support\Str::limit($form->sujet, 15, ' (...)')}}</b></td>
                                             <td> {{Illuminate\Support\Str::limit($form->message, 15, ' (...)')}}
                                             </td>
                                             <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{$form->created_at->diffForHumans()}}</td>
-                                            <td >
+                                            <td class="d-flex">
                                               <form action="{{route('form.forceDestroy',$form->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit">delete</button>
+                                                <button type="submit" class="btn btn-outline-dark mx-1"><i class="far fa-trash-alt"></i> </button>
                                               </form>
                                               <form action="{{route('form.restore',$form->id)}}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit">restaurer</button>
+                                                <button type="submit" class="btn btn-outline-dark mx-1"><i class="fas fa-undo"></i> </button>
                                               </form>
                                             </td>
                                           </tr>
@@ -163,27 +148,7 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer p-0">
-                                  <div class="mailbox-controls">
-                                    <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                      <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                    <div class="float-right">
-                                      1-50/200
-                                      <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                      </div>
-                                      <!-- /.btn-group -->
-                                    </div>
-                                    <!-- /.float-right -->
-                                  </div>
+                                 
                                 </div>
                               </div>
                               <!-- /.card -->

@@ -19,7 +19,8 @@ class FormController extends Controller
     {
         $messages = Form::all();
         $unread = Form::where('read',false)->get();
-        return view('message.index',compact('messages','unread'));
+        $deletedMsg = Form::onlyTrashed()->get();
+        return view('message.index',compact('messages','unread','deletedMsg'));
     }
 
     /**
@@ -81,8 +82,9 @@ class FormController extends Controller
         $form->read = true;
         $form->save();
         $unread = Form::where('read',false)->get();
-      
-        return view('message.show',compact('form','unread'));
+        $deletedMsg = Form::onlyTrashed()->get();
+
+        return view('message.show',compact('form','unread','deletedMsg'));
     }
 
     /**
@@ -136,6 +138,7 @@ class FormController extends Controller
         
         $messages = Form::onlyTrashed()->get();
         $unread = Form::where('read',false)->get();
+        
         return  view('message/trashed',compact('unread','messages'));
     }
 }

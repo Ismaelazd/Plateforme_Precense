@@ -57,6 +57,7 @@
                                     <li class="nav-item">
                                       <a href="{{route('form.trash')}}" class="nav-link">
                                         <i class="far fa-trash-alt"></i> Trash
+                                        <span class="badge bg-primary float-right">{{count($deletedMsg)}}</span>
                                       </a>
                                     </li>
                                   </ul>
@@ -87,23 +88,7 @@
                                 <div class="card-body p-0">
                                   <div class="mailbox-controls">
                                     <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
-                                    </button>
-                                    <div class="btn-group">
-                                      <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-reply"></i></button>
-                                      <button type="button" class="btn btn-default btn-sm"><i class="fas fa-share"></i></button>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
-                                    <div class="float-right">
-                                      1-50/200
-                                      <div class="btn-group">
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
-                                        <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
-                                      </div>
-                                      <!-- /.btn-group -->
-                                    </div>
+                                    <h4 class="">Boîte principale</h4>
                                     <!-- /.float-right -->
                                   </div>
                                   <div class="table-responsive mailbox-messages">
