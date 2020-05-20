@@ -104,9 +104,9 @@
 
 
 
-                <div class="mt-5 card  w-50">
-                    <div class="card-header bg-primary text-white">
-                      <h3 class="card-title">Changer le statut</h3> 
+                <div class="mt-5 card  w-50 mx-auto">
+                    <div class="card-header  text-white" style="background-color: #120851;">
+                      <h3 class="card-title" >Changer le statut</h3> 
                     </div> 
                     <form action="{{route('presence.update',$presence->id)}}" method="post" enctype="multipart/form-data">
                       @csrf
@@ -174,8 +174,8 @@
                 
                     </div>
                 
-                    <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn text-white" style="background-color: #120851;">Envoyer</button>
                   
                         <a  class="btn btn-danger text-white" data-toggle="modal"
                         data-target="#deleteStatut{{$presence->id}}">Supprimer ce Statut</a>
