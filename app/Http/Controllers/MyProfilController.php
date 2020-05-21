@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Messagerie;
 use App\Role;
 use App\User;
@@ -9,6 +10,7 @@ use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -26,7 +28,19 @@ class MyProfilController extends Controller
         $messageries = Messagerie::where('student_id' , Auth::id())->get();
         $user = Auth::user();
         $roles = Role::all();
-        return view('profil.myProfil',compact('user','roles','messageries','changements'));
+        // $total = Presence::where('user_id',$user->id)->count();
+        $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
+        // dd($total->where('user_id',$user->id));
+        // dd($total);
+        $related = $total->first();
+        if($total->first()){
+            foreach ($total as $item) {
+                    $related = $related->merge($item);
+            }
+        }
+        $toutespresences = $related;
+        $presences = $toutespresences->where('user_id',$user->id);
+        return view('profil.myProfil',compact('user','roles','messageries','changements','presences'));
     }
 
     /**
