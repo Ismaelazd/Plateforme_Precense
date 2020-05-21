@@ -39,7 +39,12 @@ class MyProfilController extends Controller
             }
         }
         $toutespresences = $related;
-        $presences = $toutespresences->where('user_id',$user->id);
+        if ($toutespresences) {
+            # code...
+            $presences = $toutespresences->where('user_id',$user->id);
+        } else {
+            $presences = collect();
+        }        
         return view('profil.myProfil',compact('user','roles','messageries','changements','presences'));
     }
 
