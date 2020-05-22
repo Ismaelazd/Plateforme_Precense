@@ -94,4 +94,9 @@ Route::post('messagerie/{id}/store','MessagerieController@store')->name('message
 // Ressources Slide
 
 Route::resource('slide', 'SlideController')->middleware('admin');
-Route::get('pdf/{id}','PDFMAker@gen')->name('pdf.gen');
+Route::get('pdf/{id}','PDFMaker@gen')->name('pdf.gen');
+
+
+
+Route::get('presence/longueabsence/create', 'PresenceController@longueabsenceblade')->name('presence.longueabsenceblade');
+Route::post('presence/longueabsence/store', 'PresenceController@longueabsence')->name('presence.longueabsence');

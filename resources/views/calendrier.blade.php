@@ -95,7 +95,7 @@
                                         @foreach ($eventsForDay as $event)
                                         <div class="calendar__event">
 
-                                            {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->start))->format('H:i')}}
+                                            {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->end))->format('H:i')}}
                                             | <a href="{{route('event.show',$event)}}">{{$event->classe->name}} |
                                                 {{$event->nom}} </a>
 

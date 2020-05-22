@@ -65,10 +65,8 @@ class UserController extends Controller
         $changements = Validationchange::all();
 
         $messageries = Messagerie::where('student_id', $user->id)->get();
-        // $total = Presence::where('user_id',$user->id)->count();
         $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
-        // dd($total->where('user_id',$user->id));
-        // dd($total);
+
         $related = $total->first();
         if($total->first()){
             foreach ($total as $item) {
@@ -77,7 +75,6 @@ class UserController extends Controller
         }
         $toutespresences = $related;
         if ($toutespresences) {
-            # code...
             $presences = $toutespresences->where('user_id',$user->id);
         } else {
             $presences = collect();
