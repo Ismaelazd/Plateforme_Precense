@@ -80,9 +80,14 @@
                                 <a class="  btn btn-warning rounded-circle mx-3 text-white"
                                     href="{{route('classe.edit',$classe)}}"><i class="fas fa-pencil-alt"></i></a>
                             </div>
-                            <div class="text-center">
+                            <div class="text-center ">
                                 <a class="rounded-circle btn btn-danger mx-3 " data-toggle="modal"
                                     data-target="#deleteClasse{{$classe->id}}" href=""><i class="fa fa-trash"></i></a>
+                            </div>
+                            
+                            <div class="text-center mb-2">
+                                <a class="  btn btn-secondary rounded-circle mx-3 text-white"
+                                    href="{{route('pdf.gen',$classe->id)}}"><i class="fas fa-file-pdf"></i></a>
                             </div>
 
                         </td>
