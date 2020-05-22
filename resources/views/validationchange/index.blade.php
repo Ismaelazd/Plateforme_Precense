@@ -54,6 +54,9 @@
                     </div>
                     @else
                     @foreach ($changements as $change)
+                    {{-- @if (Auth::user()->classe_id == $change->user->classe_id || Auth::user()->role_id == 1 ) --}}
+                        
+                   
                     <div>
 
                         <label style="color: #120851;" class="h3" for="password">Nom :</label>
@@ -120,11 +123,13 @@
                             <button style="color: #ffff; background-color: transparents ; border: #120851 solid 1px; color:#120851;" title="Valider" type="submit" class="btn  font-weight-bold">Annuler changements</button>
                         </form>
                     </div>
+                        
+                    {{-- @endif --}}
 
                     @endforeach
                     @endif
                     
-                </div>
+                </div>   
 
 
             </div>

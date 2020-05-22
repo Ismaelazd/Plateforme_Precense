@@ -113,7 +113,26 @@
                       @method('PUT')
                 
                       <div class="card-body">
-                
+                        
+                        <div class="form-group">
+                            <label  for="etat_id">Statut</label>
+                            <select class="form-control @error('etat_id') is-invalid @enderror" name="etat_id" id="">
+                                @foreach ($etats as $etat)
+                                    @if ($etat->id == old('etat_id',$presence->etat_id))
+                                        <option selected value="{{$etat->id }}">{{$etat->etat}} </option>
+                                    @else
+                                        <option value="{{$etat->id }}">{{$etat->etat}} </option>
+                                    @endif
+                                @endforeach
+                        
+                            </select>  
+                                @error('etat_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                        </div>
+
                         <div class="form-group">
                           <label  for="file">Piece jointe</label>
                           <input class="form-control @error('file') is-invalid @enderror" type="file"  name="file" id="">
@@ -134,24 +153,6 @@
                           @enderror
                       </div> 
                   
-                      <div class="form-group">
-                        <label  for="etat_id">Statut</label>
-                          <select class="form-control @error('etat_id') is-invalid @enderror" name="etat_id" id="">
-                            @foreach ($etats as $etat)
-                                @if ($etat->id == old('etat_id',$presence->etat_id))
-                                    <option selected value="{{$etat->id }}">{{$etat->etat}} </option>
-                                @else
-                                    <option value="{{$etat->id }}">{{$etat->etat}} </option>
-                                @endif
-                            @endforeach
-                       
-                          </select>  
-                            @error('etat_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                      </div>
 
                       @if (Auth::id()!=3)
                         <div class="form-group">

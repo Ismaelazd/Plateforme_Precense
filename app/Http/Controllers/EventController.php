@@ -62,7 +62,7 @@ class EventController extends Controller
         $event->end = $request->input('end');
         $event->save();
 
-        $students = User::where('classe_id', $request->input('classe_id'))->get();
+        $students = User::where('classe_id', $request->input('classe_id'))->where('role_id', 3)->get();
         foreach ($students as $student) {
             $presence = new Presence();
             $presence->user_id = $student->id;
