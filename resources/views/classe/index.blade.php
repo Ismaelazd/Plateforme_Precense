@@ -33,7 +33,7 @@
 
         </div>
     </div>
-    <div class="main main-raised py-5">
+    <div class="main main2 main-raised py-5">
         <div class="profile-content">
             <div class="container">
                 <div class="row py-5">
@@ -81,38 +81,38 @@
                                     href="{{route('classe.edit',$classe)}}"><i class="fas fa-pencil-alt"></i></a>
                             </div>
                             <div class="text-center ">
-                                <a class="rounded-circle btn btn-danger mx-3 " data-toggle="modal"
+                                <a class="deleteEl rounded-circle btn btn-danger mx-3 " data-toggle="modal"
                                     data-target="#deleteClasse{{$classe->id}}" href=""><i class="fa fa-trash"></i></a>
                             </div>
                             
                             <div class="text-center mb-2">
                                 <a class="  btn btn-secondary rounded-circle mx-3 text-white"
-                                    href="{{route('pdf.gen',$classe->id)}}"><i class="fas fa-file-pdf"></i></a>
+                                    href="{{route('pdf.gen',$classe->id)}}" target="_blank"><i class="fas fa-file-pdf"></i></a>
                             </div>
 
                         </td>
                     </tr>
-                    <div class="modal fade" id="deleteClasse{{$classe->id}}" tabindex="-1" role="dialog"
+                    <div class="modal  fade" id="deleteClasse{{$classe->id}}" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog ">
                             <div class="modal-content bg-danger">
-                                <div class="modal-header ">
-                                    <h4 class="modal-title">Attention!!!</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-header text-white">
+                                    <h4 class="modal-title text-center">Attention!!!</h4>
+                                    <button type="button " class="close btnAnnuler" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
-                                <div class="modal-body text-center">
+                                <div class="modal-body text-center bg-white">
                                     <p>Vous êtes sur le point de supprimer la classe "{{ucfirst($classe->name)}}"! <br>
                                         Cette action n'est pas reversible!</p>
                                 </div>
                                 <div class="modal-footer float-right">
-                                    <button type="button" class="btn btn-outline-light"
+                                    <button type="button" class="btn btn-outline-light btnAnnuler"
                                         data-dismiss="modal">Annuler</button>
                                     <form action="{{route('classe.destroy',$classe)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-light">Supprimer cette
+                                        <button type="submit" class="btn btn-outline-light btnAnnuler">Supprimer cette
                                             classe</button>
                                     </form>
                                 </div>
@@ -147,6 +147,33 @@
         integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
     </script>
     <script src="{{asset('/js/profil.js')}}"></script>
+
+    <script>
+        let main = document.querySelector('.main');
+        let btnDelete = document.querySelector('.deleteEl');
+        btnDelete.addEventListener('click',()=>{
+            main.style.position = 'static';
+            btnDelete.classList.add('click');
+        })
+
+
+        let btnAnnuler = document.querySelectorAll('.btnAnnuler');
+        btnAnnuler.forEach(element => {
+            element.addEventListener('click',()=>{
+            console.log('saluuuuut');
+            main.style.position = 'relative';
+            
+        })
+
+        // let page= document.querySelector('.profile-page');
+        // document.addEventListener('click',()=>{
+        // if((main.style.position == 'static') &&((btnDelete.classList.contains("click")))) {
+        //    location.reload();
+        // }
+        // })
+
+        });
+    </script>
 
 </body>
 
