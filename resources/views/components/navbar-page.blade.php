@@ -28,6 +28,12 @@
                             
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
                         @endcan
+
+                        @can('student', App\User::class)
+                            
+                        <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
+                        @endcan
+
                         @endif
                         @if(Auth::check() && Auth::user()->role_id == 2)
                             @if (count($changements) == 0)

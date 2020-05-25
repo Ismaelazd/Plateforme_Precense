@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Classe;
 use App\Testimonial;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
@@ -36,6 +37,15 @@ class Mine
         if (Auth::check()) {
 
         if ($user->id == $testi->user_id ) {
+            return true;
+        } 
+        } 
+    }
+    public function myClasse(User $user, Classe $classe){
+        
+        if (Auth::check()) {
+
+        if ($user->classe_id == $classe->id) {
             return true;
         } 
         } 

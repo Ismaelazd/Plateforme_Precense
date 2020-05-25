@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Classe;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,14 @@ class UserPolicy
     }
 
     public function coach(User $user){
-        return (2 == Auth::user()->role_id && 1 == Auth::user()->role_id); 
+        return (2 == Auth::user()->role_id || 1 == Auth::user()->role_id); 
+    }
+    public function student(User $user){
+        return (3 == Auth::user()->role_id); 
+    }
+    
+    public function myCoding(User $user, Classe $classe){
+       
+        return ((2 == Auth::user()->role_id && $user->classe_id == $classe->id) || 1 == Auth::user()->role_id); 
     }
 }
