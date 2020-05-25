@@ -158,7 +158,14 @@ class PresenceController extends Controller
         }
     }
         $presence->save();
-        return redirect()->route('user.show',$presence->user_id);
+        if (Auth::id()== $presence->user_id) {
+            return redirect()->route('event.show',$presence->event_id);
+
+        } else {
+            
+            return redirect()->route('user.show',$presence->user_id);
+        }
+        
     }
 
     /**
