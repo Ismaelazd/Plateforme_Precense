@@ -144,7 +144,7 @@ class PresenceController extends Controller
                         //si etat = absent et que note ou justificatif est present => etat final = Absences avec justificatif 
                         $presence->etatfinal_id = 4; 
                     } else {
-                        if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($event)->start) ) {
+                        if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($presence->event_id)->start) ) {
                             //si etat = absent et que ni note ni justificatif mais a prevenu => etat final = Absences annoncées 
                             $presence->etatfinal_id = 6; 
                         } else {
@@ -235,7 +235,7 @@ class PresenceController extends Controller
                             //si etat = absent et que note ou justificatif est present => etat final = Absences avec justificatif 
                             $presence->etatfinal_id = 4; 
                         } else {
-                            if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($event)->start) ) {
+                            if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($presence->event_id)->start) ) {
                                 //si etat = absent et que ni note ni justificatif mais a prevenu => etat final = Absences annoncées 
                                 $presence->etatfinal_id = 6; 
                             } else {
