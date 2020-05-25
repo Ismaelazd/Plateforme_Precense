@@ -272,7 +272,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane text-center gallery" id="avis">
+                    <div class="tab-pane text-center " id="avis">
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 {{-- Testimonials --}}

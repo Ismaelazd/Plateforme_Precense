@@ -22,7 +22,7 @@ class Mine
         //
     }
 
-    public function mine(User $user, User $id){
+    public function mine(User $user,  $id){
         
         if (Auth::check()) {
 
