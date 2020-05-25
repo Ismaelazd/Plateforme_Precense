@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Validator;
 
 class NewsletterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['store']]);
+    }
     /**
      * Display a listing of the resource.
      *

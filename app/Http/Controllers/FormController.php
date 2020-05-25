@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Validator;
 
 class FormController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('admin', ['except' => ['store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

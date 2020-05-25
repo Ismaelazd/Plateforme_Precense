@@ -32,11 +32,10 @@ Route::get('/calendrier', function() {
  
 
 Route::resource('event', 'EventController')->middleware(['connected','notMember']);
-Route::resource('classe', 'ClasseController')->middleware(['connected','notMember']);
+Route::resource('classe', 'ClasseController')->middleware(['connected','notMember','coach']);
 Route::resource('presence', 'PresenceController')->middleware(['connected','notMember']);
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);
-Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['connected','notMember']);
-Route::resource('user', 'UserController')->middleware('admin');
+Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['coach']);
 Route::get('/visiteurs','UserController@visiteur')->name('visiteurs')->middleware('admin');
 
 // Ressource MYPROFIL
@@ -84,17 +83,17 @@ Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')-
 
 
 
-Route::resource('validationchange', 'ValidationchangeController');
-Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store');
+Route::resource('validationchange', 'ValidationchangeController')->middleware(['coach']);
+Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store')->middleware(['connected','notMember']);
 
 //messagerie
-Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store');
+Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store')->middleware(['connected','notMember']);;
 
 
 // Ressources Slide
 
 Route::resource('slide', 'SlideController')->middleware('admin');
-Route::get('pdf/{id}','PDFMaker@gen')->name('pdf.gen');
+Route::get('pdf/{id}','PDFMaker@gen')->name('pdf.gen')->middleware('coach');
 
 
 
