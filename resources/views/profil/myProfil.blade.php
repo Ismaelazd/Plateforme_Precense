@@ -146,8 +146,8 @@
 
 
                 <div class="row mt-5 pt-5">
-                    
-                    
+
+
                 </div>
 
 
@@ -190,7 +190,7 @@
                 </div>
 
                 <div class="tab-content tab-space">
-                    <div class="tab-pane active text-center gallery" id="stat">
+                    <div class="tab-pane active text-center " id="stat">
                         <div class="row justify-content-center m-5 ">
                             <table class="table table-striped table-light rounded ">
 
@@ -289,7 +289,7 @@
                                     <label for="">Mon Avis:</label>
                                     <p>{{$testi->message}}</p>
                                     <label for="">Ma note:</label>
-            
+
                                     @for ($i = 0; $i < $testi->note; $i++)
                                         <i class="fa fa-star rating_good text-warning"></i>
                                         @endfor
@@ -297,17 +297,17 @@
                                         <i class="fa fa-star rating_bad"></i>
                                         @endfor
                                         <div class="row justify-content-center mt-5 ">
-            
+
                                             <a href="{{route('testimonial.edit',$testi)}}">
-            
-                                                <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit"
-                                                    class="btn"><i class="fa fa-pencil-alt "></i></button>
+
+                                                <button style="color: #ffff; background-color: #120851 ;" title="Edit"
+                                                    type="submit" class="btn"><i class="fa fa-pencil-alt "></i></button>
                                             </a>
-            
-            
-            
-                                            <form class="text-center mx-2" action="{{route('testimonial.destroy', $testi)}}"
-                                                method="post">
+
+
+
+                                            <form class="text-center mx-2"
+                                                action="{{route('testimonial.destroy', $testi)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button style="color: #ffff; background-color: #120851 ;" title="Delete"
@@ -315,44 +315,44 @@
                                             </form>
                                         </div>
                                 </div>
-                                    @else
-        
-        
-                                    <div class="container">
-                                        <div class="card-header" style="background-color: #120851;">
+                                @else
 
-                                            <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
-                                        </div>
-                                        <div class="card-footer" style="display: block;">
-                                            <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
-                                                method="post">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="avis">Mon avis</label>
-                                                    <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
-                                                        class="form-control " required></textarea>
-                                                    <label for="note">Ma note sur 5</label>
-                                                    <select class="form-control" name="note" id="">
-                                                        <option value="5">5</option>
-                                                        <option value="4">4</option>
-                                                        <option value="3">3</option>
-                                                        <option value="2">2</option>
-                                                        <option value="1">1</option>
-                                                        <option value="0">0</option>
-                                                    </select>
-                                                    <span class="input-group-append justify-content-center">
-                                                        <button type="submit" class="btn text-white mt-4 "
-                                                            style="background-color: #120851;">Envoyer</button>
-                                                    </span>
-                                                </div>
-                                            </form>
-                                        </div>
+
+                                <div class="container">
+                                    <div class="card-header" style="background-color: #120851;">
+
+                                        <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
                                     </div>
-                                    @endif
+                                    <div class="card-footer" style="display: block;">
+                                        <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
+                                            method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="avis">Mon avis</label>
+                                                <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
+                                                    class="form-control " required></textarea>
+                                                <label for="note">Ma note sur 5</label>
+                                                <select class="form-control" name="note" id="">
+                                                    <option value="5">5</option>
+                                                    <option value="4">4</option>
+                                                    <option value="3">3</option>
+                                                    <option value="2">2</option>
+                                                    <option value="1">1</option>
+                                                    <option value="0">0</option>
+                                                </select>
+                                                <span class="input-group-append justify-content-center">
+                                                    <button type="submit" class="btn text-white mt-4 "
+                                                        style="background-color: #120851;">Envoyer</button>
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                @endif
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane text-center gallery" id="message">
+                    <div class="tab-pane text-center " id="message">
                         <div class="row">
                             <div class="col-6 mx-auto" style="
                     border-right: 3px;
@@ -364,85 +364,86 @@
                         #120851, 
                         rgba(0, 0, 0, 0)
                       ) 1 100%;">
-                        {{-- Messagerie --}}
-                        <div id="messagerie" style="width: 100%" class="messagerie  ">
-                            <h3 class="text-center">Messagerie</h3>
-                            <div class="card  cardutline direct-chat ">
-                                <div class="card-header  d-flex align-items-center justify-content-between"
-                                    style="background-color: #120851;">
-                                    <h3 class="card-title text-white">Direct Chat</h3>
+                                {{-- Messagerie --}}
+                                <div id="messagerie" style="width: 100%" class="messagerie  ">
+                                    <h3 class="text-center">Messagerie</h3>
+                                    <div class="card  cardutline direct-chat ">
+                                        <div class="card-header  d-flex align-items-center justify-content-between"
+                                            style="background-color: #120851;">
+                                            <h3 class="card-title text-white">Direct Chat</h3>
 
-                                    <div class="card-tools ml-auto">
-                                        {{-- <span data-toggle="tooltip" title="3 New Messages" class="badge bg-success">3</span> --}}
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                                class="fas fa-minus"></i>
-                                        </button>
-                                        {{-- <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
+                                            <div class="card-tools ml-auto">
+                                                {{-- <span data-toggle="tooltip" title="3 New Messages" class="badge bg-success">3</span> --}}
+                                                <button type="button" class="btn btn-tool"
+                                                    data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                                </button>
+                                                {{-- <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
   <i class="fas fa-comments"></i></button>
 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
 </button> --}}
+                                            </div>
+                                        </div>
+                                        <!-- /.card-header -->
+                                        <div class="card-body" style="display: block;">
+                                            <!-- Conversations are loaded here -->
+                                            <div class="direct-chat-messages">
+
+                                                @foreach ($messageries as $messagerie)
+
+                                                <!-- Message. Default to the left -->
+                                                <div
+                                                    class="direct-chat-msg @if ($messagerie->ecrivain_id == Auth::id())  right text-right @else text-left  @endif">
+                                                    <div class="direct-chat-infos clearfix">
+                                                        <span
+                                                            class="direct-chat-name  @if ($messagerie->ecrivain_id == Auth::id()) float-right  @else float-left @endif">{{$messagerie->ecrivain->name}}</span>
+                                                        <span
+                                                            class="direct-chat-timestamp @if ($messagerie->ecrivain_id == Auth::id()) float-left @else float-right      @endif">{{$messagerie->created_at->format('d')}}
+                                                            {{\Illuminate\Support\Str::limit(date('F',strtotime($messagerie->created_at)), 3, $end='')}}
+                                                            {{$messagerie->created_at->format('Y H:i')}}</span>
+                                                    </div>
+                                                    <!-- /.direct-chat-infos -->
+                                                    <img class="direct-chat-img"
+                                                        src="{{asset('storage/'.$messagerie->ecrivain->image)}}"
+                                                        alt="Message User Image">
+                                                    <!-- /.direct-chat-img -->
+                                                    <div class="direct-chat-text @if ($messagerie->ecrivain_id == Auth::id()) text-white @else  @endif"
+                                                        @if ($messagerie->ecrivain_id == Auth::id())
+                                                        style="background-color:
+                                                        #120851;"
+                                                        @else @endif>
+                                                        {{$messagerie->message}}
+                                                    </div>
+                                                    <!-- /.direct-chat-text -->
+                                                </div>
+                                                <!-- /.direct-chat-msg -->
+                                                @endforeach
+
+                                            </div>
+                                            <!--/.direct-chat-messages-->
+
+
+
+                                        </div>
+                                        <!-- /.card-body -->
+                                        <div class="card-footer" style="display: block;">
+                                            <form class="text-center" action="{{route('messagerie.store', $user->id)}}"
+                                                method="post">
+                                                @csrf
+                                                <div class="input-group">
+                                                    <input type="text" name="message" placeholder="Type Message ..."
+                                                        class="form-control" required>
+                                                    <span class="input-group-append">
+                                                        <button type="submit" class="btn text-white my-0"
+                                                            style="background-color: #120851;">Send</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card-footer-->
                                     </div>
                                 </div>
-                                <!-- /.card-header -->
-                                <div class="card-body" style="display: block;">
-                                    <!-- Conversations are loaded here -->
-                                    <div class="direct-chat-messages">
 
-                                        @foreach ($messageries as $messagerie)
-
-                                        <!-- Message. Default to the left -->
-                                        <div
-                                            class="direct-chat-msg @if ($messagerie->ecrivain_id == Auth::id())  right @else   @endif">
-                                            <div class="direct-chat-infos clearfix">
-                                                <span
-                                                    class="direct-chat-name  @if ($messagerie->ecrivain_id == Auth::id()) float-right  @else float-left @endif">{{$messagerie->ecrivain->name}}</span>
-                                                <span
-                                                    class="direct-chat-timestamp @if ($messagerie->ecrivain_id == Auth::id()) float-left @else float-right      @endif">{{$messagerie->created_at->format('d')}}
-                                                    {{\Illuminate\Support\Str::limit(date('F',strtotime($messagerie->created_at)), 3, $end='')}}
-                                                    {{$messagerie->created_at->format('Y H:i')}}</span>
-                                            </div>
-                                            <!-- /.direct-chat-infos -->
-                                            <img class="direct-chat-img"
-                                                src="{{asset('storage/'.$messagerie->ecrivain->image)}}"
-                                                alt="Message User Image">
-                                            <!-- /.direct-chat-img -->
-                                            <div class="direct-chat-text @if ($messagerie->ecrivain_id == Auth::id()) text-white @else  @endif"
-                                                @if ($messagerie->ecrivain_id == Auth::id()) style="background-color:
-                                                #120851;"
-                                                @else @endif>
-                                                {{$messagerie->message}}
-                                            </div>
-                                            <!-- /.direct-chat-text -->
-                                        </div>
-                                        <!-- /.direct-chat-msg -->
-                                        @endforeach
-
-                                    </div>
-                                    <!--/.direct-chat-messages-->
-
-
-
-                                </div>
-                                <!-- /.card-body -->
-                                <div class="card-footer" style="display: block;">
-                                    <form class="text-center" action="{{route('messagerie.store', $user->id)}}"
-                                        method="post">
-                                        @csrf
-                                        <div class="input-group">
-                                            <input type="text" name="message" placeholder="Type Message ..."
-                                                class="form-control" required>
-                                            <span class="input-group-append">
-                                                <button type="submit" class="btn text-white my-0"
-                                                    style="background-color: #120851;">Send</button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!-- /.card-footer-->
                             </div>
-                        </div>
-
-                    </div>
                         </div>
                     </div>
                 </div>
