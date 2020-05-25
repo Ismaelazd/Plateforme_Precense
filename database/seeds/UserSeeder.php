@@ -22,7 +22,12 @@ class UserSeeder extends Seeder
             'role_id' => 1,
             'image' => 'team/team-2.jpg',
             'classe_id' => null ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => 'https://www.facebook.com/',
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
    
         ]);
         DB::table('users')->insert([
@@ -37,7 +42,12 @@ class UserSeeder extends Seeder
             'ville' => 'Bruxelles',
             'image' => 'avatar.png',
             'classe_id' => 1,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
    
         ]);
         DB::table('users')->insert([
@@ -49,7 +59,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
    
         ]);
         DB::table('users')->insert([
@@ -61,7 +76,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'team/albi.jpeg',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => 'https://www.facebook.com/',
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' =>'https://fr.linkedin.com/',
+            'github' => null,
    
         ]);
         DB::table('users')->insert([
@@ -73,7 +93,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'team/zak.jpeg',
             'classe_id' => 2 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => 'https://twitter.com/',
+            'instagram' => 'https://www.instagram.com/?hl=fr',
+            'linkedin' => null,
+            'github' => 'https://github.com/',
    
         ]);
         DB::table('users')->insert([
@@ -85,7 +110,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'team/elias.jpeg',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
    
         ]);
         DB::table('users')->insert([
@@ -96,7 +126,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'team/max.jpeg',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => 'https://www.facebook.com/',
+            'twitter' => null,
+            'instagram' => 'https://www.instagram.com/?hl=fr',
+            'linkedin' => 'https://github.com/',
+            'github' => null,
         ]);
         
         DB::table('users')->insert([
@@ -107,7 +142,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'team/nico.jpeg',
             'classe_id' => 1 ,
-            'bigcoach' => true
+            'bigcoach' => true,
+            'facebook' => 'https://www.facebook.com/',
+            'twitter' => 'https://twitter.com/',
+            'instagram' => 'https://www.instagram.com/?hl=fr',
+            'linkedin' => 'https://fr.linkedin.com/',
+            'github' => 'https://github.com/',
         ]);
 
         DB::table('users')->insert([
@@ -118,7 +158,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -130,7 +175,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -142,7 +192,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -154,7 +209,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -166,7 +226,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -178,7 +243,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -190,7 +260,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -202,7 +277,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -214,7 +294,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -226,7 +311,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -238,7 +328,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -250,7 +345,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -262,7 +362,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -274,7 +379,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 1 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -286,7 +396,12 @@ class UserSeeder extends Seeder
             'role_id' => 3,
             'image' => 'avatar.png',
             'classe_id' => 3 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
 
         DB::table('users')->insert([
@@ -297,7 +412,12 @@ class UserSeeder extends Seeder
             'role_id' => 2,
             'image' => 'nazam.jpg',
             'classe_id' => 2 ,
-            'bigcoach' => false
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
         ]);
     }
 }

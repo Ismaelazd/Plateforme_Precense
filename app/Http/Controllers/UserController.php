@@ -11,6 +11,7 @@ use App\Presence;
 use App\Role;
 use App\Validationchange;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,8 +19,8 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin', ['except' => ['show']]);
-        $this->middleware('coach', ['only' => ['show']]);
+        $this->middleware('admin', ['except' => ['show','update']]);
+        $this->middleware('coach', ['only' => ['show','update']]);
     }
 
     /**
@@ -108,7 +109,6 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        dd('heloo');
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',
@@ -117,6 +117,11 @@ class UserController extends Controller
             'rue'=> 'sometimes|max:150',
             'ville'=> 'sometimes|max:150',
             'email'=>'required|unique:users,email,'.$user->id,
+            'facebook'=> 'sometimes|max:150',
+            'twitter'=> 'sometimes|max:150',
+            'linkedin'=> 'sometimes|max:150',
+            'instagram'=> 'sometimes|max:150',
+            'github'=> 'sometimes|max:150',
         ]);
         $user->name = $request->input('name');
         $user->firstname = $request->input('firstname');
@@ -136,18 +141,30 @@ class UserController extends Controller
         $user->tel = $request->input('tel');
         $user->rue = $request->input('rue');
         $user->ville = $request->input('ville');
+        $user->facebook = $request->input('facebook');
+        $user->twitter = $request->input('twitter');
+        $user->linkedin = $request->input('linkedin');
+        $user->instagram = $request->input('instagram');
+        $user->github = $request->input('github');
         $user->save();
-        if ($request->input('role_id')==2) {
-            return redirect()->route('user.create');
+        
+        if ($user->id==Auth::id()) {
+            return redirect()->route('myProfil.index');
             //coach
         } else {
-            if ($request->input('role_id')==3) {
-                return redirect()->route('user.index');
-                //student
+
+            if ($user->role_id==2) {
+                return redirect()->route('user.create');
+                //coach
             } else {
+                if ($request->input('role_id')==3) {
+                    return redirect()->route('user.index');
+                    //student
+                } else {
                     return redirect()->to('visiteurs');
                     //visiteurs
-             }         
+                }         
+            }
         }
         
     }

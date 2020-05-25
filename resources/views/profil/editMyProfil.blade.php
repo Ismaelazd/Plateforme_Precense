@@ -56,7 +56,13 @@
                             #120851, 
                             rgba(0, 0, 0, 0)
                           ) 1 100%;">
+                          @can('student', App\User::class)
                             <form action="{{route('validationchange.store',$user->id)}}" method="post" enctype="multipart/form-data">
+                          @endcan
+                          @can('coach', App\User::class)
+                             <form action="{{route('user.update',$user)}}" method="post" enctype="multipart/form-data">
+                                @method('PUT')
+                          @endcan
                                 @csrf
                                 <div class="form-group  ">
                                     <label style="color: #120851;" class="h3 text-left" for="name ">Nom :</label>
@@ -122,6 +128,55 @@
                                     <div class="alert alert-danger">{{  $message  }}</div>
                                     @enderror
                                 </div>
+
+                                @can('coach', App\User::class)
+                                    <div class="form-group  ">
+                                        <label style="color: #120851;" class="h3 text-left" for="facebook ">Url facebook :</label>
+                                        <input value="{{$user->facebook}}" type="text" name="facebook"
+                                            class="form-control @error('facebook') is-invalid @enderror" id="facebook">
+                                        @error('facebook')
+                                        <div class="alert alert-danger">{{  $message  }}</div>
+                                        @enderror
+                                    </div>
+                                
+                                    <div class="form-group  ">
+                                        <label style="color: #120851;" class="h3 text-left" for="twitter ">Url twitter :</label>
+                                        <input value="{{$user->twitter}}" type="text" name="twitter"
+                                            class="form-control @error('twitter') is-invalid @enderror" id="twitter">
+                                        @error('twitter')
+                                        <div class="alert alert-danger">{{  $message  }}</div>
+                                        @enderror
+                                    </div>
+                                
+                                    <div class="form-group  ">
+                                        <label style="color: #120851;" class="h3 text-left" for="instagram ">Url instagram :</label>
+                                        <input value="{{$user->instagram}}" type="text" name="instagram"
+                                            class="form-control @error('instagram') is-invalid @enderror" id="instagram">
+                                        @error('instagram')
+                                        <div class="alert alert-danger">{{  $message  }}</div>
+                                        @enderror
+                                    </div>
+                                
+                                    <div class="form-group  ">
+                                        <label style="color: #120851;" class="h3 text-left" for="linkedin ">Url linkedin :</label>
+                                        <input value="{{$user->linkedin}}" type="text" name="linkedin"
+                                            class="form-control @error('linkedin') is-invalid @enderror" id="linkedin">
+                                        @error('linkedin')
+                                        <div class="alert alert-danger">{{  $message  }}</div>
+                                        @enderror
+                                    </div>
+                                
+                                    <div class="form-group  ">
+                                        <label style="color: #120851;" class="h3 text-left" for="github ">Url github :</label>
+                                        <input value="{{$user->github}}" type="text" name="github"
+                                            class="form-control @error('github') is-invalid @enderror" id="github">
+                                        @error('github')
+                                        <div class="alert alert-danger">{{  $message  }}</div>
+                                        @enderror
+                                    </div>
+                                
+                                    
+                                @endcan
                                 
                                 <div class="text-center mt-5">
                                     <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn  font-weight-bold">Enregistrer</button>

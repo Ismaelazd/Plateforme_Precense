@@ -1344,6 +1344,9 @@ ol {
 .team__item .team__text .team__social a.instagram {
 	color: #b309d7;
 }
+.team__item .team__text .team__social a.github {
+	color: rgb(0, 0, 0);
+}
 
 .team__item .team__text .team__social a:last-child {
 	margin-right: 0;
@@ -3359,6 +3362,9 @@ ol {
 
 .bigcoach__item .bigcoach__text .bigcoach__social a.instagram {
 	color: #b309d7;
+}
+.bigcoach__item .bigcoach__text .bigcoach__social a.github {
+	color: rgb(255, 255, 255);
 }
 
 .bigcoach__item .bigcoach__text .bigcoach__social a:last-child {

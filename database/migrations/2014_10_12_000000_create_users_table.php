@@ -24,6 +24,11 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('rue')->nullable();
             $table->string('ville')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('github')->nullable();
             $table->bigInteger('role_id')->unsigned();
             $table->foreign('role_id')
             ->on('roles')

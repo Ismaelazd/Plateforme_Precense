@@ -313,6 +313,7 @@
 
 
                     <table class="table table-striped table-light rounded ">
+                        <h3>PRESENCES AUX EVENTS</h3>
                         <thead>
                             
                             <tr >
@@ -328,7 +329,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user->getEvents as $event)
+                            @foreach ($user->getEvents->where('end','<=',new Carbon\Carbon()) as $event)
                             @php
                                 $presence = App\Presence::where('event_id',$event->id)->where('user_id',$user->id)->first();
                             @endphp

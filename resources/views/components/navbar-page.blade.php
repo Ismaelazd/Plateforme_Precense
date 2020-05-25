@@ -24,10 +24,11 @@
                         @if(Auth::check() && Auth::user()->role_id != 4)
                             
                         <li><a href="{{route('calendrier')}}">Calendrier</a></li>
+                        
                         @can('coach', App\User::class)
-                            
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
                         @endcan
+
                         @endif
                         @if(Auth::check() && Auth::user()->role_id == 2)
                             @if (count($changements) == 0)

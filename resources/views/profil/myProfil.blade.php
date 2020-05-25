@@ -80,7 +80,61 @@
                         </div>
                     </div>
                     @endif
+                    @if (!(is_null($user->facebook)))
 
+                    <div class="row my-3">
+                        <div class="col-3 d-flex justify-content-center align-item-center">
+                            <i class="fa-2x fab fa-facebook"></i>
+                        </div>
+                        <div class="col-9">
+                            <p><a href="{{$user->facebook}}">{{$user->facebook}}</a></p>
+                        </div>
+                    </div>
+                    @endif
+                    @if (!(is_null($user->twitter)))
+
+                    <div class="row my-3">
+                        <div class="col-3 d-flex justify-content-center align-item-center">
+                            <i class="fa-2x fab fa-twitter"></i>
+                        </div>
+                        <div class="col-9">
+                            <p><a href="{{$user->twitter}}">{{$user->twitter}}</a></p>
+                        </div>
+                    </div>
+                    @endif
+                    @if (!(is_null($user->linkedin)))
+
+                    <div class="row my-3">
+                        <div class="col-3 d-flex justify-content-center align-item-center">
+                            <i class="fa-2x fab fa-linkedin"></i>
+                        </div>
+                        <div class="col-9">
+                            <p><a href="{{$user->linkedin}}">{{$user->linkedin}}</a></p>
+                        </div>
+                    </div>
+                    @endif
+                    @if (!(is_null($user->instagram)))
+
+                    <div class="row my-3">
+                        <div class="col-3 d-flex justify-content-center align-item-center">
+                            <i class="fa-2x fab fa-instagram"></i>
+                        </div>
+                        <div class="col-9">
+                            <p><a href="{{$user->instagram}}">{{$user->instagram}}</a></p>
+                        </div>
+                    </div>
+                    @endif
+                    @if (!(is_null($user->github)))
+
+                    <div class="row my-3">
+                        <div class="col-3 d-flex justify-content-center align-item-center">
+                            <i class="fa-2x fab fa-github"></i>
+                        </div>
+                        <div class="col-9">
+                            <p><a href="{{$user->github}}">{{$user->github}}</a></p>
+                        </div>
+                    </div>
+                    @endif
 
                 </div>
 
