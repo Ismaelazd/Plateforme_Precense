@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use App\Validationchange;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,13 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
 
 
 Route::get('/calendrier', function() {
-    $changements = Validationchange::all();
+    if (!Auth::check() || Auth::user()->role_id ==1) {
+        $changements = Validationchange::all();
 
+    } else {
+        $users = User::where('classe_id',Auth::user()->classe_id)->get();
+        $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+    }
     return view('calendrier',compact('changements'));
 })->name('calendrier')->middleware('connected','notMember');
  

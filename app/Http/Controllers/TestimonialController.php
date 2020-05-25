@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use App\User;
+use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,10 +39,10 @@ class TestimonialController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,$id)
-    {
-
-    
-        $this->authorize('mine', $id,User::class);
+    {    
+        
+        $user = User::find($id);
+        $this->authorize('mine', $user, User::class);
         
 
         $request->validate([
@@ -76,7 +77,14 @@ class TestimonialController extends Controller
     public function edit(Testimonial $testimonial)
     {
         $this->authorize('mineT', $testimonial,Testimonial::class);
-        return view('testimonial.edit',compact('testimonial'));
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
+        return view('testimonial.edit',compact('testimonial','changements'));
     }
 
     /**

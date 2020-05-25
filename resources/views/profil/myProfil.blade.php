@@ -41,7 +41,7 @@
                             </div>
                             <div class="name">
                                 <h3 class="title">{{$user->name}} {{$user->firstname}}</h3>
-                                <h6>{{$user->role->role}}</h6>
+                                <h6>{{$user->role->role}} @if($user->classe_id)- {{$user->classe->name}}@endif </h6>
                                 {{-- <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a> --}}

@@ -13,6 +13,7 @@ use App\User;
 use App\Validationchange;
 // use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
@@ -31,8 +32,14 @@ class WelcomeController extends Controller
         // foreach ($events as $event) {
         //     $classes += $event->classe_id;
         // }
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         
-        $changements = Validationchange::all();
         $testimonials = Testimonial::inRandomOrder()->take(8)->get();
         $slides = Slide::all();
         $info = Info::first();

@@ -63,10 +63,15 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
-    {
+    { 
         
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $messageries = Messagerie::where('student_id', $user->id)->get();
         $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
 
