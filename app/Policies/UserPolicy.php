@@ -26,4 +26,8 @@ class UserPolicy
     public function myProfil(User $user){
         return (Auth::check()); 
     }
+
+    public function coach(User $user){
+        return (2 == Auth::user()->role_id && 1 == Auth::user()->role_id); 
+    }
 }

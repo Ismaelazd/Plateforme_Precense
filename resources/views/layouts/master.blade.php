@@ -16,6 +16,7 @@
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/modalConnexion.css')}}" type="text/css">
 
 </head>
 
@@ -30,8 +31,9 @@
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
-
+    
     <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script type="text/javascript">
         $(function(){
             $('.nav a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active')

@@ -89,7 +89,7 @@
   .modal-dialog form .form-control {
     border-radius: 5px;
     border: 1px solid #595959;
-    background: transparent;
+    background: #00000055;
     box-shadow: none;
     margin: 15px 0 15px 0;
     height: 50px;

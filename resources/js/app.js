@@ -6,8 +6,7 @@
 
 require('jquery');
 require('popper.js')
-require('bootstrap');
-require('jquery.stellar/jquery.stellar');
+
 
 window.Vue = require('vue');
 

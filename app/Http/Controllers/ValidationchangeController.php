@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ValidationchangeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('coach', ['except' => ['store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

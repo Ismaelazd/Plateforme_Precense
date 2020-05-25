@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Testimonial;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TestimonialController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +18,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonials = Testimonial::all();
-        return view('testimonial.index',compact('testimonials'));
+        //
     }
 
     /**
@@ -26,7 +28,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        return view('testimonial.create');
+        //
     }
 
     /**
@@ -37,6 +39,11 @@ class TestimonialController extends Controller
      */
     public function store(Request $request,$id)
     {
+
+    
+        $this->authorize('mine', $id,User::class);
+        
+
         $request->validate([
             'avis'=> 'required|max:300',
         ]);
@@ -68,6 +75,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
+        $this->authorize('mineT', $testimonial,Testimonial::class);
         return view('testimonial.edit',compact('testimonial'));
     }
 
@@ -80,6 +88,8 @@ class TestimonialController extends Controller
      */  
     public function update(Request $request, Testimonial $testimonial)
     {
+        $this->authorize('mineT', $testimonial,Testimonial::class);
+
         $request->validate([
             'avis'=> 'required|max:300',
         ]);   
@@ -103,6 +113,7 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
+        $this->authorize('mineT', $testimonial,Testimonial::class);
         $testimonial->delete(); 
         return redirect()->back();
     }
