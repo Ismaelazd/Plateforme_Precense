@@ -39,4 +39,11 @@ class UserPolicy
        
         return ((2 == Auth::user()->role_id && $user->classe_id == $classe->id) || 1 == Auth::user()->role_id); 
     }
+    public function mine(User $user,User $me){
+        if (Auth::check()) {
+            if ($user->id == $me->id ) {
+                return true;
+            } 
+        } 
+    }
 }

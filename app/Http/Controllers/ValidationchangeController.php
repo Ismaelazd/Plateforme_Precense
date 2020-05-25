@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,8 +23,15 @@ class ValidationchangeController extends Controller
      */
     public function index()
     {
-        
-        $changements = Validationchange::all();
+        if (Auth::user()->role_id == 1 ) {
+            # code...
+            $changements = Validationchange::all();
+        } else {
+            // Auth::user()->classe_id == $validation->user->classe_id 
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
+        // $changements = Validationchange::all();
         return view('validationchange.index',compact('changements'));
     }
 

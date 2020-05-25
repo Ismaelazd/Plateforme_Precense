@@ -23,8 +23,13 @@ class MyProfilController extends Controller
      */
     public function index()
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $messageries = Messagerie::where('student_id' , Auth::id())->get();
         $user = Auth::user();
         $roles = Role::all();
@@ -88,7 +93,14 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }       
+        
         $user = Auth::user();
         return view('profil.editMyProfil',compact('user','roles','changements'));
     }

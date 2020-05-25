@@ -8,6 +8,7 @@ use App\Classe;
 use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClasseController extends Controller
 {
@@ -25,8 +26,13 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $classes = Classe::all();
         return view('classe.index',compact('classes','changements'));    
     }
@@ -69,8 +75,13 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {  
-        $changements = Validationchange::all();
-        return view('classe.edit',compact('classe','changements'));    
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }        return view('classe.edit',compact('classe','changements'));    
     }
 
     /**

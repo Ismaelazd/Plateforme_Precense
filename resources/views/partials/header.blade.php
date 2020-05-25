@@ -106,7 +106,7 @@
         <div  class="row pt-3 ">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo d-flex">
-                    <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><span class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</span>
+                    <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a href="{{url('/')}}" class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</a>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">

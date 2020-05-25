@@ -22,33 +22,16 @@ class Mine
         //
     }
 
-    public function mine(User $user, User $id){
-        
-        if (Auth::check()) {
-
-        if ($user->id == $id ) {
-            return true;
-        } 
-        } 
-    }
     
     public function mineT(User $user, Testimonial $testi){
         
         if (Auth::check()) {
 
-        if ($user->id == $testi->user_id ) {
-            return true;
-        } 
+            if ($user->id == $testi->user_id ) {
+                return true;
+            } 
         } 
     }
-    public function myClasse(User $user, Classe $classe){
-        
-        if (Auth::check()) {
 
-        if ($user->classe_id == $classe->id) {
-            return true;
-        } 
-        } 
-    }
     
 }
