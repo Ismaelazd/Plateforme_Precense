@@ -170,76 +170,79 @@
             </div>
 
             {{-- presences enregistrées --}}
+            @can('coach', App\User::class)
+                
+            
 
-            <div class="container mt-5 " style="padding-top:100px;border-top: 3px; border-bottom:0px;
-           
-            border-style: solid;
-            border-image: 
-              linear-gradient(
-                90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
-              ) 1 1 100%;">
+                <div class="container mt-5 " style="padding-top:100px;border-top: 3px; border-bottom:0px;
+            
+                border-style: solid;
+                border-image: 
+                linear-gradient(
+                    90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
+                ) 1 1 100%;">
 
-            <div class="text-right"><p>{{count($presences->where('etat_id',1))}} sur {{count($presences)}} élève(s) présent(s)</p></div>
-            <div class="text-right"><p>{{count($presences->where('etat_id',2))}} sur {{count($presences)}} élève(s) absent(s)</p></div>
-            <div class="text-right"><p>{{count($presences->where('etat_id',3))}} sur {{count($presences)}} élève(s) en retard(s)</p></div>
+                <div class="text-right"><p>{{count($presences->where('etat_id',1))}} sur {{count($presences)}} élève(s) présent(s)</p></div>
+                <div class="text-right"><p>{{count($presences->where('etat_id',2))}} sur {{count($presences)}} élève(s) absent(s)</p></div>
+                <div class="text-right"><p>{{count($presences->where('etat_id',3))}} sur {{count($presences)}} élève(s) en retard(s)</p></div>
 
-                <table class="table table-striped table-light rounded">
-                    <thead class="text-white" style="background-color: #120851;">
+                    <table class="table table-striped table-light rounded">
+                        <thead class="text-white" style="background-color: #120851;">
 
-                        <tr>
-                            <th scope="col" class="text-center">Nom Prenom</th>
-                            <th scope="col" class="text-center">Statut</th>
-                            <th scope="col" class="text-center">Statut final</th>
-                            <th scope="col" class="text-center">Note</th>
-                            <th scope="col" class="text-center">fichier</th>
-                            <th class="text-center" scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($presences as $pre)
+                            <tr>
+                                <th scope="col" class="text-center">Nom Prenom</th>
+                                <th scope="col" class="text-center">Statut</th>
+                                <th scope="col" class="text-center">Statut final</th>
+                                <th scope="col" class="text-center">Note</th>
+                                <th scope="col" class="text-center">fichier</th>
+                                <th class="text-center" scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($presences as $pre)
 
-                        <tr>
-                            <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}</th>
-                            <th class="text-center">{{$pre->getEtat->etat}} </th>
-                            <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
-                            <th class="text-center">
-                                @if ($pre->note)
+                            <tr>
+                                <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}</th>
+                                <th class="text-center">{{$pre->getEtat->etat}} </th>
+                                <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
+                                <th class="text-center">
+                                    @if ($pre->note)
 
-                                {{$pre->note}}
-                                @else
-                                <div class="text-center">
-                                    <i class="fas fa-times-circle text-danger"></i>
-                                </div>
-                                @endif
-                            </th>
-                            <th class="text-center">
-                                @if ($pre->file)
-                                <a class="btn btn-primary" href="{{route('presence.download', $pre->id)}}">Download</a>
-                                @else
-                                <div class="text-center">
-                                    <i class="fas fa-times-circle text-danger"></i>
-                                </div>
-                                @endif
-                            </th>
-                            <td class="d-flex justify-content-center ">
-                                <div class="text-center mb-2">
-                                    <a class="  btn btn-primary rounded-circle mx-3 "
-                                        href="{{route('user.show',$pre->user_id)}}"><i class="fa fa-eye"></i></a>
-                                </div>
-                                <div class="text-center mb-2">
-                                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                                        href="{{route('presence.edit',$pre)}}"><i class="fas fa-pencil-alt"></i></a>
-                                </div>
+                                    {{$pre->note}}
+                                    @else
+                                    <div class="text-center">
+                                        <i class="fas fa-times-circle text-danger"></i>
+                                    </div>
+                                    @endif
+                                </th>
+                                <th class="text-center">
+                                    @if ($pre->file)
+                                    <a class="btn btn-primary" href="{{route('presence.download', $pre->id)}}">Download</a>
+                                    @else
+                                    <div class="text-center">
+                                        <i class="fas fa-times-circle text-danger"></i>
+                                    </div>
+                                    @endif
+                                </th>
+                                <td class="d-flex justify-content-center ">
+                                    <div class="text-center mb-2">
+                                        <a class="  btn btn-primary rounded-circle mx-3 "
+                                            href="{{route('user.show',$pre->user_id)}}"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                    <div class="text-center mb-2">
+                                        <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                            href="{{route('presence.edit',$pre)}}"><i class="fas fa-pencil-alt"></i></a>
+                                    </div>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
 
-                        @endforeach
+                            @endforeach
 
-                    </tbody>
-                </table>
-            </div>
-
+                        </tbody>
+                    </table>
+                </div>
+            @endcan
 
 
         </div>
