@@ -22,23 +22,23 @@
 
                         <div class="bigcoach__social">
                             @if ($bigcoach->facebook)
-                            <a href="{{$bigcoach->facebook}}" class="facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="{{$bigcoach->facebook}}" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
 
                             @endif
                             @if ($bigcoach->twitter)
-                            <a href="{{$bigcoach->twitter}}" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="{{$bigcoach->twitter}}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
 
                             @endif
                             @if ($bigcoach->linkedin)
-                            <a href="{{$bigcoach->linkedin}}" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                            <a href="{{$bigcoach->linkedin}}" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
 
                             @endif
                             @if ($bigcoach->instagram)
-                            <a href="{{$bigcoach->instagram}}" class="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{$bigcoach->instagram}}" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
 
                             @endif
                             @if ($bigcoach->github)
-                            <a href="{{$bigcoach->github}}" class="github"><i class="fab fa-github"></i></a>
+                            <a href="{{$bigcoach->github}}" target="_blank" class="github"><i class="fab fa-github"></i></a>
 
                             @endif
                         </div>
@@ -61,23 +61,23 @@
 
                         <div class="team__social">
                             @if ($coach->facebook)
-                            <a href="{{$coach->facebook}}" class="facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="{{$coach->facebook}}" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
 
                             @endif
                             @if ($coach->twitter)
-                            <a href="{{$coach->twitter}}" class="twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="{{$coach->twitter}}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
 
                             @endif
                             @if ($coach->linkedin)
-                            <a href="{{$coach->linkedin}}" class="linkedin"><i class="fab fa-linkedin"></i></a>
+                            <a href="{{$coach->linkedin}}" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i></a>
 
                             @endif
                             @if ($coach->instagram)
-                            <a href="{{$coach->instagram}}" class="instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="{{$coach->instagram}}" target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
 
                             @endif
                             @if ($coach->github)
-                            <a href="{{$coach->github}}" class="github"><i class="fab fa-github"></i></a>
+                            <a href="{{$coach->github}}" target="_blank" class="github"><i class="fab fa-github"></i></a>
 
                             @endif
                         </div>

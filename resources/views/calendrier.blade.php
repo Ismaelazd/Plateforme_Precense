@@ -93,15 +93,19 @@
                                 @endif
                                     <div class="calendar__day">{{$date->format('d')}}</div>
                                         @foreach ($eventsForDay as $event)
-                                        <div class="calendar__event">
+                                            @if (Auth::user()->classe_id == $event->classe_id || Auth::user()->role_id==1)
+                                                
+                                                <div class="calendar__event">
+                                                
+                                                {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->end))->format('H:i')}}
+                                                | <a href="{{route('event.show',$event)}}">{{$event->classe->name}} |
+                                                    {{$event->nom}} </a>
+                                                    
+                                                </div>
+                                            @endif
+                                            
+                                        @endforeach
 
-                                            {{(new \DateTime($event->start))->format('H:i')}}-{{(new \DateTime($event->end))->format('H:i')}}
-                                            | <a href="{{route('event.show',$event)}}">{{$event->classe->name}} |
-                                                {{$event->nom}} </a>
-
-                                    </div>
-
-                                @endforeach
 
                             </td>
                             @endforeach
