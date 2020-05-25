@@ -1,3 +1,44 @@
+  <!-- Offcanvas Menu Begin -->
+  <div class="offcanvas__menu__overlay"></div>
+  <div class="offcanvas__menu__wrapper">
+      <div class="canvas__close">
+          <span class="fa fa-times-circle-o"></span>
+      </div>
+      <div class="offcanvas__logo">
+          <a href="#"><img src="img/logo.png" alt=""></a>
+      </div>
+      <nav class="offcanvas__menu mobile-menu">
+          <ul>
+              <li class="active"><a href="./index.html">Home</a></li>
+              <li><a href="./about.html">About</a></li>
+              <li><a href="./hosting.html">Hosting</a></li>
+              <li><a href="#">Pages</a>
+                  <ul class="dropdown">
+                      <li><a href="./pricing.html">Pricing</a></li>
+                      <li><a href="./blog-details.html">Blog Details</a></li>
+                      <li><a href="./404.html">404</a></li>
+                  </ul>
+              </li>
+              <li><a href="./blog.html">News</a></li>
+              <li><a href="./contact.html">Contact</a></li>
+          </ul>
+      </nav>
+      <div id="mobile-menu-wrap"></div>
+      <div class="offcanvas__auth">
+          <ul>
+              <li><a href="#"><span class="icon_chat_alt"></span> Live chat</a></li>
+              <li><a href="#"><span class="fa fa-user"></span> Login / Register</a></li>
+          </ul>
+      </div>
+      <div class="offcanvas__info">
+          <ul>
+              <li><span class="icon_phone"></span> +1 123-456-7890</li>
+              <li><span class="fa fa-envelope"></span> Support@gmail.com</li>
+          </ul>
+      </div>
+  </div>
+  <!-- Offcanvas Menu End -->
+ 
  <!-- Header Section Begin -->
  <header id="header"  class="header-section pb-4">
     {{-- <div class="header__info">
