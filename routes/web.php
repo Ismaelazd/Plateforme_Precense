@@ -37,7 +37,7 @@ Route::get('/calendrier', function() {
 })->name('calendrier')->middleware('connected','notMember');
  
 
-Route::resource('event', 'EventController')->middleware(['connected','notMember']);
+Route::resource('event', 'EventController');
 Route::resource('classe', 'ClasseController')->middleware(['coach']);
 Route::resource('presence', 'PresenceController')->middleware(['connected','notMember']);
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);

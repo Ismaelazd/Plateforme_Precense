@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('coach', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +23,19 @@ class EventController extends Controller
      */
     public function index()
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
-        $events = Event::all();
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $events = Event::all();
+
+        } else {
+            $events = Event::where('classe_id',Auth::user()->classe_id)->get();
+        }
         return view('event.index',compact('events','changements'));
     }
 
@@ -32,8 +46,13 @@ class EventController extends Controller
      */
     public function create()
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $classes = Classe::all();
         return view('event.create',compact('classes','changements'));
     }
@@ -83,8 +102,13 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $changements = Validationchange::all();
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
 
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $presences = $event->getPresences()->get();
         $precense = $presences->where('user_id',Auth::id());
         if ($event) {
@@ -102,8 +126,16 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
+        
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $classes = Classe::all();
-        return view('event.edit',compact('event','classes'));
+        return view('event.edit',compact('event','classes','changements'));
     }
 
     /**

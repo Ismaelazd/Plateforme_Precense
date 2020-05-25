@@ -113,10 +113,13 @@
                         @endfor
 
                     </table>
+                    @can('coach', App\User::class)
+                        
                     <div class="my-5">
 
                         <a href="{{route('event.create')}}" class="calendar__button">+</a>
                     </div>
+                    @endcan
 
                 </div>
 

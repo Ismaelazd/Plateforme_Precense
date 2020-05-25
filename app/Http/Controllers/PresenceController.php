@@ -6,6 +6,8 @@ use App\Presence;
 use App\Event;
 use App\Etat;
 use App\Etatfinal;
+use App\User;
+use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -106,9 +108,17 @@ class PresenceController extends Controller
      */
     public function edit(Presence $presence)
     {
+        
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
         $etats = Etat::all();
         $etatfinals = Etatfinal::all();
-        return view('presence.edit',compact('presence','etats','etatfinals'));
+        return view('presence.edit',compact('presence','etats','etatfinals','changements'));
     }
 
     /**

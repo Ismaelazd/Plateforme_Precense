@@ -73,12 +73,16 @@
                         @endif
 
                     </ul>
-
+                    
                     <div class="mt-4 text-center">
-
+                        @can('coach', App\User::class)
+                        
                         <a href="{{route('event.edit',$event)}}" class="btn btn-outline-warning">editer</a>
-                        <a href="{{route('event.edit',$event)}}" class="btn btn-outline-danger" data-toggle="modal"
-                            data-target="#modalDeleteEvent{{$event->id}}">Supprimer</a>
+                        <a href="{{route('event.edit',$event)}}" class="btn btn-outline-danger deleteEl" data-toggle="modal"
+                        data-target="#modalDeleteEvent{{$event->id}}">Supprimer</a>
+                        @endcan
+                      
+
                     </div>
                 </div>
 
@@ -88,7 +92,7 @@
                             <div class="modal-content bg-danger">
                                 <div class="modal-header ">
                                     <h4 class="modal-title">Attention!!!</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <button type="button" class="close btnAnnuler" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">×</span>
                                     </button>
                                 </div>
@@ -97,12 +101,12 @@
                                         Cette action n'est pas reversible!</p>
                                 </div>
                                 <div class="modal-footer float-right">
-                                    <button type="button" class="btn btn-outline-light"
+                                    <button type="button" class="btn btn-outline-light btnAnnuler"
                                         data-dismiss="modal">Annuler</button>
                                     <form action="{{route('event.destroy',$event)}}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-outline-light">Supprimer</button>
+                                        <button type="submit" class="btn btn-outline-light btnAnnuler">Supprimer</button>
                                     </form>
                                 </div>
                             </div>
@@ -225,6 +229,7 @@
                                     @endif
                                 </th>
                                 <td class="d-flex justify-content-center ">
+
                                     <div class="text-center mb-2">
                                         <a class="  btn btn-primary rounded-circle mx-3 "
                                             href="{{route('user.show',$pre->user_id)}}"><i class="fa fa-eye"></i></a>
@@ -273,6 +278,33 @@
         integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
     </script>
     <script src="{{asset('/js/profil.js')}}"></script>
+
+    <script>
+        let main = document.querySelector('.main');
+        let btnDelete = document.querySelector('.deleteEl');
+        btnDelete.addEventListener('click',()=>{
+            main.style.position = 'static';
+            btnDelete.classList.add('click');
+        })
+
+
+        let btnAnnuler = document.querySelectorAll('.btnAnnuler');
+        btnAnnuler.forEach(element => {
+            element.addEventListener('click',()=>{
+            console.log('saluuuuut');
+            main.style.position = 'relative';
+            
+        })
+
+        // let page= document.querySelector('.profile-page');
+        // document.addEventListener('click',()=>{
+        // if((main.style.position == 'static') &&((btnDelete.classList.contains("click")))) {
+        //    location.reload();
+        // }
+        // })
+
+        });
+    </script>
 
 </body>
 
