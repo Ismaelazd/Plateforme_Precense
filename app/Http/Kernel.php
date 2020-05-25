@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'connected' => \App\Http\Middleware\Connected::class,
         'notMember' => \App\Http\Middleware\notMember::class,
         'coach' => \App\Http\Middleware\Coach::class,
+        'myClasse' => \App\Http\Middleware\MyClasse::class,
     ];
 }

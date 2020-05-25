@@ -32,7 +32,7 @@ Route::get('/calendrier', function() {
  
 
 Route::resource('event', 'EventController')->middleware(['connected','notMember']);
-Route::resource('classe', 'ClasseController')->middleware(['connected','notMember','coach']);
+Route::resource('classe', 'ClasseController')->middleware(['coach']);
 Route::resource('presence', 'PresenceController')->middleware(['connected','notMember']);
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);
 Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['coach']);
@@ -93,7 +93,7 @@ Route::post('messagerie/{id}/store','MessagerieController@store')->name('message
 // Ressources Slide
 
 Route::resource('slide', 'SlideController')->middleware('admin');
-Route::get('pdf/{id}','PDFMaker@gen')->name('pdf.gen')->middleware('coach');
+Route::get('pdf/{classe}','ClasseController@pdf')->name('pdf.gen')->middleware('coach');
 
 
 

@@ -9,12 +9,14 @@
       </div>
       <nav class="offcanvas__menu mobile-menu">
         <ul>
-            <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a href="{{url('/')}}">Home</a></li>
+            <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
+                    href="{{url('/')}}">Home</a></li>
             @can('admin', App\User::class)
             <li><a href="{{url('/home')}}">Admin</a></li>
             @endcan
             @can('myProfil', App\User::class)
-            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
+            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
+                    href="{{route('myProfil.index')}}">Profil</a></li>
 
             @endcan
             @if(Auth::check() && Auth::user()->role_id != 4)
@@ -24,8 +26,13 @@
                 
             <li><a href="{{route('classe.index')}}">Classes</a></li>
             @endcan
-            @endif
 
+            @can('student', App\User::class)
+                
+            <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
+            @endcan
+
+            @endif
             @if(Auth::check() && Auth::user()->role_id == 2)
                 @if (count($changements) == 0)
                 <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
@@ -36,22 +43,23 @@
                 @endif
         
             @endif
-            
+        
+
             @if (Auth::check())
             <li class="section-btn">
-              <a class="" href="{{ route('logout') }}"
-              onclick="event.preventDefault();
+                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-               {{ __('Logout') }}
-           </a>
+                    {{ __('Logout') }}
+                </a>
             </li>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-          </form>
-        @else
-        
-        <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in / Join</a></li>
-        @endif
+                @csrf
+            </form>
+            @else
+
+            <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
+                    Join</a></li>
+            @endif
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>
@@ -104,12 +112,14 @@
             <div class="col-lg-9 col-md-9">
                 <nav class="header__menu">
                     <ul>
-                        <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a href="{{url('/')}}">Home</a></li>
+                        <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
+                                href="{{url('/')}}">Home</a></li>
                         @can('admin', App\User::class)
                         <li><a href="{{url('/home')}}">Admin</a></li>
                         @endcan
                         @can('myProfil', App\User::class)
-                        <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a href="{{route('myProfil.index')}}">Profil</a></li>
+                        <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
+                                href="{{route('myProfil.index')}}">Profil</a></li>
 
                         @endcan
                         @if(Auth::check() && Auth::user()->role_id != 4)
@@ -119,8 +129,13 @@
                             
                         <li><a href="{{route('classe.index')}}">Classes</a></li>
                         @endcan
-                        @endif
 
+                        @can('student', App\User::class)
+                            
+                        <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
+                        @endcan
+
+                        @endif
                         @if(Auth::check() && Auth::user()->role_id == 2)
                             @if (count($changements) == 0)
                             <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
@@ -131,22 +146,23 @@
                             @endif
                     
                         @endif
-                        
+                    
+
                         @if (Auth::check())
                         <li class="section-btn">
-                          <a class="" href="{{ route('logout') }}"
-                          onclick="event.preventDefault();
+                            <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                           {{ __('Logout') }}
-                       </a>
+                                {{ __('Logout') }}
+                            </a>
                         </li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                          @csrf
-                      </form>
-                    @else
-                    
-                    <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in / Join</a></li>
-                    @endif
+                            @csrf
+                        </form>
+                        @else
+
+                        <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
+                                Join</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>

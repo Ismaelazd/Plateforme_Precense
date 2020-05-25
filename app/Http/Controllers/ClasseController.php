@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App;
+use App\Event;
+use Carbon\Carbon;
 use App\Classe;
 use App\User;
 use App\Validationchange;
@@ -9,6 +11,13 @@ use Illuminate\Http\Request;
 
 class ClasseController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware("coach")->only(["index"]);  
+        
+        $this->middleware("can:myCoding,classe")->only(["show","edit","destroy","update","pdf"]);
+     
+   }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +28,8 @@ class ClasseController extends Controller
         $changements = Validationchange::all();
 
         $classes = Classe::all();
-        return view('classe.index',compact('classes','changements'));    }
+        return view('classe.index',compact('classes','changements'));    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +69,8 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {  
-        return view('classe.edit',compact('classe'));    
+        $changements = Validationchange::all();
+        return view('classe.edit',compact('classe','changements'));    
     }
 
     /**
@@ -94,10 +105,21 @@ class ClasseController extends Controller
     //afficher les User appartenants à une classe
     public function show(Classe $classe)
     {
+        // $this->authorize('myCoding', $classe,Classe::class);
         $changements = Validationchange::all();
 
         $coachs = User::where('classe_id',$classe->id)->where('role_id',2)->get();
         $users = User::where('classe_id',$classe->id)->where('role_id',3)->get();
         return view('classe.show',compact('classe','users','coachs','changements')); 
+    }
+    public function pdf(Classe $classe){
+        /**
+         * domPDF
+         */
+        $pdf = App::make('dompdf.wrapper');
+        $events = Event::where('end','<',new Carbon( 'friday 23:00:00'))->where('start','>',new Carbon( 'last monday 05:00:00'))->where('classe_id',$classe->id)->get();
+
+        $pdf->loadView('pdf.weekly',compact('events'));
+        return $pdf->stream();
     }
 }

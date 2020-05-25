@@ -56,10 +56,10 @@
         </div>
 
 
-        <div class="container ">
+        <div class="container " style="padding: 0px 200px;">
 
-            <table class="table table-striped table-light rounded mx-5">
-                <thead>
+            <table class="table table-striped table-light rounded m-0">
+                <thead style="background-color: #120851 ;" class="text-white">
                     
                     <tr>
                         <th scope="col" class="text-center">Nom</th>
@@ -68,7 +68,9 @@
                 </thead>
                 <tbody>
                     @foreach ($classes as $classe)
-
+                    @can('myCoding',$classe, App\Classe::class)
+                        
+                   
                     <tr>
                         <th class="text-center">{{$classe->name}} </th>
                         <td class="d-flex justify-content-center ">
@@ -87,7 +89,7 @@
                             
                             <div class="text-center mb-2">
                                 <a class="  btn btn-secondary rounded-circle mx-3 text-white"
-                                    href="{{route('pdf.gen',$classe->id)}}" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                                    href="{{route('pdf.gen',$classe)}}" target="_blank"><i class="fas fa-file-pdf"></i></a>
                             </div>
 
                         </td>
@@ -121,6 +123,7 @@
                         </div>
                         <!-- /.modal-dialog -->
                     </div>
+                    @endcan
                     @endforeach
 
                 </tbody>

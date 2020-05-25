@@ -144,11 +144,219 @@
                 </form>
 
 
-                
+
                 <div class="row mt-5 pt-5">
-                    <div class="col-6" style="
+                    
+                    
+                </div>
+
+
+
+
+                {{-- liste des évènements --}}
+
+
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#stat" role="tab" data-toggle="tab">
+                                        <i class="material-icons">school</i>
+                                        Stat
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#avis" role="tab" data-toggle="tab">
+                                        <i class="material-icons">folder_open</i>
+                                        Avis
+                                    </a>
+                                </li>
+                                {{-- <li class="nav-item">
+                                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
+                                        <i class="material-icons">event_note</i>
+                                        Calendrier
+                                    </a>
+                                </li> --}}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#message" role="tab" data-toggle="tab">
+                                        <i class="material-icons">message</i>
+                                        Messages
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content tab-space">
+                    <div class="tab-pane active text-center gallery" id="stat">
+                        <div class="row justify-content-center m-5 ">
+                            <table class="table table-striped table-light rounded ">
+
+
+
+                                <div class="text-center text-white w-100 card-header h4"
+                                    style="background-color: #120851;">Mes stats</div>
+
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="">Total</th>
+                                        <th scope="col">Présences</th>
+                                        <th scope="col">Retards</th>
+                                        <th scope="col">Absences Justifiées</th>
+                                        <th scope="col">Absences Injustifiées</th>
+                                        <th scope="col">Absences Annoncées</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <th>{{count($presences)}} jours </th>
+                                        <td>{{$presences->where('etatfinal_id',1)->count()}} jours <br>
+                                            %:
+                                            @if (count($presences)==0)
+                                            0
+                                            @else
+                                            {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count())/$presences*100}}
+                                            --}}
+                                            {{($presences->where('etatfinal_id',1)->count())/count($presences)*100}}
+                                            @endif
+                                        </td>
+
+                                        <td>{{$presences->where('etatfinal_id',2)->count()}} jours <br>
+                                            %:
+                                            @if (count($presences)==0)
+                                            0
+                                            @else
+                                            {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$presences*100}}
+                                            --}}
+                                            {{($presences->where('etatfinal_id',2)->count())/count($presences)*100}}
+                                            @endif</td>
+                                        <td>{{$presences->where('etatfinal_id',4)->count()}} jours <br>
+                                            %:
+                                            @if (count($presences)==0)
+                                            0
+                                            @else
+                                            {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$presences*100}}
+                                            --}}
+                                            {{($presences->where('etatfinal_id',4)->count())/count($presences)*100}}
+                                            @endif
+                                        </td>
+                                        <td>{{$presences->where('etatfinal_id',5)->count()}} jours <br>
+                                            %:
+                                            @if (count($presences)==0)
+                                            0
+                                            @else
+                                            {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$presences*100}}
+                                            --}}
+                                            {{($presences->where('etatfinal_id',5)->count())/count($presences)*100}}
+                                            @endif
+                                        </td>
+                                        <td>{{$presences->where('etatfinal_id',6)->count()}} jours <br>
+                                            %:
+                                            @if (count($presences)==0)
+                                            0
+                                            @else
+                                            {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$presences*100}}
+                                            --}}
+                                            {{($presences->where('etatfinal_id',6)->count())/count($presences)*100}}
+                                            @endif</td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane text-center gallery" id="avis">
+                        <div class="row">
+                            <div class="col-6 mx-auto">
+                                {{-- Testimonials --}}
+                                @php
+                                $testi = App\Testimonial::where('user_id',$user->id)->first();
+                                @endphp
+                                @if ($testi)
+                                <div class="card-header" style="background-color: #120851;">
+
+                                    <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
+                                </div>
+                                <div class="card-footer">
+
+                                    <label for="">Mon Avis:</label>
+                                    <p>{{$testi->message}}</p>
+                                    <label for="">Ma note:</label>
+            
+                                    @for ($i = 0; $i < $testi->note; $i++)
+                                        <i class="fa fa-star rating_good text-warning"></i>
+                                        @endfor
+                                        @for ($i = 5; $i > $testi->note; $i--)
+                                        <i class="fa fa-star rating_bad"></i>
+                                        @endfor
+                                        <div class="row justify-content-center mt-5 ">
+            
+                                            <a href="{{route('testimonial.edit',$testi)}}">
+            
+                                                <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit"
+                                                    class="btn"><i class="fa fa-pencil-alt "></i></button>
+                                            </a>
+            
+            
+            
+                                            <form class="text-center mx-2" action="{{route('testimonial.destroy', $testi)}}"
+                                                method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button style="color: #ffff; background-color: #120851 ;" title="Delete"
+                                                    type="submit" class="btn"><i class="fa fa-trash "></i></button>
+                                            </form>
+                                        </div>
+                                </div>
+                                    @else
+        
+        
+                                    <div class="container">
+                                        <div class="card-header" style="background-color: #120851;">
+
+                                            <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
+                                        </div>
+                                        <div class="card-footer" style="display: block;">
+                                            <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
+                                                method="post">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="avis">Mon avis</label>
+                                                    <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
+                                                        class="form-control " required></textarea>
+                                                    <label for="note">Ma note sur 5</label>
+                                                    <select class="form-control" name="note" id="">
+                                                        <option value="5">5</option>
+                                                        <option value="4">4</option>
+                                                        <option value="3">3</option>
+                                                        <option value="2">2</option>
+                                                        <option value="1">1</option>
+                                                        <option value="0">0</option>
+                                                    </select>
+                                                    <span class="input-group-append justify-content-center">
+                                                        <button type="submit" class="btn text-white mt-4 "
+                                                            style="background-color: #120851;">Envoyer</button>
+                                                    </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane text-center gallery" id="message">
+                        <div class="row">
+                            <div class="col-6 mx-auto" style="
                     border-right: 3px;
-                    border-left: 0px;
+                    border-left: 3px;
                     border-style: solid;
                     border-image: 
                       linear-gradient(
@@ -157,7 +365,7 @@
                         rgba(0, 0, 0, 0)
                       ) 1 100%;">
                         {{-- Messagerie --}}
-                        <div id="messagerie" style="width: 400px" class="messagerie  ">
+                        <div id="messagerie" style="width: 100%" class="messagerie  ">
                             <h3 class="text-center">Messagerie</h3>
                             <div class="card  cardutline direct-chat ">
                                 <div class="card-header  d-flex align-items-center justify-content-between"
@@ -235,193 +443,9 @@
                         </div>
 
                     </div>
-                    <div class="col-6 pl-5">
-                        {{-- Testimonials --}}
-                        @php
-                        $testi = App\Testimonial::where('user_id',$user->id)->first();
-                        @endphp
-                        @if ($testi)
-                        <h3 class="text-center">Testimonials</h3>
-                        <label for="">Mon Avis:</label>
-                        <p>{{$testi->message}}</p>
-                        <label for="">Ma note:</label>
-
-                        @for ($i = 0; $i < $testi->note; $i++)
-                            <i class="fa fa-star rating_good text-warning"></i>
-                            @endfor
-                            @for ($i = 5; $i > $testi->note; $i--)
-                            <i class="fa fa-star rating_bad"></i>
-                            @endfor
-                            <div class="row justify-content-center mt-5">
-
-                                <a href="{{route('testimonial.edit',$testi)}}">
-
-                                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit"
-                                        class="btn"><i class="fa fa-pencil-alt "></i></button>
-                                </a>
-
-
-
-                                <form class="text-center mx-2" action="{{route('testimonial.destroy', $testi)}}"
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button style="color: #ffff; background-color: #120851 ;" title="Delete"
-                                        type="submit" class="btn"><i class="fa fa-trash "></i></button>
-                                </form>
-                            </div>
-                            @else
-
-
-                            <div class="container">
-                                <h3 class="text-center">Mon Avis sur MG Connect</h3>
-                                <div class="card-footer" style="display: block;">
-                                    <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
-                                        method="post">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="avis">Mon avis</label>
-                                            <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
-                                                class="form-control " required></textarea>
-                                            <label for="note">Ma note sur 5</label>
-                                            <select class="form-control" name="note" id="">
-                                                <option value="5">5</option>
-                                                <option value="4">4</option>
-                                                <option value="3">3</option>
-                                                <option value="2">2</option>
-                                                <option value="1">1</option>
-                                                <option value="0">0</option>
-                                            </select>
-                                            <span class="input-group-append justify-content-center">
-                                                <button type="submit" class="btn text-white mt-4 "
-                                                    style="background-color: #120851;">Envoyer</button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            @endif
-                    </div>
-                </div>
-
-
-
-                <div class="row justify-content-center my-5">
-                    <table class="table table-striped table-light rounded ">
-                       
-
-                          
-                                <div class="text-center text-white w-100 card-header h4" style="background-color: #120851;">Mes stats</div>
-                           
-                       
-                        <thead>
-                            <tr>
-                                <th scope="col" class="">Total</th>
-                                <th scope="col">Présences</th>
-                                <th scope="col">Retards</th>
-                                <th scope="col">Absences Justifiées</th>
-                                <th scope="col">Absences Injustifiées</th>
-                                <th scope="col">Absences Annoncées</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <th>{{count($presences)}} jours </th>
-                                <td>{{$presences->where('etatfinal_id',1)->count()}} jours <br>
-                                    %:
-                                    @if (count($presences)==0)
-                                    0
-                                    @else
-                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count())/$presences*100}}
-                                    --}}
-                                    {{($presences->where('etatfinal_id',1)->count())/count($presences)*100}}
-                                    @endif
-                                </td>
-
-                                <td>{{$presences->where('etatfinal_id',2)->count()}} jours <br>
-                                    %:
-                                    @if (count($presences)==0)
-                                    0
-                                    @else
-                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$presences*100}}
-                                    --}}
-                                    {{($presences->where('etatfinal_id',2)->count())/count($presences)*100}}
-                                    @endif</td>
-                                <td>{{$presences->where('etatfinal_id',4)->count()}} jours <br>
-                                    %:
-                                    @if (count($presences)==0)
-                                    0
-                                    @else
-                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$presences*100}}
-                                    --}}
-                                    {{($presences->where('etatfinal_id',4)->count())/count($presences)*100}}
-                                    @endif
-                                </td>
-                                <td>{{$presences->where('etatfinal_id',5)->count()}} jours <br>
-                                    %:
-                                    @if (count($presences)==0)
-                                    0
-                                    @else
-                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$presences*100}}
-                                    --}}
-                                    {{($presences->where('etatfinal_id',5)->count())/count($presences)*100}}
-                                    @endif
-                                </td>
-                                <td>{{$presences->where('etatfinal_id',6)->count()}} jours <br>
-                                    %:
-                                    @if (count($presences)==0)
-                                    0
-                                    @else
-                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$presences*100}}
-                                    --}}
-                                    {{($presences->where('etatfinal_id',6)->count())/count($presences)*100}}
-                                    @endif</td>
-
-                            </tr>
-
-
-                        </tbody>
-                    </table>
-                </div>
-                {{-- liste des évènements --}}
-
-
-                <div class="row">
-                    <div class="col-md-6 ml-auto mr-auto">
-                        <div class="profile-tabs">
-                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                        <i class="material-icons">school</i>
-                                        Classes
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                        <i class="material-icons">folder_open</i>
-                                        Projects
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                        <i class="material-icons">event_note</i>
-                                        Calendrier
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                        <i class="material-icons">message</i>
-                                        Messages
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
-
-
 
 
 
