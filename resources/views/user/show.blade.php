@@ -187,7 +187,7 @@
 
                                         <!-- Message. Default to the left -->
                                         <div
-                                            class="direct-chat-msg @if ($messagerie->ecrivain_id == Auth::id())  right @else   @endif">
+                                            class="direct-chat-msg @if ($messagerie->ecrivain_id == Auth::id())  right text-right @else   @endif">
                                             <div class="direct-chat-infos clearfix">
                                                 <span
                                                     class="direct-chat-name  @if ($messagerie->ecrivain_id == Auth::id()) float-right  @else float-left @endif">{{$messagerie->ecrivain->name}}</span>
@@ -238,72 +238,81 @@
                         </div>
 
                     </div>
-                    <div class="col-6 pl-5">
+                    <div class="col-6 mx-auto px-5">
                         {{-- Testimonials --}}
                         @php
                         $testi = App\Testimonial::where('user_id',$user->id)->first();
                         @endphp
                         @if ($testi)
-                        <h3 class="text-center">Testimonials</h3>
-                        <label for="">Mon Avis:</label>
-                        <p>{{$testi->message}}</p>
-                        <label for="">Ma note:</label>
+                        <div class="card-header" style="background-color: #120851;">
 
-                        @for ($i = 0; $i < $testi->note; $i++)
-                            <i class="fa fa-star rating_good text-warning"></i>
-                            @endfor
-                            @for ($i = 5; $i > $testi->note; $i--)
-                            <i class="fa fa-star rating_bad"></i>
-                            @endfor
-                            <div class="row justify-content-center mt-5">
+                            <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
+                        </div>
+                        <div class="card-footer">
 
-                                <a href="{{route('testimonial.edit',$testi)}}">
+                            <label for="">Mon Avis:</label>
+                            <p>{{$testi->message}}</p>
+                            <label for="">Ma note:</label>
 
-                                    <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn"><i
-                                     class="fa fa-pencil-alt "></i></button>
-                                </a>
-                                    
-                               
+                            @for ($i = 0; $i < $testi->note; $i++)
+                                <i class="fa fa-star rating_good text-warning"></i>
+                                @endfor
+                                @for ($i = 5; $i > $testi->note; $i--)
+                                <i class="fa fa-star rating_bad"></i>
+                                @endfor
+                                <div class="row justify-content-center mt-5 ">
 
-                                <form class="text-center mx-2" action="{{route('testimonial.destroy', $testi)}}"
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button style="color: #ffff; background-color: #120851 ;" title="Delete" type="submit" class="btn"><i
-                                        class="fa fa-trash "></i></button>
-                                </form>
-                            </div>
-                            @else
+                                    <a href="{{route('testimonial.edit',$testi)}}">
+
+                                        <button style="color: #ffff; background-color: #120851 ;" title="Edit"
+                                            type="submit" class="btn"><i class="fa fa-pencil-alt "></i></button>
+                                    </a>
 
 
-                            <div class="container">
-                                <h3 class="text-center">Mon Avis sur MG Connect</h3>
-                                <div class="card-footer" style="display: block;">
-                                    <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
-                                        method="post">
+
+                                    <form class="text-center mx-2"
+                                        action="{{route('testimonial.destroy', $testi)}}" method="post">
                                         @csrf
-                                        <div class="form-group">
-                                            <label for="avis">Mon avis</label>
-                                            <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
-                                                class="form-control " required></textarea>
-                                            <label for="note">Ma note sur 5</label>
-                                            <select class="form-control" name="note" id="">
-                                                <option value="5">5</option>
-                                                <option value="4">4</option>
-                                                <option value="3">3</option>
-                                                <option value="2">2</option>
-                                                <option value="1">1</option>
-                                                <option value="0">0</option>
-                                            </select>
-                                            <span class="input-group-append justify-content-center">
-                                                <button type="submit" class="btn text-white mt-4 "
-                                                    style="background-color: #120851;">Envoyer</button>
-                                            </span>
-                                        </div>
+                                        @method('DELETE')
+                                        <button style="color: #ffff; background-color: #120851 ;" title="Delete"
+                                            type="submit" class="btn"><i class="fa fa-trash "></i></button>
                                     </form>
                                 </div>
+                        </div>
+                        @else
+
+
+                        <div class="container">
+                            <div class="card-header" style="background-color: #120851;">
+
+                                <h4 class="text-center text-white m-0">Mon Avis sur MG Connect</h4>
                             </div>
-                            @endif
+                            <div class="card-footer" style="display: block;">
+                                <form class="text-center" action="{{route('testimonial.store', $user->id)}}"
+                                    method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="avis">Mon avis</label>
+                                        <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
+                                            class="form-control " required></textarea>
+                                        <label for="note">Ma note sur 5</label>
+                                        <select class="form-control" name="note" id="">
+                                            <option value="5">5</option>
+                                            <option value="4">4</option>
+                                            <option value="3">3</option>
+                                            <option value="2">2</option>
+                                            <option value="1">1</option>
+                                            <option value="0">0</option>
+                                        </select>
+                                        <span class="input-group-append justify-content-center">
+                                            <button type="submit" class="btn text-white mt-4 "
+                                                style="background-color: #120851;">Envoyer</button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        @endif
                     </div>
                 </div>
 
@@ -313,8 +322,8 @@
 
 
                     <table class="table table-striped table-light rounded ">
-                        <h3>PRESENCES AUX EVENTS</h3>
-                        <thead>
+                        <h3 class="text-center">PRESENCES AUX EVENTS</h3>
+                        <thead style="background-color: #120851" class="text-white">
                             
                             <tr >
                                 <th scope="col" class="">Nom</th>
