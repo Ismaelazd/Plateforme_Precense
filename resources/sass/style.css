@@ -1066,6 +1066,17 @@ ol {
 
 .footer__text-about .footer__logo {
 	margin-bottom: 24px;
+	
+}
+.footer__logo img{
+	width: 40px;
+    height: 40px;
+	
+}
+.offcanvas__logo img{
+	width: 40px;
+    height: 40px;
+	
 }
 
 .footer__text-about .footer__logo a {
@@ -1134,6 +1145,11 @@ ol {
 	padding: 25px 0;
 	border-top: 1px solid #2a2163;
 	margin-top: 20px;
+}
+
+.footer__social img{
+	width: 15.75px;
+	height: 18px;
 }
 
 /* ----------------------------------- Other Pages Styles ----------------------------------- */

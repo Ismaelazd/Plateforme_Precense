@@ -75,25 +75,24 @@
     </div>
     <div class="footer__text set-bg" data-setbg="{{asset('img/footer-bg.png')}}">
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-around">
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="footer__text-about">
-                        <div class="footer__logo">
-                            <a href="./index.html"><img src="{{asset('img/logo.png')}}" alt=""></a>
+                        <div class="footer__logo d-flex">
+                            <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a href="{{url('/')}}" class="font-weight-bold text-white d-flex align-items-center pl-3 h4">MGConnect</a>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                            ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida viverra maecen
-                            lacus vel facilisis. </p>
+                        <p> {{$about->texte}}</p>
                         <div class="footer__social">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.facebook.com/molengeek/"><i class="fab fa-facebook"></i></a>
+                            <a href="https://twitter.com/molengeek?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/company/molengeek/?originalSubdomain=fr
+                            "><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/molengeek/?hl=fr"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer__text-widget">
+                {{-- <div class="col-lg-4 col-md-6 col-sm-6 d-flex justify-content-center">
+                    <div class="footer__text-widget pt-1">
                         <h5>Company</h5>
                         <ul>
                             <li><a href="#">Company</a></li>
@@ -103,9 +102,9 @@
                             <li><a href="#">Careers</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="footer__text-widget">
+                </div> --}}
+                {{-- <div class="col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer__text-widget pt-1">
                         <h5>Hosting</h5>
                         <ul>
                             <li><a href="#">Web Hosting</a></li>
@@ -115,9 +114,9 @@
                             <li><a href="#">Cloud Hosting</a></li>
                         </ul>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <div class="footer__text-widget">
+                    <div class="footer__text-widget pt-1">
                         <h5>cONTACT US</h5>
                         <ul class="footer__widget-info">
                             <li><span class="fa fa-map-marker"></span>{{$info->adresse_un}}<br />

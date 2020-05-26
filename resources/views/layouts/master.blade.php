@@ -26,9 +26,8 @@
 
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <!-- Js Plugins -->
-    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>    
     <script src="{{asset('js/jquery.slicknav.js')}}"></script>
     <script src="{{asset('js/owl.carousel.min.js')}}"></script>
     

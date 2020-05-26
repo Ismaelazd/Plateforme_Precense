@@ -16,8 +16,8 @@
 
   .modal-dialog .modal-content {
     background: #000000;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #000428, #004e92);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #000428, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     border: none;
     border-radius: 15px;
     text-align: center;
@@ -71,16 +71,7 @@
 	
   }
 
-  .modal-dialog .nav-tabs > li.active > a, 
-  .modal-dialog .nav-tabs > li.active > a:hover, 
-  .modal-dialog .nav-tabs > li.active > a:focus,
-  .modal-dialog .nav>li>a:focus, 
-  .modal-dialog .nav>li>a:hover {
-    color: #ffffff;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #4c57d6;
-  }
+
 
   .modal-dialog .tab-content {
     padding-top: 20px;
@@ -93,6 +84,7 @@
     box-shadow: none;
     margin: 15px 0 15px 0;
     height: 50px;
+    color: white;
   }
 
   .modal-dialog form .form-control:hover,
@@ -101,7 +93,7 @@
   }
 
   .modal-dialog form input[type="submit"] {
-    background: #4c57d6;
+    background: #120851;
     border-color: transparent;
     border-radius: 100px;
     color: #ffffff;
