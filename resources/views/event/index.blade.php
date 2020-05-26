@@ -103,8 +103,8 @@
                                             <h4 class="modal-title">Attention!!!</h4>
                                             <button type="button" class="close btnAnnuler" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
+                                            </button>      
+                                        </div>  
                                         <div class="modal-body text-center">
                                             <p>Vous êtes sur le point de supprimer l'évènement
                                                 "{{ucfirst($event->nom)}}"! <br> Cette action n'est pas reversible!</p>
