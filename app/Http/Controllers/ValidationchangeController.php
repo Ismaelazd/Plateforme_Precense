@@ -54,6 +54,9 @@ class ValidationchangeController extends Controller
     public function store(Request $request,$id)
     {
         $user = User::find($id);
+        
+        $this->authorize('mine', $user, User::class);
+
         $request->validate([
             'name'=> 'required',
             'firstname'=> 'required',

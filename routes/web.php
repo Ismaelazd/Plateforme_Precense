@@ -38,15 +38,18 @@ Route::get('/calendrier', function() {
  
 
 Route::resource('event', 'EventController');
-Route::resource('classe', 'ClasseController')->middleware(['coach']);
-Route::resource('presence', 'PresenceController')->middleware(['connected','notMember']);
-Route::post('presence/{event}', 'PresenceController@store')->name('presence.add')->middleware(['connected','notMember']);
-Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download')->middleware(['coach']);
+Route::resource('classe', 'ClasseController');
+Route::resource('presence', 'PresenceController');
+Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
+Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download');
 Route::get('/visiteurs','UserController@visiteur')->name('visiteurs')->middleware('admin');
 
 // Ressource MYPROFIL
 
-Route::resource('myProfil', 'MyProfilController')->middleware('connected');
+// Route::resource('myProfil', 'MyProfilController');
+Route::resource('myProfil', 'MyProfilController', ['parameters' => [
+    'myProfil' => 'user'
+]])->middleware('connected');
 
 // Ressources Formulaire
 
@@ -89,11 +92,11 @@ Route::put('form/{id}/restore', 'FormController@restore')->name('form.restore')-
 
 
 
-Route::resource('validationchange', 'ValidationchangeController')->middleware(['coach']);
-Route::post('validationchange/{id}/store','ValidationchangeController@store')->name('validationchange.store')->middleware(['connected','notMember']);
+Route::resource('validationchange', 'ValidationchangeController')->middleware('coach');
+Route::post('validationchange/{user}/store','ValidationchangeController@store')->name('validationchange.store')->middleware('connected');
 
 //messagerie
-Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store')->middleware(['connected','notMember']);;
+Route::post('messagerie/{id}/store','MessagerieController@store')->name('messagerie.store')->middleware('notMember');;
 
 
 // Ressources Slide

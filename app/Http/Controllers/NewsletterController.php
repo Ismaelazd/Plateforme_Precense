@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\NewsletterMail;
 use App\Newsletter;
+use Validator;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Validator;
 
 class NewsletterController extends Controller
 {
@@ -46,9 +46,20 @@ class NewsletterController extends Controller
      */
     public function store(Request $request)
     {
+        // $validatedData = $request->validate([
+        //     'email' => 'required|unique:newsletters',
+        // ]);
+   
+
         $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:newsletter',
+            'email' => 'required|unique:newsletters',
         ]);
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous().'#newsletter') //change this to your desired url
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $newsletter = new Newsletter();
         $newsletter->email = $request->input('email');
         $newsletter->save();

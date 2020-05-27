@@ -14,6 +14,7 @@ class EventController extends Controller
 {
     public function __construct()
     {
+        $this->middleware('notMember');
         $this->middleware('coach', ['except' => ['index','show']]);
     }
     /**

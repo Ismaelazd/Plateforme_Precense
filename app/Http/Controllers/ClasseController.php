@@ -14,8 +14,8 @@ class ClasseController extends Controller
 {
 
     public function __construct() {
+        $this->middleware('notMember');  
         $this->middleware("coach")->only(["index"]);  
-        
         $this->middleware("can:myCoding,classe")->only(["show","edit","destroy","update","pdf"]);
      
    }

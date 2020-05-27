@@ -65,7 +65,7 @@
                         
                         <div class="form-group">
                             <label  for="debut">debut</label>
-                            <input class="form-control @error('debut') is-invalid @enderror" type="datetime-local"  name="debut" id="">
+                            <input class="form-control @error('debut') is-invalid @enderror" type="datetime-local" required  name="debut" id="">
                               @error('debut')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -75,7 +75,7 @@
                         
                         <div class="form-group">
                             <label  for="debut">fin</label>
-                            <input class="form-control @error('fin') is-invalid @enderror" type="datetime-local"  name="fin" id="">
+                            <input class="form-control @error('fin') is-invalid @enderror" type="datetime-local" required name="fin" id="">
                               @error('fin')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>

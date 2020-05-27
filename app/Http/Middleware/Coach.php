@@ -16,10 +16,16 @@ class Coach
      */
     public function handle($request, Closure $next)
     {
-        if ((1 == Auth::user()->role_id) || 2 == Auth::user()->role_id) {
-            return $next($request);
+        if (Auth::check()) {
+            if ((1 == Auth::user()->role_id) || 2 == Auth::user()->role_id) {
+                return $next($request);
+            } else {
+                return redirect()->back()->withErrors(['msg'=>"Tu n'es pas connecté ou ne possède pas les droits necessaires. Tips: demande à passer lecteur pour pouvoir lire nos articles"]);
+            }  
         } else {
             return redirect()->back()->withErrors(['msg'=>"Tu n'es pas connecté ou ne possède pas les droits necessaires. Tips: demande à passer lecteur pour pouvoir lire nos articles"]);
-        }   
+        }
+        
+         
     }
 }

@@ -5,17 +5,17 @@
             <div class="row no-gutters">
                 <div class="container col-lg-6 col-md-6 ">
                     <div class="  footer__top-call mt-3 mx-5">
+                        <div class="text-center mb-5">
+                            <h2>Do you have any questions ?</h2>
+                            
+                            <h5>Tell us</h5>
+                        </div>
+                        
                         @if(Session::has('formSent'))
                             <div class="text-center alert alert-success">
                                 {{ Session::get('formSent') }}
                             </div>
                         @endif
-                        <div class="text-center mb-5">
-                            <h2>Do you have any questions ?</h2>
-
-                            <h5>Tell us</h5>
-                        </div>
- 
 
                         <form action="{{route('form.store')}}" method="POST">
                             @csrf
@@ -83,11 +83,11 @@
                         </div>
                         <p> {{$about->texte}}</p>
                         <div class="footer__social">
-                            <a href="https://www.facebook.com/molengeek/"><i class="fab fa-facebook"></i></a>
-                            <a href="https://twitter.com/molengeek?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/company/molengeek/?originalSubdomain=fr
+                            <a target="_blank" href="https://www.facebook.com/molengeek/"><i class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="https://twitter.com/molengeek?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fab fa-twitter"></i></a>
+                            <a target="_blank" href="https://www.linkedin.com/company/molengeek/?originalSubdomain=fr
                             "><i class="fab fa-linkedin"></i></a>
-                            <a href="https://www.instagram.com/molengeek/?hl=fr"><i class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/molengeek/?hl=fr"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -119,10 +119,10 @@
                     <div class="footer__text-widget pt-1">
                         <h5>cONTACT US</h5>
                         <ul class="footer__widget-info">
-                            <li><span class="fa fa-map-marker"></span>{{$info->adresse_un}}<br />
-                                {{$info->adresse_deux}}</li>
-                            <li><span class="fa fa-mobile"></span> {{$info->tel}}</li>
-                            <li><span class="fa fa-at"></span> {{$info->email}}</li>
+                            <li><a target="_blank" href="http://maps.google.com/?q=1200 {{$info->adresse_un}}  {{$info->adresse_deux}}"><span class="fa fa-map-marker"></span>{{$info->adresse_un}}<br />
+                                {{$info->adresse_deux}}</a></li>
+                            <li><a href="tel:{{$info->tel}}"><span class="fa fa-mobile"></span> {{$info->tel}}</a></li>
+                            <li><a href="mailto:{{$info->email}}"><span class="fa fa-at"></span> {{$info->email}}</a></li>
                         </ul>
                     </div>
                 </div>

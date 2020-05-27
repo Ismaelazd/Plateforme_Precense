@@ -34,6 +34,9 @@ class UserPolicy
     public function student(User $user){
         return (3 == Auth::user()->role_id); 
     }
+    public function visiteur(User $user){
+        return (4 == Auth::user()->role_id); 
+    }
     
     public function myCoding(User $user, Classe $classe){
        
@@ -42,6 +45,14 @@ class UserPolicy
     public function mine(User $user,User $me){
         if (Auth::check()) {
             if ($user->id == $me->id ) {
+                return true;
+            } 
+        } 
+    }
+    public function mineOrAdmin(User $user,User $me){
+        if (Auth::check()) {
+            // dd($me."  \n".Auth::user()->classe_id );
+            if ($user->id == $me->id || $user->role_id==1 || ($user->role_id==2 && $user->classe_id == $me->classe_id) ) {
                 return true;
             } 
         } 

@@ -16,6 +16,12 @@ use DateTime;
 
 class PresenceController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('notMember');
+        $this->middleware('coach', ['except' => ['edit','update','longueabsenceblade','longueabsence']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +29,7 @@ class PresenceController extends Controller
      */
     public function index()
     {
-        //   
+        //
     }
 
     /**
@@ -108,6 +114,8 @@ class PresenceController extends Controller
      */
     public function edit(Presence $presence)
     {
+        $me = User::find($presence->user_id);
+        $this->authorize('mineOrAdmin', $me, User::class);
         
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
@@ -130,6 +138,9 @@ class PresenceController extends Controller
      */
     public function update(Request $request, Presence $presence)
     {
+        $me = User::find($presence->user_id);
+        $this->authorize('mineOrAdmin', $me, User::class);
+
         $validatedData = $request->validate([
              'note' => 'sometimes|max:300',
         ]);
@@ -183,7 +194,7 @@ class PresenceController extends Controller
     public function destroy(Presence $presence)
     {
         $id =$presence->user_id;
-        $presence->delete();
+        $presence->delete();  
         return redirect()->route('user.show',$id);
     }
 

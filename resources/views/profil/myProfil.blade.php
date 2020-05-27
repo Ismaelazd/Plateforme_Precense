@@ -152,6 +152,7 @@
 
 
 
+                @cannot('visiteur', App\User::class)
 
                 {{-- liste des évènements --}}
 
@@ -160,18 +161,22 @@
                     <div class="col-md-6 ml-auto mr-auto">
                         <div class="profile-tabs">
                             <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                @cannot('coach', App\User::class)
+
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#stat" role="tab" data-toggle="tab">
                                         <i class="material-icons">school</i>
                                         Stat
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#avis" role="tab" data-toggle="tab">
+                                @endcannot
+                                <li class="nav-item ">
+                                    <a class="nav-link @if(Auth::user()->role_id==2) active @endif" href="#avis" role="tab" data-toggle="tab">
                                         <i class="material-icons">folder_open</i>
                                         Avis
                                     </a>
                                 </li>
+
                                 {{-- <li class="nav-item">
                                     <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
                                         <i class="material-icons">event_note</i>
@@ -179,7 +184,7 @@
                                     </a>
                                 </li> --}}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#message" role="tab" data-toggle="tab">
+                                    <a class="nav-link  " href="#message" role="tab" data-toggle="tab">
                                         <i class="material-icons">message</i>
                                         Messages
                                     </a>
@@ -190,6 +195,8 @@
                 </div>
 
                 <div class="tab-content tab-space">
+                    @cannot('coach', App\User::class)
+                        
                     <div class="tab-pane active text-center " id="stat">
                         <div class="row justify-content-center m-5 ">
                             <table class="table table-striped table-light rounded ">
@@ -272,7 +279,9 @@
                             </table>
                         </div>
                     </div>
-                    <div class="tab-pane text-center " id="avis">
+                    @endcannot
+
+                    <div class="tab-pane text-center  @if(Auth::user()->role_id==2) active @endif" id="avis">
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 {{-- Testimonials --}}
@@ -352,6 +361,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="tab-pane text-center " id="message">
                         <div class="row">
                             <div class="col-6 mx-auto" style="
@@ -378,9 +389,9 @@
                                                     data-card-widget="collapse"><i class="fas fa-minus"></i>
                                                 </button>
                                                 {{-- <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
-  <i class="fas fa-comments"></i></button>
-<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-</button> --}}
+                                                <i class="fas fa-comments"></i></button>
+                                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
+                                                </button> --}}
                                             </div>
                                         </div>
                                         <!-- /.card-header -->
@@ -448,6 +459,7 @@
                     </div>
                 </div>
 
+                @endcannot
 
 
             </div>

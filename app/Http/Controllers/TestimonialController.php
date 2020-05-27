@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class TestimonialController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('notMember');
+    }
 
     /**
      * Display a listing of the resource.

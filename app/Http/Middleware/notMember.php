@@ -16,10 +16,16 @@ class notMember
      */
     public function handle($request, Closure $next)
     {
-        if ((4 == Auth::user()->role_id)) {
-            return redirect()->back()->withErrors(['msg'=>"Tu n'es pas connecté ou ne possède pas les droits necessaires. Tips: demande à passer lecteur pour pouvoir lire nos articles"]);
+        if (Auth::check()) {
+            if ((4 == Auth::user()->role_id)) {
+                return redirect()->back()->withErrors(['msg'=>"Tu n'es pas connecté ou ne possède pas les droits necessaires. Tips: demande à passer lecteur pour pouvoir lire nos articles"]);
+            }else {
+                return $next($request);
+            } 
         } else {
-            return $next($request);
-        }   
+            return redirect()->back()->withErrors(['msg'=>"Tu n'es pas connecté ou ne possède pas les droits necessaires. Tips: demande à passer lecteur pour pouvoir lire nos articles"]);
+        }
+        
+          
     }
 }

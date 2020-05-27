@@ -57,7 +57,10 @@
                             rgba(0, 0, 0, 0)
                           ) 1 100%;">
                           @can('student', App\User::class)
-                            <form action="{{route('validationchange.store',$user->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('validationchange.store',$user)}}" method="post" enctype="multipart/form-data">
+                          @endcan
+                          @can('visiteur', App\User::class)
+                            <form action="{{route('validationchange.store',$user)}}" method="post" enctype="multipart/form-data">
                           @endcan
                           @can('coach', App\User::class)
                              <form action="{{route('user.update',$user)}}" method="post" enctype="multipart/form-data">
@@ -191,8 +194,8 @@
                                 <form action="{{route('myProfil.update',$user)}}" method="post" class="mt-5">
                                     @csrf
                                     @method('PUT')
-                                    <label style="color: #120851;" class="h3" for="password">Mot de passe :</label>
-                                    <input value="{{$user->password}}" type="password" name="password"
+                                    <label style="color: #120851;" class="h3" for="password">Nouveau mot de passe :</label>
+                                    <input  type="password" name="password"
                                         class="form-control @error('password') is-invalid @enderror" id="password">
                                     @error('password')
                                     <div class="alert alert-danger">{{  $message  }}</div>

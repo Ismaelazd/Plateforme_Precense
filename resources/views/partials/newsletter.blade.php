@@ -13,14 +13,13 @@
                     </div>
                 @endif
                     <div class="register__form">
+                        @error('email')
+                            <div  class="alert alert-primary text-center">{{  "Vous êtes déja inscrit à la newsletter !"  }}</div>
+                        @enderror
                         <form action="{{route('newsletter.store')}}" method="POST">
                             @csrf
-                            <input type="email" name="email" placeholder="Entrez Votre adresse email" name="email">
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                            <input class="@error('email') is-invalid @enderror" type="email" name="email" placeholder="Entrez Votre adresse email" name="email">
+                     
                             
                             <button type="submit" class="site-btn">Send</button>
                         </form>

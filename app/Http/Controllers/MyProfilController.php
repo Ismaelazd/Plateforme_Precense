@@ -101,7 +101,8 @@ class MyProfilController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }       
         
-        $user = Auth::user();
+        // $user = Auth::user();
+
         return view('profil.editMyProfil',compact('user','roles','changements'));
     }
 
@@ -115,9 +116,8 @@ class MyProfilController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'password'=>'required',
+            'password'=>'required|min:8',
         ]);
-
         $user->password = Hash::make($request->input('password'));
         $user->save();
         return redirect()->route('myProfil.index');

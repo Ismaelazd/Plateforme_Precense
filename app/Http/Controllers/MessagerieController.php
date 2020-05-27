@@ -39,11 +39,13 @@ class MessagerieController extends Controller
      */
     public function store(Request $request,$id)
     {
+        $student = User::find($id);
+        $this->authorize('mineOrAdmin', $student, User::class);
+
         $validator = Validator::make($request->all(), [
             'message' => 'required|max:300',
         ]);
      
-        $student = User::find($id);
         $messagerie = new Messagerie();
         $messagerie->student_id  = $student->id;
         $messagerie->ecrivain_id  = Auth::id();
