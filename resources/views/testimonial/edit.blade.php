@@ -54,8 +54,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="avis">Mon avis</label>
-                                <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
+                                <textarea name="avis" cols="10" rows="4"  maxlength="200" placeholder="Votre avis ..."
                                     class="form-control mb-5" required>{{$testimonial->message}}</textarea>
+                                    @error('avis')
+                                        <div  class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 <label for="note ">Ma note sur 5</label>
                                 <select class="form-control" name="note" id="">
                                     @for ($i = 0; $i < 6; $i++)
@@ -65,6 +68,9 @@
                                     @endfor
                                     
                                 </select>
+                                @error('note')
+                                    <div  class="alert alert-danger">{{ $message  }}</div>
+                                @enderror
                                 <span class="input-group-append justify-content-center">
                                     <button type="submit" class="btn text-white mt-4 "
                                         style="background-color: #120851;">Envoyer</button>

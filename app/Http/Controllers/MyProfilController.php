@@ -23,6 +23,9 @@ class MyProfilController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+        $this->authorize('mine', $user, User::class);
+
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
@@ -93,6 +96,8 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
+        $this->authorize('mine', $user, User::class);
+
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
@@ -115,6 +120,8 @@ class MyProfilController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        $this->authorize('mine', $user, User::class);
+
         $request->validate([
             'password'=>'required|min:8',
         ]);

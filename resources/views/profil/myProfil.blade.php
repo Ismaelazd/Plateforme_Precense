@@ -171,7 +171,7 @@
                                 </li>
                                 @endcannot
                                 <li class="nav-item ">
-                                    <a class="nav-link @if(Auth::user()->role_id==2) active @endif" href="#avis" role="tab" data-toggle="tab">
+                                    <a class="nav-link @if(Auth::user()->role_id !=3) active @endif" href="#avis" role="tab" data-toggle="tab">
                                         <i class="material-icons">folder_open</i>
                                         Avis
                                     </a>
@@ -281,7 +281,7 @@
                     </div>
                     @endcannot
 
-                    <div class="tab-pane text-center  @if(Auth::user()->role_id==2) active @endif" id="avis">
+                    <div class="tab-pane text-center  @if(Auth::user()->role_id !=3) active @endif" id="avis">
                         <div class="row">
                             <div class="col-6 mx-auto">
                                 {{-- Testimonials --}}
@@ -338,8 +338,11 @@
                                             @csrf
                                             <div class="form-group">
                                                 <label for="avis">Mon avis</label>
-                                                <textarea name="avis" cols="10" rows="3" placeholder="Votre avis ..."
+                                                <textarea name="avis" cols="10" rows="4" maxlength="200" placeholder="Votre avis ..."
                                                     class="form-control " required></textarea>
+                                                @error('avis')
+                                                    <div  class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                                 <label for="note">Ma note sur 5</label>
                                                 <select class="form-control" name="note" id="">
                                                     <option value="5">5</option>
@@ -349,6 +352,11 @@
                                                     <option value="1">1</option>
                                                     <option value="0">0</option>
                                                 </select>
+                                            
+                                                @error('note')
+                                                    <div  class="alert alert-danger">{{ $message  }}</div>
+                                                @enderror
+                        
                                                 <span class="input-group-append justify-content-center">
                                                     <button type="submit" class="btn text-white mt-4 "
                                                         style="background-color: #120851;">Envoyer</button>

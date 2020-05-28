@@ -3387,5 +3387,10 @@ ol {
 	margin-right: 0;
 }
 
-
+.description a{
+	color: #444444;
+}
+.description a:hover{
+	color: #120851;
+}
 

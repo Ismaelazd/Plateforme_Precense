@@ -46,7 +46,7 @@
                 </div>
                 <div class="   ">
                     <div class="row">
-                        <div class="col-6 px-5 px-5" style="
+                        <div class="col-lg-6 px-5 px-5" style="
                         border-right: 3px;
                         border-left: 0px;
                         border-style: solid;
@@ -188,7 +188,7 @@
                         
                             </form>
                         </div>
-                        <div class="col-6 px-5">
+                        <div class="col-lg-6 px-5">
                             <h3 class="text-center" style="color: #120851;">Changer le mot de passe</h3>
                             <div class="form-group ">
                                 <form action="{{route('myProfil.update',$user)}}" method="post" class="mt-5">

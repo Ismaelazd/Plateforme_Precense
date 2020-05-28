@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Testimonial;
 use App\User;
+use Illuminate\Support\Facades\Validator;;
 use App\Validationchange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,9 +50,22 @@ class TestimonialController extends Controller
         $this->authorize('mine', $user, User::class);
         
 
-        $request->validate([
-            'avis'=> 'required|max:300',
+        
+
+
+
+        
+        $validator = Validator::make($request->all(), [
+            'avis'=> 'required|max:200',
+            'note'=> 'required|integer|between:0,5',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->to(url()->previous().'#testimonial')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
 
         $testimonial = new Testimonial();
         $testimonial->user_id = $id;
@@ -102,9 +116,10 @@ class TestimonialController extends Controller
     {
         $this->authorize('mineT', $testimonial,Testimonial::class);
 
-        $request->validate([
-            'avis'=> 'required|max:300',
-        ]);   
+        $validatedData = $request->validate([
+            'avis'=> 'required|max:200',
+            'note'=> 'required|integer|between:0,5',
+        ]);
 
         $testimonial->message = $request->input('avis');
         $testimonial->note = $request->input('note');

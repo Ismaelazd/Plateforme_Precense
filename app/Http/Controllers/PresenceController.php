@@ -20,7 +20,7 @@ class PresenceController extends Controller
     public function __construct()
     {
         $this->middleware('notMember');
-        $this->middleware('coach', ['except' => ['edit','update','longueabsenceblade','longueabsence']]);
+        $this->middleware('coach', ['except' => ['edit','update','longueabsenceblade','longueabsence','download']]);
     }
     /**
      * Display a listing of the resource.
@@ -193,6 +193,8 @@ class PresenceController extends Controller
      */
     public function destroy(Presence $presence)
     {
+  
+
         $id =$presence->user_id;
         $presence->delete();  
         return redirect()->route('user.show',$id);
@@ -200,7 +202,10 @@ class PresenceController extends Controller
 
     public  function  download($id)
     {
-	$presence = Presence::find($id);
+        $presence = Presence::find($id);
+        $user = User::find($presence->user_id);
+        $this->authorize('mineOrAdmin', $user, User::class);
+
 	$extension = pathinfo(storage_path($presence->file), PATHINFO_EXTENSION);
 	return  Storage::disk('public')->download($presence->file,$presence->file.'.'.$extension);
     }
