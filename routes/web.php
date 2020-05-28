@@ -23,7 +23,12 @@ Route::resource('welcome', 'WelcomeController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('admin');
-
+Route::get('/403', function() {
+    return view('errors.403');
+})->name('403');
+Route::get('/404', function() {
+    return view('errors.404');
+})->name('404');
 
 Route::get('/calendrier', function() {
     if (!Auth::check() || Auth::user()->role_id ==1) {
