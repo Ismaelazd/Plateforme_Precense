@@ -10,7 +10,7 @@
 # Plateform de présences / Attendance platform (2 Contributors / 2 contributeurs)
 ## Langages / languages + Framework
 - HTML
-- css 
+- CSS 
 - SASS
 - BOOTSTRAP
 - JAVASCRIPT
@@ -24,17 +24,17 @@
 - Discord
 
 # Cahier des charges  / Specifications
-1. Objectif du site /Purpose of the site
+### 1. Objectif du site /Purpose of the site
     - La plateforme a pour but de digitaliser notre système de prise de présence, que ce soit pour nos étudiants ou pour notre équipe. 
     / The purpose of the platform is to digitize our attendance system, both for our students and for our team.
 
-2. Public cible / Target Audience
+### 2. Public cible / Target Audience
     - Etudiants / Students
     - Staff
-3. Fonctionnement Global / Global Functionality
+### 3. Fonctionnement Global / Global Functionality
     - Tous les matins, les étudiants doivent se connecter et cliquer sur un bouton qui indiquera l'heure d’arrivée. Le système enregistre automatiquement l’heure de fin de cours fixée par le coach. Si l’étudiant arrive en retard ou part en avance, celui-ci doit le justifier en y indiquant le motif et en ajoutant une pièce justificative. Des statistiques regroupant les présences d’une personne ou d’un groupe de personnes sont également attendues.
      / Every morning, students must log in and click on a button that will indicate the time of arrival. The system automatically records the end time of the course set by the coach. If the student arrives late or leaves early, he must justify it by indicating the reason and adding a supporting document. Statistics on the. The presence of a person or group of persons is also expected.
-4. Composition du site / Composition of the site
+### 4. Composition du site / Composition of the site
     - Menu
     - Section Slide avec titre et slogan(carrousel) / Slide section with title and slogan(carousel)
     - Section Présentation de l’école / Section Presentation of the school
@@ -58,18 +58,18 @@
         - Etudiant / Student
         - Professeur / Teacher
         - Admin (accepte les inscriptions,attribue le rôle) / Admin (accepts registrations, assigns role)
-5. Fonctionnalités WebSite (Visiteur) / WebSite Features (Visitor)
+### 5. Fonctionnalités WebSite (Visiteur) / WebSite Features (Visitor)
     - Newsletter Event
     - Formulaire De Contact / Contact Form
     - Inscription / Registration
 
-+ 5.1  Fonctionnalités (Membre) / Features (Member)
++ ### 5.1  Fonctionnalités (Membre) / Features (Member)
     - Gestion Profil
     - Gestion des présences
-+ 5.2 Fonctionnalités (Back-Office) / Features (Back-Office)
++ ### 5.2 Fonctionnalités (Back-Office) / Features (Back-Office)
     - Gestion des classes / Class management
     - Gestion des étudiants / Student Management
-6. Système / System
+### 6. Système / System
     - Newsletter Event
         - Email requis / Email required
         - Accusé d’inscription dans la boîte mail du nouvel inscrit / Acknowledgement of registration in the mailbox of the new registrant
