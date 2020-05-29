@@ -113,3 +113,5 @@ Route::get('pdf/{classe}','ClasseController@pdf')->name('pdf.gen')->middleware('
 
 Route::get('presence/longueabsence/create', 'PresenceController@longueabsenceblade')->name('presence.longueabsenceblade');
 Route::post('presence/longueabsence/store', 'PresenceController@longueabsence')->name('presence.longueabsence');
+
+Route::get('/user/bigcoach/{user}', 'UserController@bigCoach')->name('bigcoach')->middleware('admin');

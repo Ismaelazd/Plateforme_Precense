@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Foreach_;
 
 class UserController extends Controller
 {
@@ -192,6 +193,22 @@ class UserController extends Controller
     public function visiteur(){
         $visiteurs = User::where('role_id',4)->get();
         return view('user.visiteurs',compact('visiteurs'));
+    }
+
+    public function bigCoach(User $user)
+    {
+
+        $coachs = User::where('role_id',2)->get();
+        foreach ($coachs as $coach) {
+            $coach->bigcoach = false;
+            $coach->save();
+        }
+
+        $user->bigcoach = true;
+       
+        
+        $user->save();
+        return redirect()->route('user.create');
     }
 }
  

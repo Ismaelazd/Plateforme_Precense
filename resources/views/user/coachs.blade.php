@@ -57,6 +57,22 @@
 
                             </form>
 
+                            @if ($user->bigcoach)
+                            <button class="btn">
+
+                                <a title="BigCoach" href="{{route('bigcoach',$user)}}"><i
+                                        class=" fas fa-user-check mx-auto"></i></a>
+
+                            </button>
+                            @else
+                            <button class="btn">
+
+                                <a title="Be bigcoach" href="{{route('bigcoach',$user)}}"><i
+                                        class=" fas fa-user-times mx-auto"></i></a>
+
+                            </button>
+                            @endif
+                            
                             {{-- <a title="Newsletter" class="disabled" href="{{route('newsletter.index')}}"><i
                                 class="fa fa-envelope-square"></i></a> --}}
 
