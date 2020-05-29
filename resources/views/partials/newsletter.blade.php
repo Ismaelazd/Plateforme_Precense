@@ -17,7 +17,7 @@
                             <div  class="alert alert-primary text-center">{{  "Vous êtes déja inscrit à la newsletter !"  }}</div>
                         @enderror
                         <form action="{{route('newsletter.store')}}" method="POST">
-                            @csrf
+                            {{-- @csrf --}}
                             <input class="@error('email') is-invalid @enderror" type="email" name="email" placeholder="Entrez Votre adresse email" name="email">
                      
                             
