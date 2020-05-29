@@ -60,15 +60,12 @@
                 
                 
                 
-                
+                {{--stats total  --}}
                 <div class="row justify-content-center my-5">
                     <table class="table table-striped table-light rounded ">
-                       
-
-                          
+ 
                                 <div class="text-center text-white w-100 card-header h4" style="background-color: #120851;">Stats</div>
-                           
-                       
+
                         <thead>
                             <tr>
                                 <th scope="col" class="">Total</th>
@@ -141,7 +138,86 @@
                     </table>
                 </div>
                 
+                {{-- fin stats total  --}}
+                {{--stats du mois  --}}
+                <div class="row justify-content-center my-5">
+                    <table class="table table-striped table-light rounded ">
+ 
+                                <div class="text-center text-white w-100 card-header h4" style="background-color: #120851;">Stats du mois</div>
+
+                        <thead>
+                            <tr>
+                                <th scope="col" class="">Total</th>
+                                <th scope="col">Présences</th>
+                                <th scope="col">Retards</th>
+                                <th scope="col">Absences Justifiées</th>
+                                <th scope="col">Absences Injustifiées</th>
+                                <th scope="col">Absences Annoncées</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <th>{{count($presencesDuMois)}} jours </th>
+                                <td>{{$presencesDuMois->where('etatfinal_id',1)->count()}} jours <br>
+                                    %:
+                                    @if (count($presencesDuMois)==0)
+                                    0
+                                    @else
+                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',1)->count())/$presencesDuMois*100}}
+                                    --}}
+                                    {{($presencesDuMois->where('etatfinal_id',1)->count())/count($presencesDuMois)*100}}
+                                    @endif
+                                </td>
+
+                                <td>{{$presencesDuMois->where('etatfinal_id',2)->count()}} jours <br>
+                                    %:
+                                    @if (count($presencesDuMois)==0)
+                                    0
+                                    @else
+                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',2)->count())/$presencesDuMois*100}}
+                                    --}}
+                                    {{($presencesDuMois->where('etatfinal_id',2)->count())/count($presencesDuMois)*100}}
+                                    @endif</td>
+                                <td>{{$presencesDuMois->where('etatfinal_id',4)->count()}} jours <br>
+                                    %:
+                                    @if (count($presencesDuMois)==0)
+                                    0
+                                    @else
+                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',4)->count())/$presencesDuMois*100}}
+                                    --}}
+                                    {{($presencesDuMois->where('etatfinal_id',4)->count())/count($presencesDuMois)*100}}
+                                    @endif
+                                </td>
+                                <td>{{$presencesDuMois->where('etatfinal_id',5)->count()}} jours <br>
+                                    %:
+                                    @if (count($presencesDuMois)==0)
+                                    0
+                                    @else
+                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',5)->count())/$presencesDuMois*100}}
+                                    --}}
+                                    {{($presencesDuMois->where('etatfinal_id',5)->count())/count($presencesDuMois)*100}}
+                                    @endif
+                                </td>
+                                <td>{{$presencesDuMois->where('etatfinal_id',6)->count()}} jours <br>
+                                    %:
+                                    @if (count($presencesDuMois)==0)
+                                    0
+                                    @else
+                                    {{-- {{(App\Presence::where('user_id',$user->id)->where('etatfinal_id',6)->count())/$presencesDuMois*100}}
+                                    --}}
+                                    {{($presencesDuMois->where('etatfinal_id',6)->count())/count($presencesDuMois)*100}}
+                                    @endif</td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
                 
+                {{-- fin stat du mois --}}
                 
                 
                 

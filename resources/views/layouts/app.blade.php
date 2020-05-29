@@ -18,6 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="img/mg-logo.png" />
+    <meta name="description" content="MGConnect">
+    <meta name="keywords" content="Mgconnect, unica, creative, html">
+
 </head>
 <body>
     <div id="app">

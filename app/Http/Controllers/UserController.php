@@ -76,8 +76,8 @@ class UserController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
         $messageries = Messagerie::where('student_id', $user->id)->get();
-        $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
 
+        $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
         $related = $total->first();
         if($total->first()){
             foreach ($total as $item) {
@@ -90,9 +90,23 @@ class UserController extends Controller
         } else {
             $presences = collect();
         }
+
+        $totalOfTheMonth = Event::where('end','<', new Carbon())->where('start','>',new Carbon('first day of this month'))->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
+        $relat = $totalOfTheMonth->first();
+        if($totalOfTheMonth->first()){
+            foreach ($totalOfTheMonth as $item) {
+                    $relat = $relat->merge($item);
+            }
+        }
+        $monthly = $relat;
+        if ($monthly) {
+            $presencesDuMois = $monthly->where('user_id',$user->id);
+        } else {
+            $presencesDuMois = collect();
+        }
         
 
-        return view('user.show',compact('user','messageries','changements','presences','info')); 
+        return view('user.show',compact('user','messageries','changements','presences','info','presencesDuMois')); 
     }
 
     /**

@@ -37,10 +37,8 @@ class MyProfilController extends Controller
         $messageries = Messagerie::where('student_id' , Auth::id())->get();
         $user = Auth::user();
         $roles = Role::all();
-        // $total = Presence::where('user_id',$user->id)->count();
+
         $total = Event::where('end','<', new Carbon())->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
-        // dd($total->where('user_id',$user->id));
-        // dd($total);
         $related = $total->first();
         if($total->first()){
             foreach ($total as $item) {
@@ -49,14 +47,30 @@ class MyProfilController extends Controller
         }
         $toutespresences = $related;
         if ($toutespresences) {
-            # code...
             $presences = $toutespresences->where('user_id',$user->id);
         } else {
             $presences = collect();
         }        
+
+        $totalOfTheMonth = Event::where('end','<', new Carbon())->where('start','>',new Carbon('first day of this month'))->where('classe_id',$user->classe_id)->get()->pluck('getPresences');
+        $relat = $totalOfTheMonth->first();
+        if($totalOfTheMonth->first()){
+            foreach ($totalOfTheMonth as $item) {
+                    $relat = $relat->merge($item);
+            }
+        }
+        $monthly = $relat;
+        if ($monthly) {
+            $presencesDuMois = $monthly->where('user_id',$user->id);
+        } else {
+            $presencesDuMois = collect();
+        }
+
+
+
         $info = Info::first();
 
-        return view('profil.myProfil',compact('user','roles','messageries','changements','presences','info'));
+        return view('profil.myProfil',compact('user','roles','messageries','changements','presences','info','presencesDuMois'));
     }
 
     /**
