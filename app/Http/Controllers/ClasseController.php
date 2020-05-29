@@ -5,6 +5,7 @@ use App;
 use App\Event;
 use Carbon\Carbon;
 use App\Classe;
+use App\Info;
 use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
@@ -33,8 +34,9 @@ class ClasseController extends Controller
             $users = User::where('classe_id',Auth::user()->classe_id)->get();
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
+        $info = Info::first();
         $classes = Classe::all();
-        return view('classe.index',compact('classes','changements'));    
+        return view('classe.index',compact('classes','changements','info'));    
     }
 
     /**
@@ -45,8 +47,8 @@ class ClasseController extends Controller
     public function create()
     {
         $changements = Validationchange::all();
-
-        return view('classe.create',compact('changements'));    
+        $info = Info::first();
+        return view('classe.create',compact('changements','info'));    
     }
 
     /**
@@ -75,13 +77,14 @@ class ClasseController extends Controller
      */
     public function edit(Classe $classe)
     {  
+        $info = Info::first();
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
         } else {
             $users = User::where('classe_id',Auth::user()->classe_id)->get();
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
-        }        return view('classe.edit',compact('classe','changements'));    
+        }        return view('classe.edit',compact('classe','changements','info'));    
     }
 
     /**
@@ -118,10 +121,10 @@ class ClasseController extends Controller
     {
         // $this->authorize('myCoding', $classe,Classe::class);
         $changements = Validationchange::all();
-
+        $info = Info::first();
         $coachs = User::where('classe_id',$classe->id)->where('role_id',2)->get();
         $users = User::where('classe_id',$classe->id)->where('role_id',3)->get();
-        return view('classe.show',compact('classe','users','coachs','changements')); 
+        return view('classe.show',compact('classe','users','coachs','changements','info')); 
     }
     public function pdf(Classe $classe){
         /**

@@ -16,7 +16,7 @@
                     <div class="bigcoach__pic">
                         <img src="{{asset('storage/'.$bigcoach->image)}}" alt="">
                     </div>
-                    <div class="bigcoach__text pb-4">
+                    <div class="bigcoach__text pt-0 pb-4">
                         <h5 class="text-white">{{$bigcoach->firstname}} {{$bigcoach->name}}</h5>
                         <span>{{$bigcoach->role->role}}</span>
 
@@ -55,7 +55,7 @@
                     <div class="team__pic">
                         <img src="{{asset('storage/'.$coach->image)}}" alt="">
                     </div>
-                    <div class="team__text pb-4">
+                    <div class="team__text pt-0 pb-4">
                         <h5>{{$coach->firstname}} {{$coach->name}}</h5>
                         <span>{{$coach->role->role}}</span>
 

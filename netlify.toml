@@ -1,5 +1,0 @@
-[build]
-
-command = "npm run production"
-publish = "public"
-environment = { PHP_VERSION = "7.2" }

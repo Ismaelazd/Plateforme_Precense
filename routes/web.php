@@ -1,5 +1,6 @@
 <?php
 
+use App\Info;
 use App\User;
 use App\Validationchange;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,7 @@ Route::get('/404', function() {
 })->name('404');
 
 Route::get('/calendrier', function() {
+    $info = Info::first();
     if (!Auth::check() || Auth::user()->role_id ==1) {
         $changements = Validationchange::all();
 
@@ -38,7 +40,7 @@ Route::get('/calendrier', function() {
         $users = User::where('classe_id',Auth::user()->classe_id)->get();
         $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
     }
-    return view('calendrier',compact('changements'));
+    return view('calendrier',compact('changements','info'));
 })->name('calendrier')->middleware('connected','notMember');
  
 

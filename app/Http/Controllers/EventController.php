@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classe;
 use App\Event;
+use App\Info;
 use App\Presence;
 use App\User;
 use App\Validationchange;
@@ -37,7 +38,9 @@ class EventController extends Controller
         } else {
             $events = Event::where('classe_id',Auth::user()->classe_id)->get();
         }
-        return view('event.index',compact('events','changements'));
+        $info = Info::first();
+
+        return view('event.index',compact('events','changements','info'));
     }
 
     /**
@@ -55,7 +58,9 @@ class EventController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
         $classes = Classe::all();
-        return view('event.create',compact('classes','changements'));
+        $info = Info::first();
+
+        return view('event.create',compact('classes','changements','info'));
     }
 
     /**
@@ -103,6 +108,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
+        $info = Info::first();
+
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
@@ -113,7 +120,7 @@ class EventController extends Controller
         $presences = $event->getPresences()->get();
         $precense = $presences->where('user_id',Auth::id());
         if ($event) {
-            return view('event/show',compact('event','precense','presences','changements'));
+            return view('event/show',compact('event','precense','presences','changements','info'));
         }else {
             return redirect()->back();
         }
@@ -127,7 +134,8 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        
+        $info = Info::first();
+   
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
@@ -136,7 +144,7 @@ class EventController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
         $classes = Classe::all();
-        return view('event.edit',compact('event','classes','changements'));
+        return view('event.edit',compact('event','classes','changements','info'));
     }
 
     /**

@@ -384,7 +384,7 @@ img.rounded {
 footer{
     margin-top: 10px;
     color: #555;
-    padding: 25px;
+ 
     font-weight: 300;
     
 }
@@ -402,4 +402,9 @@ footer p a{
 footer p a:hover {
     color: #9f26aa;
     text-decoration: none;
+}
+@media only screen and (max-width: 479px) {
+    .main-raised {
+        margin: 0px;
+    }
 }

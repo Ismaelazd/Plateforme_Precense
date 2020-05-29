@@ -5,65 +5,66 @@
           <span class="fas fa-times-circle"></span>
       </div>
       <div class="offcanvas__logo d-flex">
-        <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a href="{{url('/')}}" class="font-weight-bold text-white d-flex align-items-center pl-3 h4 m-0">MGConnect</a>
-    </div>
+          <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a href="{{url('/')}}"
+              class="font-weight-bold text-white d-flex align-items-center pl-3 h4 m-0">MGConnect</a>
+      </div>
       <nav class="offcanvas__menu mobile-menu">
-        <ul>
-            <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
-                    href="{{url('/')}}">Home</a></li>
-            @can('admin', App\User::class)
-            <li><a href="{{url('/home')}}">Admin</a></li>
-            @endcan
-            @can('myProfil', App\User::class)
-            <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
-                    href="{{route('myProfil.index')}}">Profil</a></li>
+          <ul>
+              <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a href="{{url('/')}}">Home</a></li>
+              @can('admin', App\User::class)
+              <li><a href="{{url('/home')}}">Admin</a></li>
+              @endcan
+              @can('myProfil', App\User::class)
+              <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
+                      href="{{route('myProfil.index')}}">Profil</a></li>
 
-            @endcan
-            @if(Auth::check() && Auth::user()->role_id != 4)
-                
-            <li><a href="{{route('calendrier')}}">Calendrier</a></li>
-            @can('coach', App\User::class)
-                
-            <li><a href="{{route('classe.index')}}">Classes</a></li>
-            @endcan
+              @endcan
+              @if(Auth::check() && Auth::user()->role_id != 4)
 
-            @can('student', App\User::class)
-                
-            <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
-            @endcan
+              <li><a href="{{route('calendrier')}}">Calendrier</a></li>
+              @can('coach', App\User::class)
 
-            @endif
-            @if(Auth::check() && Auth::user()->role_id == 2)
-                @if (count($changements) == 0)
-                <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
+              <li><a href="{{route('classe.index')}}">Classes</a></li>
+              @endcan
 
-                @else
-                    
-                <li class=""><a href="{{route('validationchange.index')}}">Changements <span class="ml-3 badge badge-light">{{count($changements)}}</span></a></li>
-                @endif
-        
-            @endif
-        
+              @can('student', App\User::class)
 
-            @if (Auth::check())
-            <li class="section-btn">
-                <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+              <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
+              @endcan
+
+              @endif
+              @if(Auth::check() && Auth::user()->role_id == 2)
+              @if (count($changements) == 0)
+              <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
+
+              @else
+
+              <li class=""><a href="{{route('validationchange.index')}}">Changements <span
+                          class="ml-3 badge badge-light">{{count($changements)}}</span></a></li>
+              @endif
+
+              @endif
+
+
+              @if (Auth::check())
+              <li class="section-btn">
+                  <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-            </li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-            @else
+                      {{ __('Logout') }}
+                  </a>
+              </li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+              @else
 
-            <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
-                    Join</a></li>
-            @endif
-        </ul>
+              <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
+                      Join</a></li>
+              @endif
+          </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>
-     
+
       <div class="offcanvas__info">
           <ul>
               <li><span class="icon_phone"></span> {{$info->tel}}</li>
@@ -71,17 +72,17 @@
           </ul>
       </div>
       <div class="offcanvas__auth text-white">
-        <ul>
-            <li><span class="fa fa-map-marker mx-2"></span> {{$info->adresse_un}}</li>
-            <li>{{$info->adresse_deux}}</li>
-        </ul>
-    </div>
+          <ul>
+              <li><span class="fa fa-map-marker mx-2"></span> {{$info->adresse_un}}</li>
+              <li>{{$info->adresse_deux}}</li>
+          </ul>
+      </div>
   </div>
   <!-- Offcanvas Menu End -->
- 
- <!-- Header Section Begin -->
- <header id="header"  class="header-section pb-4">
-    {{-- <div class="header__info">
+
+  <!-- Header Section Begin -->
+  <header id="header" class="header-section pb-4">
+      {{-- <div class="header__info">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -103,74 +104,77 @@
             </div>
         </div>
     </div> --}}
-    <div class="container">
-        <div  class="row pt-3 ">
-            <div class="col-lg-3 col-md-3">
-                <div class="header__logo d-flex">
-                    <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a href="{{url('/')}}" class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</a>
-                </div>
-            </div>
-            <div class="col-lg-9 col-md-9">
-                <nav class="header__menu">
-                    <ul>
-                        <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
-                                href="{{url('/')}}">Home</a></li>
-                        @can('admin', App\User::class)
-                        <li><a href="{{url('/home')}}">Admin</a></li>
-                        @endcan
-                        @can('myProfil', App\User::class)
-                        <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
-                                href="{{route('myProfil.index')}}">Profil</a></li>
+      <div class="container">
+          <div class="row pt-3 ">
+              <div class="col-lg-3 col-md-3">
+                  <div class="header__logo d-flex">
+                      <a href="{{url('/')}}"><img src="{{asset('img/mg-logo.png')}}" class="" alt=""></a><a
+                          href="{{url('/')}}"
+                          class="font-weight-bold text-white d-flex align-items-center pl-3">MGConnect</a>
+                  </div>
+              </div>
+              <div class="col-lg-9 col-md-9">
+                  <nav class="header__menu">
+                      <ul>
+                          <li class="{{Request::route()->getName()=='Welcome'?'active':''}}"><a
+                                  href="{{url('/')}}">Home</a></li>
+                          @can('admin', App\User::class)
+                          <li><a href="{{url('/home')}}">Admin</a></li>
+                          @endcan
+                          @can('myProfil', App\User::class)
+                          <li class="{{Request::route()->getName()=='myProfil.index'?'active':''}}"><a
+                                  href="{{route('myProfil.index')}}">Profil</a></li>
 
-                        @endcan
-                        @if(Auth::check() && Auth::user()->role_id != 4)
-                            
-                        <li><a href="{{route('calendrier')}}">Calendrier</a></li>
-                        @can('coach', App\User::class)
-                            
-                        <li><a href="{{route('classe.index')}}">Classes</a></li>
-                        @endcan
+                          @endcan
+                          @if(Auth::check() && Auth::user()->role_id != 4)
 
-                        @can('student', App\User::class)
-                            
-                        <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
-                        @endcan
+                          <li><a href="{{route('calendrier')}}">Calendrier</a></li>
+                          @can('coach', App\User::class)
 
-                        @endif
-                        @if(Auth::check() && Auth::user()->role_id == 2)
-                            @if (count($changements) == 0)
-                            <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
+                          <li><a href="{{route('classe.index')}}">Classes</a></li>
+                          @endcan
 
-                            @else
-                                
-                            <li class=""><a href="{{route('validationchange.index')}}">Changements <span class="ml-3 badge badge-light">{{count($changements)}}</span></a></li>
-                            @endif
-                    
-                        @endif
-                    
+                          @can('student', App\User::class)
 
-                        @if (Auth::check())
-                        <li class="section-btn">
-                            <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                          <li><a href="{{route('presence.longueabsenceblade')}}">Longue Absence</a></li>
+                          @endcan
+
+                          @endif
+                          @if(Auth::check() && Auth::user()->role_id == 2)
+                          @if (count($changements) == 0)
+                          <li class=""><a href="{{route('validationchange.index')}}">Changements</a></li>
+
+                          @else
+
+                          <li class=""><a href="{{route('validationchange.index')}}">Changements <span
+                                      class="ml-3 badge badge-light">{{count($changements)}}</span></a></li>
+                          @endif
+
+                          @endif
+
+
+                          @if (Auth::check())
+                          <li class="section-btn">
+                              <a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                        @else
+                                  {{ __('Logout') }}
+                              </a>
+                          </li>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
+                          @else
 
-                        <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
-                                Join</a></li>
-                        @endif
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <div class="canvas__open">
-            <span class="fa fa-bars"></span>
-        </div>
-    </div>
-</header>
-<!-- Header End -->
+                          <li class="section-btn"><a href="#" data-toggle="modal" data-target="#modal-form">Sign in /
+                                  Join</a></li>
+                          @endif
+                      </ul>
+                  </nav>
+              </div>
+          </div>
+          <div class="canvas__open">
+              <span class="fa fa-bars"></span>
+          </div>
+      </div>
+  </header>
+  <!-- Header End -->

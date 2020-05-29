@@ -6,6 +6,7 @@ use App\Presence;
 use App\Event;
 use App\Etat;
 use App\Etatfinal;
+use App\Info;
 use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
@@ -114,6 +115,8 @@ class PresenceController extends Controller
      */
     public function edit(Presence $presence)
     {
+        $info = Info::first();
+
         $me = User::find($presence->user_id);
         $this->authorize('mineOrAdmin', $me, User::class);
         
@@ -126,7 +129,7 @@ class PresenceController extends Controller
         }
         $etats = Etat::all();
         $etatfinals = Etatfinal::all();
-        return view('presence.edit',compact('presence','etats','etatfinals','changements'));
+        return view('presence.edit',compact('presence','etats','etatfinals','changements','info'));
     }
 
     /**

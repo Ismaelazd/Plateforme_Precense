@@ -14,7 +14,7 @@
     color: #ffffff 
     background-color: #007bff 
     border-radius: 50%
-
+    margin-left: 25px
     box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003 
     text-decoration: none
     transition: transform 0.4s
@@ -25,6 +25,11 @@
         text-decoration: none
         color: #ffffff
         transform:  rotate(360deg) scale(1.2)
+
+@media only screen and (max-width: 767px) 
+    .calendar__list-icon
+        margin-left: 0px
+        margin-right: 25px
 
 .calendar__table td
     padding: 10px 

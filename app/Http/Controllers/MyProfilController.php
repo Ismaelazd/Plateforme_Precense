@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Info;
 use App\Messagerie;
 use App\Role;
 use App\User;
@@ -53,7 +54,9 @@ class MyProfilController extends Controller
         } else {
             $presences = collect();
         }        
-        return view('profil.myProfil',compact('user','roles','messageries','changements','presences'));
+        $info = Info::first();
+
+        return view('profil.myProfil',compact('user','roles','messageries','changements','presences','info'));
     }
 
     /**
@@ -96,6 +99,8 @@ class MyProfilController extends Controller
      */
     public function edit(User $user)
     {
+        $info = Info::first();
+
         $this->authorize('mine', $user, User::class);
 
         if (!Auth::check() || Auth::user()->role_id ==1) {
@@ -108,7 +113,7 @@ class MyProfilController extends Controller
         
         // $user = Auth::user();
 
-        return view('profil.editMyProfil',compact('user','roles','changements'));
+        return view('profil.editMyProfil',compact('user','roles','changements','info'));
     }
 
     /**

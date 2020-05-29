@@ -2673,6 +2673,7 @@ ol {
 /* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 1080px) {
+	
 	.register__text .register__result ul li {
 		margin-right: 50px;
 	}
@@ -2776,7 +2777,9 @@ ol {
 		visibility: visible;
 	}
 	.canvas__open {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		font-size: 20px;
 		color: #ffffff;
 		height: 30px;
@@ -3394,3 +3397,59 @@ ol {
 	color: #120851;
 }
 
+
+
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+}
+/* Wide Mobile = 480px */
+
+@media only screen and (max-width: 767px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+	.calendar__list-icon{
+		width: 35px !important;
+		height: 35px !important;
+		line-height: 35px !important;
+	}
+}
+
+/* Small Device = 320px */
+
+@media only screen and (max-width: 479px) {
+	
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-right: 0;
+	}
+	.bigcoach__item .bigcoach__text {
+		overflow: visible;
+		padding-top: 30px;
+	}
+
+}
+/* Tablet Device = 768px */
+
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+}

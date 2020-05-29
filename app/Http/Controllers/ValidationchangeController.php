@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Info;
 use App\User;
 use App\Validationchange;
 use Illuminate\Http\Request;
@@ -23,6 +24,8 @@ class ValidationchangeController extends Controller
      */
     public function index()
     {
+        $info = Info::first();
+
         if (Auth::user()->role_id == 1 ) {
             # code...
             $changements = Validationchange::all();
@@ -32,7 +35,7 @@ class ValidationchangeController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
         // $changements = Validationchange::all();
-        return view('validationchange.index',compact('changements'));
+        return view('validationchange.index',compact('changements','info'));
     }
 
     /**
@@ -108,7 +111,9 @@ class ValidationchangeController extends Controller
      */
     public function show(Validationchange $validationchange)
     {
-        return view('validationchange.show',compact('validationchange'));
+        $info = Info::first();
+
+        return view('validationchange.show',compact('validationchange','info'));
     }
 
     /**

@@ -18062,6 +18062,7 @@ ol {
 /* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 1080px) {
+	
 	.register__text .register__result ul li {
 		margin-right: 50px;
 	}
@@ -18163,7 +18164,9 @@ ol {
 		visibility: visible;
 	}
 	.canvas__open {
-		display: block;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		font-size: 20px;
 		color: #ffffff;
 		height: 30px;
@@ -18770,7 +18773,62 @@ ol {
 	color: #120851;
 }
 
-/* Magnific Popup CSS */
+
+
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+}
+/* Wide Mobile = 480px */
+
+@media only screen and (max-width: 767px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+	.calendar__list-icon{
+		width: 35px !important;
+		height: 35px !important;
+		line-height: 35px !important;
+	}
+}
+
+/* Small Device = 320px */
+
+@media only screen and (max-width: 479px) {
+	
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-right: 0;
+	}
+	.bigcoach__item .bigcoach__text {
+		overflow: visible;
+		padding-top: 30px;
+	}
+
+}
+/* Tablet Device = 768px */
+
+@media only screen and (min-width: 768px) and (max-width: 1080px) {
+	.bigcoach__item {
+		text-align: center;
+	}
+	.bigcoach__item .bigcoach__pic {
+		float: none;
+		margin-bottom: 15px;
+		margin-right: 0;
+	}
+}/* Magnific Popup CSS */
 .mfp-bg {
   top: 0;
   left: 0;
@@ -19115,7 +19173,115 @@ img.mfp-img {
   .mfp-container {
     padding-left: 6px;
     padding-right: 6px; } }
-@charset "UTF-8";
+
+.proPic {
+  height: 100px;
+  width: 100px;
+  padding: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.proDark {
+  border: 1px solid white;
+}
+
+.proLight {
+  border: 1px solid black;
+}
+
+.cardBorderCorners {
+  border-radius: 50px 25px;
+  width: 18rem;
+}
+
+.darkCard {
+  background-color: #120851;
+	transition: all 0.3s;
+}
+.darkCard:hover {
+	transition: all 0.3s;
+	box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+}
+.lightCard {
+  height: 455px;
+  background-color: #f0f0f0;
+	transition: all 0.3s;
+}
+.lightCard:hover {
+	transition: all 0.3s;
+	box-shadow: 0px 10px 10px 5px rgba(18, 8, 81, 0.255);
+}
+
+.darkTitle {
+  margin-top: 10px;
+  color: #ebecf5;
+  text-align: center;
+}
+
+.lightTitle {
+  margin-top: 10px;
+  color: #120851;
+  text-align: center;
+}
+
+.darkSubTitle {
+  color: #7e76b6;
+  text-align: center;
+}
+
+.lightSubTitle {
+  color: #120851;
+  text-align: center;
+}
+
+.darkDesc {
+  margin-top: 20px;
+  color: #b8b7d3;
+  text-align: center;
+}
+
+.lightDesc {
+  margin-top: 20px;
+  color: #333333;
+  text-align: center;
+}
+
+.darkMail {
+  margin-top: 20px;
+  color: #dedcf4;
+  text-align: center;
+}
+
+.lightMail {
+  margin-top: 20px;
+  color: #c2c2e0;
+  text-align: center;
+  bottom: 2em !important;
+}
+
+.darkMailText {
+  padding: 5px;
+  background-color: #6b62b9;
+}
+
+.lightMailText {
+  padding: 5px;
+  background-color: #120851;
+}
+
+.social {
+  margin-top: 10px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.attributeText {
+  margin-top: 20px;
+  text-align: center;
+  color: #25235c;
+}@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.13.0 by @fontawesome - https://fontawesome.com
@@ -25176,6 +25342,7 @@ readers do not read off random characters that represent icons */
   color: #ffffff;
   background-color: #007bff;
   border-radius: 50%;
+  margin-left: 25px;
   box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 5px -1px #0003;
   text-decoration: none;
   transition: transform 0.4s;
@@ -25188,6 +25355,13 @@ readers do not read off random characters that represent icons */
   text-decoration: none;
   color: #ffffff;
   transform: rotate(360deg) scale(1.2);
+}
+
+@media only screen and (max-width: 767px) {
+  .calendar__list-icon {
+    margin-left: 0px;
+    margin-right: 25px;
+  }
 }
 
 .calendar__table td {

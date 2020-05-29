@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classe;
 use App\Event;
+use App\Info;
 use App\Messagerie;
 use Illuminate\Http\Request;
 use App\User;
@@ -65,7 +66,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     { 
-        
+        $info = Info::first();
+
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
 
@@ -90,7 +92,7 @@ class UserController extends Controller
         }
         
 
-        return view('user.show',compact('user','messageries','changements','presences')); 
+        return view('user.show',compact('user','messageries','changements','presences','info')); 
     }
 
     /**

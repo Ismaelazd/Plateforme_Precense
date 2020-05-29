@@ -1,3 +1,6 @@
+@extends('layouts/master')
+@section('content')
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -47,159 +50,167 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
 
 
-        <div class="container ">
 
-            <div class="row justify-content-center pb-5">
-                @foreach ($coachs as $coach)
+                <div class="container table-responsive-lg ">
 
-                <div class="col-sm-12 col-md-4 mb-4">
-                    <div class="d-flex justify-content-center">
-                        <div class="card cardBorderCorners darkCard">
-                            <div class="card-body">
-                                <img class="proPic proDark card-img rounded-circle"
-                                    src="{{asset('storage/'.$coach->image)}}" alt="Profile Pic">
-                                <h5 class="darkTitle card-title">{{$coach->name}} {{$coach->firstname}}</h5>
-                                <h6 class="darkSubTitle card-subtitle">{{$coach->role->role}}</h6>
-                                @if (!(is_null($coach->tel)))
+                    <div class="row justify-content-center pb-5">
+                        @foreach ($coachs as $coach)
 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-item-center text-white">
-                                        <i class="fas  fa-phone-alt"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="darkDesc card-text m-0">{{$coach->tel}}</p>
-                                    </div>
-                                </div>
-                                @else 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-item-center text-white">
-                                        <i class="fas  fa-phone-alt"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="darkDesc card-text m-0">Inconnu</p>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!(is_null($coach->rue) || is_null($coach->ville)))
+                        <div class="col-sm-12 col-md-4 mb-4">
+                            <div class="d-flex justify-content-center">
+                                <div class="card cardBorderCorners darkCard">
+                                    <div class="card-body">
+                                        <img class="proPic proDark card-img rounded-circle"
+                                            src="{{asset('storage/'.$coach->image)}}" alt="Profile Pic">
+                                        <h5 class="darkTitle card-title">{{$coach->name}} {{$coach->firstname}}</h5>
+                                        <h6 class="darkSubTitle card-subtitle">{{$coach->role->role}}</h6>
+                                        @if (!(is_null($coach->tel)))
 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-items-center text-white">
-                                        <i class="fas  fa-map-pin"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="darkDesc card-text m-0">{{$coach->rue}}, {{$coach->ville}}</p>
-                                    </div>
-                                </div>
-                                @else 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-items-center text-white">
-                                        <i class="fas  fa-map-pin"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="darkDesc card-text m-0">Inconnu</p>
-                                    </div>
-                                </div>
-                                @endif
-                                
-                                <p class="darkMail card-text">
-                                    <span class="darkMailText rounded">{{$coach->email}}</span>
-                                </p>
-                            </div>
+                                        <div class="row my-3  mx-3">
+                                            <div
+                                                class="col-2 d-flex justify-content-center align-item-center text-white">
+                                                <i class="fas  fa-phone-alt"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <p class="darkDesc card-text m-0">{{$coach->tel}}</p>
+                                            </div>
+                                        </div>
+                                        @else
+                                        <div class="row my-3  mx-3">
+                                            <div
+                                                class="col-2 d-flex justify-content-center align-item-center text-white">
+                                                <i class="fas  fa-phone-alt"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <p class="darkDesc card-text m-0">Inconnu</p>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @if (!(is_null($coach->rue) || is_null($coach->ville)))
 
-                            <div class="social">
-                                <div class="row d-flex justify-content-center">
-                                    {{-- <div class="col-sm-4 col-md-4">
+                                        <div class="row my-3  mx-3">
+                                            <div
+                                                class="col-2 d-flex justify-content-center align-items-center text-white">
+                                                <i class="fas  fa-map-pin"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <p class="darkDesc card-text m-0">{{$coach->rue}}, {{$coach->ville}}</p>
+                                            </div>
+                                        </div>
+                                        @else
+                                        <div class="row my-3  mx-3">
+                                            <div
+                                                class="col-2 d-flex justify-content-center align-items-center text-white">
+                                                <i class="fas  fa-map-pin"></i>
+                                            </div>
+                                            <div class="col-10">
+                                                <p class="darkDesc card-text m-0">Inconnu</p>
+                                            </div>
+                                        </div>
+                                        @endif
+
+                                        <p class="darkMail card-text">
+                                            <span class="darkMailText rounded">{{$coach->email}}</span>
+                                        </p>
+                                    </div>
+
+                                    <div class="social">
+                                        <div class="row d-flex justify-content-center">
+                                            {{-- <div class="col-sm-4 col-md-4">
                                         <a class="  btn btn-primary rounded mx-3  "
                                             href="{{route('user.show',$coach)}}"><i class="fa fa-eye"></i>
-                                        </a>
-                                    </div> --}}
-                                    @if (Auth::user()->id == $coach->id )
-                                        
-                                    <div class="col-sm-4 col-md-4">
-                                        <a class="  btn btn-warning rounded mx-3 text-white"
-                                            href="{{route('myProfil.edit',$coach)}}"><i class="fas fa-pencil-alt"></i>
-                                        </a>
-                                    </div>
-                                    @endif
+                                            </a>
+                                        </div> --}}
+                                        @if (Auth::user()->id == $coach->id )
 
+                                        <div class="col-sm-4 col-md-4">
+                                            <a class="  btn btn-warning rounded mx-3 text-white"
+                                                href="{{route('myProfil.edit',$coach)}}"><i
+                                                    class="fas fa-pencil-alt"></i>
+                                            </a>
+                                        </div>
+                                        @endif
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
 
 
-            <div class="row d-flex justify-content-center">
-                @foreach ($users as $user)
-                <!-- Light Mode -->
-                <div class="col-sm-12 col-md-3 col-lg-4 mb-4">
-                    <div class="d-flex justify-content-center">
-                        <div class="card cardBorderCorners lightCard">
-                            <div class="card-body">
-                                <img class="proPic proLight card-img rounded-circle"
-                                    src="{{asset('storage/'.$user->image)}}" alt="Profile Pic">
-                                <h5 class="lightTitle card-title">{{$user->name}} {{$user->firstname}} </h5>
-                                <h6 class="lightSubTitle card-subtitle">{{$user->role->role}}</h6>
-                                @if (!(is_null($user->tel)))
+                <div class="row d-flex justify-content-center">
+                    @foreach ($users as $user)
+                    <!-- Light Mode -->
+                    <div class="col-sm-12 col-md-3 col-lg-4 mb-4">
+                        <div class="d-flex justify-content-center">
+                            <div class="card cardBorderCorners lightCard">
+                                <div class="card-body">
+                                    <img class="proPic proLight card-img rounded-circle"
+                                        src="{{asset('storage/'.$user->image)}}" alt="Profile Pic">
+                                    <h5 class="lightTitle card-title">{{$user->name}} {{$user->firstname}} </h5>
+                                    <h6 class="lightSubTitle card-subtitle">{{$user->role->role}}</h6>
+                                    @if (!(is_null($user->tel)))
 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-item-center " style="color: #120851;">
-                                        <i class="fas  fa-phone-alt"></i>
+                                    <div class="row my-3  mx-3">
+                                        <div class="col-2 d-flex justify-content-center align-item-center "
+                                            style="color: #120851;">
+                                            <i class="fas  fa-phone-alt"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p class="lightDesc card-text m-0">{{$user->tel}}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-10">
-                                        <p class="lightDesc card-text m-0">{{$user->tel}}</p>
+                                    @else
+                                    <div class="row my-3  mx-3">
+                                        <div class="col-2 d-flex justify-content-center align-item-center "
+                                            style="color: #120851;">
+                                            <i class="fas  fa-phone-alt"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p class="lightDesc card-text m-0">Inconnu</p>
+                                        </div>
                                     </div>
+                                    @endif
+                                    @if (!(is_null($user->rue) || is_null($user->ville)))
+
+                                    <div class="row my-3  mx-3">
+                                        <div class="col-2 d-flex justify-content-center align-items-center "
+                                            style="color: #120851;">
+                                            <i class="fas  fa-map-pin"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p class="lightDesc card-text m-0">{{$user->rue}}, {{$user->ville}}</p>
+                                        </div>
+                                    </div>
+                                    @else
+                                    <div class="row my-3  mx-3">
+                                        <div class="col-2 d-flex justify-content-center align-item-center "
+                                            style="color: #120851;">
+                                            <i class="fas fa-map-pin"></i>
+                                        </div>
+                                        <div class="col-10">
+                                            <p class="lightDesc card-text m-0">Inconnu</p>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    <p class="lightMail card-text">
+                                        <span class="lightMailText rounded">{{$user->email}}</span>
+                                    </p>
                                 </div>
-                                @else
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-item-center " style="color: #120851;">
-                                        <i class="fas  fa-phone-alt"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="lightDesc card-text m-0">Inconnu</p>
-                                    </div>
-                                </div>
-                                @endif
-                                @if (!(is_null($user->rue) || is_null($user->ville)))
 
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-items-center " style="color: #120851;">
-                                        <i class="fas  fa-map-pin"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="lightDesc card-text m-0">{{$user->rue}}, {{$user->ville}}</p>
-                                    </div>
-                                </div>
-                                @else
-                                <div class="row my-3  mx-3">
-                                    <div class="col-2 d-flex justify-content-center align-item-center " style="color: #120851;">
-                                        <i class="fas fa-map-pin"></i>
-                                    </div>
-                                    <div class="col-10">
-                                        <p class="lightDesc card-text m-0">Inconnu</p>
-                                    </div>
-                                </div>
-                                @endif
-                               
-                                <p class="lightMail card-text">
-                                    <span class="lightMailText rounded">{{$user->email}}</span>
-                                </p>
-                            </div>
-
-                            <div class="social">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-xs-4 col-sm-4 col-md-4">
-                                        <a class="  btn btn-primary rounded mx-3  "
-                                            href="{{route('user.show',$user)}}"><i class="fa fa-eye"></i>
-                                        </a>
-                                    </div>
-                                    {{-- <div class="col-xs-4 col-sm-4 col-md-4">
+                                <div class="social">
+                                    <div class="row d-flex justify-content-center">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <a class="  btn btn-primary rounded mx-3  "
+                                                href="{{route('user.show',$user)}}"><i class="fa fa-eye"></i>
+                                            </a>
+                                        </div>
+                                        {{-- <div class="col-xs-4 col-sm-4 col-md-4">
                                         <a class="  btn btn-warning rounded mx-3 text-white"
                                             href="{{route('myProfil.edit',$user)}}"><i class="fas fa-pencil-alt"></i>
                                         </a>
@@ -213,8 +224,8 @@
                 @endforeach
             </div>
 
-
         </div>
+    </div>
 
 
 
