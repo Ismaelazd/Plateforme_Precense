@@ -16,7 +16,7 @@ $(document).ready(function() {
       }
       if ($(window).scrollTop() < header.offsetHeight) {
         $('#header').removeClass('navbar-fixed');
-        
+
       }
     });
   });

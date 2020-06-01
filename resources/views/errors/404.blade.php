@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Non Autorisé</title>
     <link rel="stylesheet" href="{{asset('css/404.css')}}" type="text/css">
-
+    
 </head>
 <body>
     <div class="error-page">

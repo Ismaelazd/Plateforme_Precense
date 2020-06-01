@@ -30,6 +30,9 @@ Route::get('/403', function() {
 Route::get('/404', function() {
     return view('errors.404');
 })->name('404');
+Route::get('/419', function() {
+    return view('errors.419');
+})->name('419');
 
 Route::get('/calendrier', function() {
     $info = Info::first();
