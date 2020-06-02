@@ -93,6 +93,17 @@
                                   </div>
                                   <div class="table-responsive mailbox-messages">
                                     <table class="table table-hover table-striped">
+                                      @if (count($messages)!=0)
+                                      <thead>
+                                        <tr>
+                                            <th scope="col" class="">Prénom Nom</th>
+                                            <th scope="col">Sujet</th>
+                                            <th scope="col">Message</th>
+                                            <th scope="col">Reçus</th>
+    
+                                        </tr>
+                                    </thead>
+                                    @endif
                                       <tbody>
                                           @if (count($messages)==0)
                                               <tr>
@@ -105,15 +116,15 @@
 
                                               </tr>
                                           @else
+                                          
                                           @foreach ($messages as $form)
                                             <tr style="{{$form->read ? "" : "background-color:rgb(253, 132, 132);"}}">
-                                            <td>
+                                            {{-- <td>
                                               <div class="icheck-primary">
                                                 <input type="checkbox" value="" id="check2">
                                                 <label for="check2"></label>
                                               </div>
-                                            </td>
-                                            <td class="mailbox-star"><a href="#"><i class="fas fa-star-o text-warning"></i></a></td>
+                                            </td> --}}
                                             @php
                                                 $nom =$form->firstname . ' ' . $form->name;
                                             @endphp
@@ -121,7 +132,6 @@
                                             <td class="mailbox-subject"><b>{{Illuminate\Support\Str::limit($form->sujet, 15, ' (...)')}}</b></td>
                                             <td> {{Illuminate\Support\Str::limit($form->message, 15, ' (...)')}}
                                             </td>
-                                            <td class="mailbox-attachment"></td>
                                             <td class="mailbox-date">{{$form->created_at->diffForHumans()}}</td>
                                           </tr>
                                           @endforeach
@@ -138,7 +148,7 @@
                                 <div class="card-footer p-0">
                                   <div class="mailbox-controls">
                                     <!-- Check all button -->
-                                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
+                                    {{-- <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="far fa-square"></i>
                                     </button>
                                     <div class="btn-group">
                                       <button type="button" class="btn btn-default btn-sm"><i class="far fa-trash-alt"></i></button>
@@ -154,7 +164,7 @@
                                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
                                       </div>
                                       <!-- /.btn-group -->
-                                    </div>
+                                    </div> --}}
                                     <!-- /.float-right -->
                                   </div>
                                 </div>
