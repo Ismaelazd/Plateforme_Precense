@@ -278,10 +278,8 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
                     {{-- fin tableau de statistiques total --}}
                     {{-- tableau de statistiques total du mois --}}
-                    <div class="tab-pane active text-center " id="stat">
                         <div class="row justify-content-center m-5 ">
                             <table class="table table-striped table-light rounded ">
 
