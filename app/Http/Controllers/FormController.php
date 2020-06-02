@@ -24,8 +24,8 @@ class FormController extends Controller
      */
     public function index()
     {
-        $messages = Form::all();
-        $unread = Form::where('read',false)->get();
+        $messages = Form::paginate(4);
+        $unread = Form::where('read',false)->orderBy('id', 'DESC')->get();
         $deletedMsg = Form::onlyTrashed()->get();
         return view('message.index',compact('messages','unread','deletedMsg'));
     }
@@ -144,9 +144,22 @@ class FormController extends Controller
     // pour afficher le tableau des services deleté 
     public  function  trash(){
         
-        $messages = Form::onlyTrashed()->get();
-        $unread = Form::where('read',false)->get();
+        $messages = Form::onlyTrashed()->paginate(2);
+        $unread = Form::where('read',false)->orderBy('deleted_at', 'DESC')->get();
         
         return  view('message/trashed',compact('unread','messages'));
+    }
+
+    public function search(Request $request){
+        
+        $search = $request->input('search');
+        
+       
+        $messages = Form::where('name','LIKE', '%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->orWhere('sujet','LIKE','%'.$search.'%')->orderBy('id', 'DESC')->get();
+
+        $unread = Form::where('read',false)->get();
+        $deletedMsg = Form::onlyTrashed()->get();
+        
+        return view('message.index',compact('messages','unread','deletedMsg','search'));   
     }
 }

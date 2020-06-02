@@ -11,7 +11,7 @@
     <meta name="description" content="MGConnect">
     <meta name="keywords" content="Mgconnect, unica, creative, html">
 
-    <title>PLatefrorme | Presence</title>
+    <title>MGConnect | PLatefrorme Presence</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap"

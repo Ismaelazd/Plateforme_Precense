@@ -123,3 +123,6 @@ Route::get('/user/bigcoach/{user}', 'UserController@bigCoach')->name('bigcoach')
 
 // Search User
 Route::get('/searchUser', 'UserController@search')->name('searchUser')->middleware('admin');
+
+// Search Message
+Route::get('/searchMessage', 'FormController@search')->name('searchMessage')->middleware('admin');

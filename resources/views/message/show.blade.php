@@ -23,7 +23,7 @@
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-md-3">
-                                <a href="mailbox.html" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
+                                <a href="{{route('form.index')}}" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
                     
                                 <div class="card">
                                   <div class="card-header">
@@ -98,7 +98,7 @@
                                       
                                       <button type="submit" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
                                       </form>
-                                    {{-- <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button> --}}
+                                    <a href="mailto:{{$form->email}}?subject=Re: {{$form->sujet}}" type="button" class="btn btn-default"><i class="fas fa-reply-all"></i> Reply</a>
                                   </div>
                                 </div>
                                 <!-- /.card-footer -->

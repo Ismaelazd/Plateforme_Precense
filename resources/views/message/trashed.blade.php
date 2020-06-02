@@ -33,7 +33,7 @@
                         <section class="content">
                           <div class="row">
                             <div class="col-md-3">
-                              <a href="compose.html" class="btn btn-primary btn-block mb-3">Compose</a>
+                              <a href="mailto:" class="btn btn-primary btn-block mb-3">Compose</a>
                     
                               <div class="card">
                                 <div class="card-header">
@@ -73,7 +73,7 @@
                                 <div class="card-header">
                                   <h3 class="card-title">Trash</h3>
                     
-                                  <div class="card-tools">
+                                  {{-- <div class="card-tools">
                                     <div class="input-group input-group-sm">
                                       <input type="text" class="form-control" placeholder="Search Mail">
                                       <div class="input-group-append">
@@ -82,7 +82,7 @@
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> --}}
                                   <!-- /.card-tools -->
                                 </div>
                                 <!-- /.card-header -->
@@ -110,7 +110,7 @@
                                               <tr>
                                                 
                                                  
-                                                  <td class="mailbox-subject d-flex justify-content-center"><b class="">Boite mail vide</b>
+                                                  <td class="mailbox-subject d-flex justify-content-center"><b class="">Corbeille vide</b>
                                                   </td>
                                                   
                                                     
@@ -137,12 +137,12 @@
                                               <form action="{{route('form.forceDestroy',$form->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-outline-dark mx-1"><i class="far fa-trash-alt"></i> </button>
+                                                <button type="submit" title="Supprimer définitivement" class="btn btn-outline-dark mx-1"><i class="far fa-trash-alt"></i> </button>
                                               </form>
                                               <form action="{{route('form.restore',$form->id)}}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-outline-dark mx-1"><i class="fas fa-undo"></i> </button>
+                                                <button type="submit" title="Récupérer" class="btn btn-outline-dark mx-1"><i class="fas fa-undo"></i> </button>
                                               </form>
                                             </td>
                                           </tr>
@@ -158,7 +158,14 @@
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer p-0">
-                                 
+                                  <div class="mailbox-controls">
+
+                                    <div class="float-right">
+                                      {{ $messages->links() }}
+                                      <!-- /.btn-group -->
+                                    </div> 
+                                    <!-- /.float-right -->
+                                  </div>
                                 </div>
                               </div>
                               <!-- /.card -->
