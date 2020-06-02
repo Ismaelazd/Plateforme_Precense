@@ -226,5 +226,13 @@ class UserController extends Controller
         $user->save();
         return redirect()->route('user.create');
     }
+
+    public function search(Request $request){
+        
+        $search = $request->input('search');
+        $users = User::where('id','>',1)->where('name','LIKE', '%'.$search.'%')->get();
+       
+
+        return view('user.user',compact('users','search'));    }
 }
  

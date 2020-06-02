@@ -120,3 +120,6 @@ Route::get('presence/longueabsence/create', 'PresenceController@longueabsencebla
 Route::post('presence/longueabsence/store', 'PresenceController@longueabsence')->name('presence.longueabsence');
 
 Route::get('/user/bigcoach/{user}', 'UserController@bigCoach')->name('bigcoach')->middleware('admin');
+
+// Search User
+Route::get('/searchUser', 'UserController@search')->name('searchUser')->middleware('admin');
