@@ -23,6 +23,14 @@
         <div class="text-danger">{{  $message  }}</div>
         @enderror
         <div class="row justify-content-center">
+            @if (count($users) == 0)
+            <div class="row justify-content-center">
+
+                <div class=" text-center alert alert-dark">
+                    Aucune personne trouvée...
+                </div>
+            </div>
+            @else
             @foreach ($users as $user)
 
             <!--Profile Card 3-->
@@ -82,6 +90,9 @@
             </div>
  
             @endforeach
+            @endif
+
+           
 
         </div>
     </div>

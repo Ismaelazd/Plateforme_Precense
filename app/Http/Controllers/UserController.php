@@ -230,7 +230,7 @@ class UserController extends Controller
     public function search(Request $request){
         
         $search = $request->input('search');
-        $users = User::where('id','>',1)->where('name','LIKE', '%'.$search.'%')->get();
+        $users = User::where('id','>',1)->where('name','LIKE', '%'.$search.'%')->orWhere('firstname','LIKE', '%'.$search.'%')->get();
        
 
         return view('user.user',compact('users','search'));    }
