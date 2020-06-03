@@ -189,8 +189,11 @@
                             <input type="checkbox" value="" name="todo6" id="todoCheck6">
                             <label for="todoCheck6"></label>
                         </div> --}}
-                        <span class="text">{{$futurevent->nom}}</span>
-                        <small class="badge badge-primary"><i class="far fa-clock"></i> {{(new Carbon\Carbon($futurevent->start))->diffForHumans()}} </small>
+                        <div>
+                            <span class="text">{{$futurevent->nom}}</span> - <span class="text">{{$futurevent->classe->name}}</span>
+                        
+                            <small class="badge badge-primary float-right"><i class="far fa-clock"></i> {{(new Carbon\Carbon($futurevent->start))->diffForHumans()}} </small>
+                        
                         <div class="tools">
                             <a href="{{route('event.show',$futurevent)}}"><i class="fas fa-eye"></i></a>
                         </div>

@@ -67,7 +67,7 @@
                             <tr>
                                 <th class="align-middle">{{$event->nom}} </th>
                                 <th class="align-middle">{{$event->classe->name}} </th>
-                                <td class="align-middle">{{$event->description}}</td>
+                                <td class="align-middle">{!!$event->description!!}</td>
                                 <td class="align-middle">{{ (new \DateTime($event->start))->format('d/m/Y')}}</td>
                                 <td class="align-middle">{{ (new \DateTime($event->start))->format('H:i')}}</td>
                                 <td class="align-middle">{{ (new \DateTime($event->end))->format('H:i')}}</td>
@@ -126,6 +126,10 @@
 
                         </tbody>
                     </table>
+                    <div class="float-right mb-5"> 
+
+                        {{$events->links()}}
+                    </div>
 
                 </div>
 

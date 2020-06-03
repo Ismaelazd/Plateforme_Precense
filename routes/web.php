@@ -43,6 +43,7 @@ Route::get('/calendrier', function() {
         $users = User::where('classe_id',Auth::user()->classe_id)->get();
         $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
     }
+    
     return view('calendrier',compact('changements','info'));
 })->name('calendrier')->middleware('connected','notMember');
  

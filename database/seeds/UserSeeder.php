@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             
-            'name' => 'Noel',
+            'name' => 'CS10',
             'firstname' => 'Noel',
             'email' => 'Noel@CS10.com',
             'password' => Hash::make('azertyuiop'),
@@ -386,6 +386,136 @@ class UserSeeder extends Seeder
             'linkedin' => null,
             'github' => null,
         ]);
+
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Ben',
+            'email' => 'Ben@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => '𝕴𝖘𝖒𝖆𝖊𝖑',
+            'email' => '𝕴𝖘𝖒𝖆𝖊𝖑@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Adil',
+            'email' => 'Adil@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Bryan',
+            'email' => 'Bryan@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Asma',
+            'email' => 'Amsa@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Rayane',
+            'email' => 'Rayane@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Macron',
+            'email' => 'Macron@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+        DB::table('users')->insert([
+            
+            'name' => 'CS10',
+            'firstname' => 'Bachir',
+            'email' => 'Bachir@CS10.com',
+            'password' => Hash::make('azertyuiop'),
+            'role_id' => 3,
+            'image' => 'avatar.png',
+            'classe_id' => 1 ,
+            'bigcoach' => false,
+            'facebook' => null,
+            'twitter' => null,
+            'instagram' => null,
+            'linkedin' => null,
+            'github' => null,
+        ]);
+
 
         DB::table('users')->insert([
             

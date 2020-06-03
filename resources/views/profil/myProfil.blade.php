@@ -11,9 +11,10 @@
     <link rel="stylesgeet"
         href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
 
-        <link rel="stylesheet" href="{{asset('/vendor/adminlte/dist/css/adminlte.css')}}">
+    <link rel="stylesheet" href="{{asset('/vendor/adminlte/dist/css/adminlte.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/profil.css')}}">
+
 </head>
 
 <body class="profile-page">

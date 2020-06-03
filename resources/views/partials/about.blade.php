@@ -33,7 +33,7 @@
                             <p>Lessons</p>
                         </div> --}}
                     </div>
-                    <a href="#" class="primary-btn">Get started now</a>
+                    <a href="#footer" class="primary-btn">Get started now</a>
                 </div>
             </div>
         </div>

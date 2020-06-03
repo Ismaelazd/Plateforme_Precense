@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{asset('/css/profil.css')}}">
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('/css/profil-card.css')}}">
+
 </head>
 
 <body class="profile-page">

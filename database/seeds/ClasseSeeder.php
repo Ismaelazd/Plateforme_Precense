@@ -14,6 +14,7 @@ class ClasseSeeder extends Seeder
     {
         DB::table('classes')->insert([
             'name'=> 'Coding 10'
+            
         ]);
         DB::table('classes')->insert([
             'name'=> 'Coding 11'
