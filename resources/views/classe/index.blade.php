@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/profil.css')}}">
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+    
 </head>
 
 <body class="profile-page">

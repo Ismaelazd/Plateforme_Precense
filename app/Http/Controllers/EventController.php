@@ -33,10 +33,10 @@ class EventController extends Controller
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
         if (!Auth::check() || Auth::user()->role_id ==1) {
-            $events = Event::all();
+            $events = Event::orderBy('start','desc')->paginate(8);
 
         } else {
-            $events = Event::where('classe_id',Auth::user()->classe_id)->get();
+            $events = Event::where('classe_id',Auth::user()->classe_id)->orderBy('start','desc')->paginate(8);
         }
         $info = Info::first();
 
