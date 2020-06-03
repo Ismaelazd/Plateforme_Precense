@@ -26,7 +26,7 @@
                                     <i class="fa fa-star rating_good"></i>
                                 @endfor
                                 @for ($i = 5; $i > $testimonial->note; $i--)
-                                    <i class="fa fa-star rating_bad"></i>
+                                    <i class="fa fa-star text-dark"></i>
                                 @endfor
                                 
                             </div>
