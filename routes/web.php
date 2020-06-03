@@ -51,6 +51,8 @@ Route::get('/calendrier', function() {
 Route::resource('event', 'EventController');
 Route::resource('classe', 'ClasseController');
 Route::resource('presence', 'PresenceController');
+Route::get('presence/create/{id}', 'PresenceController@create')->name('presence.create');
+Route::post('presence/store/{id}', 'PresenceController@store')->name('presence.store');
 Route::post('presence/{event}', 'PresenceController@store')->name('presence.add');
 Route::get('presence/download/{id}', 'PresenceController@download')->name('presence.download');
 Route::get('/visiteurs','UserController@visiteur')->name('visiteurs')->middleware('admin');

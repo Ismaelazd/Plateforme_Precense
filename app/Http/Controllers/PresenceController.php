@@ -21,7 +21,7 @@ class PresenceController extends Controller
     public function __construct()
     {
         $this->middleware('notMember');
-        $this->middleware('coach', ['except' => ['edit','update','longueabsenceblade','longueabsence','download']]);
+        $this->middleware('coach', ['except' => ['edit','update','longueabsenceblade','longueabsence','download','create','store']]);
     }
     /**
      * Display a listing of the resource.
@@ -38,9 +38,21 @@ class PresenceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+        $info = Info::first();
+        
+        if (!Auth::check() || Auth::user()->role_id ==1) {
+            $changements = Validationchange::all();
+
+        } else {
+            $users = User::where('classe_id',Auth::user()->classe_id)->get();
+            $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
+        }
+        $etats = Etat::all();
+        $etatfinals = Etatfinal::all();
+        return view('presence.create',compact('presence','etats','etatfinals','changements','info','id'));
     }
 
     /**
@@ -49,7 +61,7 @@ class PresenceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$event)
+    public function store(Request $request,$id)
     {
         
         $validatedData = $request->validate([
@@ -59,7 +71,7 @@ class PresenceController extends Controller
 
         $presence = new Presence();
         $presence->user_id = Auth::id();
-        $presence->event_id = $event;
+        $presence->event_id = $id;
         $presence->etat_id = $request->input('etat_id');
         if($request->hasFile('file')){
             $fichier = $request->file('file');
@@ -67,33 +79,37 @@ class PresenceController extends Controller
             $presence->file = $newName;
         }
         $presence->note = $request->input('note');
-        if ($request->input('etat_id')==1) {
-            $presence->etatfinal_id = 1;
-        }else{
-            if ($request->input('etat_id')==3) {
-                //si etat = retard => etat final = present avec retard 
-                $presence->etatfinal_id = 2; 
-            } else {
-                if ($request->input('etat_id')==2 && ($request->hasFile('file') || !empty($request->input('note')))) {
-                    //si etat = absent et que note ou justificatif est present => etat final = Absences avec justificatif 
-                    $presence->etatfinal_id = 4; 
+        if (Auth::user()->role_id!=3) {
+            $presence->etatfinal_id = $request->input('etatfinal_id');
+        } else {
+            if ($request->input('etat_id')==1) {
+                $presence->etatfinal_id = 1;
+            }else{
+                if ($request->input('etat_id')==3) {
+                    //si etat = retard => etat final = present avec retard 
+                    $presence->etatfinal_id = 2; 
                 } else {
-                    if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($event)->start) ) {
-                        //si etat = absent et que ni note ni justificatif mais a prevenu => etat final = Absences annoncées 
-                        $presence->etatfinal_id = 6; 
+                    if ($request->input('etat_id')==2 && ($request->hasFile('file') || !empty($request->input('note')))) {
+                        //si etat = absent et que note ou justificatif est present => etat final = Absences avec justificatif 
+                        $presence->etatfinal_id = 4; 
                     } else {
-                        if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note')))) {
-                            //si etat = absent et que ni note ni justificatif est present => etat final = Absences injustifiée 
-                            $presence->etatfinal_id = 5; 
+                        if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note'))) && (Carbon::now()->format('Y-m-d H:i:s') < Event::find($presence->event_id)->start) ) {
+                            //si etat = absent et que ni note ni justificatif mais a prevenu => etat final = Absences annoncées 
+                            $presence->etatfinal_id = 6; 
+                        } else {
+                            if ($request->input('etat_id')==2 && (!$request->hasFile('file') && empty($request->input('note')))) {
+                                //si etat = absent et que ni note ni justificatif est present => etat final = Absences injustifiée 
+                                $presence->etatfinal_id = 5; 
+                            } 
                         } 
                     } 
                 } 
-            } 
+            }
         }
 
         
         $presence->save();
-        return redirect()->back();
+        return redirect()->route('event.show',$id);
     }
 
     /**
@@ -154,7 +170,7 @@ class PresenceController extends Controller
             $presence->file = $newName;
         }
         $presence->note = $request->input('note');
-        if (Auth::id()!=3) {
+        if (Auth::user()->role_id!=3) {
             $presence->etatfinal_id = $request->input('etatfinal_id');
         } else {
             if ($request->input('etat_id')==1) {
@@ -179,8 +195,8 @@ class PresenceController extends Controller
                         } 
                     } 
                 } 
+            }
         }
-    }
         $presence->save();
         return redirect()->route('event.show',$presence->event_id);
 
@@ -217,9 +233,11 @@ class PresenceController extends Controller
 
 
     public function longueabsenceblade(){
+        $info = Info::first();
+
         $etats = Etat::all();
         $etatfinals = Etatfinal::all();
-        return view('longueabsenceblade',compact('etatfinals','etats'));
+        return view('longueabsenceblade',compact('etatfinals','etats','info'));
     }
 
     public function longueabsence(Request $request){
@@ -227,7 +245,12 @@ class PresenceController extends Controller
         $date1 = new Carbon($request->input('debut'));
         $date2 = new Carbon($request->input('fin'));
         $events = Event::where('start','>=',$date1)->where('end','<=',$date2)->get()->pluck('getPresences');
+        
+        
         $related = $events->first();
+            if (!$related) {
+               return redirect()->back()->with('sorry',"Aucun évenement n'est programmé a ces dates la pour le moment");
+            } 
         if($events->first()){
             foreach ($events as $item) {
                 $related = $related->merge($item);

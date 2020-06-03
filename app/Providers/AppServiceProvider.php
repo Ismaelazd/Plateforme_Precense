@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Form;
+use App\Newsletter;
 use App\User;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -33,10 +34,12 @@ class AppServiceProvider extends ServiceProvider
             $students = User::where('role_id',3)->get();
             $visiteurs = User::where('role_id',4)->get();
             $messages = Form::where('read',false)->get();
+            $newsletters = Newsletter::all();
             $nbCoach = count($coachs);
             $nbStudent = count($students);
             $nbVisiteur = count($visiteurs);
             $nbMessages = count($messages);
+            $nbnewsletters = count($newsletters);
             $event->menu->add(
             
             [ 
@@ -87,7 +90,9 @@ class AppServiceProvider extends ServiceProvider
             [
                 'text'    => 'Newsletter',
                 'icon'    => 'fas fa-fw fa-mail-bulk',
+                'label' => $nbnewsletters,
                 'url'  => 'newsletter',
+                
             ]
      
             

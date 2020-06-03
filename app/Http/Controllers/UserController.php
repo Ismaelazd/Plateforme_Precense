@@ -159,6 +159,7 @@ class UserController extends Controller
             }
             
         }
+        $user->role_id = $request->input('role_id');
         $user->classe_id = $request->input('classe_id');
         $user->tel = $request->input('tel');
         $user->rue = $request->input('rue');

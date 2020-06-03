@@ -55,7 +55,7 @@
                     <div class="row no-gutters pb-5 justify-content-center ">
                         {{--presentation de l'evenement --}}
                         <div class="col-md-6 px-5  border-0">
-                            
+
                             <div class="card-header text-center text-white" style="background-color: #120851;">
                                 <h3 class="card-title">Info sur l'évènement</h3>
                             </div>
@@ -82,8 +82,8 @@
 
 
                                 </div>
-                            
-                        </div>
+
+                            </div>
 
                             <div class="modal fade" id="modalDeleteEvent{{$event->id}}" tabindex="-1" role="dialog"
                                 aria-labelledby="myModalLabel">
@@ -121,200 +121,224 @@
 
 
                         {{-- Definir le statut de presence --}}
-                        @if (Auth::user()->role_id==3)
+                        @php
+                        $utilisateur = $presences->where('user_id',Auth::id())->first()
 
-                        <div class="col-6 px-5 " style="
+                        @endphp
 
-                border-right: 0px;
-                border-left: 3px;
-                border-style: solid;
-                border-image: 
-                  linear-gradient(
-                    to bottom, 
-                    #120851, 
-                    rgba(0, 0, 0, 0)
-                  ) 1 100%;">
+                        @if (!$utilisateur && Auth::user()->role_id==3 )
 
-                            @php
-                            $utilisateur = $presences->where('user_id',Auth::id())->first()
-
-                            @endphp
-                           
-                                <p>{{$utilisateur->getUser->name}}</p>
-                                <p
-                                    class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
-                                    Statut : {{$utilisateur->getEtat->etat}}</p>
-                                <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
-                                <p>Note :
-                                    @if ($utilisateur->note)
-
-                                    {{$utilisateur->note}}
-                                    @else
-                                    <div class="text-center">
-                                        <i class="fas fa-times-circle text-danger"></i>
+                             <div class="col-6 px-5 " style="
+                                                border-right: 0px;
+                                                border-left: 3px;
+                                                border-style: solid;
+                                                border-image: 
+                                                linear-gradient(
+                                                    to bottom, 
+                                                    #120851, 
+                                                    rgba(0, 0, 0, 0)
+                                                ) 1 100%;">
+                                    <div class="card-header text-center text-white" style="background-color: #120851;">
+                                        <h3 class="card-title">Annoncer ma présence</h3>
                                     </div>
-                                    @endif
-                                </p>
-                                <p> Justificatif :
-                                    @if ($utilisateur->file)
-                                    <a class="btn btn-primary"
-                                        href="{{route('presence.download', $utilisateur->id)}}">Download</a>
-                                    @else
-                                    <div class="text-center">
-                                        <i class="fas fa-times-circle text-danger"></i>
-                                    </div>
-                                    @endif
-                                </p>
-                                <p>
-                                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                                        href="{{route('presence.edit',$utilisateur)}}"><i
-                                            class="fas fa-pencil-alt"></i></a>
-                                </p>
-                            </div>
+                                    <p class="text-center mt-3">
+                                        <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                            href="{{route('presence.create',$event->id)}}"><i class="fas fa-pencil-alt"></i></a>
+                                    </p>
+                                </div>
+                        @else
+
+                            @if (Auth::user()->role_id==3 )
+
+
+
+                                <div class="col-6 px-5 " style="
+                                                border-right: 0px;
+                                                border-left: 3px;
+                                                border-style: solid;
+                                                border-image: 
+                                                linear-gradient(
+                                                    to bottom, 
+                                                    #120851, 
+                                                    rgba(0, 0, 0, 0)
+                                                ) 1 100%;">
+
+
+
+                                    <p>{{$utilisateur->getUser->name}}</p>
+                                    <p
+                                        class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
+                                        Statut : {{$utilisateur->getEtat->etat}}</p>
+                                    <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
+                                    <p>Note :
+                                        @if ($utilisateur->note)
+
+                                        {{$utilisateur->note}}
+                                        @else
+                                        <div class="text-center">
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        </div>
+                                        @endif
+                                    </p>
+                                    <p> Justificatif :
+                                        @if ($utilisateur->file)
+                                        <a class="btn btn-primary"
+                                            href="{{route('presence.download', $utilisateur->id)}}">Download</a>
+                                        @else
+                                        <div class="text-center">
+                                            <i class="fas fa-times-circle text-danger"></i>
+                                        </div>
+                                        @endif
+                                    </p>
+                                    <p>
+                                        <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                            href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
+                                    </p>
+                                </div>
 
                             @endif
 
 
-                        </div>
-
-                        {{-- presences enregistrées --}}
-                        @can('coach', App\User::class)
-
-
-
-                        <div class="container mt-5 " style="padding-top:100px;border-top: 3px; border-bottom:0px;
-            
-                border-style: solid;
-                border-image: 
-                linear-gradient(
-                    90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
-                ) 1 1 100%;">
-
-                            <div class="text-right">
-                                <p>{{count($presences->where('etat_id',1))}} sur {{count($presences)}} élève(s)
-                                    présent(s)</p>
                             </div>
-                            <div class="text-right">
-                                <p>{{count($presences->where('etat_id',2))}} sur {{count($presences)}} élève(s)
-                                    absent(s)</p>
-                            </div>
-                            <div class="text-right">
-                                <p>{{count($presences->where('etat_id',3))}} sur {{count($presences)}} élève(s) en
-                                    retard(s)</p>
-                            </div>
-                            <div class="container table-responsive-lg ">
-                                <table class="table table-striped table-light rounded">
-                                    <thead class="text-white" style="background-color: #120851;">
 
-                                        <tr>
-                                            <th scope="col" class="text-center">Nom Prenom</th>
-                                            <th scope="col" class="text-center">Statut</th>
-                                            <th scope="col" class="text-center">Statut final</th>
-                                            <th scope="col" class="text-center">Note</th>
-                                            <th scope="col" class="text-center">fichier</th>
-                                            <th class="text-center" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($presences as $pre)
-
-                                        <tr>
-                                            <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}
-                                            </th>
-                                            <th class="text-center">{{$pre->getEtat->etat}} </th>
-                                            <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
-                                            <th class="text-center">
-                                                @if ($pre->note)
-
-                                                {{$pre->note}}
-                                                @else
-                                                <div class="text-center">
-                                                    <i class="fas fa-times-circle text-danger"></i>
-                                                </div>
-                                                @endif
-                                            </th>
-                                            <th class="text-center">
-                                                @if ($pre->file)
-                                                <a class="btn btn-primary"
-                                                    href="{{route('presence.download', $pre->id)}}">Download</a>
-                                                @else
-                                                <div class="text-center">
-                                                    <i class="fas fa-times-circle text-danger"></i>
-                                                </div>
-                                                @endif
-                                            </th>
-                                            <td class="d-flex justify-content-center ">
-
-                                                <div class="text-center mb-2">
-                                                    <a class="  btn btn-primary rounded-circle mx-3 "
-                                                        href="{{route('user.show',$pre->user_id)}}"><i
-                                                            class="fa fa-eye"></i></a>
-                                                </div>
-                                                <div class="text-center mb-2">
-                                                    <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                                                        href="{{route('presence.edit',$pre)}}"><i
-                                                            class="fas fa-pencil-alt"></i></a>
-                                                </div>
-
-                                            </td>
-                                        </tr>
-
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        @endcan
+                            {{-- presences enregistrées --}}
+                            @can('coach', App\User::class)
 
 
-                    </div>
+
+                                <div class="container mt-5 " style="padding-top:100px;border-top: 3px; border-bottom:0px;
+                        
+                                    border-style: solid;
+                                    border-image: 
+                                    linear-gradient(
+                                        90deg, #120851 0%, rgba(157,142,255,1) 50%, rgba(18,8,81,1)
+                                    ) 1 1 100%;">
+
+                                    <div class="text-right">
+                                        <p>{{count($presences->where('etat_id',1))}} sur {{count($presences)}} élève(s)
+                                            présent(s)</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p>{{count($presences->where('etat_id',2))}} sur {{count($presences)}} élève(s)
+                                            absent(s)</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p>{{count($presences->where('etat_id',3))}} sur {{count($presences)}} élève(s) en
+                                            retard(s)</p>
+                                    </div>
+                                    <div class="container table-responsive-lg ">
+                                        <table class="table table-striped table-light rounded">
+                                            <thead class="text-white" style="background-color: #120851;">
+
+                                                <tr>
+                                                    <th scope="col" class="text-center">Nom Prenom</th>
+                                                    <th scope="col" class="text-center">Statut</th>
+                                                    <th scope="col" class="text-center">Statut final</th>
+                                                    <th scope="col" class="text-center">Note</th>
+                                                    <th scope="col" class="text-center">fichier</th>
+                                                    <th class="text-center" scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($presences as $pre)
+
+                                                <tr>
+                                                    <th class="text-center">{{$pre->getUser->name}} {{$pre->getUser->firstname}}
+                                                    </th>
+                                                    <th class="text-center">{{$pre->getEtat->etat}} </th>
+                                                    <th class="text-center">{{$pre->getEtatfinal->etatfinal}} </th>
+                                                    <th class="text-center">
+                                                        @if ($pre->note)
+
+                                                        {{$pre->note}}
+                                                        @else
+                                                        <div class="text-center">
+                                                            <i class="fas fa-times-circle text-danger"></i>
+                                                        </div>
+                                                        @endif
+                                                    </th>
+                                                    <th class="text-center">
+                                                        @if ($pre->file)
+                                                        <a class="btn btn-primary"
+                                                            href="{{route('presence.download', $pre->id)}}">Download</a>
+                                                        @else
+                                                        <div class="text-center">
+                                                            <i class="fas fa-times-circle text-danger"></i>
+                                                        </div>
+                                                        @endif
+                                                    </th>
+                                                    <td class="d-flex justify-content-center ">
+
+                                                        <div class="text-center mb-2">
+                                                            <a class="  btn btn-primary rounded-circle mx-3 "
+                                                                href="{{route('user.show',$pre->user_id)}}"><i
+                                                                    class="fa fa-eye"></i></a>
+                                                        </div>
+                                                        <div class="text-center mb-2">
+                                                            <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                                                href="{{route('presence.edit',$pre)}}"><i
+                                                                    class="fas fa-pencil-alt"></i></a>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+
+                                                @endforeach
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            @endcan
+                    @endif
 
                 </div>
+
             </div>
-
-
-
-
-
-
-
-
-
-
         </div>
 
 
-        @include('components/footer-page')
-        <script src="{{asset('/js/profil.js')}}"></script>
 
-        <script>
-            let main = document.querySelector('.main');
-            let btnDelete = document.querySelector('.deleteEl');
-            btnDelete.addEventListener('click', () => {
-                main.style.position = 'static';
-                btnDelete.classList.add('click');
+
+
+
+
+
+
+
+    </div>
+
+
+    @include('components/footer-page')
+    <script src="{{asset('/js/profil.js')}}"></script>
+
+    <script>
+        let main = document.querySelector('.main');
+        let btnDelete = document.querySelector('.deleteEl');
+        btnDelete.addEventListener('click', () => {
+            main.style.position = 'static';
+            btnDelete.classList.add('click');
+        })
+
+
+        let btnAnnuler = document.querySelectorAll('.btnAnnuler');
+        btnAnnuler.forEach(element => {
+            element.addEventListener('click', () => {
+                console.log('saluuuuut');
+                main.style.position = 'relative';
+
             })
 
+            // let page= document.querySelector('.profile-page');
+            // document.addEventListener('click',()=>{
+            // if((main.style.position == 'static') &&((btnDelete.classList.contains("click")))) {
+            //    location.reload();
+            // }
+            // })
 
-            let btnAnnuler = document.querySelectorAll('.btnAnnuler');
-            btnAnnuler.forEach(element => {
-                element.addEventListener('click', () => {
-                    console.log('saluuuuut');
-                    main.style.position = 'relative';
+        });
 
-                })
-
-                // let page= document.querySelector('.profile-page');
-                // document.addEventListener('click',()=>{
-                // if((main.style.position == 'static') &&((btnDelete.classList.contains("click")))) {
-                //    location.reload();
-                // }
-                // })
-
-            });
-
-        </script>
+    </script>
 
 </body>
 

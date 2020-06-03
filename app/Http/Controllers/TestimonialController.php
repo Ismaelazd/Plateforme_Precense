@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Info;
 use App\Testimonial;
 use App\User;
 use Illuminate\Support\Facades\Validator;;
@@ -94,6 +95,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
+
         $this->authorize('mineT', $testimonial,Testimonial::class);
         if (!Auth::check() || Auth::user()->role_id ==1) {
             $changements = Validationchange::all();
@@ -102,7 +104,8 @@ class TestimonialController extends Controller
             $users = User::where('classe_id',Auth::user()->classe_id)->get();
             $changements = Validationchange::whereIn('user_id',$users->pluck('id'))->get();
         }
-        return view('testimonial.edit',compact('testimonial','changements'));
+        $info = Info::first();
+        return view('testimonial.edit',compact('testimonial','changements','info'));
     }
 
     /**

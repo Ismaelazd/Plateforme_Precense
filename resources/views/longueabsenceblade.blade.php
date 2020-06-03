@@ -47,6 +47,11 @@
                 
 
 
+                @if (session('sorry'))
+                    <div class="alert alert-danger">
+                        {{ session('sorry') }}
+                    </div>
+                @endif
 
                 <div class="mt-5 card  w-50 mx-auto">
                     <div class="card-header  text-white" style="background-color: #120851;">
@@ -117,7 +122,7 @@
                       </div> 
                   
 
-                      @if (Auth::id()!=3)
+                      @if (Auth::user()->role_id!=3)
                         <div class="form-group">
                             <label  for="etatfinal_id">Statut Final</label>
                             <select class="form-control @error('etatfinal_id') is-invalid @enderror" name="etatfinal_id" id="">
