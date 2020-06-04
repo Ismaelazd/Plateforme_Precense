@@ -16,7 +16,7 @@ class FormController extends Controller
     {
         $this->middleware('admin', ['except' => ['store']]);
     }
-
+ 
     /**
      * Display a listing of the resource.
      *
@@ -155,7 +155,7 @@ class FormController extends Controller
         $search = $request->input('search');
         
        
-        $messages = Form::where('name','LIKE', '%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->orWhere('sujet','LIKE','%'.$search.'%')->orderBy('id', 'DESC')->get();
+        $messages = Form::where('name','LIKE', '%'.$search.'%')->orWhere('firstname','LIKE','%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->orWhere('sujet','LIKE','%'.$search.'%')->orderBy('id', 'DESC')->paginate(8);
 
         $unread = Form::where('read',false)->get();
         $deletedMsg = Form::onlyTrashed()->get();

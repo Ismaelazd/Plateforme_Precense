@@ -1,13 +1,10 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+@extends('layouts/master')
+@section('content')
+
 <!------ Include the above in your HEAD tag ---------->
 
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-    <link rel="stylesheet"
-        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
-        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
@@ -15,12 +12,16 @@
         href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
 
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="{{asset('/css/profil.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+    
 </head>
 
 <body class="profile-page">
-    @include('components/navbar-page')
+
+ @include('components/navbar-page')
+
+
 
     <div id="profilHeader" class="page-header header-filter" data-parallax="true"
         style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">

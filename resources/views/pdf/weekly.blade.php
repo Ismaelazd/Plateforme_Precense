@@ -28,7 +28,7 @@
                 $fin = new Carbon\Carbon($event->end);
                 $date = new Carbon\Carbon($event->start);
                 @endphp
-                <h5 style="color:#120851; display: inline; ">Le {{$debut->format('d-m-Y')}}</h5>
+                <h5 style="color:#120851; display: inline; ">Le {{$debut->format('d/m/Y')}}</h5>
                 <h5 style="color:#120851; display: inline; ">, de {{$debut->format('H:i')}}</h5>
                 <h5 style="color:#120251; display: inline; ">à {{$fin->format('H:i')}}</h5>
             </div>
@@ -38,12 +38,12 @@
             <table style="border: black solid 2px; margin-bottom: 25px; margin-top: 10px; padding: 0px; width: 100% ">
                 <thead style="border-bottom: #120251 solid 2px; padding: 0px ">
                     <tr>
-                        <th>student</th>
-                        <th>statut</th>
-                        <th>statutfinal</th>
-                        <th style="padding: 0px 35px">note</th>
-                        <th style="padding: 0px 15px;">fichier</th>
-                        <th style="padding: 0px 25px">signature</th>
+                        <th>Student</th>
+                        <th>Statut</th>
+                        <th>Statut final</th>
+                        <th style="padding: 0px 35px">Note</th>
+                        <th style="padding: 0px 15px;">Fichier</th>
+                        <th style="padding: 0px 25px">Signature</th>
 
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@
                     <tr style="border-bottom: #120251 solid 2px;">
                         <td
                             style="padding: 13px 8px;  border-right: #120251 solid 2px;">
-                            {{$presence->getUser->name}}</td>
+                            {{$presence->getUser->name}}  {{$presence->getUser->firstname}}</td>
                         <td
                             style="padding: 13px 8px;  border-right: #120251 solid 2px;">
                             {{$presence->getEtat->etat}}</td>
@@ -78,7 +78,7 @@
                     <tr style="border-bottom: #120251 solid 2px;">
                         <td
                             style="padding: 13px 8px; border-bottom: #120251 solid 2px; border-right: #120251 solid 2px;">
-                            {{$presence->getUser->name}}</td>
+                            {{$presence->getUser->name}} <br> {{$presence->getUser->firstname}}</td>
                         <td
                             style="padding: 13px 8px; border-bottom: #120251 solid 2px; border-right: #120251 solid 2px;">
                             {{$presence->getEtat->etat}}</td>

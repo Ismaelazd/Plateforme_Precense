@@ -165,7 +165,7 @@
                                     <!-- /.btn-group -->
                                     <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button> --}}
                                     <div class="float-right">
-                                      {{ $messages->links() }}
+                                        {{ $messages->links() }}
                                       <!-- /.btn-group -->
                                     </div> 
                                     <!-- /.float-right -->

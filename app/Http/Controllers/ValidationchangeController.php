@@ -100,7 +100,7 @@ class ValidationchangeController extends Controller
             $validationchange->ville = $request->input('ville');
             $validationchange->save();
         }
-        return redirect()->route('myProfil.index');
+        return redirect()->route('myProfil.index')->with('validationEnregistrée','Vos changements ont été enregistré et sont en attente de validation');
     }
 
     /**

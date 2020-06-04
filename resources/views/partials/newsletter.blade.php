@@ -8,10 +8,10 @@
                         <h3>Register to our Newsletter!</h3>
                     </div>
                     @if(Session::has('newsletterSent'))
-                    <div class="text-center alert alert-success">
-                        {{ Session::get('newsletterSent') }}
-                    </div>
-                @endif
+                        <div class="text-center alert alert-success">
+                            {{ Session::get('newsletterSent') }}
+                        </div>
+                    @endif
                     <div class="register__form">
                         @error('email')
                             <div  class="alert alert-primary text-center">{{  "Vous êtes déja inscrit à la newsletter !"  }}</div>

@@ -66,17 +66,20 @@
       <div id="mobile-menu-wrap"></div>
 
       <div class="offcanvas__info">
-          <ul>
-              <li><span class="icon_phone"></span> {{$info->tel}}</li>
-              <li><span class="fa fa-envelope"></span> {{$info->email}}</li>
-          </ul>
-      </div>
-      <div class="offcanvas__auth text-white">
-          <ul>
-              <li><span class="fa fa-map-marker mx-2"></span> {{$info->adresse_un}}</li>
-              <li>{{$info->adresse_deux}}</li>
-          </ul>
-      </div>
+        <ul>
+            <li class="text-white"><a href="tel:{{$info->tel}}"><span class="fa fa-mobile"></span> {{$info->tel}}</a></li>
+            <li class="text-white"><a href="mailto:{{$info->email}}"><span class="fa fa-envelope"></span> {{$info->email}}</a></li>
+
+        </ul>
+    </div>
+    <div class="offcanvas__auth text-white">
+        <ul>
+            <li><a target="_blank" class="mx-0" href="http://maps.google.com/?q=1200 {{$info->adresse_un}} 
+              {{$info->adresse_deux}}"><span class="fa fa-map-marker "></span> {{$info->adresse_un}}</a></li>
+            <li><a target="_blank" class="mx-0"  href="http://maps.google.com/?q=1200 {{$info->adresse_un}} 
+              {{$info->adresse_deux}}">{{$info->adresse_deux}}</a></li>
+        </ul> 
+    </div>
   </div>
   <!-- Offcanvas Menu End -->
 

@@ -8,6 +8,7 @@ use App\Info;
 use App\Presence;
 use App\User;
 use App\Validationchange;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -78,7 +79,9 @@ class EventController extends Controller
             'start'=>'required',
             'end'=>'required',
         ]);
-
+        if ((new Carbon($request->input('start')))->format('Y-m-d') != (new Carbon($request->input('end')))->format('Y-m-d')) {
+            return redirect()->to(url()->previous().'#start')->with('invalideDate',"Veuillez entrer deux heures correspondantes au MÊME jour!");
+        }
         $event = new Event();
         $event->nom = $request->input('nom');
         $event->classe_id = $request->input('classe_id');

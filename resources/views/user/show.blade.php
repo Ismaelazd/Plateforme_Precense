@@ -235,22 +235,12 @@
                       ) 1 100%;">
                         {{-- Messagerie --}}
                         <div id="messagerie" style="width: 400px" class="messagerie  ">
-                            <h3 class="text-center">Messagerie</h3>
                             <div class="card  cardutline direct-chat ">
-                                <div class="card-header  d-flex align-items-center justify-content-between"
+                                <div class="card-header  d-flex align-items-center justify-content-center"
                                     style="background-color: #120851;">
-                                    <h3 class="card-title text-white">Direct Chat</h3>
-
-                                    <div class="card-tools ml-auto">
-                                        {{-- <span data-toggle="tooltip" title="3 New Messages" class="badge bg-success">3</span> --}}
-                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                                class="fas fa-minus"></i>
-                                        </button>
-                                        {{-- <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
-  <i class="fas fa-comments"></i></button>
-<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i>
-</button> --}}
-                                    </div>
+                                    
+                                    <h4 class="text-center text-white m-0">Direct Chat</h4>
+                            
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body" style="display: block;">

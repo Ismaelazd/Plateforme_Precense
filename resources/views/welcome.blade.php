@@ -2,7 +2,8 @@
 
 @section('content')
 
-  
+
+    @include('components/preloader')
 
     @include('partials/header')
 

@@ -97,7 +97,7 @@
                             <div class="form-group">
                                 <label for="start">Debut</label>
                                 <input name="start" type="datetime-local"
-                                    class="form-control @error('start') is-invalid @enderror" id="start"
+                                    class="form-control @error('start') is-invalid @enderror @if (session('invalideDate')) is-invalid @endif" id="start"
                                     value="@if($errors->first('start'))@else{{ old('start') }}@endif">
                                 @error('start')
                                 <span class="invalid-feedback" role="alert">
@@ -107,9 +107,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="end">Fin</label>
+                                <label for="end">Fin <span  class="text-secondary @if (session('invalideDate')) text-danger @endif"><small> (Inserez le même jour que le début d'évênement)</small></span></label>
                                 <input name="end" type="datetime-local"
-                                    class="form-control @error('end') is-invalid @enderror" id="end"
+                                    class="form-control @error('end') is-invalid @enderror @if (session('invalideDate')) is-invalid @endif" id="end"
                                     value="@if($errors->first('end'))@else{{ old('end') }}@endif">
                                 @error('end')
                                 <span class="invalid-feedback" role="alert">
@@ -117,6 +117,12 @@
                                 </span>
                                 @enderror
                             </div>
+                            @if (session('invalideDate'))
+                                <div class="alert alert-danger">
+                                    {{ session('invalideDate') }}
+                                </div>
+                            @endif
+                            
                         </div>
 
                         <div class="card-footer text-center">
