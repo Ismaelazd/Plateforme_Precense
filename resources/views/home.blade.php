@@ -192,6 +192,7 @@
                         <div>
                             <span class="text">{{$futurevent->nom}}</span> - <span class="text">{{$futurevent->classe->name}}</span>
                         
+                            
                             <small class="badge badge-primary float-right"><i class="far fa-clock"></i> {{(new Carbon\Carbon($futurevent->start))->diffForHumans()}} </small>
                         
                         <div class="tools">
