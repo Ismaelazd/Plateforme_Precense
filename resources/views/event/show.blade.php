@@ -64,7 +64,7 @@
                                 <ul>
                                     <li>Classe: {{$event->classe->name}}</li>
                                     <li>Date: {{ (new \DateTime($event->start))->format('d/m/Y')}}</li>
-                                    <li>Heure de débutte: {{ (new \DateTime($event->start))->format('H:i')}}</li>
+                                    <li>Heure de debut: {{ (new \DateTime($event->start))->format('H:i')}}</li>
                                     <li>Heure de fin: {{ (new \DateTime($event->end))->format('H:i')}}</li>
                                     @if ($event->description)
                                     <li>Description: {{$event->description}}</li>
@@ -152,7 +152,7 @@
 
 
 
-                                <div class="col-6 px-5 " style="
+                                <div class="col-6 px-5  " style="
                                                 border-right: 0px;
                                                 border-left: 3px;
                                                 border-style: solid;
@@ -162,38 +162,45 @@
                                                     #120851, 
                                                     rgba(0, 0, 0, 0)
                                                 ) 1 100%;">
+                                    <div class="">
+                                        <div class="card-header text-center text-white" style="background-color: #120851;">
+                                            <h3 class="card-title">Ma présence</h3>
+                                        </div>                                            
+                                        <div class="card-body">
+                                                
+                                            
+                                            <p>{{$utilisateur->getUser->name}}</p>
+                                            <p
+                                                class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
+                                                Statut : {{$utilisateur->getEtat->etat}}</p>
+                                            <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
+                                            <p>Note :
+                                                @if ($utilisateur->note)
 
-
-
-                                    <p>{{$utilisateur->getUser->name}}</p>
-                                    <p
-                                        class="text-white @if($utilisateur->getEtat->id == 1) bg-success @else @if($utilisateur->getEtat->id == 2) bg-danger @else bg-warning @endif @endif">
-                                        Statut : {{$utilisateur->getEtat->etat}}</p>
-                                    <p>Statut Final : {{$utilisateur->getEtatfinal->etatfinal}}</p>
-                                    <p>Note :
-                                        @if ($utilisateur->note)
-
-                                        {{$utilisateur->note}}
-                                        @else
-                                        <div class="text-center">
-                                            <i class="fas fa-times-circle text-danger"></i>
+                                                {{$utilisateur->note}}
+                                                @else
+                                                <div class="text-center">
+                                                    <i class="fas fa-times-circle text-danger"></i>
+                                                </div>
+                                                @endif
+                                            </p>
+                                            <p> Justificatif :
+                                                @if ($utilisateur->file)
+                                                <a class="btn btn-primary"
+                                                    href="{{route('presence.download', $utilisateur->id)}}">Download</a>
+                                                @else
+                                                <div class="text-center">
+                                                    <i class="fas fa-times-circle text-danger"></i>
+                                                </div>
+                                                @endif
+                                            </p>
+                                            <p class="text-center">
+                                                <a class="  btn btn-warning rounded-circle mx-3 text-white"
+                                                    href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
+                                            </p>
                                         </div>
-                                        @endif
-                                    </p>
-                                    <p> Justificatif :
-                                        @if ($utilisateur->file)
-                                        <a class="btn btn-primary"
-                                            href="{{route('presence.download', $utilisateur->id)}}">Download</a>
-                                        @else
-                                        <div class="text-center">
-                                            <i class="fas fa-times-circle text-danger"></i>
-                                        </div>
-                                        @endif
-                                    </p>
-                                    <p>
-                                        <a class="  btn btn-warning rounded-circle mx-3 text-white"
-                                            href="{{route('presence.edit',$utilisateur)}}"><i class="fas fa-pencil-alt"></i></a>
-                                    </p>
+
+                                    </div>
                                 </div>
 
                             @endif

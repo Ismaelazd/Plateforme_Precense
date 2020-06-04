@@ -78,6 +78,13 @@ class EventSeeder extends Seeder
             'end'=> new Carbon('2020-05-29 23:59:00.00'),
         ]);
         DB::table('events')->insert([
+            'nom'=> 'Projets',
+            'classe_id'=> '1',
+            'description'=> "Ismael & Ben: plateform de présences ; Nazam,Mkdir & Nazam: Platforme de selection <br> Shannon, Zaïnab & Salome: Platforme de recrutement <br>  ",
+            'start'=> new Carbon('2020-06-08 11:00:00.00'),
+            'end'=> new Carbon('2020-06-08 23:59:00.00'),
+        ]);
+        DB::table('events')->insert([
             'nom'=> 'Deployer un site en ligne',
             'classe_id'=> '1',
             'description'=> 'Comment mettre son site en ligne? (version gratuite et payante)',

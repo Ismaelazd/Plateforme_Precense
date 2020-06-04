@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{asset('/css/profil.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/modalConnexion.css')}}" type="text/css">
+    
 
 </head>
 

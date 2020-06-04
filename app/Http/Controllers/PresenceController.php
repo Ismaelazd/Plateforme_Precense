@@ -65,7 +65,7 @@ class PresenceController extends Controller
     {
         
         $validatedData = $request->validate([
-            'file'=>'sometimes|max:70',
+            'file'=>'sometimes|file',
             'note'=>'sometimes|max:300',
         ]);
 
@@ -161,7 +161,8 @@ class PresenceController extends Controller
         $this->authorize('mineOrAdmin', $me, User::class);
 
         $validatedData = $request->validate([
-             'note' => 'sometimes|max:300',
+            'file'=>'sometimes|file',
+            'note' => 'sometimes|max:300',
         ]);
         $presence->etat_id = $request->input('etat_id');
         if($request->hasFile('file')){
@@ -276,7 +277,7 @@ class PresenceController extends Controller
             }
            $presence->note = $request->input('note');
 
-            if (Auth::id()!=3) {
+            if (Auth::user()->role_id!=3) {
                 $presence->etatfinal_id = $request->input('etatfinal_id');
             } else {
                 if ($request->input('etat_id')==1) {

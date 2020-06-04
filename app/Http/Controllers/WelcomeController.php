@@ -11,7 +11,7 @@ use App\Slide;
 use App\Testimonial;
 use App\User;
 use App\Validationchange;
-// use Carbon\Carbon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

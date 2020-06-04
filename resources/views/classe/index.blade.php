@@ -83,10 +83,19 @@
                                                 class="fas fa-pencil-alt"></i></a>
                                     </div>
                                     <div class="text-center ">
+                                        {{-- <a class="deleteEl rounded-circle btn btn-danger mx-3 "  href=""></a> --}}
+                                                <form action="{{route('classe.destroy',$classe)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="deleteEl rounded-circle btn btn-danger mx-3"><i
+                                                        class="fa fa-trash"></i></button>
+                                                </form>
+                                    </div>
+                                    {{-- <div class="text-center ">
                                         <a class="deleteEl rounded-circle btn btn-danger mx-3 " data-toggle="modal"
                                             data-target="#deleteClasse{{$classe->id}}" href=""><i
                                                 class="fa fa-trash"></i></a>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="text-center mb-2">
                                         <a class="  btn btn-secondary rounded-circle mx-3 text-white"
