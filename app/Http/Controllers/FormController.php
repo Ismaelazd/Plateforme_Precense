@@ -65,7 +65,7 @@ class FormController extends Controller
    
         $formulaire = new Form();
         $formulaire->name = $request->input('name');
-        $formulaire->firstname = $request->input('firstname');
+        $formulaire->firstname = $request->input('firs tname');
         $formulaire->email = $request->input('email');
         $formulaire->sujet = $request->input('sujet');
         $formulaire->message = $request->input('message');

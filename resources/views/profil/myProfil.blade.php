@@ -138,12 +138,17 @@
 
                 </div>
 
+                @if ($user->role_id ==4)
+                <div class="text-center alert alert-primary">
+                    <h5>Votre compte est en attente de validation</h5>
+                </div>
+                @endif
                 <form action="{{route('myProfil.edit',$user)}}" method="get" class="text-center mt-5 ">
                     <button style="color: #ffff; background-color: #120851 ;" title="Edit" type="submit" class="btn"><i
                             class="fa fa-pencil-alt fa-2x"></i></button>
                 </form>
                 @if(Session::has('validationEnregistrée'))
-                    <div class="text-center alert alert-success">
+                    <div class="text-center alert alert-success w-25 mx-auto">
                         {{ Session::get('validationEnregistrée') }}
                     </div>
                 @endif
